@@ -5,13 +5,22 @@ The endpoint called `endpoints` will return all available endpoints.
 
 from flask import Flask
 from flask_restx import Resource, Api
+
 # import db.db as db
 
 app = Flask(__name__)
 api = Api(app)
 
+LIST = 'list'
+HELLO = '/hello'
+MESSAGE = 'message'
+CHAR_TYPE_LIST = f'/character_types/{LIST}'
+CHAR_TYPE_LIST_NM = 'character_types_list'
+A_CHAR_TYPE = 'Wizard'
+ANTHOR_CHAR_TYPE = 'Warrior'
 
-@api.route('/hello')
+
+@api.route(HELLO)
 class HelloWorld(Resource):
     """
     The purpose of the HelloWorld class is to have a simple test to see if the
@@ -22,7 +31,19 @@ class HelloWorld(Resource):
         A trivial endpoint to see if the server is running.
         It just answers with "hello world."
         """
-        return {'hello': 'world'}
+        return {MESSAGE: 'hello world'}
+
+
+@api.route(CHAR_TYPE_LIST)
+class CharacterTypeList(Resource):
+    """
+    This will get a list of character types
+    """
+    def get(self):
+        """
+        Returns a list of character types
+        """
+        return {CHAR_TYPE_LIST_NM: [A_CHAR_TYPE, ANTHOR_CHAR_TYPE]}
 
 
 @api.route('/endpoints')
