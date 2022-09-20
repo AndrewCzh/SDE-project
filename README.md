@@ -38,6 +38,7 @@ We will write an API-driven restaurant business game. Players take the role of a
 
 ## Ingredient types
 
-##Project Timeline
+## Project Timeline
+- Regular meeting every week on Thursdays
 - Database inserts of dishes and ingredients are due on October 1st
 
