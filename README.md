@@ -38,6 +38,12 @@ We will write an API-driven restaurant business game. Players take the role of a
 
 ## Ingredient types
 
+## Web design
+- Selecting ingredients
+- Cutting station
+- Cooking station 
+- Baking station     
+
 ## Technologies
 - Python 3.8 or greater
 - Pytest
