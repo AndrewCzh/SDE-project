@@ -5,7 +5,7 @@ To build production, type `make prod`.
 
 To create the env for a new developer, run `make dev_env`.
 
-We will write an API-driven restaurant business game. Players take the role of a chef in the kitchen of a designated restaurant to earn money by fulfilling customers' orders.
+We will write an API-driven restaurant business game. Players take the role of a chef in the kitchen of the REPSAJ restaurant to earn money by fulfilling customers' orders.
 
 ## Requirements
 
