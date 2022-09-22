@@ -42,9 +42,27 @@ We will write an API-driven restaurant business game. Players take the role of a
 
 ## Ingredient types
 - Cheese
-- Pizza sauce
-- Fresh dough
-- Thin crust
+- Crust
+- Spinach 
+- Pepperoni
+- Tomato 
+- Pineapple
+- Mushroom
+- Green Peppers
+- Red Peppers
+- Onions
+- Corn
+- Rice
+- Lettuce
+- Beef
+- Bacon
+- Salmon
+- Avacado
+- Zucchini
+- Chicken
+- Broccoli
+- Carrot
+
 
 ## Web design
 - Selecting ingredients
