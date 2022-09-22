@@ -19,6 +19,10 @@ We will write an API-driven restaurant business game. Players take the role of a
 - Allow character to talk to other characters in locale
 
 ## Design
+- Restaurant operation game
+- Customers come and order food
+- Player select ingredients to cook food and gain money
+- Game succeeds when reach the daily turnover, but fails when the time is up
 
 ## Process
 
