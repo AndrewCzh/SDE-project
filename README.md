@@ -37,6 +37,10 @@ We will write an API-driven restaurant business game. Players take the role of a
 - Sushi
 
 ## Ingredient types
+- Cheese
+- Pizza sauce
+- Fresh dough
+- Thin crust
 
 ## Web design
 - Selecting ingredients
