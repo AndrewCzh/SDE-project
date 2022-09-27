@@ -83,5 +83,11 @@ We will write an API-driven restaurant business game. Players take the role of a
 
 ## Project Timeline
 - Regular meeting every week on Thursdays
-- Database inserts of dishes and ingredients are due on October 1st
+- Database inserts of dishes and ingredients are due on October 1st (Finished on Sep 27th)
+- Function todo
+   - randomly generates ingredients for different dishes
+   - basic login/enter page
+   - click on the ingredients and verify if the chosen ingredients match with the ones given by the random generator
+   - collects money if finished
+   - ...
 
