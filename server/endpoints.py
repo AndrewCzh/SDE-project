@@ -9,6 +9,7 @@ from flask_restx import Resource, Api
 import werkzeug.exceptions as wz
 
 import db.char_types as ctyp
+import db.food_types as ftyp
 
 # import db.db as db
 
@@ -24,6 +25,9 @@ MESSAGE = 'message'
 CHAR_TYPE_LIST = f'/character_types/{LIST}'
 CHAR_TYPE_LIST_NM = 'character_types_list'
 CHAR_TYPE_DETAILS = f'/character_types/{DETAILS}'
+FOOD_TYPE_LIST = f'/food_types/{LIST}'
+FOOD_TYPE_LIST_NM = 'food_types_list'
+FOOD_TYPE_DETAILS = f'/food_types/{DETAILS}'
 
 
 @api.route(HELLO)
@@ -50,6 +54,36 @@ class MainMenu(Resource):
         Gets the main game menu.
         """
         return {MAIN_MENU_NM: {'the': 'menu'}}
+
+
+@api.route(FOOD_TYPE_LIST)
+class FoodTypeList(Resource):
+    """
+    This will get a list of food types
+    """
+    def get(self):
+        """
+        Returns a list of character types.
+        """
+        return {FOOD_TYPE_LIST_NM: ftyp.get_food_types()}
+
+
+@api.route(f'{FOOD_TYPE_DETAILS}/<food_type>')
+class FoodTypeDetails(Resource):
+    """
+    This will get a list of character types.
+    """
+    @api.response(HTTPStatus.OK, 'Success')
+    @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
+    def get(self, food_type):
+        """
+        Return a list of food types.
+        """
+        ft = ftyp.get_food_type_details(food_type)
+        if ft is not None:
+            return {food_type: ftyp.get_food_type_details(food_type)}
+        else:
+            raise wz.NotFound(f'{food_type} not found.')
 
 
 @api.route(CHAR_TYPE_LIST)

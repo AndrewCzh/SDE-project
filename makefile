@@ -8,7 +8,7 @@ prod: all_tests github
 
 github: FORCE
 	- git commit -a
-	git push origin Andrew
+	git push origin andrew
 
 all_tests: FORCE
 	cd $(DB_DIR); make tests
