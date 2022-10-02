@@ -68,7 +68,8 @@ We will write an API-driven restaurant business game. Players take the role of a
 - Selecting ingredients
 - Cutting station
 - Cooking station 
-- Baking station     
+- Baking station
+- Rating process     
 
 ## Technologies
 - Python 3.8 or greater
