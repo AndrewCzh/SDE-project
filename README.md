@@ -90,4 +90,5 @@ We will write an API-driven restaurant business game. Players take the role of a
    - click on the ingredients and verify if the chosen ingredients match with the ones given by the random generator
    - collects money if finished
    - ...
+- Write some backend functions (basic login/enter page, logout/exit page) 
 
