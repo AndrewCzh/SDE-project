@@ -3,7 +3,7 @@ This is the file containing all of the endpoints for our flask app.
 The endpoint called `endpoints` will return all available endpoints.
 """
 
-from flask import Flask
+from flask import Flask, render_template
 from flask_restx import Resource, Api
 
 # import db.db as db
@@ -20,6 +20,17 @@ A_CHAR_TYPE = 'Wizard'
 ANTHOR_CHAR_TYPE = 'Warrior'
 
 
+
+# Define route for login
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+# Define route for home page
+@app.route('/home')
+def register():
+    return render_template('home.html')
+
 @api.route(HELLO)
 class HelloWorld(Resource):
     """
@@ -32,7 +43,6 @@ class HelloWorld(Resource):
         It just answers with "hello world."
         """
         return {MESSAGE: 'hello world'}
-
 
 @api.route(CHAR_TYPE_LIST)
 class CharacterTypeList(Resource):
