@@ -45,7 +45,7 @@ class HelloWorld(Resource):
         """
         return {MESSAGE: 'hello world'}
 
-    
+
 @api.route(CHAR_TYPE_LIST)
 class CharacterTypeList(Resource):
     """
