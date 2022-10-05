@@ -2,9 +2,14 @@
 This is the file containing all of the endpoints for our flask app.
 The endpoint called `endpoints` will return all available endpoints.
 """
+from http import HTTPStatus
 
-from flask import Flask, render_template
+from flask import Flask
 from flask_restx import Resource, Api
+import werkzeug.exceptions as wz
+
+import db.char_types as ctyp
+import db.food_types as ftyp
 
 # import db.db as db
 
@@ -12,24 +17,17 @@ app = Flask(__name__)
 api = Api(app)
 
 LIST = 'list'
+DETAILS = 'details'
+MAIN_MENU = '/main_menu'
+MAIN_MENU_NM = 'Main Menu'
 HELLO = '/hello'
 MESSAGE = 'message'
 CHAR_TYPE_LIST = f'/character_types/{LIST}'
 CHAR_TYPE_LIST_NM = 'character_types_list'
-A_CHAR_TYPE = 'Wizard'
-ANTHOR_CHAR_TYPE = 'Warrior'
-
-
-# Define route for login
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
-
-# Define route for home page
-@app.route('/home')
-def register():
-    return render_template('home.html')
+CHAR_TYPE_DETAILS = f'/character_types/{DETAILS}'
+FOOD_TYPE_LIST = f'/food_types/{LIST}'
+FOOD_TYPE_LIST_NM = 'food_types_list'
+FOOD_TYPE_DETAILS = f'/food_types/{DETAILS}'
 
 
 @api.route(HELLO)
@@ -46,16 +44,76 @@ class HelloWorld(Resource):
         return {MESSAGE: 'hello world'}
 
 
-@api.route(CHAR_TYPE_LIST)
-class CharacterTypeList(Resource):
+@api.route(MAIN_MENU)
+class MainMenu(Resource):
     """
-    This will get a list of character types
+    This will deliver our main menu.
     """
     def get(self):
         """
-        Returns a list of character types
+        Gets the main game menu.
         """
-        return {CHAR_TYPE_LIST_NM: [A_CHAR_TYPE, ANTHOR_CHAR_TYPE]}
+        return {MAIN_MENU_NM: {'the': 'menu'}}
+
+
+@api.route(FOOD_TYPE_LIST)
+class FoodTypeList(Resource):
+    """
+    This will get a list of food types
+    """
+    def get(self):
+        """
+        Returns a list of character types.
+        """
+        return {FOOD_TYPE_LIST_NM: ftyp.get_food_types()}
+
+
+@api.route(f'{FOOD_TYPE_DETAILS}/<food_type>')
+class FoodTypeDetails(Resource):
+    """
+    This will get a list of character types.
+    """
+    @api.response(HTTPStatus.OK, 'Success')
+    @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
+    def get(self, food_type):
+        """
+        Return a list of food types.
+        """
+        ft = ftyp.get_food_type_details(food_type)
+        if ft is not None:
+            return {food_type: ftyp.get_food_type_details(food_type)}
+        else:
+            raise wz.NotFound(f'{food_type} not found.')
+
+
+@api.route(CHAR_TYPE_LIST)
+class CharacterTypeList(Resource):
+    """
+    This will get a list of character types.
+    """
+    def get(self):
+        """
+        Returns a list of character types.
+        """
+        return {CHAR_TYPE_LIST_NM: ctyp.get_char_types()}
+
+
+@api.route(f'{CHAR_TYPE_DETAILS}/<char_type>')
+class CharacterTypeDetails(Resource):
+    """
+    This will get a list of character types.
+    """
+    @api.response(HTTPStatus.OK, 'Success')
+    @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
+    def get(self, char_type):
+        """
+        Returns a list of character types.
+        """
+        ct = ctyp.get_char_type_details(char_type)
+        if ct is not None:
+            return {char_type: ctyp.get_char_type_details(char_type)}
+        else:
+            raise wz.NotFound(f'{char_type} not found.')
 
 
 @api.route('/endpoints')
