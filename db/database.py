@@ -5,10 +5,11 @@ Gradually, we will fill in actual calls to our datastore.
 """
 from pymongo import MongoClient
 
+dishes = ["Burger", "Pizza", "PokeBowl", "Salad", "Sushi"]
+CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
+cluster0.wnpabny.mongodb.net/Ingredients"
 
 def dataInsert():
-    CONNECTION_STRING = "mongodb+srv://jialii:", \
-                        "Xujiali1@cluster0.wnpabny.mongodb.net/Ingredients"
     client = MongoClient(CONNECTION_STRING)
     # db = client.Ingredients
     # coll = db.Sushi
