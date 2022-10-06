@@ -10,6 +10,8 @@ import werkzeug.exceptions as wz
 
 import db.char_types as ctyp
 import db.food_types as ftyp
+import db.ingredients_generator as ig
+
 
 # import db.db as db
 
@@ -28,6 +30,8 @@ CHAR_TYPE_DETAILS = f'/character_types/{DETAILS}'
 FOOD_TYPE_LIST = f'/food_types/{LIST}'
 FOOD_TYPE_LIST_NM = 'food_types_list'
 FOOD_TYPE_DETAILS = f'/food_types/{DETAILS}'
+INGREDIENTS_GENERATOR_LIST = f'/ingredients_generator/{LIST}'
+INGREDIENTS_GENERATOR_LIST_NM = 'ingredients_generator_list'
 
 
 @api.route(HELLO)
@@ -114,6 +118,18 @@ class CharacterTypeDetails(Resource):
             return {char_type: ctyp.get_char_type_details(char_type)}
         else:
             raise wz.NotFound(f'{char_type} not found.')
+
+
+@api.route(INGREDIENTS_GENERATOR_LIST)
+class IngredientsGeneratorList(Resource):
+    """
+    This will get a list of ingredients
+    """
+    def get(self):
+        """
+        Returns a list of ingredients.
+        """
+        return {INGREDIENTS_GENERATOR_LIST_NM: ig.random_ingredients()}
 
 
 @api.route('/endpoints')

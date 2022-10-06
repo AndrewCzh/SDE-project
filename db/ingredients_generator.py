@@ -1,33 +1,10 @@
-"""
-This file will manage interactions with our data store.
-At first, it will just contain stubs that return fake data.
-Gradually, we will fill in actual calls to our datastore.
-"""
 from pymongo import MongoClient
+from bson.json_util import dumps
 import random
 
 dishes = ["Burger", "Pizza", "PokeBowl", "Salad", "Sushi"]
 CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
-
-
-def dataInsert():
-    client = MongoClient(CONNECTION_STRING)
-    # db = client.Ingredients
-    # coll = db.Sushi
-    docs = [
-        # set bread to $7 since the burger costs $7
-        {"name": "Rice", "price": 7.0},
-        {"name": "Zucchini", "price": 0.5},
-        {"name": "Avocado", "price": 1.0},
-        {"name": "Shrimp", "price": 1.0},
-        {"name": "Broccoli", "price": 0.5},
-        {"name": "Chicken", "price": 1.0},
-        {"name": "Salmon", "price": 1.0},
-        {"name": "Tuna", "price": 1.0},
-        ]
-
-    client.Ingredients.Sushi.insert_many(docs)  # change collection name
 
 
 def dish_generate():
@@ -41,6 +18,8 @@ def dish_generate():
 def random_ingredients():
     """
     Returns a list of ingredients
+    json.dumps is used to convert objectId to $oid
+    to convert it back using loads()
     """
     ret = []
     cnt1 = 0
@@ -63,9 +42,9 @@ def random_ingredients():
 
     for ing in ingredients:
         if cnt1 == 0:
-            ret.append(ing)
+            ret.append(dumps(ing))
         if cnt2 < len(ing_ls) and cnt1 == ing_ls[cnt2]:
-            ret.append(ing)
+            ret.append(dumps(ing))
             cnt2 += 1
         cnt1 += 1
 
@@ -77,14 +56,14 @@ def random_ingredients():
     # ret = random.sample(ing_ls[1:], ing_num)
     # ret.append(ing_ls[0])
     # print("len(ret) = ", len(ret))
+
+    # print('kkkkk')
+    # if isinstance(ret[0], str):
+    #     print(ret[0])
+    #     x = loads(ret[0])
+    #     if isinstance(x, dict):
+    #         print(x)
     return ret
-
-
-def fetch_pets():
-    """
-    A function to return all pets in the data store.
-    """
-    return {"tigers": 2, "lions": 3, "zebras": 1}
 
 
 def main():
