@@ -11,7 +11,7 @@ CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
 
 
-def data_insert():
+def dataInsert():
     client = MongoClient(CONNECTION_STRING)
     # db = client.Ingredients
     # coll = db.Sushi
