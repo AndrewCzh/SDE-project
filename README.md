@@ -88,8 +88,10 @@ We will write an API-driven restaurant business game. Players take the role of a
 - Function todo
    - randomly generates ingredients for different dishes
    - basic login/enter page
-   - click on the ingredients and verify if the chosen ingredients match with the ones given by the random generator
-   - collects money if finished(if exceed the goal)
-   - ...
-- Write some backend functions (basic login/enter page, logout/exit page) 
+   - select the ingredients
+   - collects money if finished
+   - select the cooking tool
+   - verify if ingredients and the cooking tool are correct and then customer will pay
+   - check if player gain enough money
+- Write some backend functions (basic login/enter page, logout/exit page)
 
