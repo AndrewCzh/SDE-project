@@ -17,6 +17,7 @@ def get_money_types():
 
 def main():
     ret = check_money()
+    print(ret)
 
 
 if __name__ == '__main__':
