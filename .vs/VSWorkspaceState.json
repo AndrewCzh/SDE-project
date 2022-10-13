@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\server",
+    "\\server\\static",
     "\\server\\templates"
   ],
-  "SelectedNode": "\\server\\templates\\login.html",
+  "SelectedNode": "\\server\\templates\\home.html",
   "PreviewInSolutionExplorer": false
 }
