@@ -30,7 +30,7 @@ def home():
 
 
 @app.route('/loginAuth', methods=['GET', 'POST'])
-def loginAuth():
+def login_auth():
     username = request.form['username']
     client = MongoClient(CONNECTION_STRING)
     my_db = client["Users"]

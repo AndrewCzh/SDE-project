@@ -32,6 +32,7 @@ FOOD_TYPE_LIST_NM = 'food_types_list'
 FOOD_TYPE_DETAILS = f'/food_types/{DETAILS}'
 INGREDIENTS_GENERATOR_LIST = f'/ingredients_generator/{LIST}'
 INGREDIENTS_GENERATOR_LIST_NM = 'ingredients_generator_list'
+LOGIN = '/templates/login'
 
 
 @api.route(HELLO)
