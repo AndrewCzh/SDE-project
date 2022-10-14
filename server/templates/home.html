@@ -1,6 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <link rel="stylesheet" href="static/styles.css">
 </head>
+<body>
+
+<style>
+	.center {
+	  display: block;
+	  margin-right: auto;
+	  margin-left: auto;
+	}
+</style>
+
+<h1 style="text-align:center">Temporary Home Page</h1>
+
+
+<form action="/home" method="POST">
+	<input class="center" type="text" name = "username" placeholder="Enter Username" required/></br>
+	<input class="center" type="password" name = "password" placeholder="Enter Password" required/></br>
+	{% if error %}
+		<p style="text-align:center"><strong style="text-align:center">Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+<form>
+ <!-- <input class="center" type="button" value="Return to Main Login Page" onclick="window.location.href='/login';"> -->
+</form>
+
+
+</body>
+
+
 </html>
