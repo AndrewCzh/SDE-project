@@ -29,8 +29,8 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/loginAuth', methods=["POST"])
-def login():
+@app.route('/loginAuth', methods=['GET', 'POST'])
+def loginAuth():
     username = request.form['username']
     client = MongoClient(CONNECTION_STRING)
     my_db = client["Users"]

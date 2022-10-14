@@ -15,13 +15,17 @@
             Enter your username: 
         </div>
         <div>
-            <form>
-                <input class="textbox" type="textbox" name="username" placeholder="...">
+            <form action="/loginAuth" method="POST">
+                <input class="textbox" type="text" name="username" placeholder="..." required></br>
+                <input type="submit" id="startButton" value = 'START' />
+                {% if error %}
+                    <p style="text-align:center"><strong style="text-align:center">Error:</strong> {{error}}</p>
+                {% endif %}
             </form>
         </div> 
     </div>
 
-     <input type="submit" id="startButton" value = 'START' />
+     
     
      
 </body>
@@ -88,11 +92,11 @@
     }
     
     body {
-        background-image: url('images/restaurant2.jpg');
+        /*background-image: url('images/restaurant2.jpg');
         background-repeat: no-repeat;
         background-position:center center;
         background-attachment: fixed;
-        background-size: cover;
+        background-size: cover;*/
 
     }
 </style>
