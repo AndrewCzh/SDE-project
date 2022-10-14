@@ -55,8 +55,8 @@ def login_auth():
         return render_template('home.html')
         # return redirect(url_for('home'))
     else:
-        print("name is already used")
-        return render_template('login.html')
+        error = "name is already used"
+        return render_template('login.html',error = error)
 
 
 def main():

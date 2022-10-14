@@ -15,21 +15,22 @@
             Enter your username: 
         </div>
         <div>
-            <form action="/loginAuth" method="POST">
+            <form action="/loginAuth" method="POST" >
                 <input class="textbox" type="text" name="username" placeholder="..." required></br>
                 <input type="submit" id="startButton" value = 'START' />
-                {% if error %}
-                    <p style="text-align:center"><strong style="text-align:center">Error:</strong> {{error}}</p>
-                {% endif %}
+                
             </form>
         </div>
     </div>
-
+    {% if error %}
+    <p style="text-align:center"><strong style="text-align:center">Error:</strong> {{error}}</p>
+    {% endif %}
 
 
 
 </body>
 <style>
+    
     .header,.enter,input[type=submit]{
         left: 50%;
         margin-right: -50%;
@@ -55,6 +56,8 @@
         font-size: 30px;
 
     }
+
+
     .textbox {
         margin: auto;
         width: 80%;
@@ -82,7 +85,7 @@
     }
 
     input[type=submit] {
-        top: 90%;
+        top: 300%;
         background-color: #4CAF50; /* Green */
         border: none; /*rewriting standard style, it is necessary to be able to change the size*/
         height: 60px;
