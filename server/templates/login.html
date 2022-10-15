@@ -22,9 +22,9 @@
             </form>
         </div>
     </div>
-    {% if error %}
-    <p style="text-align:center"><strong style="text-align:center">Error:</strong> {{error}}</p>
-    {% endif %}
+    <!{% if error %}>
+    <!p style="text-align:center"><strong style="text-align:center">Error:</strong> {{error}}</!p>>
+    <!{% endif %}>
 
 
 
@@ -50,7 +50,7 @@
     }
     .header{
         top: 40%;
-        color: black;
+        color: white;
         -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: black;
         font-size: 30px;
@@ -86,7 +86,7 @@
 
     input[type=submit] {
         top: 300%;
-        background-color: #4CAF50; /* Green */
+        background-color: blue; /* Green */
         border: none; /*rewriting standard style, it is necessary to be able to change the size*/
         height: 60px;
         width: 200px;
@@ -100,6 +100,7 @@
         background-position:center center;
         background-attachment: fixed;
         background-size: cover;
+        background-color:lightskyblue
 
     }
 </style>
