@@ -1,9 +1,8 @@
-import pytest
 import sys
 from bson.json_util import loads
 
-sys.path.append("..")
-import db.ingredients_generator as ig
+sys.path.append("../../db")
+import server.ingredients_generator as ig
 
 
 def test_dish_generate():

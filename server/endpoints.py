@@ -10,7 +10,7 @@ import werkzeug.exceptions as wz
 
 import db.char_types as ctyp
 import db.food_types as ftyp
-import db.ingredients_generator as ig
+import server.ingredients_generator as ig
 
 
 # import db.db as db
