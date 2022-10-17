@@ -5,5 +5,11 @@
 </head>
 <body>
 <h1>"THIS IS HOME PAGE"</h1>
+<!--<h1>{{data_ls[0]}}</h1>-->
+<ul>
+    {% for v in data_ls %}
+        <li>{{v['name']}}</li>
+    {% endfor %}
+</ul>
 </body>
 </html>

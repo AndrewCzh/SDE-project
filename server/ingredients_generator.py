@@ -1,10 +1,30 @@
 from pymongo import MongoClient
-from bson.json_util import dumps
+from bson.json_util import dumps, loads
 import random
+from flask import Flask, render_template
+
+app = Flask(__name__)
 
 dishes = ["Burger", "Pizza", "PokeBowl", "Salad", "Sushi"]
 CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
+
+
+@app.route('/')
+def generator():
+    data = random_ingredients()
+    print("len = ", len(data))
+    print("type = ", type(data[0]))
+    data_ls = []
+    print("data = ", data)
+    for d in data:
+        data_ls.append(loads(d))
+    return render_template('home.html', data_ls=data_ls)
+
+
+# @app.route('/home')
+# def home():
+#     return render_template('home.html')
 
 
 def dish_generate():
@@ -67,8 +87,8 @@ def random_ingredients():
 
 
 def main():
-    ls = random_ingredients()
-    print(ls)
+
+    app.run()
 
 
 if __name__ == "__main__":
