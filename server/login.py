@@ -10,14 +10,6 @@ app = Flask(__name__)
 
 CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
-#
-#
-# client = MongoClient(CONNECTION_STRING)
-
-
-# @app.route('/')
-# def index():
-#     return jsonify({'name': 'alice', 'email': 'alice@gmail.com'})
 
 
 @app.route('/')
