@@ -58,7 +58,7 @@ def login_auth():
     else:
         error = "name is already used"
         return render_template('login.html', error=error)
- 
+
 
 def main():
     # print(login())
