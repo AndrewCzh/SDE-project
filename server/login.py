@@ -37,6 +37,7 @@ def login_auth():
     my_col = my_db["Users"]
     data = my_col.find()
     insert = True
+    '''
     if data is None:
         u_id = 0
     else:
@@ -57,7 +58,8 @@ def login_auth():
     else:
         error = "name is already used"
         return render_template('login.html', error=error)
-
+    '''
+    return render_template('home.html')
 
 def main():
     # print(login())
