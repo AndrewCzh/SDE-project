@@ -6,6 +6,7 @@
 <body>
 <h1>"THIS IS HOME PAGE"</h1>
 
+<<<<<<< Updated upstream
     <img src= '../static/restaurant.png' id="res" alt="restaurant" width="200" height="200" onclick="javascript:moveToRight(this);"/>
     <input class="answerBtnsOff" name="answerA" id="answerA" type="button" value="A"  onclick='javascript:btnclick(this);' />
     <input class="answerBtnsOff" name="answerB" id="answerB"  type="button" value="B"  onclick='javascript:btnclick(this);'  />
@@ -13,12 +14,22 @@
     <input class="answerBtnsOff" name="answerD" id="answerD"  type="button" value="D"   onclick='javascript:btnclick(this);' />
     <input class="answerBtnsOff" name="answerE" id="answerE"  type="button" value="E"   onclick='javascript:btnclick(this);' />
 
+=======
+
+    <input class="answerBtnsOff" name="answerA" id="btn" type="button" value="A"  onclick="myfunc();"/>
+    <input class="answerBtnsOff" name="answerB" id="btn2"  type="button" value="B"  onclick="select();" />
+    <input class="answerBtnsOff" name="answerC" id="answerC"  type="button" value="C"   onclick= "myFunction(this)" />
+    <input class="answerBtnsOff" name="answerD" id="answerD"  type="button" value="D"   onclick= "myFunction(this)"/>
+    <input class="answerBtnsOn" name="answerE" id="answerE"  type="button" value="E"   onclick= "myFunction(this)" />
+   
+>>>>>>> Stashed changes
 <ul>
     {% for v in data_ls %}
         <li>{{v['name']}}</li>
     {% endfor %}
 </ul>
 
+<<<<<<< Updated upstream
 <script lang=javascript>
    function btnclick(btn)
     {
@@ -37,30 +48,39 @@
             return false;
         }
     }
+=======
+>>>>>>> Stashed changes
 
-</script>
+<script src="../static/index.js"></script>
 
 <style type="text/css">
 
     .answerBtnsOff
     {
         BACKGROUND-COLOR: #ffffff;
+<<<<<<< Updated upstream
         BORDER-BOTTOM: #666666 1px solid;
         BORDER-LEFT: #666666 1px solid;
         BORDER-RIGHT: #666666 1px solid;
 
+=======
+>>>>>>> Stashed changes
         COLOR: black;
-        FONT: 11px Verdana,Arial,Helvetica,sans-serif;
+        FONT: 21px Verdana,Arial,Helvetica,sans-serif;
         font-weight:bold;
     }
     .answerBtnsOn
     {
+<<<<<<< Updated upstream
         BACKGROUND-COLOR: GREEN;
         BORDER-BOTTOM: #666666 1px solid;
         BORDER-LEFT: #666666 1px solid;
         BORDER-RIGHT: #666666 1px solid;
+=======
+        BACKGROUND-COLOR: GREEN; 
+>>>>>>> Stashed changes
         COLOR: #ffffff;
-        FONT: 11px Verdana,Arial,Helvetica,sans-serif;
+        FONT: 21px Verdana,Arial,Helvetica,sans-serif;
         font-weight:bold;
     }
     </style>
