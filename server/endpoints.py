@@ -32,6 +32,7 @@ FOOD_TYPE_LIST_NM = 'food_types_list'
 FOOD_TYPE_DETAILS = f'/food_types/{DETAILS}'
 INGREDIENTS_GENERATOR_LIST = f'/ingredients_generator/{LIST}'
 INGREDIENTS_GENERATOR_LIST_NM = 'ingredients_generator_list'
+INGREDIENTS_GENERATOR_DETAIL = f'/ingredients_generator/{DETAILS}'
 LOGIN = '/templates/login'
 
 
@@ -131,6 +132,22 @@ class IngredientsGeneratorList(Resource):
         Returns a list of ingredients.
         """
         return {INGREDIENTS_GENERATOR_LIST_NM: ig.random_ingredients()}
+
+
+@api.route(INGREDIENTS_GENERATOR_DETAIL)
+class IngredientsGeneratorDetails(Resource):
+    """
+    This will get a list of ingredients
+    """
+    def get(self):
+        """
+        Returns a price
+        """
+        price = ig.get_ingredients_price_details()
+        if price is not None:
+            return {'Price': price}
+        else:
+            wz.NotFound('Price is not found.')
 
 
 @api.route('/endpoints')

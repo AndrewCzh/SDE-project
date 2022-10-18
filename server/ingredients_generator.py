@@ -10,7 +10,7 @@ CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def generator():
     data = random_ingredients()
     print("len = ", len(data))
@@ -19,6 +19,7 @@ def generator():
     print("data = ", data)
     for d in data:
         data_ls.append(loads(d))
+    print("type = ", type(data_ls[0]))
     return render_template('home.html', data_ls=data_ls)
 
 
@@ -27,12 +28,35 @@ def generator():
 #     return render_template('home.html')
 
 
+def get_ingredients_price_details():
+    data = random_ingredients()
+    data_ls = []
+    for d in data:
+        data_ls.append(loads(d))
+    return data_ls[0].get('price', None)
+
+
 def dish_generate():
     """
     Returns a random dish
     """
     index = random.randrange(len(dishes))
     return dishes[index]
+
+
+def match_dish(dish):
+    if dish == "Burger":
+        return "Bread&Meat"
+    elif dish == "Pizza":
+        return "Crust"
+    elif dish == "PokeBowl":
+        return "RiceBowl"
+    elif dish == "Salad":
+        return "Salad"
+    elif dish == "Sushi":
+        return "Rice"
+    else:
+        return ""
 
 
 def random_ingredients():
@@ -50,7 +74,6 @@ def random_ingredients():
     my_db = client["Ingredients"]
     my_col = my_db[dish]
     ingredients = my_col.find()  # return a cursor
-
     total_count = my_col.count_documents({})
     ing_num = random.randint(1, total_count-1)
     ls = [i for i in range(1, total_count)]
@@ -58,12 +81,16 @@ def random_ingredients():
     # print(ing_num)
     ing_ls = random.sample(ls, ing_num)
     ing_ls.sort()
-    # print(ing_ls)
+    major = my_col.find({"name": match_dish(dish)})
+    print(major)
 
+    # print(ing_ls)
     for ing in ingredients:
         if cnt1 == 0:
-            ret.append(dumps(ing))
+            ret.append(dumps(major[0]))
         if cnt2 < len(ing_ls) and cnt1 == ing_ls[cnt2]:
+            if ing["name"] == match_dish(dish):
+                continue
             ret.append(dumps(ing))
             cnt2 += 1
         cnt1 += 1
@@ -87,8 +114,13 @@ def random_ingredients():
 
 
 def main():
-
+    # data = random_ingredients()
+    # print("len = ", len(data))
+    # print("type = ", type(data[0]))
+    # data_ls = []
+    # print("data = ", data)
     app.run()
+    # print(get_ingredients_price_details())
 
 
 if __name__ == "__main__":
