@@ -11,6 +11,7 @@ import werkzeug.exceptions as wz
 import db.char_types as ctyp
 import db.food_types as ftyp
 import server.ingredients_generator as ig
+import db.users as usr
 
 
 # import db.db as db
@@ -20,6 +21,7 @@ api = Api(app)
 
 LIST = 'list'
 DETAILS = 'details'
+ADD = 'add'
 MAIN_MENU = '/main_menu'
 MAIN_MENU_NM = 'Main Menu'
 HELLO = '/hello'
@@ -34,7 +36,11 @@ INGREDIENTS_GENERATOR_LIST = f'/ingredients_generator/{LIST}'
 INGREDIENTS_GENERATOR_LIST_NM = 'ingredients_generator_list'
 INGREDIENTS_GENERATOR_DETAIL = f'/ingredients_generator/{DETAILS}'
 LOGIN = '/templates/login'
-
+USERS_NS = 'users'
+USER_LIST = f'/{USERS_NS}/{LIST}'
+USER_LIST_NM = f'{USERS_NS}_list'
+USER_DETAILS = f'/{USERS_NS}/{DETAILS}'
+USER_ADD = f'/{USERS_NS}/{ADD}'
 
 @api.route(HELLO)
 class HelloWorld(Resource):
