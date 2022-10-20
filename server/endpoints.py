@@ -4,8 +4,8 @@ The endpoint called `endpoints` will return all available endpoints.
 """
 from http import HTTPStatus
 
-from flask import Flask, request
-from flask_restx import Resource, Api, fields
+from flask import Flask
+from flask_restx import Resource, Api
 import werkzeug.exceptions as wz
 
 import db.char_types as ctyp
@@ -34,11 +34,7 @@ INGREDIENTS_GENERATOR_LIST = f'/ingredients_generator/{LIST}'
 INGREDIENTS_GENERATOR_LIST_NM = 'ingredients_generator_list'
 INGREDIENTS_GENERATOR_DETAIL = f'/ingredients_generator/{DETAILS}'
 LOGIN = '/templates/login'
-USERS_NS = 'users'
-USER_LIST = f'/{USERS_NS}/{LIST}'
-USER_LIST_NM = f'{USERS_NS}_list'
-USER_DETAILS = f'/{USERS_NS}/{DETAILS}'
-USER_ADD = f'/{USERS_NS}/{ADD}'
+
 
 @api.route(HELLO)
 class HelloWorld(Resource):
