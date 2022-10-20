@@ -4,8 +4,8 @@ The endpoint called `endpoints` will return all available endpoints.
 """
 from http import HTTPStatus
 
-from flask import Flask
-from flask_restx import Resource, Api
+from flask import Flask, request
+from flask_restx import Resource, Api, fields
 import werkzeug.exceptions as wz
 
 import db.char_types as ctyp
@@ -154,6 +154,41 @@ class IngredientsGeneratorDetails(Resource):
             return {'Price': price}
         else:
             wz.NotFound('Price is not found.')
+
+
+@api.route(USER_LIST)
+class UserList(Resource):
+    """
+    This will get a list of currrent users.
+    """
+    def get(self):
+        """
+        Returns a list of current users.
+        """
+        return {USER_LIST_NM: usr.get_users()}
+
+
+user_fields = api.model('NewUser', {
+    usr.NAME: fields.String,
+    usr.EMAIL: fields.String,
+    usr.FULL_NAME: fields.String,
+})
+
+
+@api.route(USER_ADD)
+class AddUser(Resource):
+    """
+    Add a user.
+    """
+    @api.expect(user_fields)
+    def post(self):
+        """
+        Add a user.
+        """
+        print(f'{request.json=}')
+        name = request.json[usr.NAME]
+        del request.json[usr.NAME]
+        usr.add_user(name, request.json)
 
 
 @api.route('/endpoints')
