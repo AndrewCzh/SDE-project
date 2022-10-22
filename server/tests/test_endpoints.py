@@ -1,5 +1,4 @@
 import pytest
-
 import sys
 
 sys.path.append("..")
@@ -18,7 +17,6 @@ def test_hello():
     """
     resp_json = TEST_CLIENT.get(ep.HELLO).get_json()
     assert isinstance(resp_json[ep.MESSAGE], str)
-
 
 def test_get_character_type_list():
     """

@@ -12,7 +12,6 @@ import db.char_types as ctyp
 import db.food_types as ftyp
 import server.ingredients_generator as ig
 
-
 # import db.db as db
 
 app = Flask(__name__)
@@ -20,6 +19,7 @@ api = Api(app)
 
 LIST = 'list'
 DETAILS = 'details'
+ADD = 'add'
 MAIN_MENU = '/main_menu'
 MAIN_MENU_NM = 'Main Menu'
 HELLO = '/hello'
