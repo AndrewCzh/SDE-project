@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template
+
 
 app = Flask(__name__)
 
@@ -9,13 +10,16 @@ cluster0.wnpabny.mongodb.net/Ingredients"
 def index():
     return render_template('cook.html')
 
+
 @app.route('/cookSuccess')
 def home():
     return render_template('success.html')
 
-@app.route('/cookFailed')
+
+@app.route('/cook')
 def home():
     return render_template('fail.html')
+
 
 def main():
     app.run(debug=True)
@@ -23,3 +27,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
