@@ -1,23 +1,24 @@
 from flask import Flask, render_template
 
-
 app = Flask(__name__)
+
 
 CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
 
+
 @app.route('/cook')
-def index():
+def cook():
     return render_template('cook.html')
 
 
 @app.route('/cookSuccess')
-def home():
+def cookSuccess():
     return render_template('success.html')
 
 
-@app.route('/cook')
-def home():
+@app.route('/cookFailed')
+def cookFailed():
     return render_template('fail.html')
 
 
