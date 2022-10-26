@@ -20,11 +20,11 @@ def test_hello():
     assert isinstance(resp_json[ep.MESSAGE], str)
 
 
-SAMPLE_USER_NM = 'SampleUser'
+SAMPLE_USER_NM = 'Sample User'
 SAMPLE_USER = {
     usr.NAME: SAMPLE_USER_NM,
-    usr.EMAIL: 'x@y.com',
-    usr.FULL_NAME: 'Sample User',
+    # usr.EMAIL: 'x@y.com',
+    # usr.FULL_NAME: 'Sample User',
 }
 
 
@@ -45,6 +45,7 @@ def test_get_user_list():
     """
     resp = TEST_CLIENT.get(ep.USER_LIST)
     resp_json = resp.get_json()
+    print(resp_json)
     assert isinstance(resp_json[ep.USER_LIST_NM], list)
 
 

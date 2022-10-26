@@ -168,10 +168,15 @@ class UserList(Resource):
         return {USER_LIST_NM: usr.get_users()}
 
 
+# user_fields = api.model('NewUser', {
+#     usr.NAME: fields.String,
+#     usr.EMAIL: fields.String,
+#     usr.FULL_NAME: fields.String,
+# })
 user_fields = api.model('NewUser', {
     usr.NAME: fields.String,
-    usr.EMAIL: fields.String,
-    usr.FULL_NAME: fields.String,
+    # usr.EMAIL: fields.String,
+    # usr.FULL_NAME: fields.String,
 })
 
 
@@ -188,7 +193,8 @@ class AddUser(Resource):
         print(f'{request.json=}')
         name = request.json[usr.NAME]
         del request.json[usr.NAME]
-        usr.add_user(name, request.json)
+        usr.add_user(name)
+        # usr.add_user(name, request.json)
 
 
 @api.route('/endpoints')
