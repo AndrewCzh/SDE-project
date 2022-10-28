@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request
 
 app = Flask(__name__)
 
@@ -7,9 +7,14 @@ CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
 
 
-@app.route('/cook')
+@app.route('/')
 def cook():
-    return render_template('cook.html')
+    return render_template('home.html')
+
+@app.route('/cook')
+def cooking():
+    ingredients = request.form['ingredients']
+    print(ingredients)
 
 
 @app.route('/cookSuccess')
