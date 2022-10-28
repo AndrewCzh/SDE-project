@@ -59,7 +59,7 @@ def login_auth():
 @app.route('/home')
 def home():
     return render_template('home.html')
-    
+
 
 def main():
     # print(login())
