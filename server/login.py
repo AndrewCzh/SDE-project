@@ -22,7 +22,7 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/home', methods=['GET', 'POST'])
+@app.route('/login_auth', methods=['GET', 'POST'])
 def login_auth():
     """
     These comments are used to connect db

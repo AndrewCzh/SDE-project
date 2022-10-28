@@ -7,7 +7,7 @@ CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
 
 
-@app.route('/cook')
+@app.route('/')
 def cook():
     return render_template('cook.html')
 
