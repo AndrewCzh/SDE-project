@@ -16,6 +16,7 @@ cluster0.wnpabny.mongodb.net/Ingredients"
 def index():
     return render_template('login.html')
 
+
 @app.route('/home', methods=['GET', 'POST'])
 def login_auth():
     """
@@ -53,6 +54,7 @@ def login_auth():
     else:
         error = "name is already used"
         return render_template('login.html', error=error)
+
 
 @app.route('/home')
 def home():

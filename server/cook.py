@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -10,6 +10,7 @@ cluster0.wnpabny.mongodb.net/Ingredients"
 @app.route('/')
 def cook():
     return render_template('home.html')
+
 
 @app.route('/cook')
 def cooking():
