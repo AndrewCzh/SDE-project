@@ -15,18 +15,15 @@
 <!--            Enter your username:-->
 <!--        </div>-->
         <div>
-            <form action="/loginAuth" method="POST" >
+            <form action="/cook" method="POST" >
                 <input class="textbox" type="text" name="username" placeholder="..." required></br>
                 <input type="submit" id="startButton" value = 'START' />
-
+                {% if error %}
+                    <p class="error"><strong>Error: </strong> {{error}}</p>
+                {% endif %}
             </form>
         </div>
     </div>
-    <!{% if error %}>
-    <!p style="text-align:center"><strong style="text-align:center">Error:</strong> {{error}}</!p>>
-    <!{% endif %}>
-
-
 
 </body>
 <style>
