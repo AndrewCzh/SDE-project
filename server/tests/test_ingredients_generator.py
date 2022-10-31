@@ -7,6 +7,11 @@ import server.ingredients_generator as ig
 dishi = "Burger"
 
 
+def test_get_ingredients_price_details():
+    price = ig.get_ingredients_price_details()
+    assert isinstance(price, float)
+
+
 def test_dish_generate():
     dish = ig.dish_generate()
     assert isinstance(dish, str)

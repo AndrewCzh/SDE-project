@@ -6,82 +6,79 @@
 <body>
 <h1>"THIS IS HOME PAGE"</h1>
 
-<<<<<<< Updated upstream
-    <img src= '../static/restaurant.png' id="res" alt="restaurant" width="200" height="200" onclick="javascript:moveToRight(this);"/>
-    <input class="answerBtnsOff" name="answerA" id="answerA" type="button" value="A"  onclick='javascript:btnclick(this);' />
-    <input class="answerBtnsOff" name="answerB" id="answerB"  type="button" value="B"  onclick='javascript:btnclick(this);'  />
-    <input class="answerBtnsOff" name="answerC" id="answerC"  type="button" value="C"   onclick='javascript:btnclick(this);' />
-    <input class="answerBtnsOff" name="answerD" id="answerD"  type="button" value="D"   onclick='javascript:btnclick(this);' />
-    <input class="answerBtnsOff" name="answerE" id="answerE"  type="button" value="E"   onclick='javascript:btnclick(this);' />
+<div class="ingredients">
+    <form action="/cook" method="POST" >
+        <input class="answerBtnsOff" id="salmon" type="button" value="Salmon"  onclick="onoff(this.id);"/>
+        <input class="answerBtnsOff" id="lettuce"  type="button" value="Lettuce"  onclick="onoff(this.id);" />
+        <input class="answerBtnsOff" id="rice"  type="button" value="Rice"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="tuna"  type="button" value="Tuna"   onclick= "onoff(this.id)"/>
+        <input class="answerBtnsOff" name="answerE" id="cucumber"  type="button" value="Cucumber"   onclick= "onoff(this.id)" /> <br>
+    
+        <input class="answerBtnsOff" id="Cheese" type="button" value="Cheese"  onclick="onoff(this.id);"/>
+        <input class="answerBtnsOff" id="Crust"  type="button" value="Crust"  onclick="onoff(this.id);" />
+        <input class="answerBtnsOff" id="Spinach"  type="button" value="Spinach"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Pepperoni"  type="button" value="Pepperoni"   onclick= "onoff(this.id)"/>
+        <input class="answerBtnsOff" id="Tomato"  type="button" value="Tomato"   onclick= "onoff(this.id)" /><br>
+    
+        <input class="answerBtnsOff" id="Pineapple" type="button" value="Pineapple"  onclick="onoff(this.id);"/>
+        <input class="answerBtnsOff" id="Mushroom"  type="button" value="Mushroom"  onclick="onoff(this.id);" />
+        <input class="answerBtnsOff" id="Green Peppers"  type="button" value="Green Peppers"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Red Peppers"  type="button" value="Red Peppers"   onclick= "onoff(this.id)"/><br>
+        <input class="answerBtnsOff" id="Onions"  type="button" value="Onions"   onclick= "onoff(this.id)" />
+    
+        <input class="answerBtnsOff" id="Corn" type="button" value="Corn"  onclick="onoff(this.id);"/>
+        <input class="answerBtnsOff" id="Beef"  type="button" value="Beef"  onclick="onoff(this.id);" />
+        <input class="answerBtnsOff" id="Bacon"  type="button" value="Bacon"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Avacado"  type="button" value="Avacado"   onclick= "onoff(this.id)"/><br>
+        <input class="answerBtnsOff" id="Zucchini"  type="button" value="Zucchini"   onclick= "onoff(this.id)" />
+    
+        <input class="answerBtnsOff" id="Chicken" type="button" value="Chicken"  onclick="onoff(this.id);"/>
+        <input class="answerBtnsOff" id="Broccoli"  type="button" value="Broccoli"  onclick="onoff(this.id);" />
+        <input class="answerBtnsOff" id="Carrot"  type="button" value="Carrot"   onclick= "onoff(this.id)" /><br>
+        <input type="submit" id="checkButton" value = 'DONE' />
 
-=======
+    </form>
+</div>  
+    
 
-    <input class="answerBtnsOff" name="answerA" id="btn" type="button" value="A"  onclick="myfunc();"/>
-    <input class="answerBtnsOff" name="answerB" id="btn2"  type="button" value="B"  onclick="select();" />
-    <input class="answerBtnsOff" name="answerC" id="answerC"  type="button" value="C"   onclick= "myFunction(this)" />
-    <input class="answerBtnsOff" name="answerD" id="answerD"  type="button" value="D"   onclick= "myFunction(this)"/>
-    <input class="answerBtnsOn" name="answerE" id="answerE"  type="button" value="E"   onclick= "myFunction(this)" />
-   
->>>>>>> Stashed changes
 <ul>
     {% for v in data_ls %}
         <li>{{v['name']}}</li>
     {% endfor %}
 </ul>
+    
 
-<<<<<<< Updated upstream
-<script lang=javascript>
-   function btnclick(btn)
-    {
-        if (btn.class=="answerBtnsOn")
-        {
-            btn.class="answerBtnsOff";
-            btn.setAttribute("class","answerBtnsOff");
-            btn.setAttribute("className","answerBtnsOff");
-            return false;
-        }
-        if (btn.class=="answerBtnsOff")
-        {
-            btn.class="answerBtnsOn";
-            btn.setAttribute("class","answerBtnsOn");
-            btn.setAttribute("className","answerBtnsOn");
-            return false;
-        }
+<script language="JavaScript">
+   function onoff(btn){
+    currentvalue = document.getElementById(btn).value;
+    if(currentvalue == "Off"){
+        document.getElementById(btn).classList.toggle("answerBtnsOff")
+
+    }else{
+        document.getElementById(btn).classList.toggle("answerBtnsOn")
     }
-=======
->>>>>>> Stashed changes
+}
 
-<script src="../static/index.js"></script>
+</script>
 
 <style type="text/css">
 
     .answerBtnsOff
     {
         BACKGROUND-COLOR: #ffffff;
-<<<<<<< Updated upstream
-        BORDER-BOTTOM: #666666 1px solid;
-        BORDER-LEFT: #666666 1px solid;
-        BORDER-RIGHT: #666666 1px solid;
-
-=======
->>>>>>> Stashed changes
         COLOR: black;
         FONT: 21px Verdana,Arial,Helvetica,sans-serif;
         font-weight:bold;
     }
     .answerBtnsOn
     {
-<<<<<<< Updated upstream
-        BACKGROUND-COLOR: GREEN;
-        BORDER-BOTTOM: #666666 1px solid;
-        BORDER-LEFT: #666666 1px solid;
-        BORDER-RIGHT: #666666 1px solid;
-=======
         BACKGROUND-COLOR: GREEN; 
->>>>>>> Stashed changes
         COLOR: #ffffff;
         FONT: 21px Verdana,Arial,Helvetica,sans-serif;
         font-weight:bold;
+    }
+    .ingredients{
+        margin-bottom: 16px
     }
     </style>
 

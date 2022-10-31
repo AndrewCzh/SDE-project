@@ -120,7 +120,7 @@ def main():
     # data_ls = []
     # print("data = ", data)
     app.run()
-    # print(get_ingredients_price_details())
+    # print("here = ", get_ingredients_price_details())
 
 
 if __name__ == "__main__":

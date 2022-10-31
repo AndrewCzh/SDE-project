@@ -4,13 +4,14 @@ The endpoint called `endpoints` will return all available endpoints.
 """
 from http import HTTPStatus
 
-from flask import Flask
-from flask_restx import Resource, Api
+from flask import Flask, request
+from flask_restx import Resource, Api, fields
 import werkzeug.exceptions as wz
 
 import db.char_types as ctyp
 import db.food_types as ftyp
 import server.ingredients_generator as ig
+import db.users as usr
 
 # import db.db as db
 
@@ -34,6 +35,11 @@ INGREDIENTS_GENERATOR_LIST = f'/ingredients_generator/{LIST}'
 INGREDIENTS_GENERATOR_LIST_NM = 'ingredients_generator_list'
 INGREDIENTS_GENERATOR_DETAIL = f'/ingredients_generator/{DETAILS}'
 LOGIN = '/templates/login'
+USERS_NS = 'users'
+USER_LIST = f'/{USERS_NS}/{LIST}'
+USER_LIST_NM = f'{USERS_NS}_list'
+USER_DETAILS = f'/{USERS_NS}/{DETAILS}'
+USER_ADD = f'/{USERS_NS}/{ADD}'
 
 
 @api.route(HELLO)
@@ -148,6 +154,47 @@ class IngredientsGeneratorDetails(Resource):
             return {'Price': price}
         else:
             wz.NotFound('Price is not found.')
+
+
+@api.route(USER_LIST)
+class UserList(Resource):
+    """
+    This will get a list of currrent users.
+    """
+    def get(self):
+        """
+        Returns a list of current users.
+        """
+        return {USER_LIST_NM: usr.get_users()}
+
+
+# user_fields = api.model('NewUser', {
+#     usr.NAME: fields.String,
+#     usr.EMAIL: fields.String,
+#     usr.FULL_NAME: fields.String,
+# })
+user_fields = api.model('NewUser', {
+    usr.NAME: fields.String,
+    # usr.EMAIL: fields.String,
+    # usr.FULL_NAME: fields.String,
+})
+
+
+@api.route(USER_ADD)
+class AddUser(Resource):
+    """
+    Add a user.
+    """
+    @api.expect(user_fields)
+    def post(self):
+        """
+        Add a user.
+        """
+        print(f'{request.json=}')
+        name = request.json[usr.NAME]
+        del request.json[usr.NAME]
+        usr.add_user(name)
+        # usr.add_user(name, request.json)
 
 
 @api.route('/endpoints')

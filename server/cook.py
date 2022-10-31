@@ -1,24 +1,32 @@
-from pymongo import MongoClient
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+
 CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
 
+
 @app.route('/')
-def index():
-    return render_template('cook.html')
+def cook():
+    return render_template('home.html')
 
 
 @app.route('/cook')
-def home():
+def cooking():
+    ingredients = request.form['ingredients']
+    print(ingredients)
+
+
+@app.route('/cookSuccess')
+def cookSuccess():
     return render_template('success.html')
 
 
-@app.route('/cook')
-def home():
+@app.route('/cookFailed')
+def cookFailed():
     return render_template('fail.html')
+
 
 def main():
     app.run(debug=True)
