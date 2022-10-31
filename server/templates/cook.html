@@ -1,27 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="static/cookStyle.css">
 </head>
 <body>
 
     <div class="header">
-        <h1>REPSAJ</h1>
+        <h1>choose your cooking tool</h1>
     </div>
+    <p>Click to choose your tool and go ot next page:</p>
 
-    <div class="enter">
+<button onclick="myFunction()">Click oven</button>
+    <button onclick="myFunction()">Click desk</button>
+    <button onclick="myFunction()">Click grill</button>
+
+
+    <div id="BackgroundScene">
+<!--  <div id="DanceScoreboard">-->
+<!--    **<table>-->
+<!--       <tr>-->
+<!--          <td>-->
+<!--              <div id="GameStopped"><button id="StartBtn" class="cookStyle"-->
+<!--                 onclick="gameStarted=true;">Begin Game</button>-->
+<!--          </td>-->
+<!--           <td>-->
+<!--                <div id="GameRunning"><button id="StopBtn" class="cookStyle"-->
+<!--                 onclick="self.close()">Stop Game</button>-->
+<!--           </td>-->
+<!--      </tr>-->
+<!--   </table>**-->
+<br><br><br>
+          <div class="Status">Click Begin Game to start</div>
+        </div>
+        <div id="GameRunning"><button id="StopBtn" class="cookStyle" onclick="self.close()">Stop Game</button>
+          <div id="Status" class="Status"></div>
+        </div>
+        <div id="dancePoints" class="Points">Points Earned:
+          <div class="OutputText" id="CorrectCount">0</div>
+        </div>
+      </div>
+
+
+
+
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Next page";
+}
+</script>
+
+<!--    <div class="enter">-->
 
 <!--        <div>-->
 <!--            Enter your username:-->
 <!--        </div>-->
-        <div>
-            <form action="/loginAuth" method="POST" >
-                <input class="textbox" type="text" name="username" placeholder="..." required></br>
-                <input type="submit" id="startButton" value = 'START' />
+<!--        <div>-->
+<!--            <form action="/loginAuth" method="POST" >-->
+<!--                <input class="textbox" type="text" name="username" placeholder="..." required></br>-->
+<!--                <input type="submit" id="startButton" value = 'START' />-->
 
-            </form>
-        </div>
-    </div>
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
     <!{% if error %}>
     <!p style="text-align:center"><strong style="text-align:center">Error:</strong> {{error}}</!p>>
     <!{% endif %}>
