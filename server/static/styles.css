@@ -56,10 +56,10 @@ h1{
 
 }
 
-input[type=submit] {
-    top: 300%;
+.startButton{
+
     background-color: blue; /* Green */
-    border: none; /*rewriting standard style, it is necessary to be able to change the size*/
+    border: none; 
     height: 60px;
     width: 200px;
     font-size: 30px;
@@ -89,3 +89,4 @@ p.error{
     font-family: Helvetica;
     color: white;
 }
+

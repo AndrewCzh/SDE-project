@@ -34,12 +34,14 @@
     
         <input class="answerBtnsOff" id="Chicken" type="button" value="Chicken"  onclick="onoff(this.id);"/>
         <input class="answerBtnsOff" id="Broccoli"  type="button" value="Broccoli"  onclick="onoff(this.id);" />
-        <input class="answerBtnsOff" id="Carrot"  type="button" value="Carrot"   onclick= "onoff(this.id)" /><br>
-        <input type="submit" id="checkButton" value = 'DONE' />
-
+        <input class="answerBtnsOff" id="Carrot"  type="button" value="Carrot"   onclick= "onoff(this.id)" />
+        
+        <!-- <input type="submit" id="checkButton" value = 'DONE' /> -->
     </form>
-</div>  
     
+</div>  
+<input type="submit" id="checkButton" value = 'DONE2' />
+<div id="app"></div>    
 
 <ul>
     {% for v in data_ls %}
@@ -47,19 +49,8 @@
     {% endfor %}
 </ul>
     
+<script type="text/javascript" src="../static/home.js"></script>
 
-<script language="JavaScript">
-   function onoff(btn){
-    currentvalue = document.getElementById(btn).value;
-    if(currentvalue == "Off"){
-        document.getElementById(btn).classList.toggle("answerBtnsOff")
-
-    }else{
-        document.getElementById(btn).classList.toggle("answerBtnsOn")
-    }
-}
-
-</script>
 
 <style type="text/css">
 
@@ -77,8 +68,65 @@
         FONT: 21px Verdana,Arial,Helvetica,sans-serif;
         font-weight:bold;
     }
-    .ingredients{
-        margin-bottom: 16px
+
+    body {
+    font-family: sans-serif;
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    }
+
+    .base-timer {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    }
+
+    .base-timer__svg {
+    transform: scaleX(-1);
+    }
+
+    .base-timer__circle {
+    fill: none;
+    stroke: none;
+    }
+
+    .base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+    }
+
+    .base-timer__path-remaining {
+    stroke-width: 7px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule: nonzero;
+    stroke: currentColor;
+    }
+
+    .base-timer__path-remaining.green {
+    color: rgb(65, 184, 131);
+    }
+
+    .base-timer__path-remaining.orange {
+    color: orange;
+    }
+
+    .base-timer__path-remaining.red {
+    color: red;
+    }
+
+    .base-timer__label {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
     }
     </style>
 
