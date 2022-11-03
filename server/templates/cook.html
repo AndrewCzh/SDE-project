@@ -31,7 +31,9 @@
         <input class="answerBtnsOff" id="Grill"  type="button" value="Grill"   onclick= "onoff(this.id)" />
             </div>
 
-        <input type="submit" id="checkButton" value = 'DONE' />
+        <div style = "position:relative; left:680px; top:500px; ">
+        <input class = "answerBtnsOff" type ="submit" id="checkButton" value = 'DONE' onclick="onoff(this.id)"/>
+            </div>
 
     </form>
 </div>
@@ -81,16 +83,39 @@ function myFunction() {
         FONT: 21px Verdana,Arial,Helvetica,sans-serif;
         font-weight:bold;
     }
+    .submit
+    {
+        BACKGROUND-COLOR: GREEN;
+        COLOR: #ffffff;
+        FONT: 21px Verdana,Arial,Helvetica,sans-serif;
+        font-weight:bold;
+    }
 
-    /*body {*/
-    /*font-family: sans-serif;*/
-    /*display: grid;*/
-    /*height: 100vh;*/
-    /*place-items: center;*/
+    /*   .base-timer__svg {*/
+    /*transform: scaleX(-1);*/
     /*}*/
-    /*.ingredients{*/
-    /*    margin-bottom: 16px*/
+
+    /*.base-timer__circle {*/
+    /*fill: none;*/
+    /*stroke: none;*/
     /*}*/
+
+    /*.base-timer__path-elapsed {*/
+    /*stroke-width: 7px;*/
+    /*stroke: grey;*/
+    /*}*/
+
+    /*.base-timer__path-remaining {*/
+    /*stroke-width: 7px;*/
+    /*stroke-linecap: round;*/
+    /*transform: rotate(90deg);*/
+    /*transform-origin: center;*/
+    /*transition: 1s linear all;*/
+    /*fill-rule: nonzero;*/
+    /*stroke: currentColor;*/
+    /*}*/
+
+
     </style>
 
 </body>
