@@ -11,9 +11,24 @@
     </div>
     <p>Click to choose your tool and go ot next page:</p>
 
-<button onclick="myFunction()">Click oven</button>
-    <button onclick="myFunction()">Click desk</button>
-    <button onclick="myFunction()">Click grill</button>
+<!--<button onclick="myFunction()">Click oven</button>-->
+<!--    <button onclick="myFunction()">Click riceCooker</button>-->
+<!--    <button onclick="myFunction()">Click grill</button>-->
+
+
+<!--"""-->
+    <div class="cooker">
+    <form action="/cook" method="POST" >
+        <input class="answerBtnsOff" id="Oven" type="button" value="Oven"  onclick="onoff(this.id);"/>
+        <input class="answerBtnsOff" id="RiceCooker"  type="button" value="RiceCooker"  onclick="onoff(this.id);" />
+        <input class="answerBtnsOff" id="Grill"  type="button" value="Grill"   onclick= "onoff(this.id)" />
+
+        <input type="submit" id="checkButton" value = 'DONE' />
+
+    </form>
+</div>
+<!--    """-->
+
 
 
     <div id="BackgroundScene">
@@ -66,11 +81,32 @@ function myFunction() {
 <!--            </form>-->
 <!--        </div>-->
 <!--    </div>-->
-    <!{% if error %}>
-    <!p style="text-align:center"><strong style="text-align:center">Error:</strong> {{error}}</!p>>
-    <!{% endif %}>
+<!--    <!{% if error %}>-->
+<!--    <!p style="text-align:center"><strong style="text-align:center">Error:</strong> {{error}}</!p>>-->
+<!--    <!{% endif %}>-->
 
+</script>
 
+<style type="text/css">
+
+    .answerBtnsOff
+    {
+        BACKGROUND-COLOR: #ffffff;
+        COLOR: black;
+        FONT: 21px Verdana,Arial,Helvetica,sans-serif;
+        font-weight:bold;
+    }
+    .answerBtnsOn
+    {
+        BACKGROUND-COLOR: GREEN;
+        COLOR: #ffffff;
+        FONT: 21px Verdana,Arial,Helvetica,sans-serif;
+        font-weight:bold;
+    }
+    .ingredients{
+        margin-bottom: 16px
+    }
+    </style>
 
 </body>
 <style>
