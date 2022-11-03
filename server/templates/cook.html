@@ -19,9 +19,17 @@
 <!--"""-->
     <div class="cooker">
     <form action="/cook" method="POST" >
-        <input class="answerBtnsOff" id="Oven" type="button" value="Oven"  onclick="onoff(this.id);"/>
+         <div style = "position:relative; left:470px; top:480px; ">
+                 <input class="answerBtnsOff" id="Oven" type="button" value="Oven"  onclick="onoff(this.id);"/>
+      </div>
+
+        <div style = "position:relative; left:700px; top:260px; ">
         <input class="answerBtnsOff" id="RiceCooker"  type="button" value="RiceCooker"  onclick="onoff(this.id);" />
+            </div>
+
+        <div style = "position:relative; left:470px; top:230px; ">
         <input class="answerBtnsOff" id="Grill"  type="button" value="Grill"   onclick= "onoff(this.id)" />
+            </div>
 
         <input type="submit" id="checkButton" value = 'DONE' />
 
@@ -31,30 +39,17 @@
 
 
 
-    <div id="BackgroundScene">
-<!--  <div id="DanceScoreboard">-->
-<!--    **<table>-->
-<!--       <tr>-->
-<!--          <td>-->
-<!--              <div id="GameStopped"><button id="StartBtn" class="cookStyle"-->
-<!--                 onclick="gameStarted=true;">Begin Game</button>-->
-<!--          </td>-->
-<!--           <td>-->
-<!--                <div id="GameRunning"><button id="StopBtn" class="cookStyle"-->
-<!--                 onclick="self.close()">Stop Game</button>-->
-<!--           </td>-->
-<!--      </tr>-->
-<!--   </table>**-->
-<br><br><br>
-          <div class="Status">Click Begin Game to start</div>
-        </div>
-        <div id="GameRunning"><button id="StopBtn" class="cookStyle" onclick="self.close()">Stop Game</button>
-          <div id="Status" class="Status"></div>
-        </div>
-        <div id="dancePoints" class="Points">Points Earned:
-          <div class="OutputText" id="CorrectCount">0</div>
-        </div>
-      </div>
+<!--    <div id="BackgroundScene">-->
+<!--<br><br><br>-->
+<!--          <div class="Status">Click Begin Game to start</div>-->
+<!--        </div>-->
+<!--        <div id="GameRunning"><button id="StopBtn" class="cookStyle" onclick="self.close()">Stop Game</button>-->
+<!--          <div id="Status" class="Status"></div>-->
+<!--        </div>-->
+<!--        <div id="dancePoints" class="Points">Points Earned:-->
+<!--          <div class="OutputText" id="CorrectCount">0</div>-->
+<!--        </div>-->
+<!--      </div>-->
 
 
 
@@ -68,28 +63,11 @@ function myFunction() {
 }
 </script>
 
-<!--    <div class="enter">-->
-
-<!--        <div>-->
-<!--            Enter your username:-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <form action="/loginAuth" method="POST" >-->
-<!--                <input class="textbox" type="text" name="username" placeholder="..." required></br>-->
-<!--                <input type="submit" id="startButton" value = 'START' />-->
-
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <!{% if error %}>-->
-<!--    <!p style="text-align:center"><strong style="text-align:center">Error:</strong> {{error}}</!p>>-->
-<!--    <!{% endif %}>-->
-
 </script>
 
 <style type="text/css">
 
-    .answerBtnsOff
+   .answerBtnsOff
     {
         BACKGROUND-COLOR: #ffffff;
         COLOR: black;
@@ -103,9 +81,16 @@ function myFunction() {
         FONT: 21px Verdana,Arial,Helvetica,sans-serif;
         font-weight:bold;
     }
-    .ingredients{
-        margin-bottom: 16px
-    }
+
+    /*body {*/
+    /*font-family: sans-serif;*/
+    /*display: grid;*/
+    /*height: 100vh;*/
+    /*place-items: center;*/
+    /*}*/
+    /*.ingredients{*/
+    /*    margin-bottom: 16px*/
+    /*}*/
     </style>
 
 </body>
