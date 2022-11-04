@@ -9,7 +9,7 @@ cluster0.wnpabny.mongodb.net/Ingredients"
 
 @app.route('/')
 def cook():
-    return render_template('home.html')
+    return render_template('cook.html')
 
 
 @app.route('/cook')
