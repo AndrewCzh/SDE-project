@@ -21,7 +21,7 @@ def generator(uid):
         data_ls.append(loads(d))
     print(f'{data_ls=}')
     print("type = ", type(data_ls[1]))
-    return render_template('home.html', data_ls=data_ls[1:])
+    return render_template('home.html', data_ls=data_ls)
 
 
 # @app.route('/home')
