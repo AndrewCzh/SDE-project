@@ -193,7 +193,8 @@ class AddUser(Resource):
         print(f'{request.json=}')
         name = request.json[usr.NAME]
         del request.json[usr.NAME]
-        usr.add_user(name)
+        uid = usr.add_user(name)
+        return uid
         # usr.add_user(name, request.json)
 
 

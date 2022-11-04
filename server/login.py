@@ -1,4 +1,5 @@
-# from pymongo import MongoClient
+from pymongo import MongoClient
+import uuid
 # from bson.json_util import dumps
 # import random
 # import json
@@ -23,9 +24,9 @@ def login_auth():
     These comments are used to connect db
     """
     username = request.form['username']
-    # client = MongoClient(CONNECTION_STRING)
-    # my_db = client["Users"]
-    # my_col = my_db["Users"]
+    client = MongoClient(CONNECTION_STRING)
+    my_db = client["Users"]
+    my_col = my_db["Users"]
     # data = my_col.find()
     insert = True
     # if data is None:
@@ -43,17 +44,34 @@ def login_auth():
         """
         These comments are used to connect db
         """
-        # document = ({'u_id': u_id+1, 'name': username})
-        # my_col.insert_one(document)
-        print(username)
+        # check if uid is already in the users table
+        uid = 0
+        found = 1
+        while found:
+            uid = str(uuid.uuid4())
+            found = my_col.find_one({'u_id': uid})
+        document = ({'u_id': uid, 'name': username})
+        my_col.insert_one(document)
+        print(username, uid)
         print('here2')
 
         # return render_template('home.html')
-        return ig.generator()
+        return ig.generator(uid)
         # return redirect(url_for('home'))
     else:
         error = "name is already used"
         return render_template('login.html', error=error)
+
+
+# @app.route('/cook', methods=['POST'])
+# def check_correct_ingredients():
+#     print("check start")
+#     print(request.form)
+#
+#     print(request.form.get('beef'))
+#     for key, val in request.form.items():
+#         print(key, val)
+#     return render_template('success.html')
 
 
 @app.route('/home')

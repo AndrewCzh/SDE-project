@@ -21,6 +21,7 @@ def test_hello():
 
 
 SAMPLE_USER_NM = 'Sample User'
+# SAMPLE_UID = '05bfb803-dc3a-4379-ac49-aa9c809fda5b'
 SAMPLE_USER = {
     usr.NAME: SAMPLE_USER_NM,
     # usr.EMAIL: 'x@y.com',
@@ -32,8 +33,9 @@ def test_add_user():
     """
     Test adding a user.
     """
-    resp = TEST_CLIENT.post(ep.USER_ADD, json=SAMPLE_USER)
-    assert usr.user_exists(SAMPLE_USER_NM)
+    resp_json = TEST_CLIENT.post(ep.USER_ADD, json=SAMPLE_USER).get_json()
+    # print(f'{resp_json=}')
+    assert usr.user_exists(resp_json, SAMPLE_USER_NM)
     usr.del_user(SAMPLE_USER_NM)
 
 

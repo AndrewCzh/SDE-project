@@ -10,13 +10,13 @@ def test_get_users():
 
 
 def test_get_user_details():
-    usr_details = usr.get_user_details(usr.TEST_USER_NAME)
+    usr_details = usr.get_user_details(usr.TEST_UID)
     assert isinstance(usr_details, dict)
 
 
-# def test_add_wrong_name_type():
-#     with pytest.raises(TypeError):
-#         usr.add_user(7, {})
+def test_add_wrong_name_type():
+    with pytest.raises(TypeError):
+        usr.add_user(7)
 #
 #
 # def test_add_wrong_details_type():
@@ -33,7 +33,8 @@ def test_add_user():
     # details = {}
     # for field in usr.REQUIRED_FLDS:
     #     details[field] = 2
-    usr.add_user(usr.TEST_USER_NAME)
+    # uid = usr.add_user("Sample User")
+    uid = usr.add_user(usr.TEST_USER_NAME)
     # usr.add_user(usr.TEST_USER_NAME, details)
-    assert usr.user_exists(usr.TEST_USER_NAME)
-    usr.del_user(usr.TEST_USER_NAME)
+    assert usr.user_exists(uid, usr.TEST_USER_NAME)
+    usr.del_user(uid)

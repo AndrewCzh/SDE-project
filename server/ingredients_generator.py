@@ -11,16 +11,17 @@ cluster0.wnpabny.mongodb.net/Ingredients"
 
 
 @app.route('/', methods=['GET', 'POST'])
-def generator():
+def generator(uid):
     data = random_ingredients()
     print("len = ", len(data))
     print("type = ", type(data[0]))
-    data_ls = []
-    print("data = ", data)
+    data_ls = [uid]
+    # print("data = ", data)
     for d in data:
         data_ls.append(loads(d))
-    print("type = ", type(data_ls[0]))
-    return render_template('home.html', data_ls=data_ls)
+    print(f'{data_ls=}')
+    print("type = ", type(data_ls[1]))
+    return render_template('home.html', data_ls=data_ls[1:])
 
 
 # @app.route('/home')
@@ -113,15 +114,17 @@ def random_ingredients():
     return ret
 
 
-def main():
+# def main():
     # data = random_ingredients()
     # print("len = ", len(data))
     # print("type = ", type(data[0]))
     # data_ls = []
     # print("data = ", data)
-    app.run()
+
+    # app.run()
+
     # print("here = ", get_ingredients_price_details())
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
