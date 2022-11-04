@@ -6,4 +6,35 @@ margin-left: 50px;
 
 }
 
+.answerBtnsOff
+    {
+        BACKGROUND-COLOR: #ffffff;
+        COLOR: black;
+        FONT: 21px Verdana,Arial,Helvetica,sans-serif;
+        font-weight:bold;
+    }
+.answerBtnsOn
+{
+    BACKGROUND-COLOR: GREEN;
+    COLOR: #ffffff;
+    FONT: 21px Verdana,Arial,Helvetica,sans-serif;
+    font-weight:bold;
+}
+.submit
+{
+    BACKGROUND-COLOR: GREEN;
+    COLOR: #ffffff;
+    FONT: 21px Verdana,Arial,Helvetica,sans-serif;
+    font-weight:bold;
+}
+
+body {
+    background-image: url('../static/cookTool.png');
+    background-repeat: no-repeat;
+    background-position:center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color:lightskyblue
+
+}
 /*</style>*/
