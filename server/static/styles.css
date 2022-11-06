@@ -66,7 +66,7 @@ h1{
 
 }
 
-body.loginbody {
+body {
     background-image: url('../static/restaurant.png');
     background-repeat: no-repeat;
     background-position:center center;
@@ -74,15 +74,6 @@ body.loginbody {
     background-size: cover;
     background-color:lightskyblue
 
-}
-
-body.cookbody{
-    background-image: url('../static/cookTool.png');
-    background-repeat: no-repeat;
-    background-position:center center;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color:lightskyblue
 }
 
 p.error{
