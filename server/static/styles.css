@@ -56,7 +56,7 @@ h1{
 
 }
 
-.startButton{
+input[type=submit]{
 
     background-color: blue; /* Green */
     border: none; 
