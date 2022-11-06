@@ -14,4 +14,14 @@
 #
 #
 # def check_ingredients(ing_dict):
-#     pass
+#     if dishes == "Burger":
+#         return ing_dict == "Bread&Meat"
+#     if dishes == "Pizza":
+#         return ing_dict == "Crust"
+#     if dishes == "PokeBowl":
+#         return ing_dict == "RiceBowl"
+#     if dishes == "Salad":
+#         return ing_dict == "Salad"
+#     if dishes == "Sushi":
+#         return ing_dict == "Rice"
+#     return False
