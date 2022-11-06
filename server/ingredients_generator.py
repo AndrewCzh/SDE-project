@@ -17,11 +17,14 @@ def generator(uid):
     print("type = ", type(data[0]))
     data_ls = [uid]
     # print("data = ", data)
+    price_dict = {}
     for d in data:
-        data_ls.append(loads(d))
+        # data_ls.append(loads(d))
+        price_dict[(loads(d))['name']] = loads(d)['price']
+    data_ls.append(price_dict)
     print(f'{data_ls=}')
     print("type = ", type(data_ls[1]))
-    return render_template('home.html', data_ls=data_ls[1:])
+    return render_template('home.html', data_ls=data_ls)
 
 
 # @app.route('/home')
