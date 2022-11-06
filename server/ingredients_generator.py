@@ -22,6 +22,11 @@ def generator(uid):
         # data_ls.append(loads(d))
         price_dict[(loads(d))['name']] = loads(d)['price']
     data_ls.append(price_dict)
+    # insert into orders table
+    client = MongoClient(CONNECTION_STRING)
+    my_db = client["Orders"]
+    my_col = my_db["Orders"]
+    my_col.insert_one({"uid": uid, "ing:price": price_dict})
     print(f'{data_ls=}')
     print("type = ", type(data_ls[1]))
     return render_template('home.html', data_ls=data_ls)
