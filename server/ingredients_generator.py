@@ -26,7 +26,7 @@ def generator(uid):
     client = MongoClient(CONNECTION_STRING)
     my_db = client["Orders"]
     my_col = my_db["Orders"]
-    my_col.insert_one({"uid": uid, "ing:price": price_dict})
+    my_col.insert_one({"uid": uid, "ing_price": price_dict})
     print(f'{data_ls=}')
     print("type = ", type(data_ls[1]))
     return render_template('home.html', data_ls=data_ls)
