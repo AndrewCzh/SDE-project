@@ -22,6 +22,9 @@ let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 let remainingPathColor = COLOR_CODES.info.color;
+let ing_selected=Array("Ram", "Shyam");
+let list = document.getElementById("selectedList");
+
 
 document.getElementById("app").innerHTML = `
 <div class="base-timer">
@@ -113,12 +116,30 @@ function setCircleDasharray() {
     .setAttribute("stroke-dasharray", circleDasharray);
 }
 
+function arrayRemove(arr, value) { 
+    
+  return arr.filter(function(ele){ 
+      return ele != value; 
+  });
+}
+
 function onoff(btn){
   currentvalue = document.getElementById(btn).value;
-  if(currentvalue == "Off"){
+  if(currentvalue == "answerBtnsOff"){
       document.getElementById(btn).classList.toggle("answerBtnsOff")
-
+      var x = document.getElementById(btn);
+      ing_selected.push(currentvalue);
+      
   }else{
       document.getElementById(btn).classList.toggle("answerBtnsOn")
-  }
+      arrayRemove(ing_selected,currentvalue);
+    }
+    console.log(ing_selected)
 }
+  
+  ing_selected.forEach((item) => {
+    let li = document.createElement("li");
+    li.innerText = item;
+    list.appendChild(li);
+  });
+

@@ -12,12 +12,6 @@ def cook():
     return render_template('cook.html')
 
 
-@app.route('/cook')
-def cooking():
-    ingredients = request.form['ingredients']
-    print(ingredients)
-
-
 @app.route('/cookSuccess')
 def cookSuccess():
     return render_template('success.html')
