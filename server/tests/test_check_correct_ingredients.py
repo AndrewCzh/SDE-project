@@ -8,7 +8,7 @@ orders_tb = [["Test User", {"Salad": 6, "Broccoli": 0.5, "Tuna": 1}],
 
 # User's return from the front-end
 ret_1 = ["Test User", ["Salad", "Broccoli", "Tuna"]]
-ret_2 = ["Test User", ["Salad", "Broccoli",]]
+ret_2 = ["Test User", ["Salad", "Broccoli"]]
 
 
 def test_check_correct_ingredients_correct():

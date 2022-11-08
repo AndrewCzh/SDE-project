@@ -22,7 +22,7 @@ let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 let remainingPathColor = COLOR_CODES.info.color;
-let ing_selected=Array("Ram", "Shyam");
+let ing_selected=Array();
 let list = document.getElementById("selectedList");
 
 
@@ -124,22 +124,32 @@ function arrayRemove(arr, value) {
 }
 
 function onoff(btn){
+  classname = document.getElementById(btn).className;
   currentvalue = document.getElementById(btn).value;
-  if(currentvalue == "answerBtnsOff"){
-      document.getElementById(btn).classList.toggle("answerBtnsOff")
-      var x = document.getElementById(btn);
+  if(classname == "answerBtnsOff"){
+      document.getElementById(btn).classList.toggle("answerBtnsOff");
+      document.getElementById(btn).className = "answerBtnsOn";
+      // document.getElementById("demo").innerHTML = currentvalue;
       ing_selected.push(currentvalue);
       
   }else{
-      document.getElementById(btn).classList.toggle("answerBtnsOn")
-      arrayRemove(ing_selected,currentvalue);
+      document.getElementById(btn).classList.toggle("answerBtnsOn");
+      document.getElementById(btn).className = "answerBtnsOff";
+      //arrayRemove(ing_selected,currentvalue);
+      for( var i = 0; i < ing_selected.length; i++){ 
+        if ( arr[i] === currentvalue) {  
+            arr.splice(i, 1); 
+        }
+      }
     }
     console.log(ing_selected)
+    document.getElementById("demoList").innerHTML = ing_selected;
+
 }
   
-  ing_selected.forEach((item) => {
-    let li = document.createElement("li");
-    li.innerText = item;
-    list.appendChild(li);
-  });
+// ing_selected.forEach((item) => {
+//   let li = document.createElement("li");
+//   li.innerText = item;
+//   list.appendChild(li);
+// });
 
