@@ -84,6 +84,7 @@ class MainMenu(Resource):
                     'X': {'text': 'Exit'},
                 }}
 
+
 @api.route(TOOL_TYPE_DICT)
 class ToolTypeDict(Resource):
     """
