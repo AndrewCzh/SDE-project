@@ -17,6 +17,10 @@ def get_tool_types():
     return list(TOOL_TYPES.keys())
 
 
+def get_tool_types_dict():
+    return TOOL_TYPES
+
+
 def get_tool_type_details(tool_type):
     return TOOL_TYPES.get(tool_type, None)
 

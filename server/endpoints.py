@@ -10,6 +10,7 @@ import werkzeug.exceptions as wz
 
 import db.char_types as ctyp
 import db.food_types as ftyp
+import db.check_tool as ctool
 import server.ingredients_generator as ig
 import db.users as usr
 
@@ -33,6 +34,7 @@ FOOD_TYPE_DICT = f'/food_types/{DICT}'
 FOOD_TYPE_LIST = f'/food_types/{LIST}'
 FOOD_TYPE_LIST_NM = 'food_types_list'
 FOOD_TYPE_DETAILS = f'/food_types/{DETAILS}'
+TOOL_TYPE_DICT = f'/check_tool/{DICT}'
 INGREDIENTS_GENERATOR_LIST = f'/ingredients_generator/{LIST}'
 INGREDIENTS_GENERATOR_LIST_NM = 'ingredients_generator_list'
 INGREDIENTS_GENERATOR_DETAIL = f'/ingredients_generator/{DETAILS}'
@@ -77,9 +79,24 @@ class MainMenu(Resource):
                           'method': 'get', 'text': 'List Users'},
                     '2': {'url': f'/{FOOD_TYPE_DICT}',
                           'method': 'get', 'text': 'List Food Types'},
-                    '3': {'text': 'List Users'},
+                    '3': {'url': f'/{TOOL_TYPE_DICT}',
+                          'method': 'get', 'text': 'List Tools'},
                     'X': {'text': 'Exit'},
                 }}
+
+@api.route(TOOL_TYPE_DICT)
+class ToolTypeDict(Resource):
+    """
+    This will get a list of food types
+    """
+
+    def get(self):
+        """
+        Returns a list of character types.
+        """
+        return {'Data': ctool.get_tool_types_dict(),
+                'Type': 'Data',
+                'Title': 'Tool Types'}
 
 
 @api.route(FOOD_TYPE_DICT)
