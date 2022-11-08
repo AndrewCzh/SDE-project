@@ -13,6 +13,10 @@ FOOD_TYPES = {TUNA: {'price': 1},
               SALMON: {'price': 1}, }
 
 
+def get_food_type_dict():
+    return FOOD_TYPES
+
+
 def get_food_types():
     return list(FOOD_TYPES.keys())
 

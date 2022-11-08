@@ -3,10 +3,17 @@ import pytest
 import db.users as usr
 
 
+@pytest.fixture(scope='function')
+def new_user_type():
+    uid = usr.add_user(usr.TEST_USER_NAME)
+    yield
+    usr.del_user(uid)
+
+
 def test_get_users():
     usrs = usr.get_users()
     assert isinstance(usrs, list)
-    assert len(usrs) > 0
+    assert len(usrs) >= 0
 
 
 def test_get_user_details():

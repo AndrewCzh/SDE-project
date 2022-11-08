@@ -19,6 +19,7 @@ app = Flask(__name__)
 api = Api(app)
 
 LIST = 'list'
+DICT = 'dict'
 DETAILS = 'details'
 ADD = 'add'
 MAIN_MENU = '/main_menu'
@@ -28,6 +29,7 @@ MESSAGE = 'message'
 CHAR_TYPE_LIST = f'/character_types/{LIST}'
 CHAR_TYPE_LIST_NM = 'character_types_list'
 CHAR_TYPE_DETAILS = f'/character_types/{DETAILS}'
+FOOD_TYPE_DICT = f'/food_types/{DICT}'
 FOOD_TYPE_LIST = f'/food_types/{LIST}'
 FOOD_TYPE_LIST_NM = 'food_types_list'
 FOOD_TYPE_DETAILS = f'/food_types/{DETAILS}'
@@ -36,6 +38,7 @@ INGREDIENTS_GENERATOR_LIST_NM = 'ingredients_generator_list'
 INGREDIENTS_GENERATOR_DETAIL = f'/ingredients_generator/{DETAILS}'
 LOGIN = '/templates/login'
 USERS_NS = 'users'
+USER_DICT = f'/{USERS_NS}/{DICT}'
 USER_LIST = f'/{USERS_NS}/{LIST}'
 USER_LIST_NM = f'{USERS_NS}_list'
 USER_DETAILS = f'/{USERS_NS}/{DETAILS}'
@@ -48,6 +51,7 @@ class HelloWorld(Resource):
     The purpose of the HelloWorld class is to have a simple test to see if the
     app is working at all.
     """
+
     def get(self):
         """
         A trivial endpoint to see if the server is running.
@@ -61,11 +65,36 @@ class MainMenu(Resource):
     """
     This will deliver our main menu.
     """
+
     def get(self):
         """
         Gets the main game menu.
         """
-        return {MAIN_MENU_NM: {'the': 'menu'}}
+        return {'Title': MAIN_MENU_NM,
+                'Default': 0,
+                'Choices': {
+                    '1': {'url': f'/{USER_DICT}',
+                          'method': 'get', 'text': 'List Users'},
+                    '2': {'url': f'/{FOOD_TYPE_DICT}',
+                          'method': 'get', 'text': 'List Food Types'},
+                    '3': {'text': 'List Users'},
+                    'X': {'text': 'Exit'},
+                }}
+
+
+@api.route(FOOD_TYPE_DICT)
+class FoodTypeDict(Resource):
+    """
+    This will get a list of food types
+    """
+
+    def get(self):
+        """
+        Returns a list of character types.
+        """
+        return {'Data': ftyp.get_food_type_dict(),
+                'Type': 'Data',
+                'Title': 'Food Types'}
 
 
 @api.route(FOOD_TYPE_LIST)
@@ -73,6 +102,7 @@ class FoodTypeList(Resource):
     """
     This will get a list of food types
     """
+
     def get(self):
         """
         Returns a list of character types.
@@ -85,6 +115,7 @@ class FoodTypeDetails(Resource):
     """
     This will get a list of character types.
     """
+
     @api.response(HTTPStatus.OK, 'Success')
     @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
     def get(self, food_type):
@@ -103,6 +134,7 @@ class CharacterTypeList(Resource):
     """
     This will get a list of character types.
     """
+
     def get(self):
         """
         Returns a list of character types.
@@ -115,6 +147,7 @@ class CharacterTypeDetails(Resource):
     """
     This will get a list of character types.
     """
+
     @api.response(HTTPStatus.OK, 'Success')
     @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
     def get(self, char_type):
@@ -133,6 +166,7 @@ class IngredientsGeneratorList(Resource):
     """
     This will get a list of ingredients
     """
+
     def get(self):
         """
         Returns a list of ingredients.
@@ -145,6 +179,7 @@ class IngredientsGeneratorDetails(Resource):
     """
     This will get a list of ingredients
     """
+
     def get(self):
         """
         Returns a price
@@ -156,11 +191,27 @@ class IngredientsGeneratorDetails(Resource):
             wz.NotFound('Price is not found.')
 
 
+@api.route(USER_DICT)
+class UserDict(Resource):
+    """
+    This will get a list of currrent users.
+    """
+
+    def get(self):
+        """
+        Returns a list of current users.
+        """
+        return {'Data': usr.get_users_dict(),
+                'Type': 'Data',
+                'Title': 'List Users'}
+
+
 @api.route(USER_LIST)
 class UserList(Resource):
     """
     This will get a list of currrent users.
     """
+
     def get(self):
         """
         Returns a list of current users.
@@ -185,6 +236,7 @@ class AddUser(Resource):
     """
     Add a user.
     """
+
     @api.expect(user_fields)
     def post(self):
         """
@@ -204,6 +256,7 @@ class Endpoints(Resource):
     This class will serve as live, fetchable documentation of what endpoints
     are available in the system.
     """
+
     def get(self):
         """
         The `get()` method will return a list of available endpoints.

@@ -6,7 +6,7 @@ from bson.json_util import dumps
 import uuid
 
 TEST_USER_NAME = 'Test user'
-TEST_UID = '05bfb803-dc3a-4379-ac49-aa9c809fda5b'
+TEST_UID = '111cdb65-62a8-4df4-b958-550b2921fa86'
 SAMPLE_USER = "Sample User"
 NAME = 'name'
 UID = 'u_id'
@@ -34,6 +34,10 @@ def user_exists(uid, name):
     return user is not None
 
 
+def get_users_dict():
+    return users
+
+
 def get_users():
     user_ls = my_col.find({})
     ls = []
@@ -53,6 +57,11 @@ def get_user_details(uid):
 def del_user(uid):
     my_col.delete_one({UID: uid})
     return
+
+
+# def del_all():
+#     my_col.delete_many({})
+#     return
 
 
 def add_user(name):
@@ -76,6 +85,7 @@ def add_user(name):
 
 
 def main():
+    # del_all()
     print("here")
     # temp = user_exists("Sample User")
     # print(f"{temp=}")
