@@ -57,6 +57,11 @@ def delete_one(collection, db, filt):
     return
 
 
+def insert_one(collection, db, filt):
+    client[db][collection].insert_one(filt)
+    return
+
+
 def main():
     connect_db()
     # print(fetch_all("Burger"))

@@ -90,10 +90,11 @@ def add_user(name):
     found = 1
     while found:
         uid = str(uuid.uuid4())
-        found = my_col.find_one({'u_id': uid})
+        filt = {UID: uid}
+        found = dbc.fetch_one(COLLECTION, DB, filt)
     document = ({UID: uid, NAME: name})
     # users[name] = details
-    my_col.insert_one(document)
+    dbc.insert_one(COLLECTION, DB, document)
     return uid
 
 
