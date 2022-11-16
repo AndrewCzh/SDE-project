@@ -35,9 +35,10 @@ def fetch_all(collection, db='Ingredients'):
     return ret
 
 
-def exsits_w(collection, db, key, name):
+def fetch_one(collection, db, filt):
+    ret = None
     if db == 'Users':
-        ret = client[db][collection].find_one({"u_id": key, "name": name})
+        ret = client[db][collection].find_one(filt)
     # if db == 'Ingredients':
     #     ret = client[db][collection]
     return ret

@@ -36,7 +36,8 @@ def user_exists(uid, name):
     Returns whether or not a user exists.
     """
     # user = my_col.find_one({UID: uid, NAME: name})  # return a cursor
-    user = dbc.exsits_w(COLLECTION, DB, uid, name)
+    filt = {UID: uid, NAME: name}
+    user = dbc.fetch_one(COLLECTION, DB, filt)
     return user is not None
 
 
@@ -54,7 +55,9 @@ def get_users():
 
 
 def get_user_details(uid):
-    user = my_col.find_one({UID: uid})
+    # user = my_col.find_one({UID: uid})
+    filt = {UID: uid}
+    user = dbc.fetch_one(COLLECTION, DB, filt)
     if user is not None:
         return user
     else:
