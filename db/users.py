@@ -42,7 +42,8 @@ def user_exists(uid, name):
 
 
 def get_users_dict():
-    return users
+    users_dict = dbc.fetch_all_as_dict(COLLECTION, DB)
+    return users_dict
 
 
 def get_users():
@@ -50,8 +51,8 @@ def get_users():
     # ls = []
     # for user in user_ls:
     #     ls.append(dumps(user))
-    ls = dbc.fetch_all(COLLECTION, DB)
-    return ls
+    users_ls = dbc.fetch_all(COLLECTION, DB)
+    return users_ls
 
 
 def get_user_details(uid):
@@ -65,7 +66,9 @@ def get_user_details(uid):
 
 
 def del_user(uid):
-    my_col.delete_one({UID: uid})
+    filt = {UID: uid}
+    # my_col.delete_one({UID: uid})
+    dbc.delete_one(COLLECTION, DB, filt)
     return
 
 

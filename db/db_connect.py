@@ -44,17 +44,22 @@ def fetch_one(collection, db, filt):
     return ret
 
 
-# def fetch_all_as_dict(key, collection, db=GAME_DB):
-#     ret = {}
-#     for doc in client[db][collection].find():
-#         del doc['_id']
-#         ret[doc[key]] = doc
-#     return ret
+def fetch_all_as_dict(collection, db, key):
+    ret = {}
+    for doc in client[db][collection].find():
+        del doc['_id']
+        ret[doc[key]] = doc
+    return ret
+
+
+def delete_one(collection, db, filt):
+    client[db][collection].delete_one(filt)
+    return
 
 
 def main():
     connect_db()
-    print(fetch_all("Burger"))
+    # print(fetch_all("Burger"))
 
 
 if __name__ == '__main__':
