@@ -152,7 +152,6 @@ class CharacterTypeList(Resource):
     """
     This will get a list of character types.
     """
-
     def get(self):
         """
         Returns a list of character types.
@@ -165,7 +164,6 @@ class CharacterTypeDetails(Resource):
     """
     This will get a list of character types.
     """
-
     @api.response(HTTPStatus.OK, 'Success')
     @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
     def get(self, char_type):
@@ -184,7 +182,6 @@ class IngredientsGeneratorList(Resource):
     """
     This will get a list of ingredients
     """
-
     def get(self):
         """
         Returns a list of ingredients.
@@ -197,7 +194,6 @@ class IngredientsGeneratorDetails(Resource):
     """
     This will get a list of ingredients
     """
-
     def get(self):
         """
         Returns a price
@@ -214,7 +210,6 @@ class UserDict(Resource):
     """
     This will get a list of currrent users.
     """
-
     def get(self):
         """
         Returns a list of current users.
@@ -229,7 +224,6 @@ class UserList(Resource):
     """
     This will get a list of currrent users.
     """
-
     def get(self):
         """
         Returns a list of current users.
@@ -254,7 +248,6 @@ class AddUser(Resource):
     """
     Add a user.
     """
-
     @api.expect(user_fields)
     def post(self):
         """
@@ -274,7 +267,6 @@ class Endpoints(Resource):
     This class will serve as live, fetchable documentation of what endpoints
     are available in the system.
     """
-
     def get(self):
         """
         The `get()` method will return a list of available endpoints.

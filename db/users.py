@@ -2,8 +2,9 @@
 This module encapsulates details about users.
 """
 from pymongo import MongoClient
-from bson.json_util import dumps
+# from bson.json_util import dumps
 import uuid
+import db.db_connect as dbc
 
 TEST_USER_NAME = 'Test user'
 TEST_UID = '111cdb65-62a8-4df4-b958-550b2921fa86'
@@ -24,13 +25,18 @@ cluster0.wnpabny.mongodb.net/Ingredients"
 client = MongoClient(CONNECTION_STRING)
 my_db = client["Users"]
 my_col = my_db["Users"]
+COLLECTION = "Users"
+DB = "Users"
+
+dbc.connect_db()
 
 
 def user_exists(uid, name):
     """
     Returns whether or not a user exists.
     """
-    user = my_col.find_one({UID: uid, NAME: name})  # return a cursor
+    # user = my_col.find_one({UID: uid, NAME: name})  # return a cursor
+    user = dbc.exsits_w(COLLECTION, DB, uid, name)
     return user is not None
 
 
@@ -39,10 +45,11 @@ def get_users_dict():
 
 
 def get_users():
-    user_ls = my_col.find({})
-    ls = []
-    for user in user_ls:
-        ls.append(dumps(user))
+    # user_ls = my_col.find({})
+    # ls = []
+    # for user in user_ls:
+    #     ls.append(dumps(user))
+    ls = dbc.fetch_all(COLLECTION, DB)
     return ls
 
 

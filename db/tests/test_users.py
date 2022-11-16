@@ -1,6 +1,9 @@
 import pytest
+import sys
 
+sys.path.append("..")
 import db.users as usr
+# import db.db_connect as dbc
 
 
 @pytest.fixture(scope='function')
