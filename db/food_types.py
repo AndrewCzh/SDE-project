@@ -12,6 +12,9 @@ FOOD_TYPES = {TUNA: {'price': 1},
               AVOCADO: {'price': 1},
               SALMON: {'price': 1}, }
 
+def get_food_types_dict():
+    return FOOD_TYPES
+
 
 def get_food_type_dict():
     return FOOD_TYPES
@@ -27,6 +30,7 @@ def get_food_type_details(food_type):
 
 def main():
     food_types = get_food_types()
+    print(f'{food_types=}')
     print(food_types)
 
 

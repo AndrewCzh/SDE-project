@@ -74,9 +74,9 @@ def login_auth():
 #     return render_template('success.html')
 
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
+# @app.route('/home')
+# def home():
+#     return render_template('home.html')
 
 
 @app.route('/cook', methods=['GET', 'POST'])
