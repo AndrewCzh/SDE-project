@@ -16,8 +16,6 @@ TOOL_TYPES = {OVEN: {'price': 1},
 def get_tool_types():
     return list(TOOL_TYPES.keys())
 
-def get_tool_types_dict():
-    return TOOL_TYPES
 
 def get_tool_types_dict():
     return TOOL_TYPES
