@@ -30,6 +30,20 @@ def dataInsert():
     client.Ingredients.Sushi.insert_many(docs)  # change collection name
 
 
+def cook_dataInsert():
+    client = MongoClient(CONNECTION_STRING)
+
+    docs = [
+        {"name": "RiceCooker"},
+        {"name": "Grill"},
+        {"name": "Oven"},
+        {"name": "Refrigerator"},
+        {"name": "Microwave"},
+
+        ]
+
+
+
 def dish_generate():
     """
     Returns a random dish

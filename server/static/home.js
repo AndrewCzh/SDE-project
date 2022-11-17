@@ -116,8 +116,7 @@ function setCircleDasharray() {
     .setAttribute("stroke-dasharray", circleDasharray);
 }
 
-function arrayRemove(arr, value) { 
-    
+function arrayRemove(arr, value) {   
   return arr.filter(function(ele){ 
       return ele != value; 
   });
@@ -130,12 +129,12 @@ function onoff(btn){
       document.getElementById(btn).classList.toggle("answerBtnsOff");
       document.getElementById(btn).className = "answerBtnsOn";
       // document.getElementById("demo").innerHTML = currentvalue;
-      ing_selected.push(currentvalue);
+      ing_selected.push(currentvalue);      //adding elements to array
       
   }else{
       document.getElementById(btn).classList.toggle("answerBtnsOn");
       document.getElementById(btn).className = "answerBtnsOff";
-      //arrayRemove(ing_selected,currentvalue);
+      arrayRemove(ing_selected,currentvalue); //removing elements to array
       for( var i = 0; i < ing_selected.length; i++){ 
         if ( arr[i] === currentvalue) {  
             arr.splice(i, 1); 
@@ -144,9 +143,9 @@ function onoff(btn){
     }
     console.log(ing_selected)
     document.getElementById("demoList").innerHTML = ing_selected;
-
 }
   
+
 // ing_selected.forEach((item) => {
 //   let li = document.createElement("li");
 //   li.innerText = item;
