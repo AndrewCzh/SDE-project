@@ -37,6 +37,38 @@ margin-left: 50px;
     transform: translateY(4px);
 }
 
+/*xxx*/
+.answerBtnsOff2
+    {
+        BACKGROUND-COLOR: #ffffff;
+        COLOR: black;
+        FONT: 21px Verdana,Arial,Helvetica,sans-serif;
+        font-weight:bold;
+    }
+
+ .answerBtnsOff2{
+     padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: lightblue;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.answerBtnsOff2:hover {
+    background-color: #3e8e41
+}
+
+.answerBtnsOff2:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+/*xxx*/
 
     .answerBtnsOn
     {
