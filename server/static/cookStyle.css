@@ -2,30 +2,17 @@
 
 div.StartBtn input, div.StartBtn span {
 
-margin-left: 50px;
-
-}
-
+    margin-left: 50px;
+    
+    }
+    
 .answerBtnsOff
     {
-        BACKGROUND-COLOR: #ffffff;
+        BACKGROUND-COLOR: rgb(0, 213, 255);
         COLOR: black;
         FONT: 21px Verdana,Arial,Helvetica,sans-serif;
         font-weight:bold;
     }
-
- .answerBtnsOff{
-     padding: 15px 25px;
-    font-size: 24px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: lightblue;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-}
 
 .answerBtnsOff:hover {
     background-color: #3e8e41
@@ -37,119 +24,55 @@ margin-left: 50px;
     transform: translateY(4px);
 }
 
-/*xxx*/
-.answerBtnsOff2
-    {
-        BACKGROUND-COLOR: #ffffff;
-        COLOR: black;
-        FONT: 21px Verdana,Arial,Helvetica,sans-serif;
-        font-weight:bold;
-    }
-
- .answerBtnsOff2{
-     padding: 15px 25px;
-    font-size: 24px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: lightblue;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
+.answerBtnsOn
+{
+    BACKGROUND-COLOR: GREEN;
+    COLOR: #ffffff;
+    FONT: 21px Verdana,Arial,Helvetica,sans-serif;
+    font-weight:bold;
 }
-
-.answerBtnsOff2:hover {
-    background-color: #3e8e41
+.submit
+{
+    BACKGROUND-COLOR: GREEN;
+    COLOR: #ffffff;
+    FONT: 21px Verdana,Arial,Helvetica,sans-serif;
+    font-weight:bold;
 }
-
-.answerBtnsOff2:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-}
-/*xxx*/
-/*xxx*/
-.answerBtnsOff3
-    {
-        BACKGROUND-COLOR: #ffffff;
-        COLOR: black;
-        FONT: 21px Verdana,Arial,Helvetica,sans-serif;
-        font-weight:bold;
-    }
-
- .answerBtnsOff3{
-     padding: 15px 25px;
-    font-size: 24px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: lightblue;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-}
-
-.answerBtnsOff3:hover {
-    background-color: #3e8e41
-}
-
-.answerBtnsOff3:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-}
-/*xxx*/
-    .answerBtnsOn
-    {
-        BACKGROUND-COLOR: GREEN;
-        COLOR: #ffffff;
-        FONT: 21px Verdana,Arial,Helvetica,sans-serif;
-        font-weight:bold;
-    }
-    .submit
-    {
-        BACKGROUND-COLOR: GREEN;
-        COLOR: #ffffff;
-        FONT: 21px Verdana,Arial,Helvetica,sans-serif;
-        font-weight:bold;
-    }
 
 .submit_button {
-  position: relative;
-  background-color: #04AA6D;
-  border: none;
-  font-size: 28px;
-  color: #FFFFFF;
-  padding: 20px;
-  width: 200px;
-  text-align: center;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  text-decoration: none;
-  overflow: hidden;
-  cursor: pointer;
+    position: relative;
+    background-color: #04AA6D;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .submit_button:after {
-  content: "";
-  background: #90EE90;
-  display: block;
-  position: absolute;
-  padding-top: 300%;
-  padding-left: 350%;
-  margin-left: -20px!important;
-  margin-top: -120%;
-  opacity: 0;
-  transition: all 0.8s
+    content: "";
+    background: #90EE90;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
 }
 
 .submit_button:active:after {
-  padding: 0;
-  margin: 0;
-  opacity: 1;
-  transition: 0s
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
 }
 
 body {
