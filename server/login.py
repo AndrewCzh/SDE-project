@@ -6,11 +6,21 @@ import uuid
 from flask import Flask, render_template, request
 import ingredients_generator as ig
 # session, url_for, redirect
+import yaml
 
 app = Flask(__name__)
 
 CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
+
+
+# with open("/Users/jialixu/Documents/GitHub/SDE-project/.github/workflows/main.yml") as file:
+#     try:
+#         doc = yaml.safe_load(file)
+#         CONNECTION_STRING = doc['env']['CONNECTION_STRING']
+#         print(CONNECTION_STRING)
+#     except:
+#         print("FAILED")
 
 
 @app.route('/')

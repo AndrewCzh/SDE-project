@@ -15,7 +15,6 @@ on:
 env:
   DEMO_HOME: /home/runner/work/demo-repo3/demo-repo3/
   PYTHONPATH: /home/runner/work/demo-repo3/demo-repo3/
-  CONNECTION_STRING: ${{secrets.CONNECTION_STRING}}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -35,6 +34,9 @@ jobs:
 
       - name: Run Python tests.
         run: make all_tests
+
+      - name: CONNECTION_STRING
+        env: ${{secrets.CONNECTION_STRING}}
         
       # Deploy to Heroku
       #  - uses: akhileshns/heroku-deploy@v3.12.12
