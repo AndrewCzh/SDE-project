@@ -3,6 +3,8 @@ from bson.json_util import dumps, loads
 import random
 from flask import Flask, render_template
 
+import server.orders as so
+
 app = Flask(__name__)
 
 dishes = ["Burger", "Pizza", "PokeBowl", "Salad", "Sushi"]
@@ -13,20 +15,23 @@ cluster0.wnpabny.mongodb.net/Ingredients"
 @app.route('/', methods=['GET', 'POST'])
 def generator(uid):
     data = random_ingredients()
-    print("len = ", len(data))
-    print("type = ", type(data[0]))
-    data_ls = [uid]
-    # print("data = ", data)
-    price_dict = {}
-    for d in data:
-        # data_ls.append(loads(d))
-        price_dict[(loads(d))['name']] = loads(d)['price']
-    data_ls.append(price_dict)
-    # insert into orders table
-    client = MongoClient(CONNECTION_STRING)
-    my_db = client["Orders"]
-    my_col = my_db["Orders"]
-    my_col.insert_one({"uid": uid, "ing_price": price_dict})
+    # print("len = ", len(data))
+    # print("type = ", type(data[0]))
+    # data_ls = [uid]
+    # # print("data = ", data)
+    # price_dict = {}
+    # for d in data:
+    #     # data_ls.append(loads(d))
+    #     price_dict[(loads(d))['name']] = loads(d)['price']
+    # data_ls.append(price_dict)
+    # # insert into orders table
+    # client = MongoClient(CONNECTION_STRING)
+    # my_db = client["Orders"]
+    # my_col = my_db["Orders"]
+    # filt = {"uid": uid, "ing_price": price_dict}
+    # so.insert_orders(my_col, my_db, filt)
+    # # my_col.insert_one({"uid": uid, "ing_price": price_dict})
+    data_ls, filt = so.insert_orders(uid, data)
     print(f'{data_ls=}')
     print("type = ", type(data_ls[1]))
     return render_template('home.html', data_ls=data_ls)
@@ -122,17 +127,23 @@ def random_ingredients():
     return ret
 
 
-# def main():
-    # data = random_ingredients()
+def main():
+    data = random_ingredients()
     # print("len = ", len(data))
     # print("type = ", type(data[0]))
     # data_ls = []
-    # print("data = ", data)
-
+    print("data = ", data)
+    data_ls = []
+    data_price = 0
+    for d in data:
+        data_ls.append(loads(d)['name'])
+        data_price += loads(d)['price']
+    order = [data_ls]
+    print(f'{order=},{order[0][0]}')
     # app.run()
 
     # print("here = ", get_ingredients_price_details())
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
