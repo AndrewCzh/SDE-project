@@ -50,3 +50,4 @@ def test_add_user():
     # usr.add_user(usr.TEST_USER_NAME, details)
     assert usr.user_exists(uid, usr.TEST_USER_NAME)
     usr.del_user(uid)
+
