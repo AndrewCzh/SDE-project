@@ -117,9 +117,12 @@ function setCircleDasharray() {
 }
 
 function arrayRemove(arr, value) {   
-  return arr.filter(function(ele){ 
-      return ele != value; 
-  });
+  for( var i = 0; i < ing_selected.length; i++){ 
+    if ( arr[i] === value) {  
+        arr.splice(i, 1); 
+    }
+  }
+  return arr
 }
 
 function onoff(btn){
@@ -135,11 +138,6 @@ function onoff(btn){
       document.getElementById(btn).classList.toggle("answerBtnsOn");
       document.getElementById(btn).className = "answerBtnsOff";
       arrayRemove(ing_selected,currentvalue); //removing elements to array
-      for( var i = 0; i < ing_selected.length; i++){ 
-        if ( arr[i] === currentvalue) {  
-            arr.splice(i, 1); 
-        }
-      }
     }
     console.log(ing_selected)
     document.getElementById("demoList").innerHTML = ing_selected;
