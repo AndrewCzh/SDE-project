@@ -90,8 +90,6 @@ body {
 h1.header{
     color: orangered;
     text-transform: uppercase;
-    text-decoration-color: #04AA6D;
-    text-shadow: yellow;
     text-align: center;
 }
 
@@ -99,5 +97,4 @@ p.word{
     color:blue;
     text-align: center;
 }
-
 /*</style>*/
