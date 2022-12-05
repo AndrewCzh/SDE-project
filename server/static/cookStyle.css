@@ -110,8 +110,8 @@ h1.header{
     text-align: center;
 }
 
-@keyframes textchange {
-    to {
+@keyframes textchange{
+    to{
       background-position: 200% center;
     }
 }
