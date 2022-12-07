@@ -42,7 +42,7 @@ def user_exists(uid, name):
 
 
 def get_users_dict():
-    users_dict = dbc.fetch_all_as_dict(COLLECTION, DB)
+    users_dict = dbc.fetch_all_as_dict(COLLECTION, DB, "u_id")
     return users_dict
 
 
@@ -112,6 +112,8 @@ def main():
     # print(f'{users=}')
     # print(f'{get_user_details(TEST_USER_NAME)=}')
     # add_user(TEST_USER_NAME)
+    users_dict = get_users_dict()
+    print(f"{users_dict=}")
 
 
 if __name__ == "__main__":

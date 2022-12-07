@@ -2,8 +2,8 @@ import os
 
 import pymongo as pm
 
-REMOTE = "0"
-LOCAL = "1"
+LOCAL = "0"
+CLOUD = '1'
 
 GAME_DB = 'gamedb'
 
@@ -21,10 +21,17 @@ def connect_db():
     global client
     if client is None:  # not connected yet!
         print("Setting client because it is None.")
-        if os.environ.get("LOCAL_MONGO", LOCAL) == LOCAL:
-            print("Connecting to Mongo locally.")
-            client = pm.MongoClient("mongodb+srv://jialii:Xujiali1@\
+        # print(os.environ)
+        if os.environ.get("CLOUD_MONGO", LOCAL) == CLOUD:
+            password = os.environ.get("GAME_MONGO_PW")
+            if not password:
+                raise ValueError("You must set your password")
+            print("Connecting to Mongo in cloud.")
+            client = pm.MongoClient(f"mongodb+srv://jialii:{password}@\
 cluster0.wnpabny.mongodb.net/Ingredients")
+        else:
+            print("Connect to mongo locally")
+            client = pm.MongoClient()
 
 
 def fetch_all(collection, db='Ingredients'):
