@@ -15,8 +15,8 @@ on:
 env:
   DEMO_HOME: /home/runner/work/demo-repo3/demo-repo3/
   PYTHONPATH: /home/runner/work/demo-repo3/demo-repo3/
-  CONNECTION_STRING: ${{secrets.CONNECTION_STRING}}
-    # MONGO_PASSWD: ${{secrets.MONGO_PASSWD}}
+#  CONNECTION_STRING: ${{secrets.CONNECTION_STRING}}
+  GAME_MONGO_PW: ${{secrets.GAME_MONGO_PW}}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
