@@ -65,7 +65,6 @@ class HelloWorld(Resource):
         """
         return {MESSAGE: 'hello world'}
 
-
 @api.route(MAIN_MENU)
 class MainMenu(Resource):
     """

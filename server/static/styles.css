@@ -12,14 +12,15 @@ h1{
 
 .header,.enter,input[type=submit]{
     font-family:"Comic Sans MS";
-    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-fill-color: white; /* Will override color (regardless of order)*/ 
     text-shadow:
         3px 3px 0 #000,
         -1px -1px 0 #000,
         1px -1px 0 #000,
         -1px 1px 0 #000,
         1px 1px 0 #000;
-}
+} 
+
 .header{
     top: 40%;
     color: white;
@@ -28,7 +29,6 @@ h1{
     font-size: 30px;
 
 }
-
 
 .textbox {
     margin: auto;
@@ -53,7 +53,6 @@ h1{
 .enter > div {
     vertical-align:top;
     display:inline-block;
-
 }
 
 input[type=submit]{
