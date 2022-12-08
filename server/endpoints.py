@@ -57,13 +57,14 @@ class HelloWorld(Resource):
     The purpose of the HelloWorld class is to have a simple test to see if the
     app is working at all.
     """
-
+    
     def get(self):
         """
         A trivial endpoint to see if the server is running.
         It just answers with "hello world."
         """
         return {MESSAGE: 'hello world'}
+
 
 @api.route(MAIN_MENU)
 class MainMenu(Resource):
