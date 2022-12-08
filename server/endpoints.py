@@ -60,8 +60,7 @@ class HelloWorld(Resource):
 
     def get(self):
         """
-        A trivial endpoint to see if the server is running.
-        It just answers with "hello world."
+        A trivial endpoint just test if the server is running.
         """
         return {MESSAGE: 'hello world'}
 
