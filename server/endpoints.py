@@ -161,6 +161,7 @@ class CharacterTypeList(Resource):
         """
         return {CHAR_TYPE_LIST_NM: ctyp.get_char_types()}
 
+
 @api.route(CHAR_TYPE_DICT)
 class CharacterTypeDict(Resource):
     """
