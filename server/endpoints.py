@@ -60,7 +60,7 @@ class HelloWorld(Resource):
 
     def get(self):
         """
-        A trivial endpoint just test if the server is running.
+        Gets the main game menu.
         """
         return {MESSAGE: 'hello world'}
 
