@@ -14,7 +14,6 @@ CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
 
 
-
 @app.route('/')
 def index():
     return render_template('login.html')

@@ -31,7 +31,7 @@ CHAR_TYPE_LIST = f'/character_types/{LIST}'
 CHAR_TYPE_LIST_NM = 'character_types_list'
 CHAR_TYPE_DETAILS = f'/character_types/{DETAILS}'
 CHAR_TYPE_DICT = f'/character_types/{DICT}'
-CHAR_TYPE_DICT_NM = f'character_types_dict'
+CHAR_TYPE_DICT_NM = 'character_types_dict'
 FOOD_TYPE_DICT = f'/food_types/{DICT}'
 FOOD_TYPE_LIST = f'/food_types/{LIST}'
 FOOD_TYPE_DICT = f'/food_types/{DICT}'
@@ -63,6 +63,7 @@ class HelloWorld(Resource):
         A trivial endpoint to see if the server is running.
         It just answers with "hello world."
         """
+        
         return {MESSAGE: 'hello world'}
 
 
@@ -174,7 +175,7 @@ class CharacterTypeDict(Resource):
         return {'Data': ctyp.get_char_type_dict(),
                 'Type': 'Data',
                 'Title': 'Character Types'}
-                
+
 
 @api.route(f'{CHAR_TYPE_DETAILS}/<char_type>')
 class CharacterTypeDetails(Resource):
