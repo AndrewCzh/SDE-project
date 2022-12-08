@@ -64,6 +64,7 @@ class HelloWorld(Resource):
         It just answers with "hello world."
         """
 
+
         return {MESSAGE: 'hello world'}
 
 
