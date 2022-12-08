@@ -29,6 +29,8 @@ def connect_db():
             print("Connecting to Mongo in cloud.")
             client = pm.MongoClient(f"mongodb+srv://jialii:{password}@\
 cluster0.wnpabny.mongodb.net/Ingredients")
+            # print("CONNECTED")
+            # print(password)
         else:
             print("Connect to mongo locally")
             client = pm.MongoClient()

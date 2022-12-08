@@ -30,6 +30,8 @@ MESSAGE = 'message'
 CHAR_TYPE_LIST = f'/character_types/{LIST}'
 CHAR_TYPE_LIST_NM = 'character_types_list'
 CHAR_TYPE_DETAILS = f'/character_types/{DETAILS}'
+CHAR_TYPE_DICT = f'/character_types/{DICT}'
+CHAR_TYPE_DICT_NM = f'character_types_dict'
 FOOD_TYPE_DICT = f'/food_types/{DICT}'
 FOOD_TYPE_LIST = f'/food_types/{LIST}'
 FOOD_TYPE_DICT = f'/food_types/{DICT}'
@@ -160,6 +162,19 @@ class CharacterTypeList(Resource):
         """
         return {CHAR_TYPE_LIST_NM: ctyp.get_char_types()}
 
+@api.route(CHAR_TYPE_DICT)
+class CharacterTypeDict(Resource):
+    """
+    This will get a list of character types.
+    """
+    def get(self):
+        """
+        Returns a list of character types.
+        """
+        return {'Data': ctyp.get_char_type_dict(),
+                'Type': 'Data',
+                'Title': 'Character Types'}
+                
 
 @api.route(f'{CHAR_TYPE_DETAILS}/<char_type>')
 class CharacterTypeDetails(Resource):

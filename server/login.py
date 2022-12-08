@@ -6,11 +6,13 @@ import uuid
 from flask import Flask, render_template, request
 import ingredients_generator as ig
 # session, url_for, redirect
+import db.db_connect as dbc
 
 app = Flask(__name__)
 
 CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
+
 
 
 @app.route('/')
@@ -23,6 +25,8 @@ def login_auth():
     """
     These comments are used to connect db
     """
+    dbc.connect_db()
+
     username = request.form['username']
     client = MongoClient(CONNECTION_STRING)
     my_db = client["Users"]
