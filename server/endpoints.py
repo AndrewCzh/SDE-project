@@ -73,7 +73,8 @@ class MainMenu(Resource):
 
     def get(self):
         """
-        Gets the main game menu.
+        A trivial endpoint to see if the server is running.
+        It just answers with "hello world."
         """
         return {'Title': MAIN_MENU_NM,
                 'Default': 0,
