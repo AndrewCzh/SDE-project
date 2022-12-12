@@ -32,7 +32,7 @@ def login_auth():
     my_col = my_db["Users"]
 
     """
-    needs to receive a fixed target to pass the level, 
+    needs to receive a fixed target to pass the level,
     the current money amount, and timer info
     """
     money = 0
