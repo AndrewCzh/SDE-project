@@ -31,7 +31,10 @@ def login_auth():
     my_db = client["Users"]
     my_col = my_db["Users"]
 
-    """needs to receive a fixed target to pass the level, the current money amount, and timer info"""
+    """
+    needs to receive a fixed target to pass the level, 
+    the current money amount, and timer info
+    """
     money = 0
     target = 1000
     timeout = False
@@ -72,7 +75,7 @@ def login_auth():
         render_template('login.html', error=error)
 
     if timeout:
-        if money < target: 
+        if money < target:
             return render_template('success.html', error=error)
         else:
             return render_template('failed.html', error=error)
@@ -97,13 +100,16 @@ def login_auth():
 def cooking():
     return render_template('cook.html')
 
+
 @app.route('/success')
 def success():
     return render_template('success.html')
 
+
 @app.route('/failed')
 def failed():
     return render_template('failed.html')
+
 
 def main():
     # print(login())
