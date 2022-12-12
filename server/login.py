@@ -30,6 +30,11 @@ def login_auth():
     client = MongoClient(CONNECTION_STRING)
     my_db = client["Users"]
     my_col = my_db["Users"]
+
+    """needs to receive a fixed target to pass the level, the current money amount, and timer info"""
+    money = 0
+    target = 1000
+    timeout = False
     # data = my_col.find()
     insert = True
     # if data is None:
@@ -57,14 +62,20 @@ def login_auth():
         my_col.insert_one(document)
         print(username, uid)
         print('here2')
-
+        ig.generator(uid)
         # return render_template('home.html')
-        return ig.generator(uid)
+        # return ig.generator(uid)
         # return redirect(url_for('home'))
     else:
         error = "name is already used"
-        return render_template('login.html', error=error)
+        # return render_template('login.html', error=error)
+        render_template('login.html', error=error)
 
+    if timeout:
+        if money < target: 
+            return render_template('success.html', error=error)
+        else:
+            return render_template('failed.html', error=error)
 
 # @app.route('/cook', methods=['POST'])
 # def check_correct_ingredients():
@@ -86,6 +97,13 @@ def login_auth():
 def cooking():
     return render_template('cook.html')
 
+@app.route('/success')
+def success():
+    return render_template('success.html')
+
+@app.route('/failed')
+def failed():
+    return render_template('failed.html')
 
 def main():
     # print(login())
