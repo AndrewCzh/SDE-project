@@ -103,12 +103,12 @@ def cooking():
 
 @app.route('/success')
 def success():
-    return render_template('success.html')
+    return render_template('login.html')
 
 
 @app.route('/failed')
 def failed():
-    return render_template('failed.html')
+    return render_template('login.html')
 
 
 def main():
