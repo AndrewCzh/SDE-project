@@ -12,7 +12,7 @@ def new_user_type():
     uid = usr.add_user(usr.TEST_USER_NAME)
     yield
     usr.del_user(uid)
-
+    
 
 def test_get_users():
     usrs = usr.get_users()
@@ -39,7 +39,6 @@ def test_add_wrong_name_type():
 # def test_add_missing_field():
 #     with pytest.raises(ValueError):
 #         usr.add_user('a new user', {'foo': 'bar'})
-
 
 def test_add_user():
     # details = {}
