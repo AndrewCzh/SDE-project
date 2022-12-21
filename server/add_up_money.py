@@ -21,7 +21,7 @@ def add_up_money(uid, money, uid_dict):
     #     return -1
     if uid in uid_dict:
         uid_dict[uid] += money
-        return 1
+        return money
     else:
         print('uid is not in the uid_dict')
         return -1
