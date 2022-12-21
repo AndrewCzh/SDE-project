@@ -71,6 +71,11 @@ def insert_one(collection, db, filt):
     return
 
 
+def update_one(collection, db, filt, new_values):
+    client[db][collection].update_one(filt, new_values)
+    return
+
+
 def main():
     connect_db()
     # print(fetch_all("Burger"))
