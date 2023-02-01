@@ -17,8 +17,7 @@ Frontend:
 
 -   A homepage that players can log in/ sign in
 
--   A selection page for players to choose different ingredients within
-    > a certain amount of time.
+-   A selection page for players to choose different ingredients within a certain amount of time.
 
 -   A cooking selection page for people to select correct cooking tools.
 
