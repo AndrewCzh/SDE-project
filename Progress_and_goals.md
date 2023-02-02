@@ -52,12 +52,14 @@ Frontend:
 
 Backend:
 
--   Set password for sign in/log in
+-   Set password for sign in/log in                               - Store an extra col in user collection
 
--   Store players' history in the database
+-   Store players' history in the database                        - Separate user collection into user and user profile collections
 
--   Set a reward system for accomplishing goals
+-   Set a reward system for accomplishing goals                   - Store personal rewards in user profile collections
 
--   Deploy to pythonanywhere
+-   Deploy to pythonanywhere                                      - Not sure right now
 
--   Add a player history display page in the profile page
+-   Add a player history display page in the profile page         - Store history into game collections
+
+We decided to meet every Thursday after class to discuss what and how we want to achieve each goal listed above. We are not sure where we want to deploy to. But we will discuss later today. For now, we expect to achieve all the goals we listed above. But we may find more interesting goals as the semester goes.
