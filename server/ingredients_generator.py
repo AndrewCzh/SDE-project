@@ -1,7 +1,6 @@
 from pymongo import MongoClient
 from bson.json_util import dumps, loads
 import random
-# from flask import Flask, render_template
 from flask import Flask
 
 import server.orders as so
@@ -35,10 +34,8 @@ def generator(uid):
     data_ls, filt = so.insert_orders(uid, data)
     print(f'{data_ls=}')
     print("type = ", type(data_ls[1]))
-    
     # return render_template('home.html', data_ls=data_ls)
     return data_ls
-
 
 # @app.route('/home')
 # def home():
