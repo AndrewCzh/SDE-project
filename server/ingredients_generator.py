@@ -34,7 +34,9 @@ def generator(uid):
     data_ls, filt = so.insert_orders(uid, data)
     print(f'{data_ls=}')
     print("type = ", type(data_ls[1]))
-    return render_template('home.html', data_ls=data_ls)
+    
+    # return render_template('home.html', data_ls=data_ls)
+    return data_ls
 
 
 # @app.route('/home')
