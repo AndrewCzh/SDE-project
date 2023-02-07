@@ -12,7 +12,7 @@ CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
 
 
-@app.route('/', methods=['GET', 'POST'])
+# @app.route('/', methods=['GET', 'POST'])
 def generator(uid):
     data = random_ingredients()
     # print("len = ", len(data))
