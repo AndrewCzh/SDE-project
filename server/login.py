@@ -65,10 +65,11 @@ def login_auth():
         my_col.insert_one(document)
         print(username, uid)
         print('here2')
-        ig.generator(uid)
+        data_ls = ig.generator(uid)
         # return render_template('home.html')
         # return ig.generator(uid)
         # return redirect(url_for('home'))
+        return render_template('home.html', data_ls=data_ls)
     else:
         error = "name is already used"
         # return render_template('login.html', error=error)
