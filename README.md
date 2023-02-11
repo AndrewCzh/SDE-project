@@ -86,6 +86,7 @@ We will write an API-driven restaurant business game. Players take the role of a
 - Regular meeting every week on Monday 4-5pm
 - Database inserts of dishes and ingredients are due on October 1st (Finished on Sep 27th) (done)
 - Function todo
+   - basic login/enter page, logout/exit page (done)
    - randomly generates ingredients for different dishes (done)
    - basic login/enter page (done)
    - select the ingredients (done)
@@ -93,7 +94,9 @@ We will write an API-driven restaurant business game. Players take the role of a
    - select the cooking tool 
    - verify if ingredients and the cooking tool are correct and then customer will pay
    - check if player gain enough money
-- Write some backend functions (basic login/enter page, logout/exit page)
+
+## Database
+-- Now can be connected to Cloud and Local in MongoDB
 
 ## Deploy to web
 - The website is now deployed to pythonanywhere: http://andrew1531.pythonanywhere.com/
