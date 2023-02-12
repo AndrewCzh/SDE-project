@@ -90,15 +90,19 @@ We will write an API-driven restaurant business game. Players take the role of a
    - randomly generates ingredients for different dishes (done)
    - basic login/enter page (done)
    - select the ingredients (done)
+   - test if the game runs correctly on pythonanywhere (done)
+   - fix teh problem that only log in page can be shown on pythonanywhere (done)
    - collects money if finished 
    - select the cooking tool 
    - verify if ingredients and the cooking tool are correct and then customer will pay
    - check if player gain enough money
+   - try to maek the frontend interface prettier
 
 ## Database
--- Uploaded github and project python files to pythonanywhere
--- Now can be connected to Cloud and Local in MongoDB
+- Uploaded github and project python files to pythonanywhere
+- Now can be connected to Cloud and Local in MongoDB
 
 ## Deploy to web
 - Upgraded pythonanywhere to run python code in the cloud from one web app and the console for 1GB service
+- set environment variables for website
 - The website is now deployed to pythonanywhere: http://andrew1531.pythonanywhere.com/
