@@ -1,9 +1,6 @@
 """
 This module encapsulates details about games.
 """
-from pymongo import MongoClient
-# from bson.json_util import dumps
-import uuid
 import db.db_connect as dbc
 
 COLLECTION = "Games"
