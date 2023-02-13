@@ -81,10 +81,10 @@ We will write an API-driven restaurant business game. Players take the role of a
 - Heroku
 - React
 - Github
+- Pythonanywhere
 
 ## Project Timeline
 - Regular meeting every week on Monday 4-5pm
-- Database inserts of dishes and ingredients are due on October 1st (Finished on Sep 27th) (done)
 - Function todo
    - basic login/enter page, logout/exit page (done)
    - randomly generates ingredients for different dishes (done)

@@ -62,4 +62,5 @@ Backend:
 
 -   Add a player history display page in the profile page         - Store history into game collections
 
-We decided to meet every Thursday after class to discuss what and how we want to achieve each goal listed above. We are not sure where we want to deploy to. But we will discuss later today. For now, we expect to achieve all the goals we listed above. But we may find more interesting goals as the semester goes.
+We decided to meet every Thursday after class to discuss what and how we want to achieve each goal listed above. We have decided to deploy it in pythonanywhere now. 
+We expect to achieve all the goals we listed above. But we may find more interesting goals as the semester goes.
