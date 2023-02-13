@@ -143,10 +143,3 @@ function onoff(btn){
     document.getElementById("demoList").innerHTML = ing_selected;
 }
   
-
-// ing_selected.forEach((item) => {
-//   let li = document.createElement("li");
-//   li.innerText = item;
-//   list.appendChild(li);
-// });
-

@@ -2,11 +2,11 @@ from pymongo import MongoClient
 import uuid
 # from bson.json_util import dumps
 # import random
-# import json
+import jsonify
 from flask import Flask, render_template, request
 import ingredients_generator as ig
 # session, url_for, redirect
-import db.db_connect as dbc
+import db.db_connect as dbc 
 
 app = Flask(__name__)
 
@@ -19,7 +19,7 @@ def index():
     return render_template('login.html')
 
 
-@app.route('/home', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login_auth():
     """
     These comments are used to connect db
@@ -31,13 +31,7 @@ def login_auth():
     my_db = client["Users"]
     my_col = my_db["Users"]
 
-    """
-    needs to receive a fixed target to pass the level,
-    the current money amount, and timer info
-    """
-    money = 0
-    target = 1000
-    timeout = False
+
     # data = my_col.find()
     insert = True
     # if data is None:
@@ -75,11 +69,6 @@ def login_auth():
         # return render_template('login.html', error=error)
         render_template('login.html', error=error)
 
-    if timeout:
-        if money < target:
-            return render_template('success.html', error=error)
-        else:
-            return render_template('failed.html', error=error)
 
 # @app.route('/cook', methods=['POST'])
 # def check_correct_ingredients():
@@ -92,9 +81,32 @@ def login_auth():
 #     return render_template('success.html')
 
 
-# @app.route('/home')
-# def home():
-#     return render_template('home.html')
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    """
+    needs to receive a fixed target to pass the level,
+    the current money amount, and timer info
+    """
+    money = 0
+    target = 1000
+    timeout = False
+    error = "ERROR"
+
+    if timeout:
+        if money < target:
+            return render_template('success.html', error=error)
+        else:
+            return render_template('failed.html', error=error)
+
+    return render_template('cook.html')
+
+
+@app.route('/api/data', methods=['POST'])
+def receive_data():
+    data = request.get_json()
+    # You can now use the data in your Flask application
+    print(data)
+    return jsonify({'status': 'success'})
 
 
 @app.route('/cook', methods=['GET', 'POST'])
