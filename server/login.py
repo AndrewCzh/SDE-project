@@ -31,7 +31,6 @@ def login_auth():
     my_db = client["Users"]
     my_col = my_db["Users"]
 
-
     # data = my_col.find()
     insert = True
     # if data is None:
@@ -43,7 +42,6 @@ def login_auth():
     #             insert = False
     #             break
     #         u_id = max(u_id, user['u_id'])
-
     if insert:
         print("here1")
         """
@@ -68,7 +66,6 @@ def login_auth():
         error = "name is already used"
         # return render_template('login.html', error=error)
         render_template('login.html', error=error)
-
 
 # @app.route('/cook', methods=['POST'])
 # def check_correct_ingredients():
@@ -102,8 +99,6 @@ def home():
     # correct_ing
     # if selected_ing != correct_ing:
     #     price_earned = price * 0.8
-
-
     return render_template('cook.html')
 
 
