@@ -4,9 +4,10 @@ import uuid
 # import random
 import jsonify
 from flask import Flask, render_template, request
-import ingredients_generator as ig
+# import ingredients_generator as ig
 # session, url_for, redirect
 import db.db_connect as dbc
+import start_game as sg
 
 app = Flask(__name__)
 
@@ -57,7 +58,9 @@ def login_auth():
         my_col.insert_one(document)
         print(username, uid)
         print('here2')
-        data_ls = ig.generator(uid)
+        # TODO delete this after creating start_game.html
+        data_ls = sg.start_game(uid)[0]
+        # data_ls = ig.generator(uid, '')
         # return render_template('home.html')
         # return ig.generator(uid)
         # return redirect(url_for('home'))

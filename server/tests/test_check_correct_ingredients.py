@@ -19,6 +19,7 @@ ret_2 = ["Test User", ["Salad", "Broccoli"]]
 
 dbc.connect_db()
 uid = str(uuid.uuid4())
+game_id = str(uuid.uuid4())
 data = ig.random_ingredients()
 data_ls = []
 data_price = 0
@@ -31,9 +32,9 @@ order = [uid, data_ls]
 
 @pytest.fixture(scope='function')
 def new_ingredients():
-    so.insert_orders(uid, data)
+    so.insert_orders(uid, game_id, data)
     yield
-    so.del_orders(uid, data)
+    so.del_orders(uid, game_id, data)
 
 
 def test_check_correct_ingredients_correct(new_ingredients):

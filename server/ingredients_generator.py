@@ -3,7 +3,9 @@ from bson.json_util import dumps, loads
 import random
 from flask import Flask
 
-import server.orders as so
+from server import orders as so
+# from server import orders as so
+# import server.orders as so
 
 app = Flask(__name__)
 
@@ -13,7 +15,7 @@ cluster0.wnpabny.mongodb.net/Ingredients"
 
 
 # @app.route('/', methods=['GET', 'POST'])
-def generator(uid):
+def generator(uid, game_id):
     data = random_ingredients()
     # print("len = ", len(data))
     # print("type = ", type(data[0]))
@@ -31,7 +33,7 @@ def generator(uid):
     # filt = {"uid": uid, "ing_price": price_dict}
     # so.insert_orders(my_col, my_db, filt)
     # # my_col.insert_one({"uid": uid, "ing_price": price_dict})
-    data_ls, filt = so.insert_orders(uid, data)
+    data_ls, filt = so.insert_orders(uid, game_id, data)
     print(f'{data_ls=}')
     print("type = ", type(data_ls[1]))
     # return render_template('home.html', data_ls=data_ls)

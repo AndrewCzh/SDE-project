@@ -21,6 +21,7 @@ def connect_db():
     global client
     if client is None:  # not connected yet!
         print("Setting client because it is None.")
+        # print(os.environ.keys())
         print(os.environ.get("CLOUD_MONGO"))
         if os.environ.get("CLOUD_MONGO", LOCAL) == CLOUD:
             password = os.environ.get("GAME_MONGO_PW")
@@ -28,7 +29,11 @@ def connect_db():
                 raise ValueError("You must set your password")
             print("Connecting to Mongo in cloud.")
             client = pm.MongoClient(f"mongodb+srv://jialii:{password}@\
-cluster0.wnpabny.mongodb.net/Ingredients")
+            cluster0.wnpabny.mongodb.net/Ingredients",
+                                    connectTimeoutMS=30000,
+                                    socketTimeoutMS=None,
+                                    connect=False,
+                                    maxPoolsize=1)
             # print("CONNECTED")
             # print(password)
         else:

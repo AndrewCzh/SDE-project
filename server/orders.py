@@ -2,7 +2,8 @@
 import uuid
 from bson.json_util import loads
 
-import db.db_connect as dbc
+# import db.db_connect as dbc
+from db import db_connect as dbc
 import server.ingredients_generator as ig
 import server.check_correct_ingredients as cci
 
@@ -10,16 +11,16 @@ CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
 
 
-def create_filt(uid, data):
+def create_filt(uid, game_id, data):
     price_dict = {}
     for d in data:
         # data_ls.append(loads(d))
         price_dict[(loads(d))['name']] = loads(d)['price']
-    filt = {"uid": uid, "ing_price": price_dict}
+    filt = {"uid": uid, 'game': game_id, "ing_price": price_dict}
     return filt
 
 
-def insert_orders(uid, data):
+def insert_orders(uid, game_id, data):
 
     print("len = ", len(data))
     print("type = ", type(data[0]))
@@ -29,7 +30,7 @@ def insert_orders(uid, data):
     # for d in data:
     #     # data_ls.append(loads(d))
     #     price_dict[(loads(d))['name']] = loads(d)['price']
-    filt = create_filt(uid, data)
+    filt = create_filt(uid, game_id, data)
     price_dict = filt['ing_price']
     data_ls.append(price_dict)
     # insert into orders table
@@ -42,11 +43,11 @@ def insert_orders(uid, data):
     return data_ls, filt
 
 
-def del_orders(uid, data):
+def del_orders(uid, game_id, data):
     # client = MongoClient(CONNECTION_STRING)
     # my_db = client["Orders"]
     # my_col = my_db["Orders"]
-    filt = create_filt(uid, data)
+    filt = create_filt(uid, game_id, data)
     # filt = {"uid": uid, "ing_price": price_dict}
     dbc.delete_one("Orders", "Orders", filt)
 
