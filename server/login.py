@@ -6,7 +6,7 @@ import jsonify
 from flask import Flask, render_template, request
 import ingredients_generator as ig
 # session, url_for, redirect
-import db.db_connect as dbc 
+import db.db_connect as dbc
 
 app = Flask(__name__)
 
@@ -98,6 +98,12 @@ def home():
         else:
             return render_template('failed.html', error=error)
 
+    # selected_ing
+    # correct_ing
+    # if selected_ing != correct_ing:
+    #     price_earned = price * 0.8
+
+
     return render_template('cook.html')
 
 
@@ -111,6 +117,12 @@ def receive_data():
 
 @app.route('/cook', methods=['GET', 'POST'])
 def cooking():
+    # selected_cook
+    # correct_cook
+    # if selected_cook == correct_cook:
+    #     return "cooking animation"
+    # else:
+    #     return render_template('failed.html')
     return render_template('cook.html')
 
 
