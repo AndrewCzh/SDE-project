@@ -11,12 +11,13 @@ We will write an API-driven restaurant business game. Players take the role of a
 
 - List all available characters
 - List all active characters
-- Signup
-- Signin
+- Set passwords for Signup and Signin
 - Describe a locale
 - Allow character to move
 - Allow character to act
 - Allow character to talk to other characters in locale
+- Allow multiple orders happen at the same time (future goal)
+- Use timer to record time
 
 ## Design
 - Restaurant operation game
