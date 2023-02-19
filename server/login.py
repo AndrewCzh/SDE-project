@@ -64,7 +64,7 @@ def login_auth():
         # return render_template('home.html')
         # return ig.generator(uid)
         # return redirect(url_for('home'))
-        return render_template('home.html', data_ls=data_ls)   
+        return render_template('home.html', data_ls=data_ls)
         # change to menu.html
     else:
         error = "name is already used"
@@ -80,6 +80,8 @@ def login_auth():
 #     for key, val in request.form.items():
 #         print(key, val)
 #     return render_template('success.html')
+
+
 @app.route('/menu', methods=['GET', 'POST'])
 def menu():
     return render_template('home.html')
