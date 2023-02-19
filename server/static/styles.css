@@ -115,5 +115,15 @@ p.error{
 h1.word{
     font-size: 40px;
     color: purple;
+    font-style: italic;
     height: 40px;
+}
+
+h1.food{
+    color: darkorchid;
+    font-style: italic;
+}
+
+input.answerBtnsOff{
+    font-style: italic;
 }
