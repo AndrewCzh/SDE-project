@@ -94,6 +94,7 @@ We will write an API-driven restaurant business game. Players take the role of a
    - test if the game runs correctly on pythonanywhere (done)
    - fix teh problem that only log in page can be shown on pythonanywhere (done)
    - upload endpoints to the pythonanywhere(done)
+   - start making multiplayer mode
    - collects money if finished 
    - select the cooking tool 
    - verify if ingredients and the cooking tool are correct and then customer will pay
