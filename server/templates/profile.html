@@ -11,11 +11,13 @@
     <div class="enter">
       
         <div>
-            <form action="/menu" method="POST" >
-                <button onclick="viewProfile()">View My Profile</button>
+            <form action="/profile" method="POST" >
+                <h1 class="title">USERNAME</h1>
+                <h1 class="title">YOU HAVE PLAYED __ TIMES</h1>
+                <h1 class="title">YOUR HIGHEST SCORE IS __</h1>
                 <br></br>
                 <br></br>
-                <input type="submit" id="startButton" value = 'START' />
+                <input type="submit" id="startButton" value = 'BACK' />
                     {% if error %}
                         <p class="error"><strong>Error: </strong> {{error}}</p>
                     {% endif %}

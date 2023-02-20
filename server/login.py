@@ -87,6 +87,11 @@ def menu():
     return render_template('home.html')
 
 
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    return render_template('profile.html')
+
+
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     """
