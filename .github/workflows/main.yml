@@ -18,6 +18,7 @@ env:
 #  CONNECTION_STRING: ${{secrets.CONNECTION_STRING}}
   GAME_MONGO_PW: ${{secrets.GAME_MONGO_PW}}
   CLOUD_MONGO: ${{secrets.CLOUD_MONGO}}
+  SDE_PA_PWD: ${{secrets.SDE_PA_PWD}}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -44,5 +45,4 @@ jobs:
         
       - name: Deploy to PythonAnywhere
         run: ./deploy.sh
-        env:
-          SDE_PA_PWD: ${{secrets.SDE_PA_PWD}}
+        
