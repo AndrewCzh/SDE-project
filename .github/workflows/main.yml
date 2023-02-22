@@ -18,7 +18,6 @@ env:
 #  CONNECTION_STRING: ${{secrets.CONNECTION_STRING}}
   GAME_MONGO_PW: ${{secrets.GAME_MONGO_PW}}
   CLOUD_MONGO: ${{secrets.CLOUD_MONGO}}
-  SDE_PA_PWD: ${{secrets.SDE_PA_PWD}}
   echo: ${{secrets.echo}}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -33,7 +32,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - name: checkout
+        uses: actions/checkout@v2
       
       - name: Install MongoDB
         uses: supercharge/mongodb-github-action@1.8.0
@@ -46,4 +46,6 @@ jobs:
         
       - name: Deploy to PythonAnywhere
         run: ./deploy.sh
+        env:
+          SDE_PA_PWD: ${{secrets.SDE_PA_PWD}}
         
