@@ -3,13 +3,13 @@
 
 export PA_USER=Andrew1531
 
-if [ -z "$DEMO_PA_PWD" ]
+if [ -z "$SDE_PA_PWD" ]
 then
     echo "The PythonAnywhere password var (DEMO_PA_PWD) must be set in the env."
     exit 1
 fi
 
 echo "SSHing to PythonAnywhere."
-sshpass -p $DEMO_PA_PWD ssh -o "StrictHostKeyChecking no" $PA_USER@ssh.pythonanywhere.com << EOF
+sshpass -p $SDE_PA_PWD ssh -o "StrictHostKeyChecking no" $PA_USER@ssh.pythonanywhere.com << EOF
     cd demo-repo3; ./rebuild.sh
 EOF
