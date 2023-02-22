@@ -19,6 +19,7 @@ env:
   GAME_MONGO_PW: ${{secrets.GAME_MONGO_PW}}
   CLOUD_MONGO: ${{secrets.CLOUD_MONGO}}
   SDE_PA_PWD: ${{secrets.SDE_PA_PWD}}
+  echo: ${{secrets.echo}}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
