@@ -3,7 +3,7 @@
 
 export PA_USER=Andrew1531
 
-if [ -z $SDE_PA_PWD ]
+if [ -z "$SDE_PA_PWD" ]
 then
     echo "The PythonAnywhere password var (SDE_PA_PWD) must be set in the env."
     exit 1
