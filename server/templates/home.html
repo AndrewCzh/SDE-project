@@ -9,38 +9,38 @@
 
 <ul>
     {% for ing in data_ls[1].keys() %}
-        <li><h1>{{ing}}</h1></li>
+        <li><h1 class = "food">{{ing}}</h1></li>
     {% endfor %}
 </ul>
 <div class="selected">
     <form action="/home" method="POST" >
-        <input class="answerBtnsOff" id="salmon" type="button" value="Salmon"  onclick="onoff(this.id);"/>
-        <input class="answerBtnsOff" id="lettuce"  type="button" value="Lettuce"  onclick="onoff(this.id);" />
-        <input class="answerBtnsOff" id="rice"  type="button" value="Rice"   onclick= "onoff(this.id)" />
-        <input class="answerBtnsOff" id="tuna"  type="button" value="Tuna"   onclick= "onoff(this.id)"/>
-        <input class="answerBtnsOff" name="answerE" id="cucumber"  type="button" value="Cucumber"   onclick= "onoff(this.id)" /> <br>
+        <input class="answerBtnsOff" id="salmon" type="ingButton" value="Salmon"  onclick="onoff(this.id);"/>
+        <input class="answerBtnsOff" id="lettuce"  type="ingButton" value="Lettuce"  onclick="onoff(this.id);" />
+        <input class="answerBtnsOff" id="rice"  type="ingButton" value="Rice"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="tuna"  type="ingButton" value="Tuna"   onclick= "onoff(this.id)"/>
+        <input class="answerBtnsOff" name="answerE" id="cucumber"  type="ingButton" value="Cucumber"   onclick= "onoff(this.id)" /> <br>
     
-        <input class="answerBtnsOff" id="Cheese" type="button" value="Cheese"  onclick="onoff(this.id);"/>
-        <input class="answerBtnsOff" id="Crust"  type="button" value="Crust"  onclick="onoff(this.id);" />
-        <input class="answerBtnsOff" id="Spinach"  type="button" value="Spinach"   onclick= "onoff(this.id)" />
-        <input class="answerBtnsOff" id="Pepperoni"  type="button" value="Pepperoni"   onclick= "onoff(this.id)"/>
-        <input class="answerBtnsOff" id="Tomato"  type="button" value="Tomato"   onclick= "onoff(this.id)" /><br>
+        <input class="answerBtnsOff" id="Cheese" type="ingButton" value="Cheese"  onclick="onoff(this.id);"/>
+        <input class="answerBtnsOff" id="Crust"  type="ingButton" value="Crust"  onclick="onoff(this.id);" />
+        <input class="answerBtnsOff" id="Spinach"  type="ingButton" value="Spinach"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Pepperoni"  type="ingButton" value="Pepperoni"   onclick= "onoff(this.id)"/>
+        <input class="answerBtnsOff" id="Tomato"  type="ingButton" value="Tomato"   onclick= "onoff(this.id)" /><br>
     
-        <input class="answerBtnsOff" id="Pineapple" type="button" value="Pineapple"  onclick="onoff(this.id);"/>
-        <input class="answerBtnsOff" id="Mushroom"  type="button" value="Mushroom"  onclick="onoff(this.id);" />
-        <input class="answerBtnsOff" id="Green Peppers"  type="button" value="Green Peppers"   onclick= "onoff(this.id)" />
-        <input class="answerBtnsOff" id="Red Peppers"  type="button" value="Red Peppers"   onclick= "onoff(this.id)"/><br>
-        <input class="answerBtnsOff" id="Onions"  type="button" value="Onions"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Pineapple" type="ingButton" value="Pineapple"  onclick="onoff(this.id);"/>
+        <input class="answerBtnsOff" id="Mushroom"  type="ingButton" value="Mushroom"  onclick="onoff(this.id);" />
+        <input class="answerBtnsOff" id="Green Peppers"  type="ingButton" value="Green Peppers"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Red Peppers"  type="ingButton" value="Red Peppers"   onclick= "onoff(this.id)"/><br>
+        <input class="answerBtnsOff" id="Onions"  type="ingButton" value="Onions"   onclick= "onoff(this.id)" />
     
-        <input class="answerBtnsOff" id="Corn" type="button" value="Corn"  onclick="onoff(this.id);"/>
-        <input class="answerBtnsOff" id="Beef"  type="button" value="Beef"  onclick="onoff(this.id);" />
-        <input class="answerBtnsOff" id="Bacon"  type="button" value="Bacon"   onclick= "onoff(this.id)" />
-        <input class="answerBtnsOff" id="Avacado"  type="button" value="Avacado"   onclick= "onoff(this.id)"/><br>
-        <input class="answerBtnsOff" id="Zucchini"  type="button" value="Zucchini"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Corn" type="ingButton" value="Corn"  onclick="onoff(this.id);"/>
+        <input class="answerBtnsOff" id="Beef"  type="ingButton" value="Beef"  onclick="onoff(this.id);" />
+        <input class="answerBtnsOff" id="Bacon"  type="ingButton" value="Bacon"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Avacado"  type="ingButton" value="Avacado"   onclick= "onoff(this.id)"/><br>
+        <input class="answerBtnsOff" id="Zucchini"  type="ingButton" value="Zucchini"   onclick= "onoff(this.id)" />
     
-        <input class="answerBtnsOff" id="Chicken" type="button" value="Chicken"  onclick="onoff(this.id);"/>
-        <input class="answerBtnsOff" id="Broccoli"  type="button" value="Broccoli"  onclick="onoff(this.id);" />
-        <input class="answerBtnsOff" id="Carrot"  type="button" value="Carrot"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Chicken" type="ingButton" value="Chicken"  onclick="onoff(this.id);"/>
+        <input class="answerBtnsOff" id="Broccoli"  type="ingButton" value="Broccoli"  onclick="onoff(this.id);" />
+        <input class="answerBtnsOff" id="Carrot"  type="ingButton" value="Carrot"   onclick= "onoff(this.id)" />
         <br></br>
         <br></br>
          <input type="submit" id="checkButton" value = 'NEXT' />
@@ -48,7 +48,7 @@
     
 </div>  
 
-<p class="word"><h1>Here are the selected ingredients:</h1></p>
+<p><h1 class="word">Here are the selected ingredients:</h1></p>
 <ul id="demoList", name = "ing_selected"></ul> 
 
 <script type="text/javascript" src="../static/home.js"></script>

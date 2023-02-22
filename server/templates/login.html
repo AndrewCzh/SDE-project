@@ -17,7 +17,7 @@
             <form action="/login" method="POST" >
                 <input class="textbox" type="text" name="username" placeholder="..." required>
                 <br></br>
-                <input type="submit" id="startButton" value = 'START' />
+                <input type="submit" id="startButton" value = 'ENTER' />
                 {% if error %}
                     <p class="error"><strong>Error: </strong> {{error}}</p>
                 {% endif %}
@@ -25,6 +25,13 @@
         </div>
     </div>
 
+
+    <button onclick="enterBattleMode()">Multi Battle Mode</button>
+    <script>
+      function enterBattleMode() {
+        alert('Entering battle mode...');
+      }
+    </script>
 
 </body>
 </html>

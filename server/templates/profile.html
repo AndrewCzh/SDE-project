@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <h1 class="title">REPSAJ</h1>
+    <div class="header">
+    </div>
+
+    <div class="enter">
+      
+        <div>
+            <form action="/profile" method="POST" >
+                <h1 class="title">USERNAME</h1>
+                <h1 class="title">YOU HAVE PLAYED __ TIMES</h1>
+                <h1 class="title">YOUR HIGHEST SCORE IS __</h1>
+                <br></br>
+                <br></br>
+                <input type="submit" id="startButton" value = 'BACK' />
+                    {% if error %}
+                        <p class="error"><strong>Error: </strong> {{error}}</p>
+                    {% endif %}
+            </form>
+        </div>
+    </div>
+
+    <script>
+      function viewProfile() {
+        alert('Viewing your profile...');
+      }
+    </script>
+
+</body>
+</html>

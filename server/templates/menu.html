@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <h1 class="title">REPSAJ</h1>
+    <div class="header">
+    </div>
+
+    <div class="enter">
+      
+        <div>
+            <form action="/menu" method="POST" >
+                <button onclick="viewProfile()">View My Profile</button>
+                <br></br>
+                <br></br>
+                <input type="submit" id="startButton" value = 'START' />
+                    {% if error %}
+                        <p class="error"><strong>Error: </strong> {{error}}</p>
+                    {% endif %}
+            </form>
+        </div>
+    </div>
+
+    <script>
+      function viewProfile() {
+        alert('Viewing your profile...');
+      }
+    </script>
+
+</body>
+</html>

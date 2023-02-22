@@ -128,6 +128,7 @@ function arrayRemove(arr, value) {
 function onoff(btn){
   classname = document.getElementById(btn).className;
   currentvalue = document.getElementById(btn).value;
+  //pickColor();
   if(classname == "answerBtnsOff"){
       document.getElementById(btn).classList.toggle("answerBtnsOff");
       document.getElementById(btn).className = "answerBtnsOn";
@@ -143,3 +144,17 @@ function onoff(btn){
     document.getElementById("demoList").innerHTML = ing_selected;
 }
   
+function pickColor() {
+          
+  var colors = [
+      '#ff0000', '#00ff00', '#0000ff',
+      '#ff3333', '#ffff00', '#ff6600'
+  ];
+    
+  // selecting random color
+  var randomColor = colors[Math.floor(
+          Math.random() * colors.length)];
+    
+  var typeName = document.getElementById('pick');
+  typeName.style.color = randomColor;
+}

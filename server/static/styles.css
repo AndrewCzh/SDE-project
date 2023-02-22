@@ -38,7 +38,7 @@ h1.title{
     transform: translate(-50%, -50%)
 }
 
-.header,.enter,input[type=submit]{
+.header,.enter,input[type=submit],input[type=button]{
     font-family:"Comic Sans MS";
     -webkit-text-fill-color: white; /* Will override color (regardless of order)*/ 
     text-shadow:
@@ -83,9 +83,9 @@ h1.title{
     display:inline-block;
 }
 
-input[type=submit]{
+input[type=submit],input[type=button]{
 
-    background-color: blue; /* Green */
+    background-color: rgb(0, 115, 255); /* Green */
     border: none; 
     height: 60px;
     width: 200px;
@@ -93,6 +93,9 @@ input[type=submit]{
 
 }
 
+input[type=ingButton]{
+    width: 150px;
+}
 body {
     background-image: url('../static/restaurant.png');
     background-repeat: no-repeat;
@@ -108,3 +111,18 @@ p.error{
     color: white;
 }
 
+h1.word{
+    font-size: 40px;
+    color: purple;
+    font-style: italic;
+    height: 40px;
+}
+
+h1.food{
+    color: darkorchid;
+    font-style: italic;
+}
+
+input.answerBtnsOff{
+    font-style: italic;
+}
