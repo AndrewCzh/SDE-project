@@ -1,6 +1,7 @@
 #!/bin/bash
 # This shell script deploys a new version to a server.
 
+ssh -tt
 export PA_USER=Andrew1531
 
 if [ -z "$SDE_PA_PWD" ]
