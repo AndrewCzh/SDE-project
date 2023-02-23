@@ -13,8 +13,8 @@ on:
   workflow_dispatch:
 
 env:
-  DEMO_HOME: /home/runner/work/demo-repo3/demo-repo3/
-  PYTHONPATH: /home/runner/work/demo-repo3/demo-repo3/
+  DEMO_HOME: /home/runner/work/SDE-project/SDE-project/
+  PYTHONPATH: /home/runner/work/SDE-project/SDE-project/
 #  CONNECTION_STRING: ${{secrets.CONNECTION_STRING}}
   GAME_MONGO_PW: ${{secrets.GAME_MONGO_PW}}
   CLOUD_MONGO: ${{secrets.CLOUD_MONGO}}
