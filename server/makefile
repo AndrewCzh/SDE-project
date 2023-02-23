@@ -1,2 +1,2 @@
-# PKG = server
+PKG = server
 include ../common.mk
