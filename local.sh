@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # run our server locally:
 PYTHONPATH=$(pwd):$PYTHONPATH

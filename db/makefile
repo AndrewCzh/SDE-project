@@ -1,2 +1,2 @@
-PKG = db/tests
+PKG = db
 include ../common.mk
