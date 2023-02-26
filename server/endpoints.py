@@ -147,6 +147,7 @@ class FoodTypeList(Resource):
 #         Returns a list of character types.
 #         """
 #         return {TOOL_TYPE_LIST_NM: ftyp.get_tool_types()}
+#
 
 
 @api.route(f'{FOOD_TYPE_DETAILS}/<food_type>')
