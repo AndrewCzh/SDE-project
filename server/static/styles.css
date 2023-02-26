@@ -113,13 +113,13 @@ p.error{
 
 h1.word{
     font-size: 40px;
-    color: purple;
+    color: rgb(236, 37, 143);
     font-style: italic;
     height: 40px;
 }
 
 h1.food{
-    color: darkorchid;
+    color: rgb(245, 32, 114);
     font-style: italic;
 }
 
