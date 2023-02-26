@@ -13,7 +13,7 @@ import db.food_types as ftyp
 import db.check_tool as ctool
 import server.ingredients_generator as ig
 import db.users as usr
-from flask import Flask, jsonify, request
+#from flask import jsonify
 
 # import db.db as db
 
@@ -54,6 +54,7 @@ USER_LIST_NM = f'{USERS_NS}_list'
 USER_DETAILS = f'/{USERS_NS}/{DETAILS}'
 USER_ADD = f'/{USERS_NS}/{ADD}'
 USER_DELETE = f'/{USERS_NS}/{DELETE}'
+
 
 @api.route(HELLO)
 class HelloWorld(Resource):
@@ -133,6 +134,7 @@ class FoodTypeList(Resource):
         Returns a list of character types.
         """
         return {FOOD_TYPE_LIST_NM: ftyp.get_food_types()}
+    
    
 # @api.route(TOOL_TYPE_LIST)
 # class ToolTypeList(Resource):
