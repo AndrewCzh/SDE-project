@@ -135,7 +135,7 @@ class FoodTypeList(Resource):
         """
         return {FOOD_TYPE_LIST_NM: ftyp.get_food_types()}
 
-   
+
 # @api.route(TOOL_TYPE_LIST)
 # class ToolTypeList(Resource):
 #     """
@@ -147,6 +147,8 @@ class FoodTypeList(Resource):
 #         """
 #         return {TOOL_TYPE_LIST_NM: ftyp.get_tool_types()}
 #
+
+
 @api.route(f'{FOOD_TYPE_DETAILS}/<food_type>')
 class FoodTypeDetails(Resource):
     """
