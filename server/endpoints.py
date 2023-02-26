@@ -136,17 +136,16 @@ class FoodTypeList(Resource):
         return {FOOD_TYPE_LIST_NM: ftyp.get_food_types()}
 
 
-# @api.route(TOOL_TYPE_LIST)
-# class ToolTypeList(Resource):
-#     """
-#     This will get a list of cook tool types
-#     """
-#     def get(self):
-#         """
-#         Returns a list of character types.
-#         """
-#         return {TOOL_TYPE_LIST_NM: ftyp.get_tool_types()}
-#
+@api.route(TOOL_TYPE_LIST)
+class ToolTypeList(Resource):
+    """
+    This will get a list of cook tool types
+    """
+    def get(self):
+        """
+        Returns a list of character types.
+        """
+        return {TOOL_TYPE_LIST_NM: ftyp.get_tool_types()}
 
 
 @api.route(f'{FOOD_TYPE_DETAILS}/<food_type>')
