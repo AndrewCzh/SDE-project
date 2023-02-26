@@ -293,23 +293,23 @@ class AddUser(Resource):
         return uid
         # usr.add_user(name, request.json)
 
-@api.route(USER_DELETE)
-class DeleteUser(Resource):
-    """
-    Delete a user.
-    """
-    @api.expect(user_fields)
-    def delete(self):
-        """
-        Delete a user.
-        """
-        print(f'{request.json=}')
-        uid = request.json[usr.ID]
-        success = usr.delete_user(uid)
-        if success:
-            return f'User with ID {uid} deleted successfully'
-        else:
-            return f'User with ID {uid} not found', 404
+# @api.route(USER_DELETE)
+# class DeleteUser(Resource):
+#     """
+#     Delete a user.
+#     """
+#     @api.expect(user_fields)
+#     def delete(self):
+#         """
+#         Delete a user.
+#         """
+#         print(f'{request.json=}')
+#         uid = request.json[usr.ID]
+#         success = usr.delete_user(uid)
+#         if success:
+#             return f'User with ID {uid} deleted successfully'
+#         else:
+#             return f'User with ID {uid} not found', 404
 
 
 @api.route('/endpoints')
