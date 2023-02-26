@@ -24,7 +24,7 @@ LIST = 'list'
 DICT = 'dict'
 DETAILS = 'details'
 ADD = 'add'
-DELETE = 'delete'
+# DELETE = 'delete'
 MAIN_MENU = '/main_menu'
 MAIN_MENU_NM = 'Main Menu'
 HELLO = '/hello'
@@ -38,7 +38,7 @@ FOOD_TYPE_DICT = f'/food_types/{DICT}'
 FOOD_TYPE_LIST = f'/food_types/{LIST}'
 TOOL_TYPE_LIST = f'/tool_types/{LIST}'
 FOOD_TYPE_DICT = f'/food_types/{DICT}'
-TOOL_TYPE_LIST_NM = 'tool_types_list'
+# TOOL_TYPE_LIST_NM = 'tool_types_list'
 FOOD_TYPE_LIST_NM = 'food_types_list'
 FOOD_TYPE_DICT_NM = 'food_types_dict'
 FOOD_TYPE_DETAILS = f'/food_types/{DETAILS}'
@@ -53,7 +53,7 @@ USER_LIST = f'/{USERS_NS}/{LIST}'
 USER_LIST_NM = f'{USERS_NS}_list'
 USER_DETAILS = f'/{USERS_NS}/{DETAILS}'
 USER_ADD = f'/{USERS_NS}/{ADD}'
-USER_DELETE = f'/{USERS_NS}/{DELETE}'
+# USER_DELETE = f'/{USERS_NS}/{DELETE}'
 
 
 @api.route(HELLO)
@@ -141,15 +141,12 @@ class FoodTypeList(Resource):
 #     """
 #     This will get a list of cook tool types
 #     """
-
 #     def get(self):
 #         """
 #         Returns a list of character types.
 #         """
 #         return {TOOL_TYPE_LIST_NM: ftyp.get_tool_types()}
 #
-
-
 @api.route(f'{FOOD_TYPE_DETAILS}/<food_type>')
 class FoodTypeDetails(Resource):
     """
