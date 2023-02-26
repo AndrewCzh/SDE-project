@@ -35,6 +35,7 @@ CHAR_TYPE_DICT_NM = 'character_types_dict'
 FOOD_TYPE_DICT = f'/food_types/{DICT}'
 FOOD_TYPE_LIST = f'/food_types/{LIST}'
 FOOD_TYPE_DICT = f'/food_types/{DICT}'
+TOOL_TYPE_LIST_NM = 'tool_types_list'
 FOOD_TYPE_LIST_NM = 'food_types_list'
 FOOD_TYPE_DICT_NM = 'food_types_dict'
 FOOD_TYPE_DETAILS = f'/food_types/{DETAILS}'
@@ -129,6 +130,18 @@ class FoodTypeList(Resource):
         Returns a list of character types.
         """
         return {FOOD_TYPE_LIST_NM: ftyp.get_food_types()}
+
+@api.route(FOOD_TYPE_LIST)
+class ToolTypeList(Resource):
+    """
+    This will get a list of cook tool types
+    """
+
+    def get(self):
+        """
+        Returns a list of character types.
+        """
+        return {TOOL_TYPE_LIST_NM: ftyp.get_tool_types()}
 
 
 @api.route(f'{FOOD_TYPE_DETAILS}/<food_type>')
