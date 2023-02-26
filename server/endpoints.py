@@ -293,9 +293,9 @@ class AddUser(Resource):
         uid = usr.add_user(name)
         return uid
         # usr.add_user(name, request.json)
-        # @api.route(USER_DELETE)
 
 
+@api.route(USER_DELETE)
 class DeleteUser(Resource):
     """
     Delete a user.
