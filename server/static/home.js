@@ -143,18 +143,16 @@ function onoff(btn){
     console.log(ing_selected)
     document.getElementById("demoList").innerHTML = ing_selected;
 }
-  
-function pickColor() {
-          
-  var colors = [
-      '#ff0000', '#00ff00', '#0000ff',
-      '#ff3333', '#ffff00', '#ff6600'
-  ];
-    
-  // selecting random color
-  var randomColor = colors[Math.floor(
-          Math.random() * colors.length)];
-    
-  var typeName = document.getElementById('pick');
-  typeName.style.color = randomColor;
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function setRandomColor() {
+  $("#colorpad").css("background-color", getRandomColor());
 }
