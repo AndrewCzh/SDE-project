@@ -135,13 +135,13 @@ def main():
     # print("type = ", type(data[0]))
     # data_ls = []
     print("data = ", data)
-    data_ls = []
-    data_price = 0
-    for d in data:
-        data_ls.append(loads(d)['name'])
-        data_price += loads(d)['price']
-    order = [data_ls]
-    print(f'{order=},{order[0][0]}')
+    # data_ls = []
+    # data_price = 0
+    # for d in data:
+    #     data_ls.append(loads(d)['name'])
+    #     data_price += loads(d)['price']
+    # order = [data_ls]
+    # print(f'{order=},{order[0][0]}')
     # app.run()
 
     # print("here = ", get_ingredients_price_details())

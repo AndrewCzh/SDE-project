@@ -72,28 +72,11 @@ def del_user(uid):
     return
 
 
-# def del_all():
-#     my_col.delete_many({})
-#     return
-
-
 def add_user(name):
     if not isinstance(name, str):
         raise TypeError(f'Wrong type for name: {type(name)=}')
-    # if not isinstance(details, dict):
-    #     raise TypeError(f'Wrong type for details: {type(details)=}')
-    # for field in REQUIRED_FLDS:
-    #     if field not in details:
-    #         raise ValueError(f'Required {field=} missing from details')
-    # max_id = my_col.find().sort("u_id", -1).limit(1)
-    uid = 0
-    found = 1
-    while found:
-        uid = str(uuid.uuid4())
-        filt = {UID: uid}
-        found = dbc.fetch_one(COLLECTION, DB, filt)
+    uid = str(uuid.uuid4())
     document = ({UID: uid, NAME: name})
-    # users[name] = details
     dbc.insert_one(COLLECTION, DB, document)
     return uid
 
