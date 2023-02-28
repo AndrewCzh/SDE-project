@@ -39,6 +39,7 @@ def connect_db():
         else:
             print("Connect to mongo locally")
             client = pm.MongoClient()
+    return client
 
 
 def fetch_all(collection, db='Ingredients'):
@@ -53,6 +54,8 @@ def fetch_one(collection, db, filt):
     ret = None
     if db == 'Users':
         ret = client[db][collection].find_one(filt)
+    # ret = client[db][collection].find_one(filt)
+    # del ret['_id']
     # if db == 'Ingredients':
     #     ret = client[db][collection]
     return ret

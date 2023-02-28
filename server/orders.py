@@ -21,7 +21,6 @@ def create_filt(uid, game_id, data):
 
 
 def insert_orders(uid, game_id, data):
-
     print("len = ", len(data))
     print("type = ", type(data[0]))
     data_ls = [uid]

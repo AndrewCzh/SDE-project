@@ -40,6 +40,7 @@ def test_add_wrong_name_type():
 #     with pytest.raises(ValueError):
 #         usr.add_user('a new user', {'foo': 'bar'})
 
+
 def test_add_user():
     # details = {}
     # for field in usr.REQUIRED_FLDS:
@@ -49,6 +50,7 @@ def test_add_user():
     # usr.add_user(usr.TEST_USER_NAME, details)
     assert usr.user_exists(uid, usr.TEST_USER_NAME)
     usr.del_user(uid)
+
 
 @pytest.mark.skip("Can't run this test untill the delete function is written.")
 def test_del_user_type():

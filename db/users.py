@@ -1,7 +1,6 @@
 """
 This module encapsulates details about users.
 """
-from pymongo import MongoClient
 # from bson.json_util import dumps
 import uuid
 import db.db_connect as dbc
@@ -20,15 +19,12 @@ REQUIRED_FLDS = [UID, NAME]
 users = {TEST_USER_NAME: {UID: '05bfb803-dc3a-4379-ac49-aa9c809fda5b',
                           FULL_NAME: 'Porgy Tirebiter'},
          'handle': {UID: 'kkkk', FULL_NAME: 'Nick Danger'}}
-CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
-cluster0.wnpabny.mongodb.net/Ingredients"
-client = MongoClient(CONNECTION_STRING)
+
+client = dbc.connect_db()
 my_db = client["Users"]
 my_col = my_db["Users"]
 COLLECTION = "Users"
 DB = "Users"
-
-dbc.connect_db()
 
 
 def user_exists(uid, name):
@@ -59,6 +55,7 @@ def get_user_details(uid):
     # user = my_col.find_one({UID: uid})
     filt = {UID: uid}
     user = dbc.fetch_one(COLLECTION, DB, filt)
+    del user["_id"]
     if user is not None:
         return user
     else:
@@ -95,7 +92,7 @@ def main():
     # print(f'{users=}')
     # print(f'{get_user_details(TEST_USER_NAME)=}')
     # add_user(TEST_USER_NAME)
-    users_dict = get_users_dict()
+    users_dict = get_user_details(TEST_UID)
     print(f"{users_dict=}")
 
 

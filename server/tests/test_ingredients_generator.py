@@ -9,7 +9,8 @@ dishi = "Burger"
 
 def test_get_ingredients_price_details():
     price = ig.get_ingredients_price_details()
-    assert isinstance(price, float)
+    # assert isinstance(price, float)
+    assert isinstance(price, list)
 
 
 def test_dish_generate():
