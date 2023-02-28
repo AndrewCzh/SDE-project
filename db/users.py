@@ -66,7 +66,7 @@ def del_user(uid):
     filt = {UID: uid}
     # my_col.delete_one({UID: uid})
     dbc.delete_one(COLLECTION, DB, filt)
-    return
+    return uid
 
 
 def add_user(name):

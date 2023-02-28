@@ -12,7 +12,7 @@ def new_user_type():
     uid = usr.add_user(usr.TEST_USER_NAME)
     yield
     usr.del_user(uid)
-    
+
 
 def test_get_users():
     usrs = usr.get_users()
@@ -52,7 +52,10 @@ def test_add_user():
     usr.del_user(uid)
 
 
-@pytest.mark.skip("Can't run this test untill the delete function is written.")
-def test_del_user_type():
-    assert False
-    pass
+# @pytest.mark.skip("Can't run this test untill the delete function is written.")
+def test_del_user():
+    uid = usr.add_user(usr.TEST_USER_NAME)
+    # usr.add_user(usr.TEST_USER_NAME, details)
+    assert usr.user_exists(uid, usr.TEST_USER_NAME)
+    usr.del_user(uid)
+    assert not usr.user_exists(uid, usr.TEST_USER_NAME)

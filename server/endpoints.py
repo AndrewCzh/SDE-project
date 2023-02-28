@@ -53,7 +53,9 @@ USER_LIST_NM = f'{USERS_NS}_list'
 USER_DETAILS = f'/{USERS_NS}/{DETAILS}'
 USER_DETAILS_NM = f'{USERS_NS}_details'
 USER_ADD = f'/{USERS_NS}/{ADD}'
+USER_ADD_NM = f'{USERS_NS}_add'
 USER_DELETE = f'/{USERS_NS}/{DELETE}'
+USER_DELETE_NM = f'{USERS_NS}_delete'
 
 
 @api.route(HELLO)
@@ -277,13 +279,14 @@ class UserDetails(Resource):
         return {USER_DETAILS_NM: usr.get_user_details(usr.TEST_UID)}
 
 
-# user_fields = api.model('NewUser', {
-#     usr.NAME: fields.String,
-#     usr.EMAIL: fields.String,
-#     usr.FULL_NAME: fields.String,
-# })
-user_fields = api.model('NewUser', {
+user_fields_add = api.model('NewUser', {
     usr.NAME: fields.String,
+    # usr.EMAIL: fields.String,
+    # usr.FULL_NAME: fields.String,
+})
+
+user_fields_del = api.model('DeleteUser', {
+    usr.UID: fields.String,
     # usr.EMAIL: fields.String,
     # usr.FULL_NAME: fields.String,
 })
@@ -294,16 +297,15 @@ class AddUser(Resource):
     """
     Add a user.
     """
-    @api.expect(user_fields)
+    @api.expect(user_fields_add)
     def post(self):
         """
         Add a user.
         """
-        print(f'{request.json=}')
         name = request.json[usr.NAME]
         del request.json[usr.NAME]
         uid = usr.add_user(name)
-        return uid
+        return {USER_ADD_NM: uid}
         # usr.add_user(name, request.json)
 
 
@@ -312,18 +314,14 @@ class DeleteUser(Resource):
     """
     Delete a user.
     """
-    @api.expect(user_fields)
+    @api.expect(user_fields_del)
     def delete(self):
         """
         Delete a user.
         """
-        print(f'{request.json=}')
-        uid = request.json[usr.ID]
-        success = usr.delete_user(uid)
-        if success:
-            return f'User with ID {uid} deleted successfully'
-        else:
-            return f'User with ID {uid} not found', 404
+        uid = request.json[usr.UID]
+        ret = usr.del_user(uid)
+        return {USER_DELETE_NM: ret}
 
 
 @api.route('/endpoints')
