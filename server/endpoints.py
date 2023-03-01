@@ -7,7 +7,7 @@ from http import HTTPStatus
 from flask import Flask, request
 from flask_restx import Resource, Api, fields
 import werkzeug.exceptions as wz
-# import db.char_types as ctyp
+import db.char_types as ctyp
 import db.food_types as ftyp
 import db.check_tool as ctool
 import server.ingredients_generator as ig
@@ -195,22 +195,22 @@ class FoodTypeDetails(Resource):
 #                 'Title': 'Character Types'}
 
 
-# @api.route(f'{CHAR_TYPE_DETAILS}/<char_type>')
-# class CharacterTypeDetails(Resource):
-#     """
-#     This will get a list of character types.
-#     """
-#     @api.response(HTTPStatus.OK, 'Success')
-#     @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
-#     def get(self, char_type):
-#         """
-#         Returns a list of character types.
-#         """
-#         ct = ctyp.get_char_type_details(char_type)
-#         if ct is not None:
-#             return {char_type: ctyp.get_char_type_details(char_type)}
-#         else:
-#             raise wz.NotFound(f'{char_type} not found.')
+@api.route(f'{CHAR_TYPE_DETAILS}/<char_type>')
+class CharacterTypeDetails(Resource):
+    """
+    This will get a list of character types.
+    """
+    @api.response(HTTPStatus.OK, 'Success')
+    @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
+    def get(self, char_type):
+        """
+        Returns a list of character types.
+        """
+        ct = ctyp.get_char_type_details(char_type)
+        if ct is not None:
+            return {char_type: ctyp.get_char_type_details(char_type)}
+        else:
+            raise wz.NotFound(f'{char_type} not found.')
 
 
 @api.route(INGREDIENTS_GENERATOR_LIST)
