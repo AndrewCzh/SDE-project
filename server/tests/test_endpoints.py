@@ -98,6 +98,12 @@ def test_get_user_details():
 #     assert TEST_CHAR_TYPE in resp_json
 #     assert isinstance(resp_json[TEST_CHAR_TYPE], dict)
 
+@pytest.fixture(scope='function')
+def a_user():
+    ret = usr.add_user(SAMPLE_USER_NM)
+    yield ret
+    usr.del_user(ret)
+
 
 def test_get_food_type_list():
     """
