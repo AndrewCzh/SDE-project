@@ -12,6 +12,7 @@ div.StartBtn input, div.StartBtn span {
         COLOR: black;
         FONT: 21px Verdana,Arial,Helvetica,sans-serif;
         font-weight:bold;
+        margin-top: 10px;
     }
 
 .answerBtnsOff:hover {
@@ -32,6 +33,7 @@ div.StartBtn input, div.StartBtn span {
     font-weight:bold;
     transition: 0s;
     text-transform: uppercase;
+    margin-top: 10px;
 }
 .submit
 {
@@ -55,6 +57,7 @@ div.StartBtn input, div.StartBtn span {
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
+    margin-top: 110px;
 }
 
 .submit_button:after {
@@ -67,7 +70,8 @@ div.StartBtn input, div.StartBtn span {
     margin-left: -20px!important;
     margin-top: -120%;
     opacity: 0;
-    transition: all 0.8s
+    transition: all 0.8s;
+    margin-top: 110px;
 }
 
 .submit_button:active:after {
