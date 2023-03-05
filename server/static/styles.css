@@ -123,6 +123,12 @@ h1.food{
     font-style: italic;
 }
 
+h3.word{
+    font-size: 30px;
+    color: rgb(236, 37, 143);
+    font-style: italic;
+}
+
 input.answerBtnsOff{
     font-style: italic;
 }
