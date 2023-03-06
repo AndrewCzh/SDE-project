@@ -104,6 +104,7 @@ We will write an API-driven restaurant business game. Players take the role of a
 ## Database
 - Uploaded github and project python files to pythonanywhere
 - Now can be connected to Cloud and Local in MongoDB
+- add cooktool database into mongodb (done)
 
 ## Deploy to web
 - Upgraded pythonanywhere to run python code in the cloud from one web app and the console for 1GB service
