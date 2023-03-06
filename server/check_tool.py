@@ -24,6 +24,7 @@ cluster0.wnpabny.mongodb.net/cooktool"
 client = MongoClient('localhost', 27017)
 db = client['cooktool']
 
+
 # Define function to check if a tool exists in a collection
 def check_tool(collection_name, tool_name):
     collection = db[collection_name]
@@ -32,6 +33,7 @@ def check_tool(collection_name, tool_name):
         print("The tool {} does not exist in the collection {}".format(tool_name, collection_name))
     else:
         print("The tool {} exists in the collection {}".format(tool_name, collection_name))
+
 
 # Test function with a wrong tool name
 def test_wrong_tool():
