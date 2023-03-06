@@ -30,9 +30,11 @@ def check_tool(collection_name, tool_name):
     collection = db[collection_name]
     tool = collection.find_one({"name": tool_name})
     if tool is None:
-        print("The tool {} does not exist in the collection {}".format(tool_name, collection_name))
+        print("The tool {} does not exist in the collection {}"\
+              .format(tool_name, collection_name))
     else:
-        print("The tool {} exists in the collection {}".format(tool_name, collection_name))
+        print("The tool {} exists in the collection {}"\
+              .format(tool_name, collection_name))
 
 
 # Test function with a wrong tool name
