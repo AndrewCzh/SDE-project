@@ -13,7 +13,7 @@ CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/cooktool"
 
 
-def main():
+# def main():
 #     order = ["4de4cbcd-5cd3-495c-bb81-b1c60ea93753",
 #              ["Salad", "Lettuce"]]
 #     money = check_correct_ingredients(order)
