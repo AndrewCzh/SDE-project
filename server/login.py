@@ -1,4 +1,4 @@
-from pymongo import MongoClient
+# from pymongo import MongoClient
 import uuid
 # from bson.json_util import dumps
 # import random
@@ -12,9 +12,6 @@ import start_game as sg
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
 
-CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
-cluster0.wnpabny.mongodb.net/Ingredients"
-
 
 @app.route('/')
 def index():
@@ -26,10 +23,10 @@ def login_auth():
     """
     These comments are used to connect db
     """
-    dbc.connect_db()
+    client = dbc.connect_db()
 
     username = request.form['username']
-    client = MongoClient(CONNECTION_STRING)
+    # client = MongoClient(CONNECTION_STRING)
     my_db = client["Users"]
     my_col = my_db["Users"]
 
