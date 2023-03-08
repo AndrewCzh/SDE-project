@@ -9,6 +9,8 @@ from flask import Flask, render_template, request, session
 import db.db_connect as dbc
 import start_game as sg
 
+USER = 'Users'
+
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
 
@@ -23,14 +25,24 @@ def login_auth():
     """
     These comments are used to connect db
     """
-    client = dbc.connect_db()
+    dbc.connect_db()
 
     username = request.form['username']
-    # client = MongoClient(CONNECTION_STRING)
-    my_db = client["Users"]
-    my_col = my_db["Users"]
+    # TODO waiting frontend page to be connected
+    """
+    password = request.form['password']
 
-    # data = my_col.find()
+    # check authentication
+    auth_filt = ({'username': username, 'password': password})
+    auth = dbc.fetch_one(USER, USER, auth_filt)
+    if auth:
+        uid = auth['uid']
+        session['uid'] = uid
+        render_template('menu.html')
+    else:
+        render_template('login.html', error="Username or Password is wrong")
+    """
+
     insert = True
     # if data is None:
     #     u_id = 0
@@ -51,9 +63,10 @@ def login_auth():
         found = 1
         while found:
             uid = str(uuid.uuid4())
-            found = my_col.find_one({'u_id': uid})
+            found = dbc.fetch_one(USER, USER, ({'u_id': uid}))
         document = ({'u_id': uid, 'name': username})
-        my_col.insert_one(document)
+        dbc.insert_one(USER, USER, document)
+        # my_col.insert_one(document)
         session['uid'] = uid
         print(username, uid)
         print('here2')
