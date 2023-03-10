@@ -101,9 +101,27 @@ def menu():
     return render_template('home.html', data_ls=data_ls)
 
 
+def get_user_data(uid):
+    user = dbc.fetch_one(USER, USER, {'u_id': uid})
+    if user:
+        return user
+    else:
+        return None
+
+
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    return render_template('profile.html')
+    uid = session['uid']
+    user = get_user_data(uid)
+    if user:
+        # username = user['name']
+        # TODO: retrieve highest score from database
+        # highest_score = 0
+        # username=username, highest_score=highest_score
+        return render_template('profile.html')
+    else:
+        error = "User not found"
+        return render_template('error.html', error=error)
 
 
 @app.route('/home', methods=['GET', 'POST'])
