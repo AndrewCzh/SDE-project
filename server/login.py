@@ -114,11 +114,11 @@ def profile():
     uid = session['uid']
     user = get_user_data(uid)
     if user:
-        # username = user['name']
+        username = user['name']
         # TODO: retrieve highest score from database
-        # highest_score = 0
-        # username=username, highest_score=highest_score
-        return render_template('profile.html')
+        highest_score = 0
+        return render_template('profile.html', username=username,
+                               highest_score=highest_score)
     else:
         error = "User not found"
         return render_template('error.html', error=error)

@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
-    <h1 class="title">REPSAJ</h1>
     <div class="header">
     </div>
 
@@ -12,12 +11,13 @@
       
         <div>
             <form action="/profile" method="POST" >
-                <h1 class="word">Welcome, {{ username }}!</h1>
-                <h3 class="word">YOU HAVE PLAYED __ TIMES</h3>
-                <h3 class="word">YOUR HIGHEST SCORE IS __</h3>
+                <h1>Welcome, {{ username }}!</h1>
+                <h3>YOU HAVE PLAYED __ TIMES</h3>
+                <h3>YOUR HIGHEST SCORE IS __</h3>
                 <br></br>
                 <br></br>
-                <input type="submit" id="startButton" value = 'BACK' />
+                <a href="menu" style="font-size: 30px;">Back to menu</a>
+                <!-- <input type="submit" id="startButton" value = 'BACK' /> -->
                     {% if error %}
                         <p class="error"><strong>Error: </strong> {{error}}</p>
                     {% endif %}
