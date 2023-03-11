@@ -69,10 +69,12 @@ def test_fetch_cooktool():
     assert spoon['name'] == 'spoon'
 
     # assert that the fetched cooktool has the correct description
-    assert spoon['description'] == 'A utensil consisting of a small shallow bowl, oval or round, at the end of a handle.'
+    assert spoon['description'] == 'A utensil consisting of a \
+    small shallow bowl, oval or round, at the end of a handle.'
 
     # assert that the fetched cooktool has the correct usage
-    assert spoon['usage'] == 'Stirring, serving, and mixing ingredients in cooking and baking.'
+    assert spoon['usage'] == 'Stirring, serving, and mixing \
+    ingredients in cooking and baking.'
 
 
 if __name__ == "__main__":
