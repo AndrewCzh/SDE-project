@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+import pymongo
 
 # list of lists, including uid and ing:price dictionary
 # orders_tb = [["Test User", {"Salad": 6, "Broccoli": 0.5, "Tuna": 1}],
@@ -43,8 +44,6 @@ def test_wrong_tool():
 
 # Connect to the database and call the test function
 
-import pymongo
-
 
 def fetch_cooktool(name):
     # connect to the MongoDB server and select the "cooktools" database
@@ -57,7 +56,6 @@ def fetch_cooktool(name):
 
     # return the cooktool as a dictionary
     return tool
-
 
 
 if __name__ == "__main__":
