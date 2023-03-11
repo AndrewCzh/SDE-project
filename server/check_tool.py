@@ -43,6 +43,7 @@ def test_wrong_tool():
 
 # Connect to the database and call the test function
 
+import pymongo
 
 
 def fetch_cooktool(name):
