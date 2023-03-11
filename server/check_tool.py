@@ -44,5 +44,20 @@ def test_wrong_tool():
 # Connect to the database and call the test function
 
 
+
+def fetch_cooktool(name):
+    # connect to the MongoDB server and select the "cooktools" database
+    client = pymongo.MongoClient()
+    db = client['cooktools']
+
+    # select the "tools" collection and find the cooktool with the given name
+    collection = db['tools']
+    tool = collection.find_one({'name': name})
+
+    # return the cooktool as a dictionary
+    return tool
+
+
+
 if __name__ == "__main__":
     test_wrong_tool()
