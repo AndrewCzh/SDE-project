@@ -22,10 +22,20 @@ def index():
 
 @app.route('/signUp', methods=['GET', 'POST'])
 def sign_up():
-    # username = request.form['username']
-    # password =  username = request.form['password']
-    # passwordtwo =  username = request.form['passwordtwo']
-    return render_template('login.html')
+    username = request.form['username']
+    password = request.form['password']
+    passwordtwo  = request.form['passwordtwo']
+    if (password != passwordtwo):
+        error = 'The second entry of your password does not match the previous one'
+        return render_template('signup.html', error=error)
+    
+    data = "get usernames from db"
+    if username in data:
+        error = "This username already exists."
+        return render_template('signup.html', error=error)
+    else:
+        "add new account to db"
+        return render_template('login.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
