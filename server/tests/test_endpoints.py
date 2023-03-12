@@ -47,7 +47,7 @@ def test_del_user():
     Test deleting a user
     """
     TEST_CLIENT.post(ep.USER_ADD, json=SAMPLE_USER)
-    usr.del_user(SAMPLE_USER_NM)
+    usr.del_user(SAMPLE_UID_NM)
     resp_json = TEST_CLIENT.delete(ep.USER_DELETE, json=SAMPLE_UID).get_json()
     assert not usr.user_exists(resp_json[ep.USER_DELETE_NM], SAMPLE_USER_NM)
 

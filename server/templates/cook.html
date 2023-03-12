@@ -16,31 +16,21 @@ p {text-align: center;}
     </div>
     <p class="word"><b>Click to choose your tool and go to next page:</b></p>
 
-
-<!--"""-->
     <div class="cooker">
     <form action="/cook" method="POST" >
-         <div style = "position:relative; left:170px; top:880px; ">
+         <div style = "position:relative; ">
             <input class="answerBtnsOff" id="Oven" type="button" value="Oven"  onclick="onoff(this.id);"/>
         </div>
 
-        <div style = "position:relative; left:200px; top:900px; ">
+        <div style = "position:relative; ">
             <input class="answerBtnsOff" id="RiceCooker"  type="button" value="RiceCooker"  onclick="onoff(this.id)" />
         </div>
 
-        <div style = "position:relative; left:470px; top:310px; ">
+        <div style = "position:relative; ">
             <input class="answerBtnsOff" id="Grill"  type="button" value="Grill"   onclick= "onoff(this.id)" />
         </div>
 
-        <div style = "position:relative; left:1050px; top:50px; ">
-            <input class="answerBtnsOff" id="Refrigerator"  type="button" value="Refrigerator"  onclick= "onoff(this.id)" />
-        </div>
-
-        <div style = "position:relative; left:70px; top:70px; ">
-            <input class="answerBtnsOff" id="Microwave"  type="button" value="Microwave"  onclick= "onoff(this.id)" />
-        </div>
-
-        <div style = "position:relative; left:580px; top:350px; ">
+        <div style = "position:relative; ">
             <input class = "submit_button" type ="submit" id="checkButton" value = 'DONE' onclick="onoff(this.id)"/>
         </div>
 
@@ -59,7 +49,7 @@ p {text-align: center;}
 
     .answerBtnsOff
     {
-        BACKGROUND-COLOR: #ffffff;
+        BACKGROUND-COLOR: blue;
         COLOR: black;
         FONT: 21px Verdana,Arial,Helvetica,sans-serif;
         font-weight:bold;
