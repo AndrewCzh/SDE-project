@@ -19,10 +19,12 @@ app.secret_key = 'your_secret_key_here'
 def index():
     return render_template('login.html')
 
+
 @app.route('/signUp', methods=['GET', 'POST'])
 def sign_up():
-    username = request.form['username']
-    password =  username = request.form['password']
+    # username = request.form['username']
+    # password =  username = request.form['password']
+    # passwordtwo =  username = request.form['passwordtwo']
     return render_template('login.html')
 
 
