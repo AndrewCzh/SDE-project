@@ -24,9 +24,10 @@ def index():
 def sign_up():
     username = request.form['username']
     password = request.form['password']
-    passwordtwo  = request.form['passwordtwo']
+    passwordtwo = request.form['passwordtwo']
     if (password != passwordtwo):
-        error = 'The second entry of your password does not match the previous one'
+        error ='''The second entry of your password
+        does not match the previous one'''
         return render_template('signup.html', error=error)
     
     data = "get usernames from db"
