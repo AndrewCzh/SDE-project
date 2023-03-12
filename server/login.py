@@ -26,10 +26,10 @@ def sign_up():
     password = request.form['password']
     passwordtwo = request.form['passwordtwo']
     if (password != passwordtwo):
-        error ='''The second entry of your password
-        does not match the previous one'''
+        error = 'The second entry of your password\
+        does not match the previous one'
         return render_template('signup.html', error=error)
-    
+
     data = "get usernames from db"
     if username in data:
         error = "This username already exists."
