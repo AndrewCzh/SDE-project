@@ -19,6 +19,12 @@ cluster0.wnpabny.mongodb.net/Ingredients"
 def index():
     return render_template('login.html')
 
+@app.route('/signUp', methods=['GET', 'POST'])
+def sign_up():
+    username = request.form['username']
+    password =  username = request.form['password']
+    return render_template('login.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_auth():
