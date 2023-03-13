@@ -84,6 +84,16 @@ def update_one(collection, db, filt, new_values):
     return
 
 
+def count(collection, db, filt):
+    """
+    This function counts how many game_times a user has played
+    """
+    count = 0
+    if db == "Games":
+        count = client[db][collection].count_documents(filt)
+    return count
+
+
 def main():
     connect_db()
     # print(fetch_all("Burger"))

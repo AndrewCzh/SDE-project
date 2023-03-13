@@ -10,6 +10,7 @@ import db.db_connect as dbc
 import start_game as sg
 
 USER = 'Users'
+GAMES = 'Games'
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
@@ -128,6 +129,11 @@ def get_user_data(uid):
         return None
 
 
+def get_game_times(uid):
+    game_times = dbc.count(GAMES, GAMES, {'u_id': uid})
+    return game_times
+
+
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     uid = session['uid']
@@ -136,8 +142,10 @@ def profile():
         username = user['name']
         # TODO: retrieve highest score from database
         highest_score = 0
+        game_times = get_game_times(uid)
         return render_template('profile.html', username=username,
-                               highest_score=highest_score)
+                               highest_score=highest_score,
+                               game_times=game_times)
     else:
         error = "User not found"
         return render_template('error.html', error=error)
