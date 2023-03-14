@@ -89,7 +89,7 @@ def count(collection, db, filt):
     This function counts how many game_times a user has played
     """
     count = 0
-    if db == "Games":
+    if db == "Users":
         count = client[db][collection].count_documents(filt)
     return count
 

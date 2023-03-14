@@ -48,6 +48,7 @@ def login_auth():
     dbc.connect_db()
 
     username = request.form['username']
+    session['username'] = username
     # TODO waiting frontend page to be connected
     """
     password = request.form['password']
@@ -129,20 +130,20 @@ def get_user_data(uid):
         return None
 
 
-def get_game_times(uid):
-    game_times = dbc.count(GAMES, GAMES, {'u_id': uid})
+def get_game_times(username):
+    game_times = dbc.count(USER, USER, {'name': username})
     return game_times
 
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     uid = session['uid']
+    username = session['username']
     user = get_user_data(uid)
     if user:
-        username = user['name']
         # TODO: retrieve highest score from database
         highest_score = 0
-        game_times = get_game_times(uid)
+        game_times = get_game_times(username)
         return render_template('profile.html', username=username,
                                highest_score=highest_score,
                                game_times=game_times)
