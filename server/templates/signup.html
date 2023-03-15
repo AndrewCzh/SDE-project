@@ -3,7 +3,8 @@
         <link rel="stylesheet" href="static/styles.css">
     </head>
     <body>
-        <form action="/signUp" method="POST">
+        <div class="enter">
+        <form action="/signup" method="POST">
             <table>
                 <h2>Please enter your information </h2>
                 <h3>Username:</h3>
@@ -27,9 +28,11 @@
                 {% if error %}
                     <p class="error"><strong>Error:</strong> {{error}}</p>
                 {% endif %}
+                <br>
+                <a href="/" style="font-size: 30px;">Back</a>     
             </table>
             
         </form>
-                    
+    </div>          
         
     </body>

@@ -18,26 +18,29 @@ app.secret_key = 'your_secret_key_here'
 
 @app.route('/')
 def index():
-    return render_template('login.html')
+    return render_template('index.html')
 
 
-@app.route('/signUp', methods=['GET', 'POST'])
+@app.route('/signup', methods=['GET', 'POST'])
 def sign_up():
-    username = request.form['username']
-    password = request.form['password']
-    passwordtwo = request.form['passwordtwo']
-    if (password != passwordtwo):
-        error = 'The second entry of your password\
-        does not match the previous one'
-        return render_template('signup.html', error=error)
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        passwordtwo = request.form['passwordtwo']
+        if (password != passwordtwo):
+            error = 'The second entry of your password\
+            does not match the previous one'
+            return render_template('signup.html', error=error)
 
-    data = "get usernames from db"
-    if username in data:
-        error = "This username already exists."
-        return render_template('signup.html', error=error)
+        data = "get usernames from db"
+        if username in data:
+            error = "This username already exists."
+            return render_template('signup.html', error=error)
+        else:
+            "add new account to db"
+            return render_template('login.html')
     else:
-        "add new account to db"
-        return render_template('login.html')
+        return render_template('signup.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -45,24 +48,26 @@ def login_auth():
     """
     These comments are used to connect db
     """
-    dbc.connect_db()
+    if request.method == 'POST':
+        dbc.connect_db()
 
-    username = request.form['username']
-    session['username'] = username
-    # TODO waiting frontend page to be connected
-    """
-    password = request.form['password']
+        username = request.form['username']
+        session['username'] = username
+        # TODO waiting frontend page to be connected
 
-    # check authentication
-    auth_filt = ({'username': username, 'password': password})
-    auth = dbc.fetch_one(USER, USER, auth_filt)
-    if auth:
-        uid = auth['uid']
-        session['uid'] = uid
-        render_template('menu.html')
+        password = request.form['password']
+
+        # check authentication
+        auth_filt = ({'name': username, 'password': password})
+        auth = dbc.fetch_one(USER, USER, auth_filt)
+        if auth:
+            uid = auth['uid']
+            session['uid'] = uid
+            render_template('menu.html')
+        else:
+            render_template('login.html', error="Password is wrong")
     else:
-        render_template('login.html', error="Username or Password is wrong")
-    """
+        return render_template('login.html')
 
     insert = True
     # if data is None:
