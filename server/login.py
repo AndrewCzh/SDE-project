@@ -24,20 +24,27 @@ def index():
 @app.route('/signup', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
+        dbc.connect_db()
         username = request.form['username']
         password = request.form['password']
-        passwordtwo = request.form['passwordtwo']
-        if (password != passwordtwo):
+        password_two = request.form['passwordtwo']
+        if password != password_two:
             error = 'The second entry of your password\
             does not match the previous one'
             return render_template('signup.html', error=error)
 
-        data = "get usernames from db"
-        if username in data:
+        # data = "get usernames from db"
+        # check username's uniqueness
+        unique_filt = ({'name': username})
+        unique = dbc.fetch_one(USER, USER, unique_filt)
+        if unique:
             error = "This username already exists."
             return render_template('signup.html', error=error)
         else:
-            "add new account to db"
+            # add new account to db
+            uid = str(uuid.uuid4())
+            document = ({'u_id': uid, 'name': username, 'password': password})
+            dbc.insert_one(USER, USER, document)
             return render_template('login.html')
     else:
         return render_template('signup.html')
@@ -60,8 +67,9 @@ def login_auth():
         # check authentication
         auth_filt = ({'name': username, 'password': password})
         auth = dbc.fetch_one(USER, USER, auth_filt)
+        print(f'{auth=}')
         if auth:
-            uid = auth['uid']
+            uid = auth['u_id']
             session['uid'] = uid
             render_template('menu.html')
         else:
@@ -90,7 +98,7 @@ def login_auth():
         while found:
             uid = str(uuid.uuid4())
             found = dbc.fetch_one(USER, USER, ({'u_id': uid}))
-        document = ({'u_id': uid, 'name': username})
+        document = ({'u_id': uid, 'name': username, 'password': password})
         dbc.insert_one(USER, USER, document)
         # my_col.insert_one(document)
         session['uid'] = uid
