@@ -1,12 +1,13 @@
 # from pymongo import MongoClient
 import uuid
 import db.db_connect as dbc
-import ingredients_generator as ig
+import server.ingredients_generator as ig
 
 DB = 'Games'
 COLLECTION = 'Games'
 GAME = 'game'
 UID = 'u_id'
+sample_uid = "111cdb65-62a8-4df4-b958-550b2921fa86"
 
 
 def start_game(uid):

@@ -3,15 +3,16 @@ This is the file containing all of the endpoints for our flask app.
 The endpoint called `endpoints` will return all available endpoints.
 """
 from http import HTTPStatus
-
 from flask import Flask, request
 from flask_restx import Resource, Api, fields
 import werkzeug.exceptions as wz
 import db.char_types as ctyp
 import db.food_types as ftyp
 import db.check_tool as ctool
-import server.ingredients_generator as ig
+from server.ingredients_generator import random_ingredients, \
+    get_ingredients_price_details
 import db.users as usr
+import server.start_game as sg
 # from flask import jsonify
 
 # import db.db as db
@@ -56,6 +57,8 @@ USER_ADD = f'/{USERS_NS}/{ADD}'
 USER_ADD_NM = f'{USERS_NS}_add'
 USER_DELETE = f'/{USERS_NS}/{DELETE}'
 USER_DELETE_NM = f'{USERS_NS}_delete'
+NEW_GAME = '/Game/add'
+NEW_GAME_NM = 'Game_add'
 
 
 @api.route(HELLO)
@@ -222,7 +225,7 @@ class IngredientsGeneratorList(Resource):
         """
         Returns a list of ingredients.
         """
-        return {INGREDIENTS_GENERATOR_LIST_NM: ig.random_ingredients()}
+        return {INGREDIENTS_GENERATOR_LIST_NM: random_ingredients()}
 
 
 @api.route(INGREDIENTS_GENERATOR_DETAILS)
@@ -234,7 +237,7 @@ class IngredientsGeneratorDetails(Resource):
         """
         Returns a price
         """
-        ingredients = ig.get_ingredients_price_details()
+        ingredients = get_ingredients_price_details()
         if ingredients is not None:
             return {INGREDIENTS_GENERATOR_DETAIL_NM: ingredients}
         else:
@@ -291,6 +294,10 @@ user_fields_del = api.model('DeleteUser', {
     # usr.FULL_NAME: fields.String,
 })
 
+start_fields_add = api.model('StartNewGame', {
+    sg.UID: fields.String,
+})
+
 
 @api.route(USER_ADD)
 class AddUser(Resource):
@@ -322,6 +329,18 @@ class DeleteUser(Resource):
         uid = request.json[usr.UID]
         ret = usr.del_user(uid)
         return {USER_DELETE_NM: ret}
+
+
+@api.route(NEW_GAME)
+class StartGame(Resource):
+    """
+    Start game for a user
+    """
+    @api.expect(start_fields_add)
+    def post(self):
+        uid = request.json[sg.UID]
+        data_ls, uid, game_id = sg.start_game(uid)
+        return {NEW_GAME_NM: game_id}
 
 
 @api.route('/endpoints')

@@ -2,6 +2,7 @@ import pytest
 import sys
 
 sys.path.append("..")
+import db.db_connect as dbc
 import db.users as usr
 import server.endpoints as ep
 
@@ -134,3 +135,11 @@ def test_get_ingredients_generator_list():
 def test_get_ingredient_generator_details():
     resp_json = TEST_CLIENT.get(ep.INGREDIENTS_GENERATOR_DETAILS).get_json()
     assert isinstance(resp_json[ep.INGREDIENTS_GENERATOR_DETAIL_NM], list)
+
+
+def test_start_game():
+    resp_json = TEST_CLIENT.post(ep.NEW_GAME, json=SAMPLE_UID).get_json()
+    assert isinstance(resp_json[ep.NEW_GAME_NM], str)
+    document = ({"u_id": SAMPLE_UID['u_id'],
+                 'game': resp_json[ep.NEW_GAME_NM]})
+    dbc.delete_one('Games', 'Games', document)
