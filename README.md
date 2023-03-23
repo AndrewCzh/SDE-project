@@ -106,6 +106,7 @@ We will write an API-driven restaurant business game. Players take the role of a
 - Now can be connected to Cloud and Local in MongoDB
 - add cooktool database into mongodb (done)
 - update cooktool in database
+- Update User collection in MongoDB, each user has a unique username and its corresponding password
 
 ## Deploy to web
 - Upgraded pythonanywhere to run python code in the cloud from one web app and the console for 1GB service
