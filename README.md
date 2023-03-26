@@ -90,9 +90,10 @@ We will write an API-driven restaurant business game. Players take the role of a
    - basic register/login page (Updated 3/23/2023)
    - randomly generates ingredients for different dishes (done)
    - select the ingredients in frontend (done)
-   - fix teh problem that only log in page can be shown on pythonanywhere (done)
+   - fix the problem that only log in page can be shown on pythonanywhere (done)
    - upload endpoints to the pythonanywhere(done)
    - select the cooking tool in frontend (done)
+   - add cooktool points into database
    - try to maek the frontend interface prettier
    - test if the game runs correctly (Plan to finish in the next few weeks)
    - collects money if finished 
@@ -103,7 +104,7 @@ We will write an API-driven restaurant business game. Players take the role of a
 ## Database
 - Uploaded github and project python files to pythonanywhere
 - Now can be connected to Cloud and Local in MongoDB
-- add cooktool database into mongodb (done)
+- add cooktool database into mongodb 
 - update cooktool in database
 - Update User collection in MongoDB, each user has a unique username and its corresponding password
 
