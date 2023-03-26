@@ -94,6 +94,7 @@ We will write an API-driven restaurant business game. Players take the role of a
    - upload endpoints to the pythonanywhere(done)
    - select the cooking tool in frontend (done)
    - add cooktool points into database
+   - connect check tool into database
    - try to maek the frontend interface prettier
    - test if the game runs correctly (Plan to finish in the next few weeks)
    - collects money if finished 
