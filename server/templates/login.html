@@ -4,24 +4,27 @@
     <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
-    <h1 class="title">REPSAJ</h1>
-    <div class="header">
-    </div>
-
     <div class="enter">
-       
-        <div>
-            Enter your username: 
-        </div>
         <div>
             <form action="/login" method="POST" >
+                <div>
+                    Enter your username: 
+                </div>
                 <input class="textbox" type="text" name="username" placeholder="..." required>
+                <br>
+                <div>
+                    Enter your password: 
+                </div>
+                <input class="textbox" type="text" name="password" placeholder="..." required>
                 <br></br>
-                <input type="submit" id="startButton" value = 'START' />
+                <input type="submit" id="startButton" value = 'ENTER' />
+                <br>
                 {% if error %}
                     <p class="error"><strong>Error: </strong> {{error}}</p>
                 {% endif %}
             </form>
+            <br>
+            <a href="/" style="font-size: 30px;">Back</a>
         </div>
     </div>
 

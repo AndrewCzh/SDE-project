@@ -1,7 +1,6 @@
 """
 This module encapsulates details about users.
 """
-from pymongo import MongoClient
 # from bson.json_util import dumps
 import uuid
 import db.db_connect as dbc
@@ -20,15 +19,12 @@ REQUIRED_FLDS = [UID, NAME]
 users = {TEST_USER_NAME: {UID: '05bfb803-dc3a-4379-ac49-aa9c809fda5b',
                           FULL_NAME: 'Porgy Tirebiter'},
          'handle': {UID: 'kkkk', FULL_NAME: 'Nick Danger'}}
-CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
-cluster0.wnpabny.mongodb.net/Ingredients"
-client = MongoClient(CONNECTION_STRING)
+
+client = dbc.connect_db()
 my_db = client["Users"]
 my_col = my_db["Users"]
 COLLECTION = "Users"
 DB = "Users"
-
-dbc.connect_db()
 
 
 def user_exists(uid, name):
@@ -59,6 +55,7 @@ def get_user_details(uid):
     # user = my_col.find_one({UID: uid})
     filt = {UID: uid}
     user = dbc.fetch_one(COLLECTION, DB, filt)
+    del user["_id"]
     if user is not None:
         return user
     else:
@@ -69,31 +66,14 @@ def del_user(uid):
     filt = {UID: uid}
     # my_col.delete_one({UID: uid})
     dbc.delete_one(COLLECTION, DB, filt)
-    return
-
-
-# def del_all():
-#     my_col.delete_many({})
-#     return
+    return uid
 
 
 def add_user(name):
     if not isinstance(name, str):
         raise TypeError(f'Wrong type for name: {type(name)=}')
-    # if not isinstance(details, dict):
-    #     raise TypeError(f'Wrong type for details: {type(details)=}')
-    # for field in REQUIRED_FLDS:
-    #     if field not in details:
-    #         raise ValueError(f'Required {field=} missing from details')
-    # max_id = my_col.find().sort("u_id", -1).limit(1)
-    uid = 0
-    found = 1
-    while found:
-        uid = str(uuid.uuid4())
-        filt = {UID: uid}
-        found = dbc.fetch_one(COLLECTION, DB, filt)
+    uid = str(uuid.uuid4())
     document = ({UID: uid, NAME: name})
-    # users[name] = details
     dbc.insert_one(COLLECTION, DB, document)
     return uid
 
@@ -112,7 +92,7 @@ def main():
     # print(f'{users=}')
     # print(f'{get_user_details(TEST_USER_NAME)=}')
     # add_user(TEST_USER_NAME)
-    users_dict = get_users_dict()
+    users_dict = get_user_details(TEST_UID)
     print(f"{users_dict=}")
 
 

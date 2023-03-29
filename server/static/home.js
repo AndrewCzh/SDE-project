@@ -128,6 +128,7 @@ function arrayRemove(arr, value) {
 function onoff(btn){
   classname = document.getElementById(btn).className;
   currentvalue = document.getElementById(btn).value;
+  //pickColor();
   if(classname == "answerBtnsOff"){
       document.getElementById(btn).classList.toggle("answerBtnsOff");
       document.getElementById(btn).className = "answerBtnsOn";
@@ -142,4 +143,16 @@ function onoff(btn){
     console.log(ing_selected)
     document.getElementById("demoList").innerHTML = ing_selected;
 }
-  
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function setRandomColor() {
+  $("#colorpad").css("background-color", getRandomColor());
+}

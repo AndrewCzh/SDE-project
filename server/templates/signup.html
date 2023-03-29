@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="static/styles.css">
+    </head>
+    <body>
+        <div class="enter">
+        <form action="/signup" method="POST">
+            <table>
+                <h2>Please enter your information </h2>
+                <h3>Username:</h3>
+                <tr>
+                    <p>First name:
+                    <input type="text" name = "username" placeholder="Username" required/>
+                </tr>
+
+                <tr>
+                    <p>Password:
+                    <input type="password" name = "password" placeholder="password" required/>
+                    <p>Please re-enter your password:
+                    <input type="password" name = "passwordtwo" placeholder="password" required/></br>
+                </tr>
+
+                <p>Date Of Birth:
+                <input type="date" name = "dob" placeholder="YYYY-MM-DD" required/> </br>
+                <tr>
+
+                <input type="submit" value = 'Register' />
+                {% if error %}
+                    <p class="error"><strong>Error:</strong> {{error}}</p>
+                {% endif %}
+                <br>
+                <a href="/" style="font-size: 30px;">Back</a>     
+            </table>
+            
+        </form>
+    </div>          
+        
+    </body>

@@ -48,8 +48,11 @@ def get_ingredients_price_details():
     data = random_ingredients()
     data_ls = []
     for d in data:
-        data_ls.append(loads(d))
-    return data_ls[0].get('price', None)
+        d = loads(d)
+        del d["_id"]
+        data_ls.append(d)
+    # return data_ls[0].get('price', None)
+    return data_ls
 
 
 def dish_generate():
@@ -135,13 +138,13 @@ def main():
     # print("type = ", type(data[0]))
     # data_ls = []
     print("data = ", data)
-    data_ls = []
-    data_price = 0
-    for d in data:
-        data_ls.append(loads(d)['name'])
-        data_price += loads(d)['price']
-    order = [data_ls]
-    print(f'{order=},{order[0][0]}')
+    # data_ls = []
+    # data_price = 0
+    # for d in data:
+    #     data_ls.append(loads(d)['name'])
+    #     data_price += loads(d)['price']
+    # order = [data_ls]
+    # print(f'{order=},{order[0][0]}')
     # app.run()
 
     # print("here = ", get_ingredients_price_details())
@@ -149,3 +152,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # ingred = random_ingredients()
+    # print(f"{ingred=}")
+    ret = get_ingredients_price_details()
+    # print(f"{ret=}")
