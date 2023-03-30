@@ -156,7 +156,7 @@ def profile():
     if user:
         # TODO: retrieve highest score from database
         highest_score = 0
-        game_times = get_game_times(username)
+        game_times = get_game_times(username) - 1
         return render_template('profile.html', username=username,
                                highest_score=highest_score,
                                game_times=game_times)
