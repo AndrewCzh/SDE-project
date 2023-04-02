@@ -50,6 +50,14 @@ def fetch_all(collection, db='Ingredients'):
     return ret
 
 
+def fetch_all_with_filt(collection, db, filt):
+    ret = []
+    for doc in client[db][collection].find(filt):
+        del doc['_id']
+        ret.append(doc)
+    return ret
+
+
 def fetch_one(collection, db, filt):
     ret = None
     if db == 'Users':

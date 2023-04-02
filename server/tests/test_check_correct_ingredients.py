@@ -26,7 +26,7 @@ data_price = 0
 for d in data:
     data_ls.append(loads(d)['name'])
     data_price += loads(d)['price']
-order = [uid, data_ls]
+order = [uid, game_id, data_ls]
 # so.insert_orders(uid, data)
 
 
@@ -38,13 +38,13 @@ def new_ingredients():
 
 
 def test_check_correct_ingredients_correct(new_ingredients):
-    price = cci.check_correct_ingredients(order)
+    price = cci.check_correct_ingredients(order, game_id)
     # assert price == data_price
     assert isinstance(price, float)
 
 
 def test_check_correct_ingredients_incorrect():
-    price = cci.check_correct_ingredients(ret_2)
+    price = cci.check_correct_ingredients(ret_2, game_id)
     assert price == -1.0
     assert isinstance(price, float)
 

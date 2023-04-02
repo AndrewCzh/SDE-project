@@ -1,4 +1,5 @@
-from pymongo import MongoClient
+from db import db_connect as dbc
+
 
 # list of lists, including uid and ing:price dictionary
 orders_tb = [["Test User", {"Salad": 6, "Broccoli": 0.5, "Tuna": 1}],
@@ -8,27 +9,19 @@ orders_tb = [["Test User", {"Salad": 6, "Broccoli": 0.5, "Tuna": 1}],
 # User's return from the front-end
 ret = ["Test User", ["Salad", "Broccoli", "Tuna"]]
 
-# Prepare db connection
-CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
-cluster0.wnpabny.mongodb.net/Ingredients"
-
 
 # check whether there is a order returned by the user in the order_tb
-def check_correct_ingredients(order):
-    # length = len(orders_tb) - 1
-    # u_id = order[0]
-    # cnt = 0
-    u_id = order[0]
-    client = MongoClient(CONNECTION_STRING)
-    my_db = client["Orders"]
-    my_col = my_db["Orders"]
-    found = my_col.find({"uid": u_id})
+def check_correct_ingredients(order, game):
+    dbc.connect_db()
+    filt = {"uid": order[0], "game": game}
+    found = dbc.fetch_all_with_filt("Orders", "Orders", filt)
+
     # print(found)
     for item in found:
         end = True
         money = 0
-        if len(item["ing_price"]) == len(order[1]):
-            for food in order[1]:
+        if len(item["ing_price"]) == len(order[2]):
+            for food in order[2]:
                 if food not in item["ing_price"]:
                     end = False
                     break
@@ -37,25 +30,6 @@ def check_correct_ingredients(order):
             if end:
                 return float(money)
     return -1.0
-
-    # for item in orders_tb:
-    #     money = 0
-    #     end = True
-    #     if item[0] == u_id:
-    #         if len(item[1]) == len(order[1]):
-    #             for food in order[1]:
-    #                 if food not in item[1]:
-    #                     end = False
-    #                     break
-    #                 else:
-    #                     money += item[1][food]
-    #             if end:
-    #                 orders_tb[cnt], orders_tb[length] = \
-    #                     orders_tb[length], orders_tb[cnt]
-    #                 orders_tb.pop()
-    #                 return float(money)
-    #     cnt += 1
-    # return -1.0
 
 
 def main():
