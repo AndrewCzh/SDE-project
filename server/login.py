@@ -210,7 +210,7 @@ def cooking():
 
 @app.route('/success')
 def success():
-    return render_template('login.html')
+    return render_template('menu.html')
 
 
 @app.route('/failed')

@@ -44,6 +44,10 @@
         <br></br>
         <br></br>
          <input type="submit" id="checkButton" value = 'NEXT' />
+         <a href="menu" style="font-size: 40px;">Back to menu</a>
+                    {% if error %}
+                        <p class="error"><strong>Error: </strong> {{error}}</p>
+                    {% endif %}
     </form>
     
 </div>  
