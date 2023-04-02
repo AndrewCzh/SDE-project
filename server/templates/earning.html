@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cook's Earnings</title>
+	<style>
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.4);
+		}
+
+		.modal-content {
+			background-color: white;
+			margin: 10% auto;
+			padding: 20px;
+			border: 1px solid #888;
+			width: 40%;
+			text-align: center;
+		}
+
+		.modal-close {
+			color: #aaaaaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.modal-close:hover,
+		.modal-close:focus {
+			color: #000;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1 style="text-align: center; font-size: 36px; color: black;">Cook's Earnings</h1>
+	<div style="text-align: center;">
+		<p style="font-size: 24px;">Cook Name: <span style="font-weight: bold;">John Doe</span></p>
+		<p style="font-size: 20px;">Dish Cooked: <span style="font-weight: bold;">Spaghetti Bolognese</span></p>
+		<p style="font-size: 20px;">Date and Time: <span style="font-weight: bold;">April 2, 2023, 6:00 PM</span></p>
+		<button onclick="showModal()" style="font-size: 24px; padding: 10px 20px;">Show Earnings</button>
+	</div>
+
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<span class="modal-close" onclick="closeModal()">&times;</span>
+			<p style="font-size: 36px;">$10</p>
+			<p style="font-size: 24px;">Earnings for cooking the correct dish</p>
+		</div>
+	</div>
+
+	<script>
+		function showModal() {
+			document.getElementById('myModal').style.display = 'block';
+		}
+
+		function closeModal() {
+			document.getElementById('myModal').style.display = 'none';
+		}
+	</script>
+</body>
+</html>

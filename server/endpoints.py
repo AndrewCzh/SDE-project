@@ -3,17 +3,16 @@ This is the file containing all of the endpoints for our flask app.
 The endpoint called `endpoints` will return all available endpoints.
 """
 from http import HTTPStatus
+
 from flask import Flask, request
 from flask_restx import Resource, Api, fields
 import werkzeug.exceptions as wz
+
 import db.char_types as ctyp
 import db.food_types as ftyp
 import db.check_tool as ctool
-from server.ingredients_generator import random_ingredients, \
-    get_ingredients_price_details
+import server.ingredients_generator as ig
 import db.users as usr
-import server.start_game as sg
-# from flask import jsonify
 
 # import db.db as db
 
@@ -24,7 +23,6 @@ LIST = 'list'
 DICT = 'dict'
 DETAILS = 'details'
 ADD = 'add'
-DELETE = 'delete'
 MAIN_MENU = '/main_menu'
 MAIN_MENU_NM = 'Main Menu'
 HELLO = '/hello'
@@ -36,29 +34,21 @@ CHAR_TYPE_DICT = f'/character_types/{DICT}'
 CHAR_TYPE_DICT_NM = 'character_types_dict'
 FOOD_TYPE_DICT = f'/food_types/{DICT}'
 FOOD_TYPE_LIST = f'/food_types/{LIST}'
-TOOL_TYPE_LIST = f'/tool_types/{LIST}'
-TOOL_TYPE_LIST_NM = 'tool_types_list'
+FOOD_TYPE_DICT = f'/food_types/{DICT}'
 FOOD_TYPE_LIST_NM = 'food_types_list'
 FOOD_TYPE_DICT_NM = 'food_types_dict'
 FOOD_TYPE_DETAILS = f'/food_types/{DETAILS}'
 TOOL_TYPE_DICT = f'/check_tool/{DICT}'
 INGREDIENTS_GENERATOR_LIST = f'/ingredients_generator/{LIST}'
 INGREDIENTS_GENERATOR_LIST_NM = 'ingredients_generator_list'
-INGREDIENTS_GENERATOR_DETAILS = f'/ingredients_generator/{DETAILS}'
-INGREDIENTS_GENERATOR_DETAIL_NM = 'ingredients_generator_details'
+INGREDIENTS_GENERATOR_DETAIL = f'/ingredients_generator/{DETAILS}'
 LOGIN = '/templates/login'
 USERS_NS = 'users'
 USER_DICT = f'/{USERS_NS}/{DICT}'
 USER_LIST = f'/{USERS_NS}/{LIST}'
 USER_LIST_NM = f'{USERS_NS}_list'
 USER_DETAILS = f'/{USERS_NS}/{DETAILS}'
-USER_DETAILS_NM = f'{USERS_NS}_details'
 USER_ADD = f'/{USERS_NS}/{ADD}'
-USER_ADD_NM = f'{USERS_NS}_add'
-USER_DELETE = f'/{USERS_NS}/{DELETE}'
-USER_DELETE_NM = f'{USERS_NS}_delete'
-NEW_GAME = '/Game/add'
-NEW_GAME_NM = 'Game_add'
 
 
 @api.route(HELLO)
@@ -113,18 +103,6 @@ class ToolTypeDict(Resource):
                 'Title': 'Tool Types'}
 
 
-@api.route(TOOL_TYPE_LIST)
-class ToolTypeList(Resource):
-    """
-    This will get a list of cook tool types
-    """
-    def get(self):
-        """
-        Returns a list of character types.
-        """
-        return {TOOL_TYPE_LIST_NM: ftyp.get_tool_types()}
-
-
 @api.route(FOOD_TYPE_DICT)
 class FoodTypeDict(Resource):
     """
@@ -172,30 +150,30 @@ class FoodTypeDetails(Resource):
             raise wz.NotFound(f'{food_type} not found.')
 
 
-# @api.route(CHAR_TYPE_LIST)
-# class CharacterTypeList(Resource):
-#     """
-#     This will get a list of character types.
-#     """
-#     def get(self):
-#         """
-#         Returns a list of character types.
-#         """
-#         return {CHAR_TYPE_LIST_NM: ctyp.get_char_types()}
+@api.route(CHAR_TYPE_LIST)
+class CharacterTypeList(Resource):
+    """
+    This will get a list of character types.
+    """
+    def get(self):
+        """
+        Returns a list of character types.
+        """
+        return {CHAR_TYPE_LIST_NM: ctyp.get_char_types()}
 
 
-# @api.route(CHAR_TYPE_DICT)
-# class CharacterTypeDict(Resource):
-#     """
-#     This will get a list of character types.
-#     """
-#     def get(self):
-#         """
-#         Returns a list of character types.
-#         """
-#         return {'Data': ctyp.get_char_type_dict(),
-#                 'Type': 'Data',
-#                 'Title': 'Character Types'}
+@api.route(CHAR_TYPE_DICT)
+class CharacterTypeDict(Resource):
+    """
+    This will get a list of character types.
+    """
+    def get(self):
+        """
+        Returns a list of character types.
+        """
+        return {'Data': ctyp.get_char_type_dict(),
+                'Type': 'Data',
+                'Title': 'Character Types'}
 
 
 @api.route(f'{CHAR_TYPE_DETAILS}/<char_type>')
@@ -225,29 +203,29 @@ class IngredientsGeneratorList(Resource):
         """
         Returns a list of ingredients.
         """
-        return {INGREDIENTS_GENERATOR_LIST_NM: random_ingredients()}
+        return {INGREDIENTS_GENERATOR_LIST_NM: ig.random_ingredients()}
 
 
-@api.route(INGREDIENTS_GENERATOR_DETAILS)
+@api.route(INGREDIENTS_GENERATOR_DETAIL)
 class IngredientsGeneratorDetails(Resource):
     """
-    This will get the price of an ingredient
+    This will get a list of ingredients
     """
     def get(self):
         """
         Returns a price
         """
-        ingredients = get_ingredients_price_details()
-        if ingredients is not None:
-            return {INGREDIENTS_GENERATOR_DETAIL_NM: ingredients}
+        price = ig.get_ingredients_price_details()
+        if price is not None:
+            return {'Price': price}
         else:
-            wz.NotFound('Ingredients details is not found.')
+            wz.NotFound('Price is not found.')
 
 
 @api.route(USER_DICT)
 class UserDict(Resource):
     """
-    This will get a list of the current users.
+    This will get a list of currrent users.
     """
     def get(self):
         """
@@ -261,7 +239,7 @@ class UserDict(Resource):
 @api.route(USER_LIST)
 class UserList(Resource):
     """
-    This will get a list of the current users.
+    This will get a list of currrent users.
     """
     def get(self):
         """
@@ -270,32 +248,15 @@ class UserList(Resource):
         return {USER_LIST_NM: usr.get_users()}
 
 
-@api.route(USER_DETAILS)
-class UserDetails(Resource):
-    """
-    This will get a user's detail
-    """
-    def get(self):
-        """
-        Returns a user's detail
-        """
-        return {USER_DETAILS_NM: usr.get_user_details(usr.TEST_UID)}
-
-
-user_fields_add = api.model('NewUser', {
+# user_fields = api.model('NewUser', {
+#     usr.NAME: fields.String,
+#     usr.EMAIL: fields.String,
+#     usr.FULL_NAME: fields.String,
+# })
+user_fields = api.model('NewUser', {
     usr.NAME: fields.String,
     # usr.EMAIL: fields.String,
     # usr.FULL_NAME: fields.String,
-})
-
-user_fields_del = api.model('DeleteUser', {
-    usr.UID: fields.String,
-    # usr.EMAIL: fields.String,
-    # usr.FULL_NAME: fields.String,
-})
-
-start_fields_add = api.model('StartNewGame', {
-    sg.UID: fields.String,
 })
 
 
@@ -304,43 +265,17 @@ class AddUser(Resource):
     """
     Add a user.
     """
-    @api.expect(user_fields_add)
+    @api.expect(user_fields)
     def post(self):
         """
         Add a user.
         """
+        print(f'{request.json=}')
         name = request.json[usr.NAME]
         del request.json[usr.NAME]
         uid = usr.add_user(name)
-        return {USER_ADD_NM: uid}
+        return uid
         # usr.add_user(name, request.json)
-
-
-@api.route(USER_DELETE)
-class DeleteUser(Resource):
-    """
-    Delete a user.
-    """
-    @api.expect(user_fields_del)
-    def delete(self):
-        """
-        Delete a user.
-        """
-        uid = request.json[usr.UID]
-        ret = usr.del_user(uid)
-        return {USER_DELETE_NM: ret}
-
-
-@api.route(NEW_GAME)
-class StartGame(Resource):
-    """
-    Start game for a user
-    """
-    @api.expect(start_fields_add)
-    def post(self):
-        uid = request.json[sg.UID]
-        data_ls, uid, game_id = sg.start_game(uid)
-        return {NEW_GAME_NM: game_id}
 
 
 @api.route('/endpoints')
