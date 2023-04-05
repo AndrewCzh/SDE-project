@@ -70,6 +70,8 @@ function startTimer() {
       onTimesUp();
     }
   }, 1000);
+  document.getElementById("ingButton").disabled = true;
+
 }
 
 function formatTime(time) {
