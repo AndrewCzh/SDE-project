@@ -68,7 +68,7 @@ def login_auth():
         auth_filt = ({'name': username, 'password': password})
         auth = dbc.fetch_one(USER, USER, auth_filt)
         print(f'{auth=}')
-        if auth:
+        if 'name' in auth:
             uid = auth['u_id']
             session['uid'] = uid
             render_template('menu.html')
@@ -220,6 +220,7 @@ def failed():
 
 
 def main():
+
     # print(login())
     app.run(debug=True)
 
