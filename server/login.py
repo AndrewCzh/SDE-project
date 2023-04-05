@@ -68,55 +68,54 @@ def login_auth():
         auth_filt = ({'name': username, 'password': password})
         auth = dbc.fetch_one(USER, USER, auth_filt)
         print(f'{auth=}')
-        if 'name' in auth:
+        if auth:
             uid = auth['u_id']
             session['uid'] = uid
-            render_template('menu.html')
+            return render_template('menu.html')
         else:
-            error = "password is wrong"
-            render_template('login.html', error=error)
+            return render_template('login.html', error="Password is wrong")
     else:
         return render_template('login.html')
 
-    insert = True
-    # if data is None:
-    #     u_id = 0
+    # insert = True
+    # # if data is None:
+    # #     u_id = 0
+    # # else:
+    # #     u_id = 0
+    # #     for user in data:
+    # #         if user['name'] == username:
+    # #             insert = False
+    # #             break
+    # #         u_id = max(u_id, user['u_id'])
+    # if insert:
+    #     print("here1")
+    #     """
+    #     These comments are used to connect db
+    #     """
+    #     # check if uid is already in the users table
+    #     uid = 0
+    #     found = 1
+    #     while found:
+    #         uid = str(uuid.uuid4())
+    #         found = dbc.fetch_one(USER, USER, ({'u_id': uid}))
+    #     document = ({'u_id': uid, 'name': username, 'password': password})
+    #     dbc.insert_one(USER, USER, document)
+    #     # my_col.insert_one(document)
+    #     session['uid'] = uid
+    #     print(username, uid)
+    #     print('here2')
+    #     # TODO delete this after creating start_game.html
+    #     # data_ls = sg.start_game(uid)[0]
+    #     # data_ls = ig.generator(uid, '')
+    #     # return render_template('home.html')
+    #     # return ig.generator(uid)
+    #     # return redirect(url_for('home'))
+    #     return render_template('menu.html')
+    #     # change to menu.html
     # else:
-    #     u_id = 0
-    #     for user in data:
-    #         if user['name'] == username:
-    #             insert = False
-    #             break
-    #         u_id = max(u_id, user['u_id'])
-    if insert:
-        print("here1")
-        """
-        These comments are used to connect db
-        """
-        # check if uid is already in the users table
-        uid = 0
-        found = 1
-        while found:
-            uid = str(uuid.uuid4())
-            found = dbc.fetch_one(USER, USER, ({'u_id': uid}))
-        document = ({'u_id': uid, 'name': username, 'password': password})
-        dbc.insert_one(USER, USER, document)
-        # my_col.insert_one(document)
-        session['uid'] = uid
-        print(username, uid)
-        print('here2')
-        # TODO delete this after creating start_game.html
-        # data_ls = sg.start_game(uid)[0]
-        # data_ls = ig.generator(uid, '')
-        # return render_template('home.html')
-        # return ig.generator(uid)
-        # return redirect(url_for('home'))
-        return render_template('menu.html')
-        # change to menu.html
-    else:
-        error = "name is already used"
-        # return render_template('login.html', error=error)
-        render_template('menu.html', error=error)
+    #     error = "name is already used"
+    #     # return render_template('login.html', error=error)
+    #     render_template('menu.html', error=error)
 
 # @app.route('/cook', methods=['POST'])
 # def check_correct_ingredients():
@@ -129,7 +128,7 @@ def login_auth():
 #     return render_template('success.html')
 
 
-@app.route('/home', methods=['GET', 'POST'])
+@app.route('/menu', methods=['GET', 'POST'])
 def menu():
     uid = session['uid']
     data_ls = sg.start_game(uid)[0]
@@ -166,7 +165,7 @@ def profile():
         return render_template('error.html', error=error)
 
 
-@app.route('/cook', methods=['GET', 'POST'])
+@app.route('/home', methods=['GET', 'POST'])
 def home():
     """
     needs to receive a fixed target to pass the level,
