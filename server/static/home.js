@@ -158,3 +158,47 @@ function getRandomColor() {
 function setRandomColor() {
   $("#colorpad").css("background-color", getRandomColor());
 }
+
+// ing_selected = JSON.stringify(ing_selected);
+// import axios from 'axios';
+
+// const postData = {
+//   my_variable1: 'Hello, ',
+//   my_variable2: 'world!'
+// };
+
+// // postData = JSON.stringify(ing_selected);
+
+// // Make an HTTP POST request to the backend endpoint
+// axios.post('/cook', postData)
+//   .then(response => {
+//     // Extract the result from the response
+//     const result = response.data.result;
+//     console.log(`The result is ${result}`);
+//   })
+//   .catch(error => {
+//     console.error(`Error posting variables: ${error}`);
+//   });
+
+
+  // <strong>// Get the reciever endpoint from Python using fetch</strong>
+  // fetch("http://127.0.0.1:5000/", 
+  // {
+  // method: 'POST',
+  // headers: {
+  // 'Content-type': 'application/json',
+  // 'Accept': 'application/json'
+  // },
+  //  // Strigify the payload into JSON</strong>:
+  // body:JSON.stringify(cars)}).then(res=>{
+  // if(res.ok){
+  // return res.json()
+  // }else{
+  // alert("something is wrong")
+  // }
+  // }).then(jsonResponse=>{
+
+  // // Log the response data in the console
+  // console.log(jsonResponse)
+  // }
+  // ).catch((err) => console.error(err));
