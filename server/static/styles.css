@@ -47,6 +47,7 @@ h1.title{
         1px -1px 0 #000,
         -1px 1px 0 #000,
         1px 1px 0 #000;
+    font-size: 40px;
 } 
 
 .header{
@@ -57,6 +58,39 @@ h1.title{
     font-size: 30px;
 
 }
+
+.indexButton {
+    font-size: 30px; 
+    background-color: rgb(0, 115, 255);
+    padding: 8 30px;
+    font-family:Comic Sans MS;
+    position: center center;
+    left: 50%;
+    text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    
+  }
+
+a:link, a:visited {
+    padding: 8 30px;
+    font-family:"Comic Sans MS";
+    color: white;
+    text-emphasis: none;
+    text-decoration: none;
+    position: center center;
+    left: 50%;
+    text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+  }
+  
 
 .textbox {
     margin: auto;
@@ -85,7 +119,7 @@ h1.title{
 
 input[type=submit],input[type=button]{
 
-    background-color: rgb(0, 115, 255); /* Green */
+    background-color: rgb(0, 115, 255);
     border: none; 
     height: 60px;
     width: 200px;
@@ -93,9 +127,11 @@ input[type=submit],input[type=button]{
 
 }
 
+
 input[type=ingButton]{
     width: 150px;
 }
+
 body {
     background-image: url('../static/restaurant.png');
     background-repeat: no-repeat;
