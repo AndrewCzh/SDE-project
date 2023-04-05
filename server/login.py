@@ -60,7 +60,6 @@ def login_auth():
 
         username = request.form['username']
         session['username'] = username
-        # TODO waiting frontend page to be connected
 
         password = request.form['password']
 
@@ -77,45 +76,6 @@ def login_auth():
     else:
         return render_template('login.html')
 
-    # insert = True
-    # # if data is None:
-    # #     u_id = 0
-    # # else:
-    # #     u_id = 0
-    # #     for user in data:
-    # #         if user['name'] == username:
-    # #             insert = False
-    # #             break
-    # #         u_id = max(u_id, user['u_id'])
-    # if insert:
-    #     print("here1")
-    #     """
-    #     These comments are used to connect db
-    #     """
-    #     # check if uid is already in the users table
-    #     uid = 0
-    #     found = 1
-    #     while found:
-    #         uid = str(uuid.uuid4())
-    #         found = dbc.fetch_one(USER, USER, ({'u_id': uid}))
-    #     document = ({'u_id': uid, 'name': username, 'password': password})
-    #     dbc.insert_one(USER, USER, document)
-    #     # my_col.insert_one(document)
-    #     session['uid'] = uid
-    #     print(username, uid)
-    #     print('here2')
-    #     # TODO delete this after creating start_game.html
-    #     # data_ls = sg.start_game(uid)[0]
-    #     # data_ls = ig.generator(uid, '')
-    #     # return render_template('home.html')
-    #     # return ig.generator(uid)
-    #     # return redirect(url_for('home'))
-    #     return render_template('menu.html')
-    #     # change to menu.html
-    # else:
-    #     error = "name is already used"
-    #     # return render_template('login.html', error=error)
-    #     render_template('menu.html', error=error)
 
 # @app.route('/cook', methods=['POST'])
 # def check_correct_ingredients():
@@ -131,7 +91,10 @@ def login_auth():
 @app.route('/menu', methods=['GET', 'POST'])
 def menu():
     uid = session['uid']
-    data_ls = sg.start_game(uid)[0]
+    gid = str(uuid.uuid4())
+    session['game_id'] = gid
+    data_ls, oid = sg.start_game(uid, gid)
+    session['oid'] = oid
     return render_template('home.html', data_ls=data_ls)
 
 

@@ -16,7 +16,8 @@ def create_filt(uid, game_id, data):
     for d in data:
         # data_ls.append(loads(d))
         price_dict[(loads(d))['name']] = loads(d)['price']
-    filt = {"uid": uid, 'game': game_id, "ing_price": price_dict}
+    oid = str(uuid.uuid4())
+    filt = {"uid": uid, 'game': game_id, "oid": oid, "ing_price": price_dict}
     return filt
 
 
@@ -30,6 +31,7 @@ def insert_orders(uid, game_id, data):
     #     # data_ls.append(loads(d))
     #     price_dict[(loads(d))['name']] = loads(d)['price']
     filt = create_filt(uid, game_id, data)
+    oid = filt['oid']
     price_dict = filt['ing_price']
     data_ls.append(price_dict)
     # insert into orders table
@@ -39,15 +41,14 @@ def insert_orders(uid, game_id, data):
     # filt = {"uid": uid, "ing_price": price_dict}
     # my_col.insert_one({"uid": uid, "ing_price": price_dict})
     dbc.insert_one("Orders", "Orders", filt)
-    return data_ls, filt
+    return data_ls, oid
 
 
-def del_orders(uid, game_id, data):
+def del_orders(oid):
     # client = MongoClient(CONNECTION_STRING)
     # my_db = client["Orders"]
     # my_col = my_db["Orders"]
-    filt = create_filt(uid, game_id, data)
-    # filt = {"uid": uid, "ing_price": price_dict}
+    filt = ({"oid": oid})
     dbc.delete_one("Orders", "Orders", filt)
 
 

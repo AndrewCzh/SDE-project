@@ -33,11 +33,11 @@ def generator(uid, game_id):
     # filt = {"uid": uid, "ing_price": price_dict}
     # so.insert_orders(my_col, my_db, filt)
     # # my_col.insert_one({"uid": uid, "ing_price": price_dict})
-    data_ls, filt = so.insert_orders(uid, game_id, data)
+    data_ls, oid = so.insert_orders(uid, game_id, data)
     print(f'{data_ls=}')
     print("type = ", type(data_ls[1]))
     # return render_template('home.html', data_ls=data_ls)
-    return data_ls
+    return data_ls, oid
 
 # @app.route('/home')
 # def home():

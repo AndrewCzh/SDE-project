@@ -14,8 +14,7 @@ orders_tb = [["Test User", {"Salad": 6, "Broccoli": 0.5, "Tuna": 1}],
              ["Bowen", {"Salad": 6, "Broccoli": 0.5, "Tuna": 1}]]
 
 # User's return from the front-end
-ret_1 = ["Test User", ["Salad", "Broccoli", "Tuna"]]
-ret_2 = ["Test User", ["Salad", "Broccoli"]]
+ret_2 = ["NO FOOD"]
 
 dbc.connect_db()
 uid = str(uuid.uuid4())
@@ -29,23 +28,26 @@ for d in data:
 order = [uid, game_id, data_ls]
 # so.insert_orders(uid, data)
 
+oid = so.insert_orders(uid, game_id, data)[1]
+
 
 @pytest.fixture(scope='function')
 def new_ingredients():
-    so.insert_orders(uid, game_id, data)
+    print(f"{oid=}")
     yield
-    so.del_orders(uid, game_id, data)
+    so.del_orders(oid)
 
 
-def test_check_correct_ingredients_correct(new_ingredients):
-    price = cci.check_correct_ingredients(order, game_id)
+def test_check_correct_ingredients_correct():
+    price = cci.check_correct_ingredients(data_ls, game_id, oid)
     # assert price == data_price
+    assert price > 0.0
     assert isinstance(price, float)
 
 
 def test_check_correct_ingredients_incorrect():
-    price = cci.check_correct_ingredients(ret_2, game_id)
-    assert price == -1.0
+    price = cci.check_correct_ingredients(ret_2, game_id, oid)
+    assert price < 0.0
     assert isinstance(price, float)
 
 

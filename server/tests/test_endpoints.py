@@ -5,6 +5,7 @@ sys.path.append("..")
 import db.db_connect as dbc
 import db.users as usr
 import server.endpoints as ep
+import server.start_game as sg
 
 
 TEST_CLIENT = ep.app.test_client()
@@ -29,6 +30,12 @@ SAMPLE_USER = {
 }
 SAMPLE_UID = {
     usr.UID: SAMPLE_UID_NM,
+    # usr.EMAIL: 'x@y.com',
+    # usr.FULL_NAME: 'Sample User',
+}
+SAMPLE_START = {
+    sg.UID: "111cdb65-62a8-4df4-b958-550b2921fa86",
+    sg.GID: "111cdb65-62a8-4df4-b958-550b2921fa87",
     # usr.EMAIL: 'x@y.com',
     # usr.FULL_NAME: 'Sample User',
 }
@@ -138,8 +145,8 @@ def test_get_ingredient_generator_details():
 
 
 def test_start_game():
-    resp_json = TEST_CLIENT.post(ep.NEW_GAME, json=SAMPLE_UID).get_json()
+    resp_json = TEST_CLIENT.post(ep.NEW_GAME, json=SAMPLE_START).get_json()
     assert isinstance(resp_json[ep.NEW_GAME_NM], str)
-    document = ({"u_id": SAMPLE_UID['u_id'],
-                 'game': resp_json[ep.NEW_GAME_NM]})
+    document = ({"u_id": SAMPLE_START['uid'],
+                 'game': SAMPLE_START['gid']})
     dbc.delete_one('Games', 'Games', document)

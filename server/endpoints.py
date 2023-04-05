@@ -296,6 +296,7 @@ user_fields_del = api.model('DeleteUser', {
 
 start_fields_add = api.model('StartNewGame', {
     sg.UID: fields.String,
+    sg.GID: fields.String,
 })
 
 
@@ -339,7 +340,8 @@ class StartGame(Resource):
     @api.expect(start_fields_add)
     def post(self):
         uid = request.json[sg.UID]
-        data_ls, uid, game_id = sg.start_game(uid)
+        gid = request.json[sg.GID]
+        data_ls, oid, game_id = sg.start_game(uid, gid)
         return {NEW_GAME_NM: game_id}
 
 
