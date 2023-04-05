@@ -73,7 +73,8 @@ def login_auth():
             session['uid'] = uid
             render_template('menu.html')
         else:
-            render_template('login.html', error="Password is wrong")
+            error = "password is wrong"
+            render_template('login.html', error=error)
     else:
         return render_template('login.html')
 
@@ -128,7 +129,7 @@ def login_auth():
 #     return render_template('success.html')
 
 
-@app.route('/menu', methods=['GET', 'POST'])
+@app.route('/home', methods=['GET', 'POST'])
 def menu():
     uid = session['uid']
     data_ls = sg.start_game(uid)[0]
@@ -165,7 +166,7 @@ def profile():
         return render_template('error.html', error=error)
 
 
-@app.route('/home', methods=['GET', 'POST'])
+@app.route('/cook', methods=['GET', 'POST'])
 def home():
     """
     needs to receive a fixed target to pass the level,
