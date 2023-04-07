@@ -28,24 +28,28 @@ for d in data:
 order = [uid, game_id, data_ls]
 # so.insert_orders(uid, data)
 
-oid = so.insert_orders(uid, game_id, data)[1]
+# oid = so.insert_orders(uid, game_id, data)[1]
 
 
 @pytest.fixture(scope='function')
 def new_ingredients():
+    oid = so.insert_orders(uid, game_id, data)[1]
     print(f"{oid=}")
-    yield
+    yield oid
     so.del_orders(oid)
 
 
-def test_check_correct_ingredients_correct():
+def test_check_correct_ingredients_correct(new_ingredients):
+    oid = new_ingredients
     price = cci.check_correct_ingredients(data_ls, game_id, oid)
     # assert price == data_price
     assert price > 0.0
     assert isinstance(price, float)
 
 
-def test_check_correct_ingredients_incorrect():
+def test_check_correct_ingredients_incorrect(new_ingredients):
+    oid = new_ingredients
+    print(f"{oid=}")
     price = cci.check_correct_ingredients(ret_2, game_id, oid)
     assert price < 0.0
     assert isinstance(price, float)
