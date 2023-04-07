@@ -98,6 +98,15 @@ def test_get_user_details(mock_get_user_details):
     assert RET_UID_NM == resp.json[ep.USER_DETAILS_NM][usr.UID]
 
 
+@patch('db.users.get_user_details', return_value=None, autospec=True)
+def test_get_user_details_no_in_db(mock_get_user_details):
+    """
+    See if we can get a valid user's details
+    """
+    resp = TEST_CLIENT.get(f'{ep.USER_DETAILS_W_NS}/UID_NOT_IN_DB')
+    assert resp.status_code == HTTPStatus.NOT_FOUND
+
+
 # def test_get_character_type_list():
 #     """
 #     See if we can get a charcter type list properly.
