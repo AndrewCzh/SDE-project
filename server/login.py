@@ -93,8 +93,9 @@ def menu():
     uid = session['uid']
     gid = str(uuid.uuid4())
     session['game_id'] = gid
-    data_ls, oid = sg.start_game(uid, gid)
+    data_ls, oid, game_id = sg.start_game(uid, gid)
     session['oid'] = oid
+    gid = game_id
     return render_template('home.html', data_ls=data_ls)
 
 

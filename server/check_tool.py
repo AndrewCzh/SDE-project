@@ -1,6 +1,15 @@
 from pymongo import MongoClient
 import pymongo
 
+# cook_tools = {'food1': 'A', 'food2': 'B', 'food3': 'C'}
+
+# def can_cook(food, cook_tool):
+#     if cook_tools[food] == cook_tool:
+#         return True
+#     else:
+#         return False
+
+
 # list of lists, including uid and ing:price dictionary
 # orders_tb = [["Test User", {"Salad": 6, "Broccoli": 0.5, "Tuna": 1}],
 #              ["Test User", {"RiceBowl": 7, "Shrimp": 1, "Broccoli": 0.5}],
