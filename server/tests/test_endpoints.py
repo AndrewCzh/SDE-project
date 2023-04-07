@@ -92,8 +92,10 @@ def test_get_user_details(mock_get_user_details):
     """
     resp = TEST_CLIENT.get(f'{ep.USER_DETAILS_W_NS}/{RET_UID_NM}')
     assert resp.status_code == HTTPStatus.OK
-    assert isinstance(resp.json, dict)
+    # assert isinstance(resp.json, dict)
     assert isinstance(resp.json[ep.USER_DETAILS_NM], dict)
+    assert usr.NAME in resp.json[ep.USER_DETAILS_NM]
+    assert RET_UID_NM == resp.json[ep.USER_DETAILS_NM][usr.UID]
 
 
 # def test_get_character_type_list():
