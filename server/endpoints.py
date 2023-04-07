@@ -4,7 +4,7 @@ The endpoint called `endpoints` will return all available endpoints.
 """
 from http import HTTPStatus
 from flask import Flask, request
-from flask_restx import Resource, Api, fields
+from flask_restx import Resource, Api, fields, Namespace
 import werkzeug.exceptions as wz
 import db.char_types as ctyp
 import db.food_types as ftyp
@@ -19,6 +19,10 @@ import server.start_game as sg
 
 app = Flask(__name__)
 api = Api(app)
+
+USERS_NS = 'users'
+users = Namespace(USERS_NS, 'Users')
+api.add_namespace(users)
 
 LIST = 'list'
 DICT = 'dict'
@@ -47,11 +51,11 @@ INGREDIENTS_GENERATOR_LIST_NM = 'ingredients_generator_list'
 INGREDIENTS_GENERATOR_DETAILS = f'/ingredients_generator/{DETAILS}'
 INGREDIENTS_GENERATOR_DETAIL_NM = 'ingredients_generator_details'
 LOGIN = '/templates/login'
-USERS_NS = 'users'
 USER_DICT = f'/{USERS_NS}/{DICT}'
 USER_LIST = f'/{USERS_NS}/{LIST}'
 USER_LIST_NM = f'{USERS_NS}_list'
-USER_DETAILS = f'/{USERS_NS}/{DETAILS}'
+USER_DETAILS_W_NS = f'/{USERS_NS}/{DETAILS}'
+USER_DETAILS = f'/{DETAILS}'
 USER_DETAILS_NM = f'{USERS_NS}_details'
 USER_ADD = f'/{USERS_NS}/{ADD}'
 USER_ADD_NM = f'{USERS_NS}_add'
@@ -270,16 +274,33 @@ class UserList(Resource):
         return {USER_LIST_NM: usr.get_users()}
 
 
-@api.route(USER_DETAILS)
+# @api.route(USER_DETAILS_W_NS)
+# class UserDetails(Resource):
+#     """
+#     This will get a user's detail
+#     """
+#     def get(self):
+#         """
+#         Returns a user's detail
+#         """
+#         return {USER_DETAILS_NM: usr.get_user_details(usr.TEST_UID)}
+
+
+@users.route(f'{USER_DETAILS}/<uid>')
 class UserDetails(Resource):
     """
     This will get a user's detail
     """
-    def get(self):
+    @api.response(HTTPStatus.OK, 'Success')
+    @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
+    def get(self, uid):
         """
         Returns a user's detail
         """
-        return {USER_DETAILS_NM: usr.get_user_details(usr.TEST_UID)}
+        user_det = usr.get_user_details(uid)
+        if user_det is None:
+            raise wz.NotFound(f'{uid} not found.')
+        return {USER_DETAILS_NM: user_det}
 
 
 user_fields_add = api.model('NewUser', {

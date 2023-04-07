@@ -55,8 +55,8 @@ def get_user_details(uid):
     # user = my_col.find_one({UID: uid})
     filt = {UID: uid}
     user = dbc.fetch_one(COLLECTION, DB, filt)
-    del user["_id"]
     if user is not None:
+        del user["_id"]
         return user
     else:
         raise ValueError('User is not exist.')

@@ -17,7 +17,7 @@ def create_filt(uid, game_id, data):
         # data_ls.append(loads(d))
         price_dict[(loads(d))['name']] = loads(d)['price']
     oid = str(uuid.uuid4())
-    filt = {"uid": uid, 'game': game_id, "oid": oid, "ing_price": price_dict}
+    filt = {"u_id": uid, 'game': game_id, "oid": oid, "ing_price": price_dict}
     return filt
 
 

@@ -1,5 +1,7 @@
 import pytest
 import sys
+from unittest.mock import patch
+from http import HTTPStatus
 
 sys.path.append("..")
 import db.db_connect as dbc
@@ -23,6 +25,7 @@ def test_hello():
 
 SAMPLE_USER_NM = 'Sample User'
 SAMPLE_UID_NM = '5e4175d6-0d25-4e18-80c3-62014b9c1ab7'
+RET_UID_NM = "3bf4bcca-313c-4917-ab89-6a08405f281d"
 SAMPLE_USER = {
     usr.NAME: SAMPLE_USER_NM,
     # usr.EMAIL: 'x@y.com',
@@ -39,6 +42,17 @@ SAMPLE_START = {
     # usr.EMAIL: 'x@y.com',
     # usr.FULL_NAME: 'Sample User',
 }
+RET_UID_DETAILS = {
+    usr.UID: RET_UID_NM,
+    usr.NAME: SAMPLE_USER_NM
+}
+
+
+@pytest.fixture(scope='function')
+def a_user():
+    ret = usr.add_user(SAMPLE_USER_NM)
+    yield ret
+    usr.del_user(ret)
 
 
 def test_add_user():
@@ -71,12 +85,15 @@ def test_get_user_list():
     assert isinstance(resp_json[ep.USER_LIST_NM], list)
 
 
-def test_get_user_details():
+@patch('db.users.get_user_details', return_value=RET_UID_DETAILS, autospec=True)
+def test_get_user_details(mock_get_user_details):
     """
     See if we can get a valid user's details
     """
-    resp_json = TEST_CLIENT.get(ep.USER_DETAILS).get_json()
-    assert isinstance(resp_json[ep.USER_DETAILS_NM], dict)
+    resp = TEST_CLIENT.get(f'{ep.USER_DETAILS_W_NS}/{RET_UID_NM}')
+    assert resp.status_code == HTTPStatus.OK
+    assert isinstance(resp.json, dict)
+    assert isinstance(resp.json[ep.USER_DETAILS_NM], dict)
 
 
 # def test_get_character_type_list():
@@ -106,11 +123,7 @@ def test_get_user_details():
 #     assert TEST_CHAR_TYPE in resp_json
 #     assert isinstance(resp_json[TEST_CHAR_TYPE], dict)
 
-@pytest.fixture(scope='function')
-def a_user():
-    ret = usr.add_user(SAMPLE_USER_NM)
-    yield ret
-    usr.del_user(ret)
+
 
 
 def test_get_food_type_list():
