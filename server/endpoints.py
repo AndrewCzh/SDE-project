@@ -3,7 +3,7 @@ This is the file containing all of the endpoints for our flask app.
 The endpoint called `endpoints` will return all available endpoints.
 """
 from http import HTTPStatus
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_restx import Resource, Api, fields, Namespace
 import werkzeug.exceptions as wz
 import db.char_types as ctyp
@@ -379,3 +379,101 @@ class Endpoints(Resource):
         endpoints = ''
         # sorted(rule.rule for rule in api.app.url_map.iter_rules())
         return {"Available endpoints": endpoints}
+
+####HATEOAS
+# Global game state
+current_order = 'abc'
+ingredients = ['ingredient1', 'ingredient2', 'ingredient3']
+tools = ['tool1', 'tool2', 'tool3']
+
+@api.route('/findorder')
+class FindOrder(Resource):
+    def get(self):
+        global current_order, ingredients, tools
+
+        # Check if there is an active order
+        if current_order:
+            print("enter1")
+            # Example response with HATEOAS links
+            response = {
+                'message': f'Current order: {current_order}',
+                '_links': [
+                    {
+                        'rel': 'IngredientsGeneratorList',
+                        'href': f'/{INGREDIENTS_GENERATOR_LIST}',
+                        'method': 'POST',
+                        'description': 'Select an ingredient for the order'
+                    },
+                    # {
+                    #     'rel': 'select_tool',
+                    #     'href': '/select_tool',
+                    #     'method': 'POST',
+                    #     'description': 'Select a tool for the order'
+                    # },
+                    # {
+                    #     'rel': 'finish_order',
+                    #     'href': '/finish_order',
+                    #     'method': 'POST',
+                    #     'description': 'Finish the current order and earn points'
+                    # }
+                ]
+            }
+        # else:
+        #     # Example response when there is no active order
+        #     response = {
+        #         'message': 'No active orders at the moment',
+        #         '_links': [
+        #             {
+        #                 'rel': 'new_order',
+        #                 'href': '/new_order',
+        #                 'method': 'POST',
+        #                 'description': 'Start a new order'
+        #             }
+        #         ]
+        #     }
+
+        return jsonify(response)
+#
+# @api.route('/new_order', methods=['POST'])
+# def new_order():
+#     global current_order
+#
+#     # Example logic to generate a new order
+#     current_order = 'Order12345'
+#     return jsonify({'message': f'New order generated: {current_order}'})
+#
+# @api.route('/select_ingredient', methods=['POST'])
+# def select_ingredient():
+#     global current_order, ingredients
+#
+#     # Example logic to select an ingredient for the current order
+#     if current_order:
+#         ingredient = ingredients[0]
+#         ingredients.pop(0)
+#         return jsonify({'message': f'Selected ingredient: {ingredient}'})
+#     else:
+#         return jsonify({'error': 'No active order to select ingredient'})
+#
+# @app.route('/select_tool', methods=['POST'])
+# def select_tool():
+#     global current_order, tools
+#
+#     # Example logic to select a tool for the current order
+#     if current_order:
+#         tool = tools[0]
+#         tools.pop(0)
+#         return jsonify({'message': f'Selected tool: {tool}'})
+#     else:
+#         return jsonify({'error': 'No active order to select tool'})
+#
+# @app.route('/finish_order', methods=['POST'])
+# def finish_order():
+#     global current_order
+#
+#     # Example logic to finish the current order and earn points
+#     if current_order:
+#         points = 10
+#         current_order = None
+#         return jsonify({'message': f'Order finished. Earned points: {points}'})
+#     else:
+#         return jsonify({'error': 'No active order to finish'})
