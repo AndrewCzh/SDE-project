@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from db import db_connect as dbc
+# from db import db_connect as dbc
 
 app = Flask(__name__)
 
@@ -24,8 +24,6 @@ def cookFailed():
 
 
 @app.route('/login', methods=['GET', 'POST'])
-
-
 def main():
     app.run(debug=True)
 
