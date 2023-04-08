@@ -390,9 +390,7 @@ tools = ['Grill', 'RickCooker', 'Oven']
 @api.route('/findorder')
 class FindOrder(Resource):
     def get(self):
-        global current_order, ingredients, tools
-
-        
+        #global current_order, ingredients, tools
         # Check if there is an active order
         if current_order:
             print("enter1")
@@ -433,8 +431,6 @@ class FindOrder(Resource):
         #             }
         #         ]
         #     }
-
-        
         return jsonify(response)
 #
 # @api.route('/new_order', methods=['POST'])
