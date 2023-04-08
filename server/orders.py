@@ -1,7 +1,7 @@
 # from pymongo import MongoClient
 import uuid
 from bson.json_util import loads
-from flask import Flask, jsonify
+# from flask import Flask, jsonify
 
 # import db.db_connect as dbc
 from db import db_connect as dbc
@@ -69,7 +69,6 @@ def main():
     price = cci.check_correct_ingredients(order)
     print(f'{price=}')
     del_orders(uid, data)
-
 
 
 if __name__ == "__main__":
