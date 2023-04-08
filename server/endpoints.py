@@ -380,7 +380,8 @@ class Endpoints(Resource):
         # sorted(rule.rule for rule in api.app.url_map.iter_rules())
         return {"Available endpoints": endpoints}
 
-####HATEOAS
+
+# HATEOAS
 # Global game state
 current_order = 'abc'
 ingredients = ['lettuce', 'tomato', 'onion']
@@ -390,7 +391,7 @@ tools = ['Grill', 'RickCooker', 'Oven']
 @api.route('/findorder')
 class FindOrder(Resource):
     def get(self):
-        #global current_order, ingredients, tools
+        # global current_order, ingredients, tools
         # Check if there is an active order
         if current_order:
             print("enter1")
@@ -473,6 +474,7 @@ class FindOrder(Resource):
 #     if current_order:
 #         points = 10
 #         current_order = None
-#         return jsonify({'message': f'Order finished. Earned points: {points}'})
+#         return jsonify({'message': f'Order /
+# finished. Earned points: {points}'})
 #     else:
 #         return jsonify({'error': 'No active order to finish'})
