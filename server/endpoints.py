@@ -383,8 +383,8 @@ class Endpoints(Resource):
 ####HATEOAS
 # Global game state
 current_order = 'abc'
-ingredients = ['ingredient1', 'ingredient2', 'ingredient3']
-tools = ['tool1', 'tool2', 'tool3']
+ingredients = ['lettuce', 'tomato', 'onion']
+tools = ['Grill', 'RickCooker', 'Oven']
 
 @api.route('/findorder')
 class FindOrder(Resource):
