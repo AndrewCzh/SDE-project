@@ -9,7 +9,7 @@ import db.users as usr
 @pytest.fixture(scope='function')
 def new_user_type():
     global uid
-    uid = usr.add_user(usr.TEST_USER_NAME)
+    uid = usr.add_user(usr.TEST_USER_NAME, usr.TEST_PASSWORD)
     yield
     usr.del_user(uid)
 
@@ -46,7 +46,7 @@ def test_add_user():
     # for field in usr.REQUIRED_FLDS:
     #     details[field] = 2
     # uid = usr.add_user("Sample User")
-    uid = usr.add_user(usr.TEST_USER_NAME)
+    uid = usr.add_user(usr.TEST_USER_NAME, usr.TEST_PASSWORD)
     # usr.add_user(usr.TEST_USER_NAME, details)
     assert usr.user_exists(uid, usr.TEST_USER_NAME)
     usr.del_user(uid)
@@ -54,7 +54,7 @@ def test_add_user():
 
 # @pytest.mark.skip("Can't run this test untill the delete function is written.")
 def test_del_user():
-    uid = usr.add_user(usr.TEST_USER_NAME)
+    uid = usr.add_user(usr.TEST_USER_NAME, usr.TEST_PASSWORD)
     # usr.add_user(usr.TEST_USER_NAME, details)
     assert usr.user_exists(uid, usr.TEST_USER_NAME)
     usr.del_user(uid)

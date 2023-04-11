@@ -60,12 +60,14 @@ USER_LIST_NM = f'{USERS_NS}_{LIST}'
 USER_DETAILS_W_NS = f'/{USERS_NS}/{DETAILS}'
 USER_DETAILS = f'/{DETAILS}'
 USER_DETAILS_NM = f'{USERS_NS}_details'
-USER_ADD = f'/{USERS_NS}/{ADD}'
-USER_ADD_NM = f'{USERS_NS}_add'
-USER_DELETE = f'/{USERS_NS}/{DELETE}'
+USER_ADD = f'/{ADD}'
+USER_ADD_W_NS = f'/{USERS_NS}/{ADD}'
+USER_ADD_NM = f'{USERS_NS}_{ADD}'
+USER_DELETE = f'/{DELETE}'
+USER_DELETE_W_NS = f'/{USERS_NS}/{DELETE}'
 USER_DELETE_NM = f'{USERS_NS}_delete'
-NEW_GAME = '/Game/add'
-NEW_GAME_NM = 'Game_add'
+NEW_GAME = f'/Game/{ADD}'
+NEW_GAME_NM = f'Game_{ADD}'
 
 
 @api.route(HELLO)
@@ -309,6 +311,7 @@ class UserDetails(Resource):
 
 user_fields_add = api.model('NewUser', {
     usr.NAME: fields.String,
+    usr.PASSWORD: fields.String,
     # usr.EMAIL: fields.String,
     # usr.FULL_NAME: fields.String,
 })
@@ -325,7 +328,7 @@ start_fields_add = api.model('StartNewGame', {
 })
 
 
-@api.route(USER_ADD)
+@users.route(USER_ADD)
 class AddUser(Resource):
     """
     Add a user.
@@ -336,13 +339,14 @@ class AddUser(Resource):
         Add a user.
         """
         name = request.json[usr.NAME]
+        password = request.json[usr.PASSWORD]
         del request.json[usr.NAME]
-        uid = usr.add_user(name)
+        uid = usr.add_user(name, password)
         return {USER_ADD_NM: uid}
         # usr.add_user(name, request.json)
 
 
-@api.route(USER_DELETE)
+@users.route(USER_DELETE)
 class DeleteUser(Resource):
     """
     Delete a user.

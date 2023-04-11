@@ -7,8 +7,10 @@ import db.db_connect as dbc
 
 TEST_USER_NAME = 'Test user'
 TEST_UID = '111cdb65-62a8-4df4-b958-550b2921fa86'
+TEST_PASSWORD = '12345'
 SAMPLE_USER = "Sample User"
 NAME = 'name'
+PASSWORD = 'password'
 UID = 'u_id'
 FULL_NAME = 'full_name'
 
@@ -69,11 +71,11 @@ def del_user(uid):
     return uid
 
 
-def add_user(name):
+def add_user(name, password):
     if not isinstance(name, str):
         raise TypeError(f'Wrong type for name: {type(name)=}')
     uid = str(uuid.uuid4())
-    document = ({UID: uid, NAME: name})
+    document = ({UID: uid, NAME: name, PASSWORD: password})
     dbc.insert_one(COLLECTION, DB, document)
     return uid
 

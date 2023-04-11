@@ -28,6 +28,7 @@ SAMPLE_UID_NM = '5e4175d6-0d25-4e18-80c3-62014b9c1ab7'
 RET_UID_NM = "3bf4bcca-313c-4917-ab89-6a08405f281d"
 SAMPLE_USER = {
     usr.NAME: SAMPLE_USER_NM,
+    usr.PASSWORD: '12345',
     # usr.EMAIL: 'x@y.com',
     # usr.FULL_NAME: 'Sample User',
 }
@@ -59,7 +60,7 @@ def test_add_user():
     """
     Test adding a user.
     """
-    resp_json = TEST_CLIENT.post(ep.USER_ADD, json=SAMPLE_USER).get_json()
+    resp_json = TEST_CLIENT.post(ep.USER_ADD_W_NS, json=SAMPLE_USER).get_json()
     assert usr.user_exists(resp_json[ep.USER_ADD_NM], SAMPLE_USER_NM)
     usr.del_user(SAMPLE_USER_NM)
 
@@ -68,9 +69,9 @@ def test_del_user():
     """
     Test deleting a user
     """
-    TEST_CLIENT.post(ep.USER_ADD, json=SAMPLE_USER)
+    TEST_CLIENT.post(ep.USER_ADD_W_NS, json=SAMPLE_USER)
     usr.del_user(SAMPLE_UID_NM)
-    resp_json = TEST_CLIENT.delete(ep.USER_DELETE, json=SAMPLE_UID).get_json()
+    resp_json = TEST_CLIENT.delete(ep.USER_DELETE_W_NS, json=SAMPLE_UID).get_json()
     assert not usr.user_exists(resp_json[ep.USER_DELETE_NM], SAMPLE_USER_NM)
 
 
@@ -144,8 +145,6 @@ def test_get_user_details_no_in_db(mock_get_user_details):
 #     resp_json = TEST_CLIENT.get(f'{ep.CHAR_TYPE_DETAILS}/{TEST_CHAR_TYPE}').get_json()
 #     assert TEST_CHAR_TYPE in resp_json
 #     assert isinstance(resp_json[TEST_CHAR_TYPE], dict)
-
-
 
 
 def test_get_food_type_list():
