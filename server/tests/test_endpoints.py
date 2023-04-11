@@ -74,13 +74,24 @@ def test_del_user():
     assert not usr.user_exists(resp_json[ep.USER_DELETE_NM], SAMPLE_USER_NM)
 
 
+def test_get_user_dict():
+    """
+    See if we can get a user list properly.
+    Return should look like:
+        {USER_LIST_NM: [list of users types...]}
+    """
+    resp = TEST_CLIENT.get(ep.USER_DICT_W_NS)
+    resp_json = resp.get_json()
+    assert isinstance(resp_json[ep.USER_DICT_NM], dict)
+
+
 def test_get_user_list():
     """
     See if we can get a user list properly.
     Return should look like:
         {USER_LIST_NM: [list of users types...]}
     """
-    resp = TEST_CLIENT.get(ep.USER_LIST)
+    resp = TEST_CLIENT.get(ep.USER_LIST_W_NS)
     resp_json = resp.get_json()
     assert isinstance(resp_json[ep.USER_LIST_NM], list)
 

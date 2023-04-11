@@ -8,6 +8,7 @@ from flask import Flask, render_template, request, session
 # session, url_for, redirect
 import db.db_connect as dbc
 import start_game as sg
+# import check_correct_ingredients as cci
 
 USER = 'Users'
 GAMES = 'Games'
@@ -95,7 +96,6 @@ def menu():
     session['game_id'] = gid
     data_ls, oid, game_id = sg.start_game(uid, gid)
     session['oid'] = oid
-    gid = game_id
     return render_template('home.html', data_ls=data_ls)
 
 
@@ -163,6 +163,7 @@ def receive_data():
 
 @app.route('/cook', methods=['GET', 'POST'])
 def cooking():
+    # money += cci.check_correct_ingredients(order, game, oid)
     # selected_cook
     # correct_cook
     # if selected_cook == correct_cook:

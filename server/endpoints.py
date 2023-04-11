@@ -51,9 +51,12 @@ INGREDIENTS_GENERATOR_LIST_NM = 'ingredients_generator_list'
 INGREDIENTS_GENERATOR_DETAILS = f'/ingredients_generator/{DETAILS}'
 INGREDIENTS_GENERATOR_DETAIL_NM = 'ingredients_generator_details'
 LOGIN = '/templates/login'
-USER_DICT = f'/{USERS_NS}/{DICT}'
-USER_LIST = f'/{USERS_NS}/{LIST}'
-USER_LIST_NM = f'{USERS_NS}_list'
+USER_DICT = f'/{DICT}'
+USER_DICT_W_NS = f'/{USERS_NS}/{DICT}'
+USER_DICT_NM = f'{USERS_NS}_{DICT}'
+USER_LIST = f'/{LIST}'
+USER_LIST_W_NS = f'/{USERS_NS}/{LIST}'
+USER_LIST_NM = f'{USERS_NS}_{LIST}'
 USER_DETAILS_W_NS = f'/{USERS_NS}/{DETAILS}'
 USER_DETAILS = f'/{DETAILS}'
 USER_DETAILS_NM = f'{USERS_NS}_details'
@@ -248,7 +251,7 @@ class IngredientsGeneratorDetails(Resource):
             wz.NotFound('Ingredients details is not found.')
 
 
-@api.route(USER_DICT)
+@users.route(USER_DICT)
 class UserDict(Resource):
     """
     This will get a list of the current users.
@@ -257,12 +260,13 @@ class UserDict(Resource):
         """
         Returns a list of current users.
         """
-        return {'Data': usr.get_users_dict(),
-                'Type': 'Data',
-                'Title': 'List Users'}
+        return {USER_DICT_NM: usr.get_users_dict()}
+        # return {'Data': usr.get_users_dict(),
+        #         'Type': 'Data',
+        #         'Title': 'List Users'}
 
 
-@api.route(USER_LIST)
+@users.route(USER_LIST)
 class UserList(Resource):
     """
     This will get a list of the current users.
