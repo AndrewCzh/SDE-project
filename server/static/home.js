@@ -18,12 +18,13 @@ const COLOR_CODES = {
 };
 
 const TIME_LIMIT = 30;
-let timePassed = 0;
+// let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 let remainingPathColor = COLOR_CODES.info.color;
 let ing_selected=Array();
 let list = document.getElementById("selectedList");
+const COUNTER_KEY = 'my-counter';
 
 
 document.getElementById("app").innerHTML = `
@@ -148,7 +149,7 @@ function onoff(btn){
       document.getElementById(btn).className = "answerBtnsOff";
       arrayRemove(ing_selected,currentvalue); //removing elements to array
     }
-    console.log(ing_selected)
+    // console.log(ing_selected)
     document.getElementById("demoList").innerHTML = ing_selected;
 }
 
@@ -167,7 +168,7 @@ function setRandomColor() {
 
 function sendUserinfo(){
   let list = ing_selected
-  console.log(list)
+  // console.log(list)
   const request = new XMLHttpRequest()
   document.getElementById("test").innerHTML = list;
   request.open('POST', `/ProcessUserinfo/${JSON.stringify(list)}`)
