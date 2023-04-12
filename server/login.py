@@ -8,6 +8,7 @@ from flask import Flask, render_template, request, session
 # session, url_for, redirect
 import db.db_connect as dbc
 import start_game as sg
+import json
 # import check_correct_ingredients as cci
 
 USER = 'Users'
@@ -139,6 +140,7 @@ def home():
     target = 1000
     timeout = False
     error = "ERROR"
+    
 
     if timeout:
         if money < target:
@@ -153,12 +155,12 @@ def home():
     return render_template('cook.html')
 
 
-@app.route('/api/data', methods=['POST'])
-def receive_data():
-    data = request.get_json()
-    # You can now use the data in your Flask application
+# receiving selected ingredients from home.html
+@app.route('/ProcessUserinfo/<string:list>', methods=['POST'])
+def ProcessUserinfo(list):
+    data = json.loads(list)
     print(data)
-    return jsonify({'status': 'success'})
+    return True
 
 
 @app.route('/cook', methods=['GET', 'POST'])

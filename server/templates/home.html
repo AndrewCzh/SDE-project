@@ -46,8 +46,13 @@
         <p><h1 class="word">Here are the selected ingredients:</h1></p>
         <ul id="demoList", name="ing_selected", style="color:rgb(245, 32, 114);font-style: italic;
         display: inline-block; font-size: 30px; height: 55px;"></ul> 
+
+        <ul id="test", name="list", style="color:green;font-style: italic;
+        display: inline-block; font-size: 30px; height: 55px;"></ul> 
         <br>
-         <input type="submit" id="checkButton" value = 'NEXT' />
+         <input type="submit" onclick="sendUserinfo()" id="checkButton" value = 'NEXT' />
+         <input type="button" onclick="sendUserinfo()" id="checkButton" value = 'send' />
+
          <a href="login" class="indexButton">EXIT</a>
                     {% if error %}
                         <p class="error"><strong>Error: </strong> {{error}}</p>
