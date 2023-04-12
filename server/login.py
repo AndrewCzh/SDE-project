@@ -3,12 +3,12 @@ import uuid
 # from bson.json_util import dumps
 # import random
 # import jsonify
-from flask import Flask, render_template, request, session, redirect,url_for
+from flask import Flask, render_template, request, session, redirect, url_for
 # import ingredients_generator as ig
 # session, url_for, redirect
 import db.db_connect as dbc
 import start_game as sg
-import json
+# import json
 import check_correct_ingredients as cci
 
 USER = 'Users'
@@ -163,13 +163,14 @@ def ProcessUserinfo(list):
 
 @app.route('/cook', methods=['GET', 'POST'])
 def cooking():
-    money=0
+    money = 0
     data = session['ing']
     list(data)
     print(type(data))
-    print("hereee",session['ing'])
+    print("hereee", session['ing'])
 
-    money += cci.check_correct_ingredients(session['ing'], session['game'], session['oid'])
+    money += cci.check_correct_ingredients(session['ing'], 
+            session['game'], session['oid'])
     # selected_cook
     # correct_cook
     # if selected_cook == correct_cook:
