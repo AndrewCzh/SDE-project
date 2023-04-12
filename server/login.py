@@ -3,13 +3,13 @@ import uuid
 # from bson.json_util import dumps
 # import random
 # import jsonify
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect,url_for
 # import ingredients_generator as ig
 # session, url_for, redirect
 import db.db_connect as dbc
 import start_game as sg
 import json
-# import check_correct_ingredients as cci
+import check_correct_ingredients as cci
 
 USER = 'Users'
 GAMES = 'Games'
@@ -72,7 +72,7 @@ def login_auth():
         if auth:
             uid = auth['u_id']
             session['uid'] = uid
-            return render_template('menu.html')
+            return redirect(url_for('menu'))
         else:
             return render_template('login.html', error="Password is wrong")
     else:
@@ -95,7 +95,7 @@ def menu():
     session['game_id'] = gid
     data_ls, oid, game_id = sg.start_game(uid, gid)
     session['oid'] = oid
-    return render_template('home.html', data_ls=data_ls)
+    return render_template('menu.html', data_ls=data_ls)
 
 
 def get_user_data(uid):
@@ -145,24 +145,31 @@ def home():
         else:
             return render_template('failed.html', error=error)
 
-    # selected_ing
-    # correct_ing
-    # if selected_ing != correct_ing:
-    #     price_earned = price * 0.8
-    return render_template('cook.html')
+    uid = session['uid']
+    gid = str(uuid.uuid4())
+    session['game_id'] = gid
+    data_ls, oid, game_id = sg.start_game(uid, gid)
+    session['oid'] = oid
+    return render_template('home.html', data_ls=data_ls)
 
 
 # receiving selected ingredients from home.html
 @app.route('/ProcessUserinfo/<string:list>', methods=['POST'])
 def ProcessUserinfo(list):
-    data = json.loads(list)
-    print(data)
-    return True
+    session['ing'] = list
+    print(list)
+    return render_template('cook.html')
 
 
 @app.route('/cook', methods=['GET', 'POST'])
 def cooking():
-    # money += cci.check_correct_ingredients(order, game, oid)
+    money=0
+    data = session['ing']
+    list(data)
+    print(type(data))
+    print("hereee",session['ing'])
+
+    money += cci.check_correct_ingredients(session['ing'], session['game'], session['oid'])
     # selected_cook
     # correct_cook
     # if selected_cook == correct_cook:

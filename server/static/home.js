@@ -18,7 +18,8 @@ const COLOR_CODES = {
 };
 
 const TIME_LIMIT = 30;
-// let timePassed = 0;
+// let timePassed = 0;'
+let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 let remainingPathColor = COLOR_CODES.info.color;
@@ -66,6 +67,10 @@ function startTimer() {
     );
     setCircleDasharray();
     setRemainingPathColor(timeLeft);
+    if ((timeLeft--) > 0) {
+      window.sessionStorage.setItem(COUNTER_KEY, timeLeft);
+    } else {
+      window.sessionStorage.removeItem(COUNTER_KEY);}
 
     if (timeLeft === 0) {
       onTimesUp();
