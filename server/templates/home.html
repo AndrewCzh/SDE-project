@@ -9,7 +9,7 @@
 
 <ul>
     {% for ing in data_ls[1].keys() %}
-        <li style="color: pink;"><h1 class = "food">{{ing}}</h1></li>
+        <li style="color: white;"><h1 class = "food">{{ing}}</h1></li>
     {% endfor %}
 </ul>
 <div class="selected">
@@ -43,15 +43,16 @@
         <input class="answerBtnsOff" id="Carrot"  type="ingButton" value="Carrot"   onclick= "onoff(this.id)" />
         <br></br>
         <br></br>
-        <p><h1 class="word">Here are the selected ingredients:</h1></p>
-        <ul id="demoList", name="ing_selected", style="color:rgb(245, 32, 114);font-style: italic;
-        display: inline-block; font-size: 30px; height: 55px;"></ul> 
+        <p><h1 class="word"style="color:black; font-size: 30px;">Here are the selected ingredients:</h1></p>
+        <ul id="demoList", name="ing_selected", style="color:white;font-style: italic;
+        display: inline-block; font-size: 30px;"></ul> 
 
-        <ul id="test", name="list", style="color:green;font-style: italic;
-        display: inline-block; font-size: 30px; height: 55px;"></ul> 
+        <!-- <ul id="test", name="list", style="color:green;font-style: italic;
+        display: inline-block; font-size: 30px; height: 55px;"></ul>  -->
         <br>
          <input type="submit" onclick="sendUserinfo()" id="checkButton" value = 'NEXT' />
-         <input type="button" onclick="sendUserinfo()" id="checkButton" value = 'send' />
+         <!-- <input type="button" onclick="sendUserinfo()" id="checkButton" value = 'send' /> -->
+
 
          <a href="login" class="indexButton">EXIT</a>
                     {% if error %}

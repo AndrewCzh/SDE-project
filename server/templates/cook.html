@@ -19,19 +19,19 @@ p {text-align: center;}
     <div class="cooker">
     <form action="/cook" method="POST" >
          <div style = "position:relative; ">
-            <input class="answerBtnsOff" id="Oven" type="button" value="Oven"  onclick="onoff(this.id);"/>
+            <input class="answerBtnsOff" id="Oven" type="ingButton" value="Oven"  onclick="onoff(this.id);"/>
         </div>
 
         <div style = "position:relative; ">
-            <input class="answerBtnsOff" id="RiceCooker"  type="button" value="RiceCooker"  onclick="onoff(this.id)" />
+            <input class="answerBtnsOff" id="RiceCooker"  type="ingButton" value="RiceCooker"  onclick="onoff(this.id)" />
         </div>
 
         <div style = "position:relative; ">
-            <input class="answerBtnsOff" id="Grill"  type="button" value="Grill"   onclick= "onoff(this.id)" />
+            <input class="answerBtnsOff" id="Grill"  type="ingButton" value="Grill"   onclick= "onoff(this.id)" />
         </div>
 
         <div style = "position:relative; ">
-            <input class = "submit_button" type ="submit" id="checkButton" value = 'DONE' onclick="onoff(this.id)"/>
+            <input class = "submit_button" type ="submit" id="checkButton" value = 'DONE' onclick="sendUserinfo()"/>
         </div>
 
     </form>

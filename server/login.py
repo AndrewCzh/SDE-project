@@ -77,8 +77,6 @@ def login_auth():
             return render_template('login.html', error="Password is wrong")
     else:
         return render_template('login.html')
-
-
 # @app.route('/cook', methods=['POST'])
 # def check_correct_ingredients():
 #     print("check start")
@@ -140,7 +138,6 @@ def home():
     target = 1000
     timeout = False
     error = "ERROR"
-    
 
     if timeout:
         if money < target:

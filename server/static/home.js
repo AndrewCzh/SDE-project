@@ -17,7 +17,7 @@ const COLOR_CODES = {
   }
 };
 
-const TIME_LIMIT = 60;
+const TIME_LIMIT = 30;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
@@ -70,7 +70,6 @@ function startTimer() {
       onTimesUp();
     }
   }, 1000);
-  document.getElementById("ingButton").disabled = true;
 
 }
 
@@ -130,6 +129,13 @@ function arrayRemove(arr, value) {
 function onoff(btn){
   classname = document.getElementById(btn).className;
   currentvalue = document.getElementById(btn).value;
+  document.getElementById("base-timer-label").innerHTML = formatTime(
+    timeLeft
+  );
+  if (timeLeft === 0) {
+    document.getElementsByTagName(ingButton).disabled = true;
+  }
+
   //pickColor();
   if(classname == "answerBtnsOff"){
       document.getElementById(btn).classList.toggle("answerBtnsOff");
