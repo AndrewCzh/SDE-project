@@ -169,8 +169,8 @@ def cooking():
     print(type(data))
     print("hereee", session['ing'])
 
-    money += cci.check_correct_ingredients(session['ing'], 
-            session['game'], session['oid'])
+    money += cci.check_correct_ingredients(session['ing'],
+                                           session['game'], session['oid'])
     # selected_cook
     # correct_cook
     # if selected_cook == correct_cook:
