@@ -72,6 +72,10 @@ def login_auth():
         if auth:
             uid = auth['u_id']
             session['uid'] = uid
+            # also need to insert to db for game times counting
+            # same uid, username, password, but different _id
+            document = ({'u_id': uid, 'name': username, 'password': password})
+            dbc.insert_one(USER, USER, document)
             return redirect(url_for('menu'))
         else:
             return render_template('login.html', error="Password is wrong")
@@ -117,11 +121,8 @@ def profile():
     username = session['username']
     user = get_user_data(uid)
     if user:
-        # TODO: retrieve highest score from database
-        highest_score = 0
         game_times = get_game_times(username) - 1
         return render_template('profile.html', username=username,
-                               highest_score=highest_score,
                                game_times=game_times)
     else:
         error = "User not found"
@@ -170,7 +171,7 @@ def cooking():
     print("hereee", session['ing'])
 
     money += cci.check_correct_ingredients(session['ing'],
-                                           session['game'], session['oid'])
+                                           session['game_id'], session['oid'])
     # selected_cook
     # correct_cook
     # if selected_cook == correct_cook:
