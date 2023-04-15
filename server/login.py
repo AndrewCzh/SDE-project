@@ -9,7 +9,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 import db.db_connect as dbc
 import start_game as sg
 # from bson.json_util import loads
-# import check_correct_ingredients as cci
+import check_correct_ingredients as cci
 
 USER = 'Users'
 GAMES = 'Games'
@@ -169,8 +169,8 @@ def ProcessUserinfo(list):
 def cooking():
     money = 0
 
-    # money += cci.check_correct_ingredients(session['ing'],
-    #                                        session['gid'], session['oid'])
+    money += cci.check_correct_ingredients(session['ing'],
+                                           session['gid'], session['oid'])
     print(f"{money=}")
     # selected_cook
     # correct_cook

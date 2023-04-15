@@ -65,13 +65,13 @@ def dish_generate():
 
 def match_dish(dish):
     if dish == "Burger":
-        return "Bread&Meat"
+        return "Bread"
     elif dish == "Pizza":
         return "Crust"
     elif dish == "PokeBowl":
-        return "RiceBowl"
+        return "Rice"
     elif dish == "Salad":
-        return "Salad"
+        return "SaladDressing"
     elif dish == "Sushi":
         return "Rice"
     else:
