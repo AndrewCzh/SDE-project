@@ -126,10 +126,15 @@ input[type=submit],input[type=button]{
     font-size: 30px;
 
 }
+.selected{
+    position: center center;
 
+}
 
 input[type=ingButton]{
-    width: 150px;
+    width: fit-content;
+    text-align: center;
+
 }
 
 body {

@@ -169,8 +169,8 @@ def ProcessUserinfo(list):
 def cooking():
     money = 0
 
-    money += cci.check_correct_ingredients(session['ing'],
-                                           session['gid'], session['oid'])
+    # money += cci.check_correct_ingredients(session['ing'],
+    #                                        session['gid'], session['oid'])
     print(f"{money=}")
     # selected_cook
     # correct_cook
