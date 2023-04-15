@@ -8,8 +8,8 @@ from flask import Flask, render_template, request, session, redirect, url_for
 # session, url_for, redirect
 import db.db_connect as dbc
 import start_game as sg
-from bson.json_util import loads
-import check_correct_ingredients as cci
+# from bson.json_util import loads
+# import check_correct_ingredients as cci
 
 USER = 'Users'
 GAMES = 'Games'
@@ -165,7 +165,6 @@ def ProcessUserinfo(list):
     return redirect('/success')
 
 
-
 @app.route('/cook', methods=['GET', 'POST'])
 def cooking():
     money = 0
@@ -179,7 +178,6 @@ def cooking():
     #     return "cooking animation"
     # else:
     #     return render_template('failed.html')
-    
     return render_template('cook.html')
 
 
