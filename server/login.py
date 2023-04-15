@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 # session, url_for, redirect
 import db.db_connect as dbc
 import start_game as sg
-# import json
+from bson.json_util import loads
 import check_correct_ingredients as cci
 
 USER = 'Users'
@@ -72,10 +72,7 @@ def login_auth():
         if auth:
             uid = auth['u_id']
             session['uid'] = uid
-            # also need to insert to db for game times counting
-            # same uid, username, password, but different _id
-            document = ({'u_id': uid, 'name': username, 'password': password})
-            dbc.insert_one(USER, USER, document)
+            # return render_template('menu.html')
             return redirect(url_for('menu'))
         else:
             return render_template('login.html', error="Password is wrong")
@@ -94,12 +91,13 @@ def login_auth():
 
 @app.route('/menu', methods=['GET', 'POST'])
 def menu():
-    uid = session['uid']
-    gid = str(uuid.uuid4())
-    session['game_id'] = gid
-    data_ls, oid, game_id = sg.start_game(uid, gid)
-    session['oid'] = oid
-    return render_template('menu.html', data_ls=data_ls)
+    print("inside menu")
+    # uid = session['uid']
+    # gid = str(uuid.uuid4())
+    # session['gid'] = gid
+    # data_ls, oid, game_id = sg.start_game(uid, gid)
+    # session['oid'] = oid
+    return render_template('menu.html')
 
 
 def get_user_data(uid):
@@ -121,8 +119,11 @@ def profile():
     username = session['username']
     user = get_user_data(uid)
     if user:
+        # TODO: retrieve highest score from database
+        highest_score = 0
         game_times = get_game_times(username) - 1
         return render_template('profile.html', username=username,
+                               highest_score=highest_score,
                                game_times=game_times)
     else:
         error = "User not found"
@@ -151,27 +152,31 @@ def home():
     session['game_id'] = gid
     data_ls, oid, game_id = sg.start_game(uid, gid)
     session['oid'] = oid
+    print(f"inside home: {session['oid']=}")
     return render_template('home.html', data_ls=data_ls)
 
 
 # receiving selected ingredients from home.html
 @app.route('/ProcessUserinfo/<string:list>', methods=['POST'])
 def ProcessUserinfo(list):
+    print(f"inside Process: {list=}")
+    session.modified = True
     session['ing'] = list
-    print(list)
     return render_template('cook.html')
 
 
 @app.route('/cook', methods=['GET', 'POST'])
 def cooking():
     money = 0
-    data = session['ing']
-    list(data)
+    data = loads(session['ing'])
     print(type(data))
+    print(f"{session['oid']=}")
+    print(f"inside cooking: {data=}")
     print("hereee", session['ing'])
 
     money += cci.check_correct_ingredients(session['ing'],
-                                           session['game_id'], session['oid'])
+                                           session['gid'], session['oid'])
+    print(f"{money=}")
     # selected_cook
     # correct_cook
     # if selected_cook == correct_cook:

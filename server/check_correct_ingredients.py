@@ -16,6 +16,8 @@ def check_correct_ingredients(order, game, oid):
     filt = {"game": game, "oid": oid}
     found = dbc.fetch_one("Orders", "Orders", filt)
     money = 0.0
+    print(f"{found=}")
+
     if found:
         for ing in order:
             if ing in found['ing_price']:
