@@ -161,21 +161,17 @@ def home():
 def ProcessUserinfo(list):
     print(f"inside Process: {list=}")
     session.modified = True
-    session['ing'] = list
-    return render_template('cook.html')
+    session['ina'] = list
+    return redirect('/success')
+
 
 
 @app.route('/cook', methods=['GET', 'POST'])
 def cooking():
     money = 0
-    data = loads(session['ing'])
-    print(type(data))
-    print(f"{session['oid']=}")
-    print(f"inside cooking: {data=}")
-    print("hereee", session['ing'])
 
-    money += cci.check_correct_ingredients(session['ing'],
-                                           session['gid'], session['oid'])
+    # money += cci.check_correct_ingredients(session['ing'],
+    #                                        session['gid'], session['oid'])
     print(f"{money=}")
     # selected_cook
     # correct_cook
@@ -183,17 +179,20 @@ def cooking():
     #     return "cooking animation"
     # else:
     #     return render_template('failed.html')
+    
     return render_template('cook.html')
 
 
 @app.route('/success')
 def success():
-    return render_template('menu.html')
+    data = session.get('ina')
+    print(f'Inside success : {data}')
+    return render_template('success.html')
 
 
 @app.route('/failed')
 def failed():
-    return render_template('login.html')
+    return render_template('failed.html')
 
 
 def main():
