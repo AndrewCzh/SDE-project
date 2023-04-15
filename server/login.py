@@ -161,7 +161,7 @@ def home():
 def ProcessUserinfo(list):
     print(f"inside Process: {list=}")
     session.modified = True
-    session['ina'] = list
+    session['ing'] = list
     return redirect('/success')
 
 
@@ -178,13 +178,14 @@ def cooking():
     #     return "cooking animation"
     # else:
     #     return render_template('failed.html')
+    data = session.get('ing')
+    print(f'Inside cook : {data}')
     return render_template('cook.html')
 
 
 @app.route('/success')
 def success():
-    data = session.get('ina')
-    print(f'Inside success : {data}')
+
     return render_template('success.html')
 
 
