@@ -24,7 +24,7 @@ data_ls = []
 data_price = 0
 for d in data:
     data_ls.append(loads(d)['name'])
-    data_price += loads(d)['price']
+    data_price += float(loads(d)['price'])
 order = [uid, game_id, data_ls]
 # so.insert_orders(uid, data)
 

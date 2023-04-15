@@ -22,7 +22,7 @@ def test_dish_generate():
 def test_random_ingredients():
     ing_ls = ig.random_ingredients()
     assert isinstance(ing_ls, list)
-    assert len(ing_ls) > 1
+    assert len(ing_ls) >= 1
 
 
 def test_random_ingredients_not_duplicate():

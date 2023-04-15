@@ -187,7 +187,8 @@ def cooking():
     money = cci.check_correct_ingredients(data,
                                           session['gid'], session['oid'])
     print(f"{money=}")
-    session['money'] += money
+    print(f"before adding, {session['money']=}")
+    session['money'] = session.get('money') + money
     print(f"{session['money']=}")
     return render_template('cook.html')
 
@@ -195,7 +196,8 @@ def cooking():
 @app.route('/success')
 def success():
 
-    return redirect(url_for('menu'))
+    # return redirect(url_for('menu'))
+    return render_template('success.html')
 
 
 @app.route('/failed')
