@@ -32,11 +32,11 @@ MAIN_MENU = '/main_menu'
 MAIN_MENU_NM = 'Main Menu'
 HELLO = '/hello'
 MESSAGE = 'message'
-CHAR_TYPE_LIST = f'/character_types/{LIST}'
-CHAR_TYPE_LIST_NM = 'character_types_list'
-CHAR_TYPE_DETAILS = f'/character_types/{DETAILS}'
-CHAR_TYPE_DICT = f'/character_types/{DICT}'
-CHAR_TYPE_DICT_NM = 'character_types_dict'
+# CHAR_TYPE_LIST = f'/character_types/{LIST}'
+# CHAR_TYPE_LIST_NM = 'character_types_list'
+# CHAR_TYPE_DETAILS = f'/character_types/{DETAILS}'
+# CHAR_TYPE_DICT = f'/character_types/{DICT}'
+# CHAR_TYPE_DICT_NM = 'character_types_dict'
 FOOD_TYPE_DICT = f'/food_types/{DICT}'
 FOOD_TYPE_LIST = f'/food_types/{LIST}'
 TOOL_TYPE_LIST = f'/tool_types/{LIST}'
@@ -69,18 +69,18 @@ NEW_GAME = f'/Game/{ADD}'
 NEW_GAME_NM = f'Game_{ADD}'
 
 
-@api.route(HELLO)
-class HelloWorld(Resource):
-    """
-    The purpose of the HelloWorld class is to have a simple test to see if the
-    app is working at all.
-    """
+# @api.route(HELLO)
+# class HelloWorld(Resource):
+#     """
+#     The purpose of the HelloWorld class is to have a simple test to see if the
+#     app is working at all.
+#     """
 
-    def get(self):
-        """
-        Gets the main game menu.
-        """
-        return {MESSAGE: 'hello world'}
+#     def get(self):
+#         """
+#         Gets the main game menu.
+#         """
+#         return {MESSAGE: 'hello world'}
 
 
 @api.route(MAIN_MENU)
@@ -91,7 +91,7 @@ class MainMenu(Resource):
 
     def get(self):
         """
-        A
+        This is our main menu
         """
         return {'Title': MAIN_MENU_NM,
                 'Default': 0,
@@ -109,12 +109,12 @@ class MainMenu(Resource):
 @api.route(TOOL_TYPE_DICT)
 class ToolTypeDict(Resource):
     """
-    This will get a list of food types
+    This will get a dict of food types
     """
 
     def get(self):
         """
-        Returns a list of character types.
+        Returns a list of tool types.
         """
         return {'Data': ctool.get_tool_types_dict(),
                 'Type': 'Data',
@@ -128,7 +128,7 @@ class ToolTypeList(Resource):
     """
     def get(self):
         """
-        Returns a list of character types.
+        Returns a list of tool types.
         """
         return {TOOL_TYPE_LIST_NM: ftyp.get_tool_types()}
 
@@ -141,7 +141,7 @@ class FoodTypeDict(Resource):
 
     def get(self):
         """
-        Returns a list of character types.
+        Returns a dict of ingredient types.
         """
         return {'Data': ftyp.get_food_type_dict(),
                 'Type': 'Data',
@@ -151,7 +151,7 @@ class FoodTypeDict(Resource):
 @api.route(FOOD_TYPE_LIST)
 class FoodTypeList(Resource):
     """
-    This will get a list of food types
+    This will get a dict of ingredient types
     """
 
     def get(self):
@@ -164,7 +164,7 @@ class FoodTypeList(Resource):
 @api.route(f'{FOOD_TYPE_DETAILS}/<food_type>')
 class FoodTypeDetails(Resource):
     """
-    This will get a list of character types.
+    This will get a list of details of ingredient types.
     """
 
     @api.response(HTTPStatus.OK, 'Success')
@@ -173,6 +173,7 @@ class FoodTypeDetails(Resource):
         """
         Return a list of food types.
         """
+        print(self)
         ft = ftyp.get_food_type_details(food_type)
         if ft is not None:
             return {food_type: ftyp.get_food_type_details(food_type)}
@@ -224,16 +225,16 @@ class FoodTypeDetails(Resource):
 #             raise wz.NotFound(f'{char_type} not found.')
 
 
-@api.route(INGREDIENTS_GENERATOR_LIST)
-class IngredientsGeneratorList(Resource):
-    """
-    This will get a list of ingredients
-    """
-    def get(self):
-        """
-        Returns a list of ingredients.
-        """
-        return {INGREDIENTS_GENERATOR_LIST_NM: random_ingredients()}
+# @api.route(INGREDIENTS_GENERATOR_LIST)
+# class IngredientsGeneratorList(Resource):
+#     """
+#     This will get a list of ingredients
+#     """
+#     def get(self):
+#         """
+#         Returns a list of ingredients.
+#         """
+#         return {INGREDIENTS_GENERATOR_LIST_NM: random_ingredients()}
 
 
 @api.route(INGREDIENTS_GENERATOR_DETAILS)
