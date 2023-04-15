@@ -8,7 +8,7 @@ from flask_restx import Resource, Api, fields, Namespace
 import werkzeug.exceptions as wz
 import db.food_types as ftyp
 import db.check_tool as ctool
-from server.ingredients_generator import random_ingredients, \
+from server.ingredients_generator import \
     get_ingredients_price_details
 import db.users as usr
 import server.start_game as sg
@@ -72,8 +72,8 @@ NEW_GAME_NM = f'Game_{ADD}'
 # @api.route(HELLO)
 # class HelloWorld(Resource):
 #     """
-#     The purpose of the HelloWorld class is to have a simple test to see if the
-#     app is working at all.
+#     The purpose of the HelloWorld class is to have a simple test 
+#     to see if the app is working at all.
 #     """
 
 #     def get(self):
