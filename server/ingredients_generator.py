@@ -71,7 +71,7 @@ def match_dish(dish):
     elif dish == "PokeBowl":
         return "Rice"
     elif dish == "Salad":
-        return "SaladDressing"
+        return "Salad Dressing"
     elif dish == "Sushi":
         return "Rice"
     else:
@@ -100,8 +100,9 @@ def random_ingredients():
     # print(ing_num)
     ing_ls = random.sample(ls, ing_num)
     ing_ls.sort()
+    print(f"inside random generate: {dish=}")
     major = my_col.find({"name": match_dish(dish)})
-    print(major)
+    print(major[0])
 
     # print(ing_ls)
     for ing in ingredients:

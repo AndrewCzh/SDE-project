@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 # session, url_for, redirect
 import db.db_connect as dbc
 import start_game as sg
-# from bson.json_util import loads
+from bson.json_util import loads
 import check_correct_ingredients as cci
 
 USER = 'Users'
@@ -97,6 +97,10 @@ def menu():
     # session['gid'] = gid
     # data_ls, oid, game_id = sg.start_game(uid, gid)
     # session['oid'] = oid
+    session['money'] = 0
+    print(f'{session["money"]=}')
+    gid = str(uuid.uuid4())
+    session['game_id'] = gid
     return render_template('menu.html')
 
 
@@ -148,11 +152,10 @@ def home():
             return render_template('failed.html', error=error)
 
     uid = session['uid']
-    gid = str(uuid.uuid4())
-    session['game_id'] = gid
+    gid = session['gid']
     data_ls, oid, game_id = sg.start_game(uid, gid)
     session['oid'] = oid
-    print(f"inside home: {session['oid']=}")
+    print(f"inside home: {session['oid']=}, {session['gid']=}")
     return render_template('home.html', data_ls=data_ls)
 
 
@@ -162,16 +165,14 @@ def ProcessUserinfo(list):
     print(f"inside Process: {list=}")
     session.modified = True
     session['ing'] = list
-    return redirect('/success')
+    return redirect(url_for('success'))
 
 
 @app.route('/cook', methods=['GET', 'POST'])
 def cooking():
-    money = 0
-
     # money += cci.check_correct_ingredients(session['ing'],
     #                                        session['gid'], session['oid'])
-    print(f"{money=}")
+    print(f"{session['money']=}")
     # selected_cook
     # correct_cook
     # if selected_cook == correct_cook:
@@ -180,17 +181,26 @@ def cooking():
     #     return render_template('failed.html')
     data = session.get('ing')
     print(f'Inside cook : {data}')
+    data = loads(data)
+    print(f"{type(data)=}, {data=}")
+    print(f"inside cook: {session['oid']=}, {session['gid']=}")
+    money = cci.check_correct_ingredients(data,
+                                          session['gid'], session['oid'])
+    print(f"{money=}")
+    session['money'] += money
+    print(f"{session['money']=}")
     return render_template('cook.html')
 
 
 @app.route('/success')
 def success():
 
-    return render_template('success.html')
+    return redirect(url_for('menu'))
 
 
 @app.route('/failed')
 def failed():
+
     return render_template('failed.html')
 
 

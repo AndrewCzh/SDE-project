@@ -21,10 +21,13 @@ def check_correct_ingredients(order, game, oid):
     if found:
         for ing in order:
             if ing in found['ing_price']:
-                money += found['ing_price'][ing]
+                money += float(found['ing_price'][ing])
             else:
                 money -= 0.5
-    return money
+        print(f'inside check_correct_ingredient = {money}')
+        return money
+    else:
+        return -1
     # # print(found)
     # for item in found:
     #     end = True

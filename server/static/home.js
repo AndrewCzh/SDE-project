@@ -177,5 +177,6 @@ function sendUserinfo(){
   const request = new XMLHttpRequest()
   document.getElementById("test").innerHTML = list;
   request.open('POST', `/ProcessUserinfo/${JSON.stringify(list)}`)
+  console.log("inside sendUserinfo")
   request.send()
 }
