@@ -1,5 +1,5 @@
-from flask import Flask, render_template
-# from db import db_connect as dbc
+from flask import Flask, render_template, request
+from db import db_connect as dbc
 
 app = Flask(__name__)
 
@@ -7,6 +7,29 @@ app = Flask(__name__)
 CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
 cluster0.wnpabny.mongodb.net/Ingredients"
 
+"@app.route('/done', methods=['POST'])#to get user's selection for cooktools
+def done():
+    if request.method == 'POST':
+        # Retrieve user's selection from the request
+        Oven = request.form['Oven']
+        RiceCooker = request.form['RiceCooker']
+        Grill = request.form['Grill']
+        # Process the selection and return to earn point page
+        render_template('earnings.html')
+    else:
+        return render_template('fail.html')"
+
+@app.route('/done', methods=['POST'])#to get user's selection for cooktools
+def done():
+    if request.method == 'POST':
+        # Retrieve user's selection from the request
+        Oven = request.form['Oven']
+        RiceCooker = request.form['RiceCooker']
+        Grill = request.form['Grill']
+        # Process the selection and return to earn point page
+        render_template('earnings.html')
+    else:
+        return render_template('fail.html')
 
 @app.route('/')
 def cook():
@@ -22,8 +45,9 @@ def cookSuccess():
 def cookFailed():
     return render_template('fail.html')
 
-
 @app.route('/login', methods=['GET', 'POST'])
+
+
 def main():
     app.run(debug=True)
 
