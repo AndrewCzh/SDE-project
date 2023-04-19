@@ -72,7 +72,7 @@ NEW_GAME_NM = f'Game_{ADD}'
 # @api.route(HELLO)
 # class HelloWorld(Resource):
 #     """
-#     The purpose of the HelloWorld class is to have a simple test 
+#     The purpose of the HelloWorld class is to have a simple test
 #     to see if the app is working at all.
 #     """
 
