@@ -87,20 +87,20 @@ We will write an API-driven restaurant business game. Players take the role of a
 ## Project Timeline
 - Regular meeting every week on Monday 4-5pm
 - Function todo
-   - basic register/login page (Updated 3/23/2023)
+   - basic register/login page (done)
    - randomly generates ingredients for different dishes (done)
    - select the ingredients in frontend (done)
    - fix the problem that only log in page can be shown on pythonanywhere (done)
    - upload endpoints to the pythonanywhere(done)
    - select the cooking tool in frontend (done)
-   - add cooktool points into database
-   - connect check tool into database
+   - add cooktool points into database (decided not to do it)
+   - connect check tool into database (decided not to do it)
    - try to make the frontend interface prettier
-   - test if the game runs correctly (Plan to finish in the next few weeks)
-   - collects money if finished 
-   - verify if ingredients and the cooking tool are correct and then customer will pay
+   - test if the game runs correctly (done)
+   - collects money if finished (done)
+   - verify if ingredients and the cooking tool are correct and then customer will pay (wait for check tool)
    - check if player gain enough money
-   - start making multiplayer mode
+   - start making multiplayer mode (plans for future)
 
 ## Database
 - Uploaded github and project python files to pythonanywhere
