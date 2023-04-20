@@ -4,7 +4,7 @@ from db import db_connect as dbc
 app = Flask(__name__)
 
 
-"@app.route('/done', methods=['POST'])#to get user's selection for cooktools
+@app.route('/done', methods=['POST'])#to get user's selection for cooktools
 def done():
     if request.method == 'POST':
         # Retrieve user's selection from the request
