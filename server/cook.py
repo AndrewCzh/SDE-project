@@ -4,9 +4,6 @@ from db import db_connect as dbc
 app = Flask(__name__)
 
 
-CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
-cluster0.wnpabny.mongodb.net/Ingredients"
-
 "@app.route('/done', methods=['POST'])#to get user's selection for cooktools
 def done():
     if request.method == 'POST':
