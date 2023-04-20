@@ -14,7 +14,8 @@ def done():
         # Process the selection and return to earn point page
         render_template('earnings.html')
     else:
-        return render_template('fail.html')"
+        return render_template('fail.html')
+    
 
 @app.route('/done', methods=['POST'])#to get user's selection for cooktools
 def done():
