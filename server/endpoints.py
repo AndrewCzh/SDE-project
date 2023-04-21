@@ -11,6 +11,7 @@ import db.check_tool as ctool
 from server.ingredients_generator import \
     get_ingredients_price_details
 import db.users as usr
+import db.games as gm
 import server.start_game as sg
 # from flask import jsonify
 
@@ -20,8 +21,11 @@ app = Flask(__name__)
 api = Api(app)
 
 USERS_NS = 'users'
+GAMES_NS = 'games'
 users = Namespace(USERS_NS, 'Users')
 api.add_namespace(users)
+games = Namespace(GAMES_NS, 'Games')
+api.add_namespace(games)
 
 LIST = 'list'
 DICT = 'dict'
@@ -67,6 +71,8 @@ USER_DELETE_W_NS = f'/{USERS_NS}/{DELETE}'
 USER_DELETE_NM = f'{USERS_NS}_delete'
 NEW_GAME = f'/Game/{ADD}'
 NEW_GAME_NM = f'Game_{ADD}'
+GAMES_LIST = f'/{LIST}'
+GAMES_LIST_NM = f'{GAMES_NS}_{LIST}'
 
 
 # @api.route(HELLO)
@@ -307,6 +313,18 @@ class UserDetails(Resource):
         if user_det is None:
             raise wz.NotFound(f'{uid} not found.')
         return {USER_DETAILS_NM: user_det}
+
+
+@games.route(GAMES_LIST)
+class GameList(Resource):
+    """
+    This will get a list of the current games.
+    """
+    def get(self):
+        """
+        Returns a list of current games.
+        """
+        return {GAMES_LIST_NM: gm.get_games()}
 
 
 user_fields_add = api.model('NewUser', {
