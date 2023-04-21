@@ -183,10 +183,9 @@ def cooking():
     print(f'Inside cook : {data}')
     data = loads(data)
     print(f"{type(data)=}, {data=}")
-    # print(f"inside cook: {session['oid']=}, {session['gid']=}")
-    # money = cci.check_correct_ingredients(data,
-    #                                       session['gid'], session['oid'])
-    money=0
+    print(f"inside cook: {session['oid']=}, {session['gid']=}")
+    money = cci.check_correct_ingredients(data,
+                                          session['gid'], session['oid'])
     print(f"{money=}")
     print(f"before adding, {session['money']=}")
     session['money'] = session.get('money') + money
