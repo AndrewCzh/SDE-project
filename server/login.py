@@ -100,7 +100,7 @@ def menu():
     session['money'] = 0
     print(f'{session["money"]=}')
     gid = str(uuid.uuid4())
-    session['game_id'] = gid
+    session['gid'] = gid
     return render_template('menu.html')
 
 

@@ -173,6 +173,17 @@ def test_get_food_type_details():
     assert isinstance(resp_json[TEST_FOOD_TYPE], dict)
 
 
+def test_get_game_list():
+    """
+    See if we can get a game list properly.
+    Return should look like:
+        {GAMES_LIST_NM: [list of games]}
+    """
+    resp = TEST_CLIENT.get(ep.GAMES_LIST_W_NS)
+    resp_json = resp.get_json()
+    assert isinstance(resp_json[ep.GAMES_LIST_NM], list)
+
+
 def test_get_ingredient_generator_details():
     resp_json = TEST_CLIENT.get(ep.INGREDIENTS_GENERATOR_DETAILS).get_json()
     assert isinstance(resp_json[ep.INGREDIENTS_GENERATOR_DETAIL_NM], list)

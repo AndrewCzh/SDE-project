@@ -76,6 +76,7 @@ NEW_GAME = f'/Game/{ADD}'
 NEW_GAME_NM = f'Game_{ADD}'
 GAMES_LIST = f'/{LIST}'
 GAMES_LIST_NM = f'{GAMES_NS}_{LIST}'
+GAMES_LIST_W_NS = f'/{GAMES_NS}/{LIST}'
 
 
 # @api.route(HELLO)
