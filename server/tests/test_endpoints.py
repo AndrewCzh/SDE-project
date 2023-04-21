@@ -38,6 +38,10 @@ RET_UID_DETAILS = {
     usr.NAME: SAMPLE_USER_NM
 }
 
+RET_USER_COUNT = {
+    usr.CNT: usr.count_user()
+}
+
 
 @pytest.fixture(scope='function')
 def a_user():
@@ -85,6 +89,17 @@ def test_get_user_list():
     resp = TEST_CLIENT.get(ep.USER_LIST_W_NS)
     resp_json = resp.get_json()
     assert isinstance(resp_json[ep.USER_LIST_NM], list)
+
+
+@patch('db.users.count_user', return_value=RET_USER_COUNT, autospec=True)
+def test_count_user(mock_count_user):
+    """
+    See if we can get the number of user properly
+    """
+    resp = TEST_CLIENT.get(f'{ep.USER_COUNT_W_NS}')
+    assert resp.status_code == HTTPStatus.OK
+    assert isinstance(resp.json[ep.USER_COUNT_NM], dict)
+    assert usr.CNT in resp.json[ep.USER_COUNT_NM]
 
 
 @patch('db.users.get_user_details', return_value=RET_UID_DETAILS, autospec=True)

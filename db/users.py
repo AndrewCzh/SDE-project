@@ -13,6 +13,7 @@ NAME = 'name'
 PASSWORD = 'password'
 UID = 'u_id'
 FULL_NAME = 'full_name'
+CNT = 'count'
 
 # We expect the user database to change frequently:
 # For now, we will consider EMAIL to be
@@ -78,6 +79,10 @@ def add_user(name, password):
     document = ({UID: uid, NAME: name, PASSWORD: password})
     dbc.insert_one(COLLECTION, DB, document)
     return uid
+
+
+def count_user():
+    return dbc.count(COLLECTION, DB, {})
 
 
 def main():

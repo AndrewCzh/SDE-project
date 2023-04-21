@@ -59,3 +59,8 @@ def test_del_user():
     assert usr.user_exists(uid, usr.TEST_USER_NAME)
     usr.del_user(uid)
     assert not usr.user_exists(uid, usr.TEST_USER_NAME)
+
+
+def test_count_user():
+    cnt = usr.count_user()
+    assert isinstance(cnt, int)

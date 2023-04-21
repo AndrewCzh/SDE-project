@@ -63,6 +63,9 @@ USER_LIST_NM = f'{USERS_NS}_{LIST}'
 USER_DETAILS_W_NS = f'/{USERS_NS}/{DETAILS}'
 USER_DETAILS = f'/{DETAILS}'
 USER_DETAILS_NM = f'{USERS_NS}_details'
+USER_COUNT = "/count"
+USER_COUNT_NM = f'{USERS_NS}_count'
+USER_COUNT_W_NS = f'/{USERS_NS}/count'
 USER_ADD = f'/{ADD}'
 USER_ADD_W_NS = f'/{USERS_NS}/{ADD}'
 USER_ADD_NM = f'{USERS_NS}_{ADD}'
@@ -284,6 +287,18 @@ class UserList(Resource):
         Returns a list of current users.
         """
         return {USER_LIST_NM: usr.get_users()}
+
+
+@users.route(USER_COUNT)
+class UserCount(Resource):
+    """
+    This will get the number of the users
+    """
+    def get(self):
+        """
+        Returns a total number of users count
+        """
+        return {USER_COUNT_NM: usr.count_user()}
 
 
 # @api.route(USER_DETAILS_W_NS)
