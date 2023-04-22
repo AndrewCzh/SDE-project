@@ -14,7 +14,7 @@ import db.users as usr
 import db.games as gm
 import server.start_game as sg
 # from flask import jsonify
-import db.ingredient_choice as ingc
+import db.ingredients_choice as ingc
 
 
 # import db.db as db
