@@ -14,6 +14,8 @@ import db.users as usr
 import db.games as gm
 import server.start_game as sg
 # from flask import jsonify
+import db.ingredient_choice as ingc
+
 
 # import db.db as db
 
@@ -91,6 +93,27 @@ GAMES_LIST_W_NS = f'/{GAMES_NS}/{LIST}'
 #         Gets the main game menu.
 #         """
 #         return {MESSAGE: 'hello world'}
+@api.route('/ingredient_choice')
+class FindIngredient(Resource):
+    def get(self):
+
+        if current_order:
+            print("enter1")
+
+            # Example response with HATEOAS links
+            response = {
+                'message': f'Current order: {current_order}',
+                '_links': [
+                    {
+                        'ingredients': ingc.current_order,
+                        # 'rel': 'IngredientsGeneratorList',
+                        # 'href': f'/{INGREDIENTS_GENERATOR_LIST}',
+                        # 'method': 'POST',
+                        'description': 'Select ingredients for the order'
+                    },
+                ]
+            }
+        return jsonify(response)
 
 
 @api.route(MAIN_MENU)
