@@ -5,7 +5,7 @@ SALAD = 'salad_ingredients'
 SUSHI = 'sushi_ingredients'
 
 Ingredient_Choices = {
-    BURGER:{
+    BURGER: {
         'Bread': 7,
         'Cheese': 1,
         'Tomato': 0.5,
@@ -17,7 +17,7 @@ Ingredient_Choices = {
         'Bacon': 1.5,
         'Beef': 3,
     },
-    PIZZA:{
+    PIZZA: {
         'Green Peppers': 0.5,
         'Spinach': 0.5,
         'Pepperoni': 1.5,
@@ -30,7 +30,7 @@ Ingredient_Choices = {
         'Onions': 0.5,
 
     },
-    POKEBOWL:{
+    POKEBOWL: {
         'Tuna': 1,
         'Zucchini': 0.5,
         'Avocado': 1,
@@ -40,7 +40,7 @@ Ingredient_Choices = {
         'Salmon': 1,
         'Rice': 7,
     },
-    SALAD:{
+    SALAD: {
         'Salad_Dressing': 6,
         'Lettuce': 0.5,
         "Avocado": 1,
@@ -51,7 +51,7 @@ Ingredient_Choices = {
         'Tuna': 1,
         'Corn': 1,
     },
-    SUSHI:{
+    SUSHI: {
         'Avocado': 1,
         'Zucchini': 0.5,
         "Rice": 7,
