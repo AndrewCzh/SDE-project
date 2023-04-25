@@ -73,6 +73,10 @@ def login_auth():
             uid = auth['u_id']
             session['uid'] = uid
             # return render_template('menu.html')
+            # still need to insert to db for time checking
+            uid = str(uuid.uuid4())
+            document = ({'u_id': uid, 'name': username, 'password': password})
+            dbc.insert_one(USER, USER, document)
             return redirect(url_for('menu'))
         else:
             return render_template('login.html', error="Password is wrong")
@@ -125,7 +129,7 @@ def profile():
     if user:
         # TODO: retrieve highest score from database
         highest_score = 0
-        game_times = get_game_times(username) - 1
+        game_times = get_game_times(username) - 2
         return render_template('profile.html', username=username,
                                highest_score=highest_score,
                                game_times=game_times)
@@ -190,7 +194,7 @@ def cooking():
     print(f"before adding, {session['money']=}")
     session['money'] = session.get('money') + money
     print(f"{session['money']=}")
-    return render_template('cook.html')
+    return render_template('cook1.html')
 
 
 @app.route('/success')

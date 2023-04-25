@@ -1,84 +1,146 @@
-/*<style>*/
-
-div.StartBtn input, div.StartBtn span {
-
-    margin-left: 50px;
-    
-    }
-    
-.answerBtnsOff
-    {
-        BACKGROUND-COLOR: rgb(0, 213, 255);
-        COLOR: black;
-        FONT: 21px Verdana,Arial,Helvetica,sans-serif;
-        font-weight:bold;
-        margin-top: 10px;
-    }
-
-.answerBtnsOff:hover {
-    background-color: #3e8e41
-}
-
-.answerBtnsOff:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-}
-
-.answerBtnsOn
-{
-    BACKGROUND-COLOR: GREEN;
-    COLOR: #ffffff;
-    FONT: 21px Verdana,Arial,Helvetica,sans-serif;
-    font-weight:bold;
-    transition: 0s;
+h1.title{
+    top:25%;
+    font-size:70px;
     text-transform: uppercase;
-    margin-top: 10px;
-}
-.submit
-{
-    BACKGROUND-COLOR: GREEN;
-    COLOR: #ffffff;
-    FONT: 21px Verdana,Arial,Helvetica,sans-serif;
-    font-weight:bold;
-}
-
-.submit_button {
-    position: relative;
-    background-color: #04AA6D;
-    border: none;
-    font-size: 28px;
-    color: #FFFFFF;
-    padding: 20px;
-    width: 200px;
-    text-align: center;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    text-decoration: none;
-    overflow: hidden;
-    cursor: pointer;
-    margin-top: 110px;
+    background-image: linear-gradient(
+        -225deg,
+        #541557  0%,
+        #27107a 29%,
+        #ff1361 67%,
+        #fff800 100%
+    );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    animation-name: textchange;
+    animation-duration: 7s;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    left: 50%;
+    margin-right: -50%;
+    position:absolute;
+    transform: translate(-50%, -50%)
 }
 
-.submit_button:after {
-    content: "";
-    background: #90EE90;
-    display: block;
+@keyframes textchange{
+    to{
+      background-position: 200% center;
+    }
+}
+
+.header,.enter,input[type=submit]{
+    left: 50%;
+    margin-right: -50%;
     position: absolute;
-    padding-top: 300%;
-    padding-left: 350%;
-    margin-left: -20px!important;
-    margin-top: -120%;
-    opacity: 0;
-    transition: all 0.8s;
-    margin-top: 110px;
+    transform: translate(-50%, -50%)
 }
 
-.submit_button:active:after {
-    padding: 0;
+.header,.enter,input[type=submit],input[type=button]{
+    font-family:"Comic Sans MS";
+    -webkit-text-fill-color: white; /* Will override color (regardless of order)*/ 
+    text-shadow:
+        3px 3px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    font-size: 40px;
+} 
+
+.header{
+    top: 40%;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-size: 30px;
+
+}
+
+.indexButton {
+    font-size: 30px; 
+    background-color: rgb(0, 115, 255);
+    padding: 8px 30px;
+    
+    font-family:Comic Sans MS;
+    position: center center;
+    left: 50%;
+    text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+  }
+
+a:link, a:visited {
+    padding: 80 50px;
+    font-family:"Comic Sans MS";
+    color: white;
+    text-emphasis: none;
+    text-decoration: none;
+    position: center center;
+    left: 50%;
+    text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  }
+  
+
+.textbox {
+    margin: auto;
+    width: 80%;
+    height:20%;
+    border: 3px solid green;
+    padding: 10px;
+
+}
+
+.enter{
+    font-size: 30px;
     margin: 0;
-    opacity: 1;
-    transition: 0s;
+    position: absolute;
+    top: 60%;
+    margin-right: -50%;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: green;
+
+}
+
+.enter > div {
+    vertical-align:top;
+    display:inline-block;
+}
+
+input[type=submit],input[type=button]{
+
+    background-color: rgb(0, 115, 255);
+    border: none; 
+    height: 60px;
+    width: 200px;
+    font-size: 30px;
+    text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+
+}
+.selected{
+    position: center center;
+
+}
+
+input[type=ingButton]{
+    width: fit-content;
+    text-align: center;
+
 }
 
 body {
@@ -87,59 +149,33 @@ body {
     background-position:center center;
     background-attachment: fixed;
     background-size: cover;
-    background-color:lightskyblue
+    background-color:lightskyblue;
 
 }
 
-h1.header{
-    text-transform: uppercase;
-    background-image: linear-gradient(
-        -225deg,
-        #231557 0%,
-        #44107a 29%,
-        #ff1361 67%,
-        #fff800 100%
-    );
-    background-size: auto auto;
-    background-clip: border-box;
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-    animation-name: textchange;
-    animation-duration: 7s;
+p.error{
+    font-family: Helvetica;
+    color: white;
+}
+
+h1.word{
     font-size: 40px;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
+    color: rgb(236, 37, 143);
+    font-style: italic;
+    height: 40px;
 }
 
-p.word{
-    color:blue;
-    background-image: linear-gradient(
-        -225deg,
-        #231557 0%,
-        #44107a 29%,
-        #ff1361 67%,
-        #fff800 100%
-    );
-    background-size: auto auto;
-    background-clip: border-box;
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-    animation-name: textchange;
-    animation-duration: 7s;
-    font-size: 22px;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
+h1.food{
+    color: rgb(245, 32, 114);
+    font-style: italic;
 }
 
-@keyframes textchange{
-    to{
-      background-position: 200% center;
-    }
+h3.word{
+    font-size: 30px;
+    color: rgb(236, 37, 143);
+    font-style: italic;
 }
-/*</style>*/
+
+input.answerBtnsOff{
+    font-style: italic;
+}
