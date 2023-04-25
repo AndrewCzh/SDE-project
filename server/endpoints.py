@@ -189,7 +189,7 @@ class FoodTypeList(Resource):
 
     def get(self):
         """
-        Returns a list of character types.
+        Returns a list of food types.
         """
         return {FOOD_TYPE_LIST_NM: ftyp.get_food_types()}
 
