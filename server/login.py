@@ -149,7 +149,7 @@ def home():
     the current money amount, and timer info
     """
     money = session['money']
-    target = 1000
+    target = 150
     timeout = False
     error = "ERROR"
 
@@ -171,9 +171,17 @@ def home():
 # receiving selected ingredients from home.html
 @app.route('/ProcessUserinfo/<string:list>', methods=['POST'])
 def ProcessUserinfo(list):
-    print(f"inside Process: {list=}")
+    print(f"inside Process ingredients: {list=}")
     session.modified = True
     session['ing'] = list
+    return redirect(url_for('success'))
+
+
+@app.route('/ProcessToolinfo/<string:list>', methods=['POST'])
+def ProcessToolinfo(list):
+    print(f"inside Process tool: {list=}")
+    session.modified = True
+    session['tool'] = list
     return redirect(url_for('success'))
 
 

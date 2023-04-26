@@ -225,4 +225,3 @@ function sendUserinfo(){
   console.log("inside sendUserinfo")
   request.send()
 }
-

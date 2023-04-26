@@ -39,10 +39,6 @@ def generator(uid, game_id):
     # return render_template('home.html', data_ls=data_ls)
     return data_ls, oid
 
-# @app.route('/home')
-# def home():
-#     return render_template('home.html')
-
 
 def get_ingredients_price_details():
     data = random_ingredients()

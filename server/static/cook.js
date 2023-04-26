@@ -1,3 +1,14 @@
+let cook_selected=Array();
+
+function arrayRemove(arr, value) {
+  for( var i = 0; i < cook_selected.length; i++){
+    if ( arr[i] === value) {
+        arr.splice(i, 1);
+    }
+  }
+  return arr
+}
+
 function onoff(btn){
     classname = document.getElementById(btn).className;
     currentvalue = document.getElementById(btn).value;
@@ -22,10 +33,10 @@ function onoff(btn){
       }
       // console.log(ing_selected)
       document.getElementById("demoList").innerHTML = cook_selected;
-  }
+}
   
   
-  function sendUserinfo(){
+function sendToolinfo(){
     let list = cook_selected
     // console.log(list)
     const request = new XMLHttpRequest()
@@ -33,4 +44,4 @@ function onoff(btn){
     request.open('POST', `/ProcessToolinfo/${JSON.stringify(list)}`)
     console.log("inside sendUserinfo")
     request.send()
-  }
+}
