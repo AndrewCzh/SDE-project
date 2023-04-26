@@ -101,7 +101,8 @@ def menu():
     # session['gid'] = gid
     # data_ls, oid, game_id = sg.start_game(uid, gid)
     # session['oid'] = oid
-    session['money'] = 0
+    money = 100
+    session['money'] = money
     print(f'{session["money"]=}')
     gid = str(uuid.uuid4())
     session['gid'] = gid
@@ -144,7 +145,7 @@ def home():
     needs to receive a fixed target to pass the level,
     the current money amount, and timer info
     """
-    money = 0
+    money = session['money']
     target = 1000
     timeout = False
     error = "ERROR"
