@@ -22,8 +22,8 @@
         <div class="orders" id="timerclock"></div>
 </div>
 
-<div class="money">
-    <h1 style="color: blue; font-size: 40px;">Coins Earned: {{ money }}</h1>
+<div>
+    <h1 class="money" style="color: blue; font-size: 40px;">Coins Earned: {{ money }}</h1>
 </div>
 <div class="selected">
     <form action="/home" method="POST" >
@@ -59,7 +59,7 @@
         <input class="answerBtnsOff" id="Salad"  type="ingButton" value="Salad"   onclick= "onoff(this.id)" />
         <input class="answerBtnsOff" id="Croutons"  type="ingButton" value="Croutons"   onclick= "onoff(this.id)" />
 
-        <h1 class="word"style="color:black; font-size: 30px;">Here are the selected ingredients:
+        <h1 class="word" style="color:black; font-size: 30px; text-align: center;">Here are the selected ingredients:
         <ul id="demoList", name="ing_selected", style="color:white;font-style: italic;
         display: inline-block; font-size: 30px;"></ul> 
 
@@ -67,10 +67,11 @@
         display: inline-block; font-size: 30px; height: 35px;"></ul> 
         <br></br>
 
-        <input class = "submit_button" type ="button" id="checkButton" value = 'SUBMIT' onclick="sendUserinfo()"/>
+        <input class = "submit_button" type ="button" id="checkButton" value = 'SUBMIT' 
+        style="text-align: center;" onclick="sendUserinfo()"/>
 
-        <a href="cook" class= indexButton > NEXT</a>
-        <a href="login" class= indexButton >EXIT</a>
+        <a href="cook" class= indexButton style="text-align: center;" > NEXT</a>
+        <a href="login" class= indexButton style="text-align: center;">EXIT</a>
 
         {% if error %}
             <p class="error"><strong>Error: </strong> {{error}}</p>

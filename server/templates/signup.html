@@ -7,7 +7,7 @@
         <form action="/signup" method="POST">
             <table>
                 <h2>Please enter your information </h2>
-                <h3>Username:</h3>
+                <br>
                 <tr>
                     <p>First name:
                     <input type="text" name = "username" placeholder="Username" required/>
@@ -23,13 +23,13 @@
                 <p>Date Of Birth:
                 <input type="date" name = "dob" placeholder="YYYY-MM-DD" required/> </br>
                 <tr>
-
+                <br>
                 <input type="submit" value = 'Register' />
                 {% if error %}
                     <p class="error"><strong>Error:</strong> {{error}}</p>
                 {% endif %}
                 <br>
-                <a href="/" class="indexButton">Back</a>     
+                <a href="/" style="color:blue"">Back</a>     
             </table>
             
         </form>

@@ -5,6 +5,8 @@
 </head>
 <body>
 
+<h1 class="title">Choose Cook Tool</h1>
+
 <div id="app"></div>    
 <div id="tim"></div>  
 <div class="selected">
@@ -13,7 +15,7 @@
         <input class="answerBtnsOff" id="RiceCooker"  type="ingButton" value="RiceCooker"  onclick="onoff(this.id)" />
         <input class="answerBtnsOff" id="Grill"  type="ingButton" value="Grill"   onclick= "onoff(this.id)" />  
 
-        <p><h1 class="word"style="color:black; font-size: 30px;">Here are the selected ingredients:</h1></p>
+        <p><h1 class="word" style="color:black; font-size: 30px; text-align: center;">Here is the selected Cook Tool:</h1></p>
         <ul id="demoList", name="ing_selected", style="color:white;font-style: italic;
         display: inline-block; font-size: 30px;"></ul> 
 
@@ -22,10 +24,11 @@
         <br></br>
 
 
-        <input class = "submit_button" type ="button" id="checkButton" value = 'SUBMIT' onclick="sendToolinfo()"/>
+        <input class = "submit_button" type ="button" id="checkButton" value = 'SUBMIT' 
+        style="text-align: center;" onclick="sendToolinfo()"/>
 
-        <a href="home" class= indexButton > NEXT</a>
-        <a href="login" class= indexButton >EXIT</a>
+        <a href="home" class= indexButton style="text-align: center;"> NEXT</a>
+        <a href="login" class= indexButton style="text-align: center;">EXIT</a>
 
         {% if error %}
             <p class="error"><strong>Error: </strong> {{error}}</p>
