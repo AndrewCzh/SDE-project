@@ -45,7 +45,8 @@ def sign_up():
         else:
             # add new account to db
             uid = str(uuid.uuid4())
-            document = ({'u_id': uid, 'name': username, 'password': password})
+            document = ({'u_id': uid, 'name': username,
+                         'password': password, 'times': 0})
             dbc.insert_one(USER, USER, document)
             return render_template('login.html')
     else:
@@ -74,14 +75,19 @@ def login_auth():
             session['uid'] = uid
             # return render_template('menu.html')
             # still need to insert to db for time checking
-            uid = str(uuid.uuid4())
-            document = ({'u_id': uid, 'name': username, 'password': password})
-            dbc.insert_one(USER, USER, document)
+            times = auth['times'] \
+                if 'times' in auth else 0
+            print(f'{times=}')
+            times += 1
+            dbc.update_one(USER, USER, {'u_id': uid},
+                           {'$set': {'times': times}})
             return redirect(url_for('menu'))
         else:
             return render_template('login.html', error="Password is wrong")
     else:
         return render_template('login.html')
+
+
 # @app.route('/cook', methods=['POST'])
 # def check_correct_ingredients():
 #     print("check start")
@@ -109,28 +115,25 @@ def menu():
     return render_template('menu.html')
 
 
-def get_user_data(uid):
-    user = dbc.fetch_one(USER, USER, {'u_id': uid})
+def get_user_data(uid, name):
+    user = dbc.fetch_one(USER, USER, {'u_id': uid, 'name': name})
     if user:
-        return user
+        times = user['times'] if 'times' in user else -1
+        highest_score = user['highest_score'] if 'highest_score' in user else 0
+        return times, highest_score
     else:
         return None
-
-
-def get_game_times(username):
-    game_times = dbc.count(USER, USER, {'name': username})
-    return game_times
 
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     uid = session['uid']
     username = session['username']
-    user = get_user_data(uid)
+    user = get_user_data(uid, username)
     if user:
         # TODO: retrieve highest score from database
-        highest_score = 0
-        game_times = get_game_times(username) - 2
+        highest_score = user[1]
+        game_times = user[0]
         return render_template('profile.html', username=username,
                                highest_score=highest_score,
                                game_times=game_times)
@@ -201,19 +204,16 @@ def cooking():
 
 @app.route('/success')
 def success():
-
     # return redirect(url_for('menu'))
     return render_template('success.html')
 
 
 @app.route('/failed')
 def failed():
-
     return render_template('failed.html')
 
 
 def main():
-
     # print(login())
     app.run(debug=True)
 
