@@ -18,14 +18,14 @@ const COLOR_CODES = {
 };
 
 const TIME_LIMIT = 30;
-let timePassed = 0;
+// let timePassed = localStorage.getItem('timePassed');
+let timePassed = 0
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 let remainingPathColor = COLOR_CODES.info.color;
 let ing_selected=Array();
 let list = document.getElementById("selectedList");
 const COUNTER_KEY = 'my-counter';
-
 
 document.getElementById("app").innerHTML = `
 <div class="base-timer">
@@ -58,7 +58,14 @@ function onTimesUp() {
 }
 
 function startTimer() {
-  timerInterval = setInterval(() => {
+  // if (timePassed == null) {
+  //   // timePassed = 0;
+  //   timePassed = new Date().getTime() + (time + 2) * 1000;
+
+  //   localStorage.setItem('timePassed', timePassed);
+  // }
+  // else{timePassed = timePassed}
+    timerInterval = setInterval(() => {
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
     document.getElementById("base-timer-label").innerHTML = formatTime(
@@ -66,17 +73,18 @@ function startTimer() {
     );
     setCircleDasharray();
     setRemainingPathColor(timeLeft);
+    // localStorage.setItem('timePassed', timePassed);
     if ((timeLeft--) > 0) {
       window.sessionStorage.setItem(COUNTER_KEY, timeLeft);
     } else {
       window.sessionStorage.removeItem(COUNTER_KEY);}
-
     if (timeLeft === 0) {
       onTimesUp();
     }
   }, 1000);
 
 }
+
 
 function formatTime(time) {
   const minutes = Math.floor(time / 60);
@@ -179,3 +187,4 @@ function sendUserinfo(){
   console.log("inside sendUserinfo")
   request.send()
 }
+

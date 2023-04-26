@@ -6,12 +6,24 @@
 <body>
 
 <div id="app"></div>    
+<div class = "top">
+    <ul>
+        <div class="orders">
+            <img src="static/customer.png"/>
+        </div>
+        <div class="orders">
+            <h1>I want a ... with</h1>
+        </div>
+        <div class="orders">
+        {% for ing in data_ls[1].keys() %}
+            <li style="color: white;"><h1 class = "food">{{ing}}</h1></li>
+        {% endfor %}
+        </div>
+</div>
 
-<ul>
-    {% for ing in data_ls[1].keys() %}
-        <li style="color: white;"><h1 class = "food">{{ing}}</h1></li>
-    {% endfor %}
-</ul>
+<div class="money">
+    <h1>Coins Earned: {{ money }}</h1>
+</div>
 <div class="selected">
     <form action="/home" method="POST" >
         <input class="answerBtnsOff" id="salmon" type="ingButton" value="Salmon"  onclick="onoff(this.id);"/>
@@ -43,10 +55,10 @@
 
         <input class="answerBtnsOff" id="Bread" type="ingButton" value="Bread"  onclick="onoff(this.id);"/>
         <input class="answerBtnsOff" id="Shrimp"  type="ingButton" value="Shrimp"  onclick="onoff(this.id);" />
-        <input class="answerBtnsOff" id="SaladDressing"  type="ingButton" value="Salad Dressing"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Salad"  type="ingButton" value="Salad"   onclick= "onoff(this.id)" />
         <input class="answerBtnsOff" id="Croutons"  type="ingButton" value="Croutons"   onclick= "onoff(this.id)" />
 
-        <p><h1 class="word"style="color:black; font-size: 30px;">Here are the selected ingredients:</h1></p>
+        <h1 class="word"style="color:black; font-size: 30px;">Here are the selected ingredients:
         <ul id="demoList", name="ing_selected", style="color:white;font-style: italic;
         display: inline-block; font-size: 30px;"></ul> 
 
@@ -63,7 +75,7 @@
             <p class="error"><strong>Error: </strong> {{error}}</p>
         {% endif %}
     </form>
-    
+ 
 </div>  
 
 
@@ -150,6 +162,15 @@
     align-items: center;
     justify-content: center;
     font-size: 48px;
+    }
+
+    .top{
+    right: 50%;
+    }
+    .orders {
+    display: inline-block;
+    padding: 1rem 1rem;
+    vertical-align: middle;
     }
     </style>
 

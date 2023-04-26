@@ -160,7 +160,8 @@ def home():
     data_ls, oid, game_id = sg.start_game(uid, gid)
     session['oid'] = oid
     print(f"inside home: {session['oid']=}, {session['gid']=}")
-    return render_template('home.html', data_ls=data_ls)
+    print(data_ls)
+    return render_template('home.html', data_ls=data_ls, money=money)
 
 
 # receiving selected ingredients from home.html
@@ -194,7 +195,7 @@ def cooking():
     print(f"before adding, {session['money']=}")
     session['money'] = session.get('money') + money
     print(f"{session['money']=}")
-    return render_template('cook1.html')
+    return render_template('cook.html')
 
 
 @app.route('/success')

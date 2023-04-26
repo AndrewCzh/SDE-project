@@ -71,7 +71,7 @@ def match_dish(dish):
     elif dish == "PokeBowl":
         return "Rice"
     elif dish == "Salad":
-        return "Salad Dressing"
+        return "Salad"
     elif dish == "Sushi":
         return "Rice"
     else:

@@ -41,7 +41,7 @@ Ingredient_Choices = {
         'Rice': 7,
     },
     SALAD: {
-        'Salad_Dressing': 6,
+        'Salad': 6,
         'Lettuce': 0.5,
         "Avocado": 1,
         'Croutons': 1,
