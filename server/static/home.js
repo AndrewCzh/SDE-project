@@ -24,7 +24,6 @@ let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 let remainingPathColor = COLOR_CODES.info.color;
 let ing_selected=Array();
-let list = document.getElementById("selectedList");
 const COUNTER_KEY = 'my-counter';
 
 // document.getElementById("timerclock").innerHTML = `
@@ -176,14 +175,6 @@ function arrayRemove(arr, value) {
   return arr
 }
 
-function sendstatus(){
-  var myBoolean = true;
-
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "login.py", true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.send(JSON.stringify({"myBoolean": myBoolean}));
-}
 
 function onoff(btn){
   classname = document.getElementById(btn).className;
@@ -197,7 +188,7 @@ function onoff(btn){
     window.location.href = "success";
     document.getElementsByTagName(ingButton).disabled = true;
     timeout=true;  
-    module.exports = {timeout};
+    // module.exports = {timeout};
     }
 
   //pickColor();

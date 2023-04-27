@@ -10,22 +10,23 @@
 
 <div class="selected">
     <form action="/cook" method="POST" >
-        <input class="answerBtnsOff" id="Oven" type="ingButton" value="Oven"  onclick="onoff(this.id);"/>
-        <input class="answerBtnsOff" id="RiceCooker"  type="ingButton" value="RiceCooker"  onclick="onoff(this.id)" />
-        <input class="answerBtnsOff" id="Grill"  type="ingButton" value="Grill"   onclick= "onoff(this.id)" />  
+        <input class="answerBtnsOff" id="Oven" type="ingButton" value="Oven"  onclick="cook_onoff(this.id);"/>
+        <input class="answerBtnsOff" id="RiceCooker"  type="ingButton" value="RiceCooker"  onclick="cook_onoff(this.id)" />
+        <input class="answerBtnsOff" id="Grill"  type="ingButton" value="Grill"   onclick= "cook_onoff(this.id)" />  
 
-        <p><h1 class="word" style="color:white; font-size: 30px; text-align: center;">Here is the selected Cook Tool:
-        <ul id="demoList", name="ing_selected", style="color:lightgreen;font-style: italic;
-        display: inline-block; font-size: 30px;"></ul> 
+        <h1 class="word" style="color:white; font-size: 30px; text-align: center;">Here is the selected Cook Tool:
+            <ul id="demoList", name="cook_selected", style="color:lightgreen;font-style: italic;
+            display: inline-block; font-size: 30px;"></ul> 
 
-        <ul id="test", name="list", style="color:green;font-style: italic;
-        display: inline-block; font-size: 30px; height: 35px;"></ul> 
+            <ul id="test", name="list", style="color:green;font-style: italic;
+            display: inline-block; font-size: 30px; height: 35px;"></ul> 
+
         <br></br>
 
         <input class = "submit_button" type ="button" id="checkButton" value = 'SUBMIT' 
         style="text-align: center;" onclick="sendToolinfo()"/>
 
-        <a href="home" class= indexButton style="text-align: center;"> NEXT</a>
+        <a href="home" class= indexButton style="text-align: center;" onclick="sendToolinfo()"> NEXT</a>
         <a href="login" class= indexButton style="text-align: center;">EXIT</a>
 
         {% if error %}

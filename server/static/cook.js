@@ -1,4 +1,3 @@
-const {timeout} = require('./home.js');
 
 let cook_selected=Array();
 
@@ -11,13 +10,22 @@ function arrayRemove(arr, value) {
   return arr
 }
 
-function onoff(btn){
+function cook_onoff(btn){
     classname = document.getElementById(btn).className;
     currentvalue = document.getElementById(btn).value;
-    if(timeout == true){
+    // const {timeout} = require('./home.js');
+    // if(timeout == true){
+    //   alert("TIME IS UP");
+    //   window.location.href = "success";
+    //   document.getElementsByTagName(ingButton).disabled = true;
+    // }
+    counter = document.getElementById("timerclock").innerHTML
+    if (counter == "TIMEOUT") {
       alert("TIME IS UP");
       window.location.href = "success";
       document.getElementsByTagName(ingButton).disabled = true;
+      timeout=true;  
+      // module.exports = {timeout};
     }
   
     //pickColor();
@@ -32,17 +40,17 @@ function onoff(btn){
         document.getElementById(btn).className = "answerBtnsOff";
         arrayRemove(cook_selected,currentvalue); //removing elements to array
       }
-      // console.log(ing_selected)
+      // console.log(cook_selected)
       document.getElementById("demoList").innerHTML = cook_selected;
 }
-  
   
 function sendToolinfo(){
     let list = cook_selected
     // console.log(list)
     const request = new XMLHttpRequest()
-    document.getElementById("demoList").innerHTML = list;
+    document.getElementById("test").innerHTML = cook_selected;
     request.open('POST', `/ProcessToolinfo/${JSON.stringify(list)}`)
-    console.log("inside sendUserinfo")
+    console.log("inside sendToolinfo")
     request.send()
 }
+
