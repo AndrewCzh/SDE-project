@@ -176,6 +176,7 @@ def home():
         dish = 'BURGER'
 
     session['oid'] = oid
+    session['generated_order'] = data_ls
     print(f"inside home: {session['oid']=}, {session['gid']=}")
     print(data_ls)
     return render_template('home.html', data_ls=data_ls,
@@ -252,17 +253,6 @@ def pickCookTool():
     # money += cci.check_correct_ingredients(session['ing'],
     #                                        session['gid'], session['oid'])
     print(f"{session['money']=}")
-    # selected_cook
-    # correct_cook
-    # if selected_cook == correct_cook:
-    #     return "cooking animation"
-    # else:
-    #     return render_template('failed.html')
-    # data = session.get('ing')
-    # print(f'Inside cook : {data}')
-    # data = loads(data)
-    # print(f"{type(data)=}, {data=}")
-    # print(f"inside cook: {session['oid']=}, {session['gid']=}")
     data2 = session.get('tool')
     data2 = loads(data2)
     # money = cci.check_correct_ingredients(data,
