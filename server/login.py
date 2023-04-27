@@ -141,7 +141,7 @@ def profile():
     else:
         error = "User not found"
         return render_template('error.html', error=error,
-                            highest_score=highest_score)
+                                highest_score=highest_score)
 
 
 @app.route('/home', methods=['GET', 'POST'])
