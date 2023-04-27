@@ -41,7 +41,7 @@ function sendToolinfo(){
     let list = cook_selected
     // console.log(list)
     const request = new XMLHttpRequest()
-    document.getElementById("test").innerHTML = list;
+    document.getElementById("demoList").innerHTML = list;
     request.open('POST', `/ProcessToolinfo/${JSON.stringify(list)}`)
     console.log("inside sendUserinfo")
     request.send()
