@@ -163,7 +163,7 @@ class ToolTypeList(Resource):
         """
         Returns a list of tool types.
         """
-        return {TOOL_TYPE_LIST_NM: ftyp.get_tool_types()}
+        return {TOOL_TYPE_LIST_NM: ctool.get_tool_types()}
 
 
 @api.route(FOOD_TYPE_DICT)
