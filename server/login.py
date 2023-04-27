@@ -167,11 +167,11 @@ def home():
     uid = session['uid']
     gid = session['gid']
     data_ls, oid, game_id = sg.start_game(uid, gid)
-    if ("Rice" in data_ls[1]):
+    if "Rice" in data_ls[1]:
         dish = 'SUSHI'
-    elif ("Crust" in data_ls[1]):
+    elif "Crust" in data_ls[1]:
         dish = 'PIZZA'
-    elif ("Bread" in data_ls[1]):
+    elif "Bread" in data_ls[1]:
         dish = 'BURGER'
 
     session['oid'] = oid
@@ -231,14 +231,28 @@ def cooking():
     return render_template('cook.html', money=session['money'])
 
 
+def update_highest_score(uid, money):
+    filt = {'u_id': uid}
+    ret = dbc.fetch_one(USER, USER, filt)
+    if ret:
+        score = ret['highest_score'] if 'highest_score' in ret else 0
+        if money > score:
+            dbc.update_one(USER, USER, filt,
+                           {'$set': {'highest_score': money}})
+        else:
+            pass
+
+
 @app.route('/success')
 def success():
     # return redirect(url_for('menu'))
+    update_highest_score(session['uid'], session['money'])
     return render_template('success.html')
 
 
 @app.route('/failed')
 def failed():
+    update_highest_score(session['uid'], session['money'])
     return render_template('failed.html')
 
 
