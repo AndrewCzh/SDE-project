@@ -5,8 +5,14 @@
     <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
-    <h1 style="font-size: 40px;">You have reached the goal!</h1>
-    <a href="menu" class= indexButton > RESTART</a>
+    <br><br>
+    <br><br>
+    <br><br>
+    <h1 class="word" style="font-size: 60px; text-align: center;">You have reached the goal!</h1>
+    <br><br>
+    <div class="restart">
+    <a href="menu" class= indexButton style="padding: 8px 30px; text-align: center;"> RESTART</a>
+    </div>
     {% if error %}
     <p class="error"><strong>Error: </strong> {{error}}</p>
     {% endif %}
@@ -15,7 +21,6 @@
 </body>
 <style>
     body {
-    background-image: url('../static/restaurant.png');
     background-repeat: no-repeat;
     background-position:center center;
     background-attachment: fixed;
@@ -37,6 +42,14 @@
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    left: 50%;
+    margin-right: -50%;
+    position:absolute;
+    transform: translate(-50%, -50%)
+    }
+
+    .restart{
+    top: 45%;
     left: 50%;
     margin-right: -50%;
     position:absolute;

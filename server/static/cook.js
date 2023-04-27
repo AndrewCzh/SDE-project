@@ -1,3 +1,5 @@
+const {timeout} = require('./home.js');
+
 let cook_selected=Array();
 
 function arrayRemove(arr, value) {
@@ -12,10 +14,9 @@ function arrayRemove(arr, value) {
 function onoff(btn){
     classname = document.getElementById(btn).className;
     currentvalue = document.getElementById(btn).value;
-    document.getElementById("base-timer-label").innerHTML = formatTime(
-      timeLeft
-    );
-    if (timeLeft === 0) {
+    if(timeout == true){
+      alert("TIME IS UP");
+      window.location.href = "success";
       document.getElementsByTagName(ingButton).disabled = true;
     }
   

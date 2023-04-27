@@ -118,7 +118,7 @@ function startTimer() {
   if (counter <= 0) {
       clearInterval(x);
       localStorage.removeItem('saved_countdown');
-      document.getElementById("timerclock").innerHTML = "DONE";
+      document.getElementById("timerclock").innerHTML = "TIMEOUT";
   }
   }, 1000);
 }
@@ -176,6 +176,15 @@ function arrayRemove(arr, value) {
   return arr
 }
 
+function sendstatus(){
+  var myBoolean = true;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "login.py", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.send(JSON.stringify({"myBoolean": myBoolean}));
+}
+
 function onoff(btn){
   classname = document.getElementById(btn).className;
   currentvalue = document.getElementById(btn).value;
@@ -183,9 +192,13 @@ function onoff(btn){
   //   timeLeft
   // );
   counter = document.getElementById("timerclock").innerHTML
-  if (counter == "DONE") {
+  if (counter == "TIMEOUT") {
+    alert("TIME IS UP");
+    window.location.href = "success";
     document.getElementsByTagName(ingButton).disabled = true;
-  }
+    timeout=true;  
+    module.exports = {timeout};
+    }
 
   //pickColor();
   if(classname == "answerBtnsOff"){
@@ -203,25 +216,15 @@ function onoff(btn){
     document.getElementById("demoList").innerHTML = ing_selected;
 }
 
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
-function setRandomColor() {
-  $("#colorpad").css("background-color", getRandomColor());
-}
 
 function sendUserinfo(){
   let list = ing_selected
-  // console.log(list)
   const request = new XMLHttpRequest()
   document.getElementById("test").innerHTML = list;
   request.open('POST', `/ProcessUserinfo/${JSON.stringify(list)}`)
   console.log("inside sendUserinfo")
   request.send()
-}
+  }
+
+
+

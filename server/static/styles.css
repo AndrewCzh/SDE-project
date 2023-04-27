@@ -58,7 +58,7 @@ h1.money{
     }
 }
 
-.header,.enter,input[type=submit]{
+.header,input[type=submit]{
     left: 50%;
     margin-right: -50%;
     position: absolute;
@@ -94,7 +94,7 @@ h1.money{
     text-align: center;
     font-family:Comic Sans MS;
     position: center center;
-    left: 50%;
+    left: 55%;
     text-shadow:
     3px 3px 0 #000,
     -1px -1px 0 #000,
@@ -161,18 +161,23 @@ input[type=submit],input[type=button]{
 
 }
 .selected{
+    position: center;
+}
+
+input[type=ingButton]{
+    width: 250px;
+    text-align: center;
+    position: center center;
+}
+form {
+    display: block;
+    margin-left: 5em;
     position: center center;
 
 }
 
-input[type=ingButton]{
-    width: fit-content;
-    text-align: center;
-
-}
-
 body {
-    background-image: url('../static/cookTool.png');
+    /* background-image: url('../static/restaurant.png'); */
     background-repeat: no-repeat;
     background-position:center center;
     background-attachment: fixed;
@@ -188,14 +193,25 @@ p.error{
 
 h1.word{
     font-size: 40px;
-    color: rgb(236, 37, 143);
+    /* color: rgb(236, 37, 143); */
     font-style: italic;
     height: 40px;
 }
 
 h1.food{
-    color: rgb(245, 32, 114);
+    color: lightgreen;
     font-style: italic;
+    font-family:"Comic Sans MS";
+    text-emphasis: none;
+    text-decoration: none;
+    position: center center;
+    right: 50%;
+    text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 h3.word{
@@ -208,9 +224,9 @@ input.answerBtnsOff{
     font-style: italic;
 }
 
-#timerclock {
+#timerclock, .word {
     text-align: right;
-    font-size: 30px;
+    font-size: 50px;
     padding: 80 80px;
     font-family:"Comic Sans MS";
     color: white;
@@ -224,4 +240,11 @@ input.answerBtnsOff{
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
+  }
+
+  .enter{
+    left: 45%;
+    margin-right: -50%;
+    position:absolute;
+    transform: translate(-50%, -50%)
   }

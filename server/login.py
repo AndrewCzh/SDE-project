@@ -2,7 +2,7 @@
 import uuid
 # from bson.json_util import dumps
 # import random
-# import jsonify
+import jsonify
 from flask import Flask, render_template, request, session, redirect, url_for
 # import ingredients_generator as ig
 # session, url_for, redirect
@@ -10,6 +10,7 @@ import db.db_connect as dbc
 import start_game as sg
 from bson.json_util import loads
 import check_correct_ingredients as cci
+from django.http import HttpResponse
 
 USER = 'Users'
 GAMES = 'Games'
@@ -107,7 +108,7 @@ def menu():
     # session['gid'] = gid
     # data_ls, oid, game_id = sg.start_game(uid, gid)
     # session['oid'] = oid
-    money = 100
+    money = 0
     session['money'] = money
     print(f'{session["money"]=}')
     gid = str(uuid.uuid4())
@@ -152,7 +153,11 @@ def home():
     target = 150
     timeout = False
     error = "ERROR"
-
+    dish = 'SALAD'
+    # data = request.get_json()
+    # js_variable = data['variable']
+    # # do something with js_variable
+    # print('Variable received!, ', js_variable)
     if timeout:
         if money < target:
             return render_template('success.html', error=error)
@@ -162,10 +167,25 @@ def home():
     uid = session['uid']
     gid = session['gid']
     data_ls, oid, game_id = sg.start_game(uid, gid)
+    if "Rice" in data_ls[1]:
+        dish='SUSHI'
+    elif "Crust" in data_ls[1]:
+        dish='PIZZA'
+    elif "Bread" in data_ls[1]:
+        dish='BURGER'
+    
     session['oid'] = oid
     print(f"inside home: {session['oid']=}, {session['gid']=}")
     print(data_ls)
-    return render_template('home.html', data_ls=data_ls, money=money)
+    return render_template('home.html', data_ls=data_ls, money=money, dish=dish)
+
+
+@app.route('/my_python_script', methods=['POST'])
+def my_python_script():
+    data = request.get_json()
+    myBoolean = data['myBoolean']
+    print("BOOLEAN: ", myBoolean)
+    return jsonify(success=True)
 
 
 # receiving selected ingredients from home.html

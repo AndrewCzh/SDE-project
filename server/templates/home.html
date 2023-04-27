@@ -12,7 +12,7 @@
             <img src="static/customer.png"/>
         </div>
         <div class="orders">
-            <h1>I want a ... with</h1>
+            <h1 class="word">I want a {{dish}} with</h1>
         </div>
         <div class="orders">
         {% for ing in data_ls[1].keys() %}
@@ -22,8 +22,8 @@
         <div class="orders" id="timerclock"></div>
 </div>
 
-<div>
-    <h1 class="money" style="color: blue; font-size: 40px;">Coins Earned: {{ money }}</h1>
+<div class="money">
+    <h1 class="word" style="color: white; font-size: 40px;">Coins Earned: {{ money }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Target: 20 Coins</h1>
 </div>
 <div class="selected">
     <form action="/home" method="POST" >
@@ -59,12 +59,12 @@
         <input class="answerBtnsOff" id="Salad"  type="ingButton" value="Salad"   onclick= "onoff(this.id)" />
         <input class="answerBtnsOff" id="Croutons"  type="ingButton" value="Croutons"   onclick= "onoff(this.id)" />
 
-        <h1 class="word" style="color:black; font-size: 30px; text-align: center;">Here are the selected ingredients:
-        <ul id="demoList", name="ing_selected", style="color:white;font-style: italic;
+        <h1 class="word" style="color:white; font-size: 30px; text-align: center;">Here are the selected ingredients:
+        <ul id="demoList", name="ing_selected", style="color: lightgreen;font-style: italic;
         display: inline-block; font-size: 30px;"></ul> 
 
-        <ul id="test", name="list", style="color:green;font-style: italic;
-        display: inline-block; font-size: 30px; height: 35px;"></ul> 
+        <!-- <ul id="test", name="list", style="color:green;font-style: italic;
+        display: inline-block; font-size: 30px; height: 35px;"></ul>  -->
         <br></br>
 
         <input class = "submit_button" type ="button" id="checkButton" value = 'SUBMIT' 
@@ -83,13 +83,19 @@
 
 
 <script type="text/javascript" src="../static/home.js"></script>
+<script type='text/javascript'>
+    if (document.getElementById("timerclock").innerHTML == 'DONE'){
+        alert("TIME IS UP");
+        window.location.href = "success";
+    }
 
+</script>
 
 <style type="text/css">
 
     .answerBtnsOff
     {
-        BACKGROUND-COLOR: blue;
+        BACKGROUND-COLOR: pink;
         COLOR: black;
         FONT: 21px Verdana,Arial,Helvetica,sans-serif;
         font-weight:bold;
