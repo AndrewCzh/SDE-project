@@ -228,7 +228,7 @@ def cooking():
     print(f"before adding, {session['money']=}")
     session['money'] = session.get('money') + money
     print(f"{session['money']=}")
-    return render_template('cook.html', money=money)
+    return render_template('cook.html', money=session['money'])
 
 
 @app.route('/success')

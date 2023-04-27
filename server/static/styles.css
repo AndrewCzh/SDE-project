@@ -65,7 +65,7 @@ h1.money{
     transform: translate(-50%, -50%)
 }
 
-.header,.enter,input[type=submit],input[type=button]{
+.header,input[type=submit],input[type=button]{
     font-family:"Comic Sans MS";
     -webkit-text-fill-color: white; /* Will override color (regardless of order)*/ 
     text-shadow:
@@ -136,7 +136,23 @@ a:link, a:visited {
     top: 60%;
     margin-right: -50%;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: green;
+    font-family:"Comic Sans MS";
+    color: white;
+    text-emphasis: none;
+    text-decoration: none;
+    position: center center;
+    text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+     
+    left: 45%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+    
+    /* -webkit-text-stroke-color: green; */
 
 }
 
@@ -242,9 +258,3 @@ input.answerBtnsOff{
     1px 1px 0 #000;
   }
 
-  .enter{
-    left: 45%;
-    margin-right: -50%;
-    position:absolute;
-    transform: translate(-50%, -50%)
-  }
