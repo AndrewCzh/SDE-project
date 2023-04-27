@@ -61,8 +61,8 @@ def fetch_all_with_filt(collection, db, filt):
 def fetch_one(collection, db, filt):
     ret = None
     ret = client[db][collection].find_one(filt)
-    # ret = client[db][collection].find_one(filt)
-    # del ret['_id']
+    # if ret is not None and '_id' in ret:
+    #     del ret['_id']
     # if db == 'Ingredients':
     #     ret = client[db][collection]
     return ret

@@ -166,50 +166,59 @@ class ToolTypeList(Resource):
         return {TOOL_TYPE_LIST_NM: ctool.get_tool_types()}
 
 
-@api.route(FOOD_TYPE_DICT)
+@api.route(f'{FOOD_TYPE_DICT}/<ingr_type>')
 class FoodTypeDict(Resource):
     """
     This will get a list of food types
     """
 
-    def get(self):
+    @api.response(HTTPStatus.OK, 'Success')
+    @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
+    def get(self, ingr_type):
         """
         Returns a dict of ingredient types.
         """
-        return {'Data': ftyp.get_food_type_dict(),
-                'Type': 'Data',
-                'Title': 'Food Types'}
+        # return {'Data': ftyp.get_food_types_dict(ingr_type),
+        #         'Type': 'Data',
+        #         'Title': 'Food Types'}
+        ft = ftyp.get_food_types_dict(ingr_type)
+        if ft:
+            return {FOOD_TYPE_LIST_NM: ft}
+        else:
+            raise wz.NotFound(f'{ingr_type} not found.')
 
 
-@api.route(FOOD_TYPE_LIST)
+@api.route(f'{FOOD_TYPE_LIST}/<ingr_type>')
 class FoodTypeList(Resource):
     """
     This will get a dict of ingredient types
     """
 
-    def get(self):
+    def get(self, ingr_type):
         """
         Returns a list of food types.
         """
-        return {FOOD_TYPE_LIST_NM: ftyp.get_food_types()}
+        ft = ftyp.get_food_types_list(ingr_type)
+        if ft:
+            return {FOOD_TYPE_LIST_NM: ft}
+        else:
+            raise wz.NotFound(f'{ingr_type} not found.')
 
 
-@api.route(f'{FOOD_TYPE_DETAILS}/<food_type>')
+@api.route(f'{FOOD_TYPE_DETAILS}/<ingr_type>/<food_type>')
 class FoodTypeDetails(Resource):
     """
     This will get a list of details of ingredient types.
     """
-
     @api.response(HTTPStatus.OK, 'Success')
     @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
-    def get(self, food_type):
+    def get(self, ingr_type, food_type):
         """
         Return a list of food types.
         """
-        print(self)
-        ft = ftyp.get_food_type_details(food_type)
-        if ft is not None:
-            return {food_type: ftyp.get_food_type_details(food_type)}
+        ft = ftyp.get_food_type_details(ingr_type, food_type)
+        if ft:
+            return {food_type: ft}
         else:
             raise wz.NotFound(f'{food_type} not found.')
 
@@ -431,19 +440,19 @@ class StartGame(Resource):
         return {NEW_GAME_NM: game_id}
 
 
-@api.route('/endpoints')
-class Endpoints(Resource):
-    """
-    This class will serve as live, fetchable documentation of what endpoints
-    are available in the system.
-    """
-    def get(self):
-        """
-        The `get()` method will return a list of available endpoints.
-        """
-        endpoints = ''
-        # sorted(rule.rule for rule in api.app.url_map.iter_rules())
-        return {"Available endpoints": endpoints}
+# @api.route('/endpoints')
+# class Endpoints(Resource):
+#     """
+#     This class will serve as live, fetchable documentation of what endpoints
+#     are available in the system.
+#     """
+#     def get(self):
+#         """
+#         The `get()` method will return a list of available endpoints.
+#         """
+#         endpoints = ''
+#         # sorted(rule.rule for rule in api.app.url_map.iter_rules())
+#         return {"Available endpoints": endpoints}
 
 
 # HATEOAS
