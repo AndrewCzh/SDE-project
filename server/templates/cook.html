@@ -10,9 +10,9 @@
 
 <div class="selected">
     <form action="/cook" method="POST" >
-        <input class="answerBtnsOff" id="Oven" type="ingButton" value="Oven"  onclick="cook_onoff(this.id);"/>
-        <input class="answerBtnsOff" id="RiceCooker"  type="ingButton" value="RiceCooker"  onclick="cook_onoff(this.id)" />
-        <input class="answerBtnsOff" id="Grill"  type="ingButton" value="Grill"   onclick= "cook_onoff(this.id)" />  
+        <input class="answerBtnsOff" id="Oven" type="ingButton" value="Oven"  onclick="cook_onoff(this.id,{{money|tojson}});"/>
+        <input class="answerBtnsOff" id="RiceCooker"  type="ingButton" value="RiceCooker"  onclick="cook_onoff(this.id,{{money|tojson}});" />
+        <input class="answerBtnsOff" id="Grill"  type="ingButton" value="Grill"   onclick="cook_onoff(this.id,{{money|tojson}});" />  
 
         <h1 class="word" style="color:white; font-size: 30px; text-align: center;">Here is the selected Cook Tool:
             <ul id="demoList", name="cook_selected", style="color:lightgreen;font-style: italic;

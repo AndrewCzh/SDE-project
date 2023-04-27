@@ -176,7 +176,7 @@ function arrayRemove(arr, value) {
 }
 
 
-function onoff(btn){
+function onoff(btn, money){
   classname = document.getElementById(btn).className;
   currentvalue = document.getElementById(btn).value;
   // document.getElementById("demo").innerHTML = formatTime(
@@ -185,7 +185,12 @@ function onoff(btn){
   counter = document.getElementById("timerclock").innerHTML
   if (counter == "TIMEOUT") {
     alert("TIME IS UP");
-    window.location.href = "success";
+    if (money >= 20){
+      window.location.href = "success";
+    }
+    else{
+      window.location.href = "failed";
+    }
     document.getElementsByTagName(ingButton).disabled = true;
     timeout=true;  
     // module.exports = {timeout};

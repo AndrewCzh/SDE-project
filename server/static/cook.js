@@ -10,7 +10,7 @@ function arrayRemove(arr, value) {
   return arr
 }
 
-function cook_onoff(btn){
+function cook_onoff(btn, money){
     classname = document.getElementById(btn).className;
     currentvalue = document.getElementById(btn).value;
     // const {timeout} = require('./home.js');
@@ -22,7 +22,12 @@ function cook_onoff(btn){
     counter = document.getElementById("timerclock").innerHTML
     if (counter == "TIMEOUT") {
       alert("TIME IS UP");
-      window.location.href = "success";
+      if (money >= 20){
+        window.location.href = "success";
+      }
+      else{
+        window.location.href = "failed";
+      }
       document.getElementsByTagName(ingButton).disabled = true;
       timeout=true;  
       // module.exports = {timeout};

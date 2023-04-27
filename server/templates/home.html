@@ -27,37 +27,37 @@
 </div>
 <div class="selected">
     <form action="/home" method="POST" >
-        <input class="answerBtnsOff" id="salmon" type="ingButton" value="Salmon"  onclick="onoff(this.id);"/>
-        <input class="answerBtnsOff" id="lettuce"  type="ingButton" value="Lettuce"  onclick="onoff(this.id);" />
-        <input class="answerBtnsOff" id="rice"  type="ingButton" value="Rice"   onclick= "onoff(this.id)" />
-        <input class="answerBtnsOff" id="tuna"  type="ingButton" value="Tuna"   onclick= "onoff(this.id)"/>
-        <input class="answerBtnsOff" id="cucumber"  type="ingButton" value="Cucumber"   onclick= "onoff(this.id)" />
-        <input class="answerBtnsOff" id="Cheese" type="ingButton" value="Cheese"  onclick="onoff(this.id);"/>
-        <input class="answerBtnsOff" id="Crust"  type="ingButton" value="Crust"  onclick="onoff(this.id);" />
-        <input class="answerBtnsOff" id="Spinach"  type="ingButton" value="Spinach"   onclick= "onoff(this.id)" />
-        <input class="answerBtnsOff" id="Pepperoni"  type="ingButton" value="Pepperoni"   onclick= "onoff(this.id)"/>
-        <input class="answerBtnsOff" id="Tomato"  type="ingButton" value="Tomato"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="salmon" type="ingButton" value="Salmon"  onclick="onoff(this.id,{{money|tojson}});"/>
+        <input class="answerBtnsOff" id="lettuce"  type="ingButton" value="Lettuce"  onclick="onoff(this.id,{{money|tojson}});" />
+        <input class="answerBtnsOff" id="rice"  type="ingButton" value="Rice"   onclick="onoff(this.id,{{money|tojson}});" />
+        <input class="answerBtnsOff" id="tuna"  type="ingButton" value="Tuna"   onclick="onoff(this.id,{{money|tojson}});"/>
+        <input class="answerBtnsOff" id="cucumber"  type="ingButton" value="Cucumber"   onclick="onoff(this.id,{{money|tojson}});" />
+        <input class="answerBtnsOff" id="Cheese" type="ingButton" value="Cheese"  onclick="onoff(this.id,{{money|tojson}});"/>
+        <input class="answerBtnsOff" id="Crust"  type="ingButton" value="Crust"  onclick="onoff(this.id,{{money|tojson}});" />
+        <input class="answerBtnsOff" id="Spinach"  type="ingButton" value="Spinach"   onclick="onoff(this.id,{{money|tojson}});" />
+        <input class="answerBtnsOff" id="Pepperoni"  type="ingButton" value="Pepperoni"   onclick="onoff(this.id,{{money|tojson}});"/>
+        <input class="answerBtnsOff" id="Tomato"  type="ingButton" value="Tomato"   onclick="onoff(this.id,{{money|tojson}});" />
     
-        <input class="answerBtnsOff" id="Pineapple" type="ingButton" value="Pineapple"  onclick="onoff(this.id);"/>
-        <input class="answerBtnsOff" id="GrilledMushroom"  type="ingButton" value="Grilled Mushroom"  onclick="onoff(this.id);" />
-        <input class="answerBtnsOff" id="Green Peppers"  type="ingButton" value="Green Peppers"   onclick= "onoff(this.id)" />
-        <input class="answerBtnsOff" id="Red Peppers"  type="ingButton" value="Red Peppers"   onclick= "onoff(this.id)"/>
-        <input class="answerBtnsOff" id="Onions"  type="ingButton" value="Onions"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Pineapple" type="ingButton" value="Pineapple"  onclick="onoff(this.id,{{money|tojson}});"/>
+        <input class="answerBtnsOff" id="GrilledMushroom"  type="ingButton" value="Grilled Mushroom"  onclick="onoff(this.id,{{money|tojson}});" />
+        <input class="answerBtnsOff" id="Green Peppers"  type="ingButton" value="Green Peppers"   onclick="onoff(this.id,{{money|tojson}});" />
+        <input class="answerBtnsOff" id="Red Peppers"  type="ingButton" value="Red Peppers"   onclick="onoff(this.id,{{money|tojson}});"/>
+        <input class="answerBtnsOff" id="Onions"  type="ingButton" value="Onions"   onclick="onoff(this.id,{{money|tojson}});" />
     
-        <input class="answerBtnsOff" id="Corn" type="ingButton" value="Corn"  onclick="onoff(this.id);"/>
-        <input class="answerBtnsOff" id="Beef"  type="ingButton" value="Beef"  onclick="onoff(this.id);" />
-        <input class="answerBtnsOff" id="Bacon"  type="ingButton" value="Bacon"   onclick= "onoff(this.id)" />
-        <input class="answerBtnsOff" id="Avocado"  type="ingButton" value="Avocado"   onclick= "onoff(this.id)"/>
-        <input class="answerBtnsOff" id="Zucchini"  type="ingButton" value="Zucchini"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Corn" type="ingButton" value="Corn"  onclick="onoff(this.id,{{money|tojson}});"/>
+        <input class="answerBtnsOff" id="Beef"  type="ingButton" value="Beef"  onclick="onoff(this.id,{{money|tojson}});" />
+        <input class="answerBtnsOff" id="Bacon"  type="ingButton" value="Bacon"   onclick="onoff(this.id,{{money|tojson}});" />
+        <input class="answerBtnsOff" id="Avocado"  type="ingButton" value="Avocado"   onclick="onoff(this.id,{{money|tojson}});"/>
+        <input class="answerBtnsOff" id="Zucchini"  type="ingButton" value="Zucchini"   onclick="onoff(this.id,{{money|tojson}});" />
     
-        <input class="answerBtnsOff" id="Chicken" type="ingButton" value="Chicken"  onclick="onoff(this.id);"/>
-        <input class="answerBtnsOff" id="Broccoli"  type="ingButton" value="Broccoli"  onclick="onoff(this.id);" />
-        <input class="answerBtnsOff" id="Carrot"  type="ingButton" value="Carrot"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Chicken" type="ingButton" value="Chicken"  onclick="onoff(this.id,{{money|tojson}});"/>
+        <input class="answerBtnsOff" id="Broccoli"  type="ingButton" value="Broccoli"  onclick="onoff(this.id,{{money|tojson}});" />
+        <input class="answerBtnsOff" id="Carrot"  type="ingButton" value="Carrot"   onclick="onoff(this.id,{{money|tojson}});" />
 
-        <input class="answerBtnsOff" id="Bread" type="ingButton" value="Bread"  onclick="onoff(this.id);"/>
-        <input class="answerBtnsOff" id="Shrimp"  type="ingButton" value="Shrimp"  onclick="onoff(this.id);" />
-        <input class="answerBtnsOff" id="Salad"  type="ingButton" value="Salad"   onclick= "onoff(this.id)" />
-        <input class="answerBtnsOff" id="Croutons"  type="ingButton" value="Croutons"   onclick= "onoff(this.id)" />
+        <input class="answerBtnsOff" id="Bread" type="ingButton" value="Bread"  onclick="onoff(this.id,{{money|tojson}});"/>
+        <input class="answerBtnsOff" id="Shrimp"  type="ingButton" value="Shrimp"  onclick="onoff(this.id,{{money|tojson}});" />
+        <input class="answerBtnsOff" id="Salad"  type="ingButton" value="Salad"   onclick="onoff(this.id,{{money|tojson}});" />
+        <input class="answerBtnsOff" id="Croutons"  type="ingButton" value="Croutons"   onclick="onoff(this.id,{{money|tojson}});" />
 
         <h1 class="word" style="color:white; font-size: 30px; text-align: center;">Here are the selected ingredients:
         <ul id="demoList", name="ing_selected", style="color: lightgreen;font-style: italic;
