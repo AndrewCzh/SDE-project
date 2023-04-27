@@ -10,7 +10,7 @@ import db.db_connect as dbc
 import start_game as sg
 from bson.json_util import loads
 import check_correct_ingredients as cci
-from django.http import HttpResponse
+# from django.http import HttpResponse
 
 USER = 'Users'
 GAMES = 'Games'
@@ -167,17 +167,18 @@ def home():
     uid = session['uid']
     gid = session['gid']
     data_ls, oid, game_id = sg.start_game(uid, gid)
-    if "Rice" in data_ls[1]:
+    if ("Rice" in data_ls[1]):
         dish='SUSHI'
-    elif "Crust" in data_ls[1]:
+    elif ("Crust" in data_ls[1]):
         dish='PIZZA'
-    elif "Bread" in data_ls[1]:
+    elif ("Bread" in data_ls[1]):
         dish='BURGER'
-    
+
     session['oid'] = oid
     print(f"inside home: {session['oid']=}, {session['gid']=}")
     print(data_ls)
-    return render_template('home.html', data_ls=data_ls, money=money, dish=dish)
+    return render_template('home.html', data_ls=data_ls, 
+                           money=money, dish=dish)
 
 
 @app.route('/my_python_script', methods=['POST'])
