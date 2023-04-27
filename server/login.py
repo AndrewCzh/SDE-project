@@ -223,8 +223,11 @@ def cooking():
     data = loads(data)
     print(f"{type(data)=}, {data=}")
     print(f"inside cook: {session['oid']=}, {session['gid']=}")
+    #data2 = session.get('tool')
+    #data2 = loads(data2)
     money = cci.check_correct_ingredients(data,
                                           session['gid'], session['oid'])
+    #money2 = cci.check_correct_tool(data2,session['gid'], session['oid'])
     print(f"{money=}")
     print(f"before adding, {session['money']=}")
     session['money'] = session.get('money') + money
@@ -242,6 +245,37 @@ def update_highest_score(uid, money):
                            {'$set': {'highest_score': money}})
         else:
             pass
+
+
+@app.route('/cookTool', methods=['GET', 'POST'])
+def pickCookTool():
+    # money += cci.check_correct_ingredients(session['ing'],
+    #                                        session['gid'], session['oid'])
+    print(f"{session['money']=}")
+    # selected_cook
+    # correct_cook
+    # if selected_cook == correct_cook:
+    #     return "cooking animation"
+    # else:
+    #     return render_template('failed.html')
+    # data = session.get('ing')
+    # print(f'Inside cook : {data}')
+    # data = loads(data)
+    # print(f"{type(data)=}, {data=}")
+    # print(f"inside cook: {session['oid']=}, {session['gid']=}")
+    data2 = session.get('tool')
+    data2 = loads(data2)
+    # money = cci.check_correct_ingredients(data,
+    #                                       session['gid'], session['oid'])
+    money2 = cci.check_correct_tool(data2,
+                                          session['gid'], session['oid'])
+    # print(f"{money=}")
+    # print(f"before adding, {session['money']=}")
+    session['money'] = session.get('money') + money2
+    # print(f"{session['money']=}")
+    return render_template('cook.html')
+
+
 
 
 @app.route('/success')

@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 import pymongo
+from db import db_connect as dbc
 
 # cook_tools = {'food1': 'A', 'food2': 'B', 'food3': 'C'}
 
@@ -33,6 +34,27 @@ cluster0.wnpabny.mongodb.net/cooktool"
 
 client = MongoClient('localhost', 27017)
 db = client['cooktool']
+
+
+def check_correct_tool(data, data2):
+    money = 0.0
+    if len(data2) == 0 or len(data2) > 1:
+        money -= 5;
+    elif data[0] == 'Bread' and data2[0] == 'Grill':
+        money += 5
+    elif data[0] == 'Crust' and data2[0] == 'Oven':
+        money += 5
+    elif data[0] == 'Rice' and data2[0] == 'RiceCooker':
+        money += 5
+    elif data[0] == 'Salad_Dressing' and data2[0] == 'RiceCooker':
+        money += 5
+    else:
+        money -= 5
+    return money
+
+
+
+
 
 
 # Define function to check if a tool exists in a collection
