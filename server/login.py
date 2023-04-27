@@ -140,7 +140,7 @@ def profile():
                                game_times=game_times)
     else:
         error = "User not found"
-        return render_template('error.html', error=error, 
+        return render_template('error.html', error=error,
                                highest_score=highest_score)
 
 
