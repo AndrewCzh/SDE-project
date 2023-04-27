@@ -168,16 +168,16 @@ def home():
     gid = session['gid']
     data_ls, oid, game_id = sg.start_game(uid, gid)
     if ("Rice" in data_ls[1]):
-        dish='SUSHI'
+        dish = 'SUSHI'
     elif ("Crust" in data_ls[1]):
-        dish='PIZZA'
+        dish = 'PIZZA'
     elif ("Bread" in data_ls[1]):
-        dish='BURGER'
+        dish = 'BURGER'
 
     session['oid'] = oid
     print(f"inside home: {session['oid']=}, {session['gid']=}")
     print(data_ls)
-    return render_template('home.html', data_ls=data_ls, 
+    return render_template('home.html', data_ls=data_ls,
                            money=money, dish=dish)
 
 
