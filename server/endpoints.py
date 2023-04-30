@@ -14,7 +14,7 @@ import db.users as usr
 import db.games as gm
 import server.start_game as sg
 # from flask import jsonify
-import db.ingredients_choice as ingc
+# import db.ingredients_choice as ingc
 
 
 # import db.db as db
@@ -96,20 +96,22 @@ GAMES_LIST_W_NS = f'/{GAMES_NS}/{LIST}'
 @api.route('/ingredient_choice')
 class FindIngredient(Resource):
     def get(self):
-
-        if current_order:
+        """
+        Find the current ingredient
+        """
+        if ingredients:
             print("enter1")
 
             # Example response with HATEOAS links
             response = {
-                'message': f'Current order: {current_order}',
+                'message': f'ingredients: {ingredients}',
                 '_links': [
                     {
-                        'ingredients': ingc.current_order,
-                        # 'rel': 'IngredientsGeneratorList',
-                        # 'href': f'/{INGREDIENTS_GENERATOR_LIST}',
-                        # 'method': 'POST',
-                        'description': 'Select ingredients for the order'
+                        # 'ingredients': ingc.current_order,
+                        'rel': 'IngredientsGeneratorList',
+                        'href': f'/{INGREDIENTS_GENERATOR_LIST}',
+                        'method': 'POST',
+                        'description': 'Ingredients in the list'
                     },
                 ]
             }
