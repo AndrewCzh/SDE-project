@@ -13,10 +13,11 @@ from server.ingredients_generator import \
 import db.users as usr
 import db.games as gm
 import server.start_game as sg
+import db.ingredient_choice as ingc
 # from flask import jsonify
-# import db.ingredients_choice as ingc
+import db.ingredients_choice as ingc
 
-
+# import common.form_filler as ff
 # import db.db as db
 
 app = Flask(__name__)
@@ -93,29 +94,6 @@ GAMES_LIST_W_NS = f'/{GAMES_NS}/{LIST}'
 #         Gets the main game menu.
 #         """
 #         return {MESSAGE: 'hello world'}
-@api.route('/ingredient_choice')
-class FindIngredient(Resource):
-    def get(self):
-        """
-        Find the current ingredient
-        """
-        if ingredients:
-            print("enter1")
-
-            # Example response with HATEOAS links
-            response = {
-                'message': f'ingredients: {ingredients}',
-                '_links': [
-                    {
-                        # 'ingredients': ingc.current_order,
-                        'rel': 'IngredientsGeneratorList',
-                        'href': f'/{INGREDIENTS_GENERATOR_LIST}',
-                        'method': 'POST',
-                        'description': 'Ingredients in the list'
-                    },
-                ]
-            }
-        return jsonify(response)
 
 
 @api.route(MAIN_MENU)
@@ -165,62 +143,53 @@ class ToolTypeList(Resource):
         """
         Returns a list of tool types.
         """
-        return {TOOL_TYPE_LIST_NM: ctool.get_tool_types()}
+        return {TOOL_TYPE_LIST_NM: ftyp.get_tool_types()}
 
 
-@api.route(f'{FOOD_TYPE_DICT}/<ingr_type>')
+@api.route(FOOD_TYPE_DICT)
 class FoodTypeDict(Resource):
     """
     This will get a list of food types
     """
 
-    @api.response(HTTPStatus.OK, 'Success')
-    @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
-    def get(self, ingr_type):
+    def get(self):
         """
         Returns a dict of ingredient types.
         """
-        # return {'Data': ftyp.get_food_types_dict(ingr_type),
-        #         'Type': 'Data',
-        #         'Title': 'Food Types'}
-        ft = ftyp.get_food_types_dict(ingr_type)
-        if ft:
-            return {FOOD_TYPE_LIST_NM: ft}
-        else:
-            raise wz.NotFound(f'{ingr_type} not found.')
+        return {'Data': ftyp.get_food_type_dict(),
+                'Type': 'Data',
+                'Title': 'Food Types'}
 
 
-@api.route(f'{FOOD_TYPE_LIST}/<ingr_type>')
+@api.route(FOOD_TYPE_LIST)
 class FoodTypeList(Resource):
     """
     This will get a dict of ingredient types
     """
 
-    def get(self, ingr_type):
+    def get(self):
         """
         Returns a list of food types.
         """
-        ft = ftyp.get_food_types_list(ingr_type)
-        if ft:
-            return {FOOD_TYPE_LIST_NM: ft}
-        else:
-            raise wz.NotFound(f'{ingr_type} not found.')
+        return {FOOD_TYPE_LIST_NM: ftyp.get_food_types()}
 
 
-@api.route(f'{FOOD_TYPE_DETAILS}/<ingr_type>/<food_type>')
+@api.route(f'{FOOD_TYPE_DETAILS}/<food_type>')
 class FoodTypeDetails(Resource):
     """
     This will get a list of details of ingredient types.
     """
+
     @api.response(HTTPStatus.OK, 'Success')
     @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
-    def get(self, ingr_type, food_type):
+    def get(self, food_type):
         """
         Return a list of food types.
         """
-        ft = ftyp.get_food_type_details(ingr_type, food_type)
-        if ft:
-            return {food_type: ft}
+        print(self)
+        ft = ftyp.get_food_type_details(food_type)
+        if ft is not None:
+            return {food_type: ftyp.get_food_type_details(food_type)}
         else:
             raise wz.NotFound(f'{food_type} not found.')
 
@@ -235,8 +204,6 @@ class FoodTypeDetails(Resource):
 #         Returns a list of character types.
 #         """
 #         return {CHAR_TYPE_LIST_NM: ctyp.get_char_types()}
-
-
 # @api.route(CHAR_TYPE_DICT)
 # class CharacterTypeDict(Resource):
 #     """
@@ -442,24 +409,24 @@ class StartGame(Resource):
         return {NEW_GAME_NM: game_id}
 
 
-# @api.route('/endpoints')
-# class Endpoints(Resource):
-#     """
-#     This class will serve as live, fetchable documentation of what endpoints
-#     are available in the system.
-#     """
-#     def get(self):
-#         """
-#         The `get()` method will return a list of available endpoints.
-#         """
-#         endpoints = ''
-#         # sorted(rule.rule for rule in api.app.url_map.iter_rules())
-#         return {"Available endpoints": endpoints}
+@api.route('/endpoints')
+class Endpoints(Resource):
+    """
+    This class will serve as live, fetchable documentation of what endpoints
+    are available in the system.
+    """
+    def get(self):
+        """
+        The `get()` method will return a list of available endpoints.
+        """
+        endpoints = ''
+        # sorted(rule.rule for rule in api.app.url_map.iter_rules())
+        return {"Available endpoints": endpoints}
 
 
 # HATEOAS
 # Global game state
-current_order = 'abc'
+current_order = 'BURGER'
 ingredients = ['lettuce', 'tomato', 'onion']
 tools = ['Grill', 'RickCooker', 'Oven']
 
@@ -486,4 +453,24 @@ class FindOrder(Resource):
                     },
                 ]
             }
+        return jsonify(response)
+
+
+@api.route('/ingredient_choice')
+class FindIngredient(Resource):
+    def get(self):
+
+
+            # Example response with HATEOAS links
+        response = {
+            'message': 'see the new generated order with the dish type and ingredients',
+            '_links': [
+                {
+                    "order_id": "current_order",
+                    'ingredients': 'Select ingredients for the order',
+                    "total_price": "depends on how many correct ingredients player select",
+                    'description': 'Your order has been received and will be ready for pickup'
+                },
+            ]
+        }
         return jsonify(response)
