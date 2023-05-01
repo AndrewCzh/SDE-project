@@ -13,9 +13,8 @@ from server.ingredients_generator import \
 import db.users as usr
 import db.games as gm
 import server.start_game as sg
-import db.ingredient_choice as ingc
+# import db.ingredient_choice as ingc
 # from flask import jsonify
-import db.ingredients_choice as ingc
 
 # import common.form_filler as ff
 # import db.db as db
@@ -458,18 +457,15 @@ class FindOrder(Resource):
 
 @api.route('/ingredient_choice')
 class FindIngredient(Resource):
-    def get(self):
-
-
-            # Example response with HATEOAS links
+    def get(self): # Example response with HATEOAS links
         response = {
             'message': 'see the new generated order with the dish type and ingredients',
             '_links': [
                 {
                     "order_id": "current_order",
                     'ingredients': 'Select ingredients for the order',
-                    "total_price": "depends on how many correct ingredients player select",
-                    'description': 'Your order has been received and will be ready for pickup'
+                    "total_price": "select correct ingredients",
+                    'description': 'receive order and choose correctly'
                 },
             ]
         }

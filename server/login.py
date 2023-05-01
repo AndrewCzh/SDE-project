@@ -224,11 +224,11 @@ def cooking():
     data = loads(data)
     print(f"{type(data)=}, {data=}")
     print(f"inside cook: {session['oid']=}, {session['gid']=}")
-    #data2 = session.get('tool')
-    #data2 = loads(data2)
+    # data2 = session.get('tool')
+    # data2 = loads(data2)
     money = cci.check_correct_ingredients(data,
                                           session['gid'], session['oid'])
-    #money2 = cci.check_correct_tool(data2,session['gid'], session['oid'])
+    # money2 = cci.check_correct_tool(data2,session['gid'], session['oid'])
     print(f"{money=}")
     print(f"before adding, {session['money']=}")
     session['money'] = session.get('money') + money
@@ -258,14 +258,12 @@ def pickCookTool():
     # money = cci.check_correct_ingredients(data,
     #                                       session['gid'], session['oid'])
     money2 = cci.check_correct_tool(data2,
-                                          session['gid'], session['oid'])
+        session['gid'], session['oid'])
     # print(f"{money=}")
     # print(f"before adding, {session['money']=}")
     session['money'] = session.get('money') + money2
     # print(f"{session['money']=}")
     return render_template('cook.html')
-
-
 
 
 @app.route('/success')

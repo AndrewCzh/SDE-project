@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 import pymongo
-from db import db_connect as dbc
 
 # cook_tools = {'food1': 'A', 'food2': 'B', 'food3': 'C'}
 
@@ -39,7 +38,7 @@ db = client['cooktool']
 def check_correct_tool(data, data2):
     money = 0.0
     if len(data2) == 0 or len(data2) > 1:
-        money -= 5;
+        money -= 5
     elif data[0] == 'Bread' and data2[0] == 'Grill':
         money += 5
     elif data[0] == 'Crust' and data2[0] == 'Oven':
@@ -51,10 +50,6 @@ def check_correct_tool(data, data2):
     else:
         money -= 5
     return money
-
-
-
-
 
 
 # Define function to check if a tool exists in a collection
