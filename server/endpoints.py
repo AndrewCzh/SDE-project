@@ -457,9 +457,9 @@ class FindOrder(Resource):
 
 @api.route('/ingredient_choice')
 class FindIngredient(Resource):
-    def get(self): # Example response with HATEOAS links
+    def get(self):   # Example response with HATEOAS links
         response = {
-            'message': 'see the new generated order with the dish type and ingredients',
+            'message': 'see generated order with the dish type and ingredients',
             '_links': [
                 {
                     "order_id": "current_order",
