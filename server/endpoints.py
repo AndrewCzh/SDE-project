@@ -459,7 +459,7 @@ class FindOrder(Resource):
 class FindIngredient(Resource):
     def get(self):   # Example response with HATEOAS links
         response = {
-            'message': 'see generated order with the dish type and ingredients',
+            'message': 'see generated order with the dish type + ingredients',
             '_links': [
                 {
                     "order_id": "current_order",
