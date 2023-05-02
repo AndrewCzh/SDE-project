@@ -79,6 +79,9 @@ NEW_GAME_NM = f'{GAMES_NS}_{ADD}'
 GAMES_LIST = f'/{LIST}'
 GAMES_LIST_NM = f'{GAMES_NS}_{LIST}'
 GAMES_LIST_W_NS = f'/{GAMES_NS}/{LIST}'
+GAME_COUNT = "/count"
+GAME_COUNT_NM = f'{GAMES_NS}_count'
+GAME_COUNT_W_NS = f'/{GAMES_NS}/count'
 
 
 # @api.route(HELLO)
@@ -269,6 +272,18 @@ class UserCount(Resource):
         return {USER_COUNT_NM: usr.count_user()}
 
 
+@games.route(GAME_COUNT)
+class GameCount(Resource):
+    """
+    This will get the number of times playing of all the games
+    """
+    def get(self):
+        """
+        Returns a total number of games playing
+        """
+        return {GAME_COUNT_NM: gm.count_game()}
+
+
 # @api.route(USER_DETAILS_W_NS)
 # class UserDetails(Resource):
 #     """
@@ -426,14 +441,34 @@ class FindOrder(Resource):
 class FindIngredient(Resource):
     def get(self):   # Example response with HATEOAS links
         response = {
-            'message': 'see generated order with the dish type + ingredients',
-            '_links': [
-                {
-                    "order_id": "current_order",
-                    'ingredients': 'Select ingredients for the order',
-                    "total_price": "select correct ingredients",
-                    'description': 'receive order and choose correctly'
-                },
-            ]
+            'message': 'choose correct ingredients + cook tool',
+            'cook_tool': 'Grill, Ricecooker, Oven',
+            'Bread': 7,
+            'Cheese': 1,
+            'Tomato': 0.5,
+            'Lettuce': 0.5,
+            'Grilled Mushroom': 0.5,
+            "Pickles": 0.5,
+            'Onions': 0.5,
+            'Mushroom': 0.5,
+            'Bacon': 1.5,
+            'Beef': 3,
+            'Green Peppers': 0.5,
+            'Spinach': 0.5,
+            'Pepperoni': 1.5,
+            'Crust': 8,
+            'Red peppers': 0.5,
+            'Pineapple': 1,
+            'Salad_Dressing': 6,
+            'Croutons': 1,
+            'Corn': 1,
+            'Avocado': 1,
+            'Zucchini': 0.5,
+            "Rice": 7,
+            'Shrimp': 1,
+            "Broccoli": 0.5,
+            'Chicken': 1,
+            'Salmon': 1,
+            'Tuna': 1
         }
         return jsonify(response)
