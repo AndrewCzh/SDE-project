@@ -167,21 +167,21 @@ class FoodTypeDict(Resource):
             raise wz.NotFound(f'{ingr_type} not found.')
 
 
-@api.route(f'{FOOD_TYPE_LIST}/<ingr_type>')
+@api.route(f'{FOOD_TYPE_LIST}/<food_type>')
 class FoodTypeList(Resource):
     """
     This will get a dict of ingredient types
     """
 
-    def get(self, ingr_type):
+    def get(self, food_type):
         """
         Returns a list of food types.
         """
-        ft = ftyp.get_food_types_list(ingr_type)
+        ft = ftyp.get_food_types_list(food_type)
         if ft:
             return {FOOD_TYPE_LIST_NM: ft}
         else:
-            raise wz.NotFound(f'{ingr_type} not found.')
+            raise wz.NotFound(f'{food_type} not found.')
 
 
 @api.route(f'{FOOD_TYPE_DETAILS}/<ingr_type>/<food_type>')
@@ -195,11 +195,11 @@ class FoodTypeDetails(Resource):
         """
         Return a list of food types.
         """
-        ft = ftyp.get_food_type_details(ingr_type, food_type)
+        ft = ftyp.get_food_type_details(food_type, ingr_type)
         if ft:
-            return {food_type: ft}
+            return {ingr_type: ft}
         else:
-            raise wz.NotFound(f'{food_type} not found.')
+            raise wz.NotFound(f'{ingr_type} not found.')
 
 
 # @api.route(INGREDIENTS_GENERATOR_LIST)
