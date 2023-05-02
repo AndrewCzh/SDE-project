@@ -74,8 +74,8 @@ USER_ADD_NM = f'{USERS_NS}_{ADD}'
 USER_DELETE = f'/{DELETE}'
 USER_DELETE_W_NS = f'/{USERS_NS}/{DELETE}'
 USER_DELETE_NM = f'{USERS_NS}_delete'
-NEW_GAME = f'/Game/{ADD}'
-NEW_GAME_NM = f'Game_{ADD}'
+NEW_GAME = f'/{ADD}'
+NEW_GAME_NM = f'{GAMES_NS}_{ADD}'
 GAMES_LIST = f'/{LIST}'
 GAMES_LIST_NM = f'{GAMES_NS}_{LIST}'
 GAMES_LIST_W_NS = f'/{GAMES_NS}/{LIST}'
@@ -200,50 +200,6 @@ class FoodTypeDetails(Resource):
             return {food_type: ft}
         else:
             raise wz.NotFound(f'{food_type} not found.')
-
-
-# @api.route(CHAR_TYPE_LIST)
-# class CharacterTypeList(Resource):
-#     """
-#     This will get a list of character types.
-#     """
-#     def get(self):
-#         """
-#         Returns a list of character types.
-#         """
-#         return {CHAR_TYPE_LIST_NM: ctyp.get_char_types()}
-
-
-# @api.route(CHAR_TYPE_DICT)
-# class CharacterTypeDict(Resource):
-#     """
-#     This will get a list of character types.
-#     """
-#     def get(self):
-#         """
-#         Returns a list of character types.
-#         """
-#         return {'Data': ctyp.get_char_type_dict(),
-#                 'Type': 'Data',
-#                 'Title': 'Character Types'}
-
-
-# @api.route(f'{CHAR_TYPE_DETAILS}/<char_type>')
-# class CharacterTypeDetails(Resource):
-#     """
-#     This will get a list of character types.
-#     """
-#     @api.response(HTTPStatus.OK, 'Success')
-#     @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
-#     def get(self, char_type):
-#         """
-#         Returns a list of character types.
-#         """
-#         ct = ctyp.get_char_type_details(char_type)
-#         if ct is not None:
-#             return {char_type: ctyp.get_char_type_details(char_type)}
-#         else:
-#             raise wz.NotFound(f'{char_type} not found.')
 
 
 # @api.route(INGREDIENTS_GENERATOR_LIST)
@@ -406,7 +362,7 @@ class DeleteUser(Resource):
         return {USER_DELETE_NM: ret}
 
 
-@api.route(NEW_GAME)
+@games.route(NEW_GAME)
 class StartGame(Resource):
     """
     Start game for a user

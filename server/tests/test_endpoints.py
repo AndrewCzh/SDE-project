@@ -191,7 +191,7 @@ def test_get_ingredient_generator_details():
 
 
 def test_start_game():
-    resp_json = TEST_CLIENT.post(ep.NEW_GAME, json=SAMPLE_START).get_json()
+    resp_json = TEST_CLIENT.post(f'{ep.GAMES_NS}{ep.NEW_GAME}', json=SAMPLE_START).get_json()
     assert isinstance(resp_json[ep.NEW_GAME_NM], str)
     document = ({"u_id": SAMPLE_START['uid'],
                  'game': SAMPLE_START['gid']})
