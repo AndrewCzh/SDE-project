@@ -6,6 +6,7 @@ import db.db_connect as dbc
 COLLECTION = "Games"
 DB = "Games"
 GAME = 'game'
+CNT = 'count'
 # TEST_GAME_NAME = 'Test game'
 # NUM_PLAYERS = 'num_players'
 
@@ -24,6 +25,10 @@ def get_game_details(game):
         return info
     else:
         raise ValueError('Game does not exist.')
+
+
+def count_game():
+    return dbc.count(COLLECTION, DB, {})
 
 
 def main():

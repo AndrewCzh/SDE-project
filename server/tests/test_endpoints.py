@@ -6,6 +6,7 @@ from http import HTTPStatus
 sys.path.append("..")
 import db.db_connect as dbc
 import db.users as usr
+import db.games as ga
 import server.endpoints as ep
 import server.start_game as sg
 
@@ -42,7 +43,9 @@ RET_UID_DETAILS = {
 RET_USER_COUNT = {
     usr.CNT: usr.count_user()
 }
-
+RET_GAME_LIST = {
+    ga.CNT: ga.count_game()
+}
 
 @pytest.fixture(scope='function')
 def a_user():
@@ -90,6 +93,18 @@ def test_get_user_list():
     resp = TEST_CLIENT.get(ep.USER_LIST_W_NS)
     resp_json = resp.get_json()
     assert isinstance(resp_json[ep.USER_LIST_NM], list)
+
+
+@patch('db.games.get_games', return_value=None)
+def test_get_game_list():
+    """
+    See if we can get a game list properly.
+    Return should look like:
+        {GAME_LIST_NM: [list of games...]}
+    """
+    resp = TEST_CLIENT.get(ep.GAMES_LIST_W_NS)
+    resp_json = resp.get_json()
+    assert isinstance(resp_json[ep.GAMES_LIST_NM], list)
 
 
 @patch('db.users.count_user', return_value=RET_USER_COUNT, autospec=True)

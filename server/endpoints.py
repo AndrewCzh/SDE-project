@@ -79,6 +79,9 @@ NEW_GAME_NM = f'{GAMES_NS}_{ADD}'
 GAMES_LIST = f'/{LIST}'
 GAMES_LIST_NM = f'{GAMES_NS}_{LIST}'
 GAMES_LIST_W_NS = f'/{GAMES_NS}/{LIST}'
+GAME_COUNT = "/count"
+GAME_COUNT_NM = f'{GAMES_NS}_count'
+GAME_COUNT_W_NS = f'/{GAMES_NS}/count'
 
 
 # @api.route(HELLO)
@@ -267,6 +270,18 @@ class UserCount(Resource):
         Returns a total number of users count
         """
         return {USER_COUNT_NM: usr.count_user()}
+
+
+@games.route(GAME_COUNT)
+class GameCount(Resource):
+    """
+    This will get the number of times playing of all the games
+    """
+    def get(self):
+        """
+        Returns a total number of games playing
+        """
+        return {GAME_COUNT_NM: gm.count_game()}
 
 
 # @api.route(USER_DETAILS_W_NS)
