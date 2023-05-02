@@ -148,7 +148,7 @@ class ToolTypeList(Resource):
         return {TOOL_TYPE_LIST_NM: ctool.get_tool_types()}
 
 
-@api.route(f'{FOOD_TYPE_DICT}/<ingr_type>')
+@api.route(f'{FOOD_TYPE_DICT}/<food_type>')
 class FoodTypeDict(Resource):
     """
     This will get a list of food types
@@ -156,18 +156,18 @@ class FoodTypeDict(Resource):
 
     @api.response(HTTPStatus.OK, 'Success')
     @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
-    def get(self, ingr_type):
+    def get(self, food_type):
         """
         Returns a dict of ingredient types.
         """
         # return {'Data': ftyp.get_food_types_dict(ingr_type),
         #         'Type': 'Data',
         #         'Title': 'Food Types'}
-        ft = ftyp.get_food_types_dict(ingr_type)
+        ft = ftyp.get_food_types_dict(food_type)
         if ft:
             return {FOOD_TYPE_LIST_NM: ft}
         else:
-            raise wz.NotFound(f'{ingr_type} not found.')
+            raise wz.NotFound(f'{food_type} not found.')
 
 
 @api.route(f'{FOOD_TYPE_LIST}/<food_type>')
@@ -176,6 +176,8 @@ class FoodTypeList(Resource):
     This will get a dict of ingredient types
     """
 
+    @api.response(HTTPStatus.OK, 'Success')
+    @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
     def get(self, food_type):
         """
         Returns a list of food types.
