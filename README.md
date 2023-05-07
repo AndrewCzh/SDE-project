@@ -38,7 +38,7 @@ Our goal is to build an API-driven restaurant operation game. Players take the r
 - Burger
 - Pizza
 - Salad
-- Hot dog
+- PokeBowl
 - Sushi
 
 ## Ingredient types
@@ -48,7 +48,7 @@ Our goal is to build an API-driven restaurant operation game. Players take the r
 - Pepperoni
 - Tomato 
 - Pineapple
-- Mushroom
+- Grilled Mushroom
 - Green Peppers
 - Red Peppers
 - Onions
@@ -63,14 +63,18 @@ Our goal is to build an API-driven restaurant operation game. Players take the r
 - Chicken
 - Broccoli
 - Carrot
-
+- Bread
+- Shrimp
+- Salad_Dressing
+- Croutons
+- Tuna
 
 ## Web design
 - Selecting ingredients
 - Cooking station 
-- Baking station
-- Rating process  
+- Baking station  
 - Profile page
+- Earning money
 
 ## Technologies
 - Python 3.8 or greater
@@ -99,7 +103,7 @@ Our goal is to build an API-driven restaurant operation game. Players take the r
    - test if the game runs correctly (done)
    - collects money if finished (done)
    - verify if ingredients and the cooking tool are correct and then customer will pay (wait for check tool)
-   - check if player gain enough money
+   - check if player gain enough money (done)
    - start making multiplayer mode (plans for future)
 
 ## Database

@@ -83,9 +83,15 @@ h1.money{
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
     font-size: 30px;
-
 }
 
+.position{
+    top: 40%;
+    color: rgb(255, 255, 255);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    font-size: 40px;
+}
 .indexButton {
     font-size: 30px; 
     background-color: rgb(0, 115, 255);

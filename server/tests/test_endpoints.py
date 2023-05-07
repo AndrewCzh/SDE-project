@@ -43,7 +43,7 @@ RET_UID_DETAILS = {
 RET_USER_COUNT = {
     usr.CNT: usr.count_user()
 }
-RET_GAME_LIST = {
+RET_GAME_COUNT = {
     ga.CNT: ga.count_game()
 }
 
@@ -116,6 +116,17 @@ def test_count_user(mock_count_user):
     assert resp.status_code == HTTPStatus.OK
     assert isinstance(resp.json[ep.USER_COUNT_NM], dict)
     assert usr.CNT in resp.json[ep.USER_COUNT_NM]
+
+
+@patch('db.games.count_game', return_value=RET_GAME_COUNT, autospec=True)
+def test_count_game(mock_count_game):
+    """
+    See if we can get the number of game properly
+    """
+    resp = TEST_CLIENT.get(f'{ep.GAME_COUNT_W_NS}')
+    assert resp.status_code == HTTPStatus.OK
+    assert isinstance(resp.json[ep.GAME_COUNT_NM], dict)
+    assert ga.CNT in resp.json[ep.GAME_COUNT_NM]
 
 
 @patch('db.users.get_user_details', return_value=RET_UID_DETAILS, autospec=True)
