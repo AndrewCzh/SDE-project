@@ -12,12 +12,9 @@
       
         <div>
             <form action="/menu" method="POST" >
-                <!-- <button onclick="viewProfile()">View My Profile</button> -->
                 <a href="profile" class="indexButton" style="padding: 8px 30px; text-align: center;">View My Profile</a>
                 <br></br>
                 <a href="home" class="indexButton" style="padding: 8px 30px; text-align: center;">START</a>
-
-                <!-- <input type="submit" id="startButton" value = 'START' /> -->
                     {% if error %}
                         <p class="error"><strong>Error: </strong> {{error}}</p>
                     {% endif %}

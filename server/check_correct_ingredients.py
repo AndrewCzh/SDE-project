@@ -29,28 +29,9 @@ def check_correct_ingredients(order, game, oid):
         return money
     else:
         return -1
-    # # print(found)
-    # for item in found:
-    #     end = True
-    #     money = 0
-    #     if len(item["ing_price"]) == len(order[2]):
-    #         for food in order[2]:
-    #             if food not in item["ing_price"]:
-    #                 end = False
-    #                 break
-    #             else:
-    #                 money += item["ing_price"][food]
-    #         if end:
-    #             return float(money)
-    # return -1.0
 
 
 def main():
-    # order = ["4de4cbcd-5cd3-495c-bb81-b1c60ea93753",
-    #          ["Salad", "Lettuce"]]
-    # money = check_correct_ingredients([],
-    # "ab038374-8f6a-4d0c-b269-a512dd013cb6", "")
-    # print(money)
     print()
 
 

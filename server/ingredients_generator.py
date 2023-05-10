@@ -5,9 +5,6 @@ from flask import Flask
 from server import orders as so
 import db.db_connect as dbc
 
-# from server import orders as so
-# import server.orders as so
-
 app = Flask(__name__)
 
 DB = 'Ingredients'

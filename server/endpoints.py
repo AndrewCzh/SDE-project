@@ -13,11 +13,7 @@ from server.ingredients_generator import \
 import db.users as usr
 import db.games as gm
 import server.start_game as sg
-# from flask import jsonify
-# import db.ingredients_choice as ingc
 
-
-# import db.db as db
 
 app = Flask(__name__)
 api = Api(app)
@@ -38,11 +34,6 @@ MAIN_MENU = '/main_menu'
 MAIN_MENU_NM = 'Main Menu'
 HELLO = '/hello'
 MESSAGE = 'message'
-# CHAR_TYPE_LIST = f'/character_types/{LIST}'
-# CHAR_TYPE_LIST_NM = 'character_types_list'
-# CHAR_TYPE_DETAILS = f'/character_types/{DETAILS}'
-# CHAR_TYPE_DICT = f'/character_types/{DICT}'
-# CHAR_TYPE_DICT_NM = 'character_types_dict'
 FOOD_TYPE_DICT = f'/food_types/{DICT}'
 FOOD_TYPE_LIST = f'/food_types/{LIST}'
 TOOL_TYPE_LIST = f'/tool_types/{LIST}'
@@ -160,9 +151,6 @@ class FoodTypeDict(Resource):
         """
         Returns a dict of ingredient types.
         """
-        # return {'Data': ftyp.get_food_types_dict(ingr_type),
-        #         'Type': 'Data',
-        #         'Title': 'Food Types'}
         ft = ftyp.get_food_types_dict(food_type)
         if ft:
             return {FOOD_TYPE_LIST_NM: ft}
@@ -207,18 +195,6 @@ class FoodTypeDetails(Resource):
             raise wz.NotFound(f'{ingr_type} not found.')
 
 
-# @api.route(INGREDIENTS_GENERATOR_LIST)
-# class IngredientsGeneratorList(Resource):
-#     """
-#     This will get a list of ingredients
-#     """
-#     def get(self):
-#         """
-#         Returns a list of ingredients.
-#         """
-#         return {INGREDIENTS_GENERATOR_LIST_NM: random_ingredients()}
-
-
 @api.route(INGREDIENTS_GENERATOR_DETAILS)
 class IngredientsGeneratorDetails(Resource):
     """
@@ -245,9 +221,6 @@ class UserDict(Resource):
         Returns a list of current users.
         """
         return {USER_DICT_NM: usr.get_users_dict()}
-        # return {'Data': usr.get_users_dict(),
-        #         'Type': 'Data',
-        #         'Title': 'List Users'}
 
 
 @users.route(USER_LIST)
@@ -286,18 +259,6 @@ class GameCount(Resource):
         return {GAME_COUNT_NM: gm.count_game()}
 
 
-# @api.route(USER_DETAILS_W_NS)
-# class UserDetails(Resource):
-#     """
-#     This will get a user's detail
-#     """
-#     def get(self):
-#         """
-#         Returns a user's detail
-#         """
-#         return {USER_DETAILS_NM: usr.get_user_details(usr.TEST_UID)}
-
-
 @users.route(f'{USER_DETAILS}/<uid>')
 class UserDetails(Resource):
     """
@@ -330,14 +291,10 @@ class GameList(Resource):
 user_fields_add = api.model('NewUser', {
     usr.NAME: fields.String,
     usr.PASSWORD: fields.String,
-    # usr.EMAIL: fields.String,
-    # usr.FULL_NAME: fields.String,
 })
 
 user_fields_del = api.model('DeleteUser', {
     usr.UID: fields.String,
-    # usr.EMAIL: fields.String,
-    # usr.FULL_NAME: fields.String,
 })
 
 start_fields_add = api.model('StartNewGame', {
@@ -361,7 +318,6 @@ class AddUser(Resource):
         del request.json[usr.NAME]
         uid = usr.add_user(name, password)
         return {USER_ADD_NM: uid}
-        # usr.add_user(name, request.json)
 
 
 @users.route(USER_DELETE)
@@ -390,21 +346,6 @@ class StartGame(Resource):
         gid = request.json[sg.GID]
         data_ls, oid, game_id = sg.start_game(uid, gid)
         return {NEW_GAME_NM: game_id}
-
-
-# @api.route('/endpoints')
-# class Endpoints(Resource):
-#     """
-#     This class will serve as live, fetchable documentation of what endpoints
-#     are available in the system.
-#     """
-#     def get(self):
-#         """
-#         The `get()` method will return a list of available endpoints.
-#         """
-#         endpoints = ''
-#         # sorted(rule.rule for rule in api.app.url_map.iter_rules())
-#         return {"Available endpoints": endpoints}
 
 
 # HATEOAS

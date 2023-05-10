@@ -21,19 +21,13 @@ RET_UID_NM = "3bf4bcca-313c-4917-ab89-6a08405f281d"
 SAMPLE_USER = {
     usr.NAME: SAMPLE_USER_NM,
     usr.PASSWORD: '12345',
-    # usr.EMAIL: 'x@y.com',
-    # usr.FULL_NAME: 'Sample User',
 }
 SAMPLE_UID = {
     usr.UID: SAMPLE_UID_NM,
-    # usr.EMAIL: 'x@y.com',
-    # usr.FULL_NAME: 'Sample User',
 }
 SAMPLE_START = {
     sg.UID: "111cdb65-62a8-4df4-b958-550b2921fa86",
     sg.GID: "111cdb65-62a8-4df4-b958-550b2921fa87",
-    # usr.EMAIL: 'x@y.com',
-    # usr.FULL_NAME: 'Sample User',
 }
 RET_UID_DETAILS = {
     usr.UID: RET_UID_NM,
@@ -149,34 +143,6 @@ def test_get_user_details_no_in_db(mock_get_user_details):
     """
     resp = TEST_CLIENT.get(f'{ep.USER_DETAILS_W_NS}/UID_NOT_IN_DB')
     assert resp.status_code == HTTPStatus.NOT_FOUND
-
-
-# def test_get_character_type_list():
-#     """
-#     See if we can get a charcter type list properly.
-#     Return should look like:
-#         {CHAR_TYPE_LIST_NM: [list of chars types...]}
-#     """
-#     resp_json = TEST_CLIENT.get(ep.CHAR_TYPE_LIST).get_json()
-#     assert isinstance(resp_json[ep.CHAR_TYPE_LIST_NM], list)
-#
-#
-# def test_get_character_type_list_not_empty():
-#     """
-#     See if we can get a charcter type list properly.
-#     Return should look like:
-#         {CHAR_TYPE_LIST_NM: [list of chars types...]}
-#     """
-#     resp_json = TEST_CLIENT.get(ep.CHAR_TYPE_LIST).get_json()
-#     assert len(resp_json[ep.CHAR_TYPE_LIST_NM]) > 0
-#
-#
-# def test_get_character_type_details():
-#     """
-#     """
-#     resp_json = TEST_CLIENT.get(f'{ep.CHAR_TYPE_DETAILS}/{TEST_CHAR_TYPE}').get_json()
-#     assert TEST_CHAR_TYPE in resp_json
-#     assert isinstance(resp_json[TEST_CHAR_TYPE], dict)
 
 
 def test_get_food_type_list():

@@ -1,16 +1,11 @@
-# from pymongo import MongoClient
 import uuid
-# from bson.json_util import dumps
-# import random
 import jsonify
 from flask import Flask, render_template, request, session, redirect, url_for
-# import ingredients_generator as ig
-# session, url_for, redirect
 import db.db_connect as dbc
 import start_game as sg
 from bson.json_util import loads
 import check_correct_ingredients as cci
-# from django.http import HttpResponse
+
 
 USER = 'Users'
 GAMES = 'Games'
@@ -74,16 +69,12 @@ def login_auth():
         if auth:
             uid = auth['u_id']
             session['uid'] = uid
-            # return render_template('menu.html')
-            # still need to insert to db for time checking
             times = auth['times'] \
                 if 'times' in auth else 0
             print(f'{times=}')
             times += 1
             dbc.update_one(USER, USER, {'u_id': uid},
                            {'$set': {'times': times}})
-            # dbc.update_one(USER, USER, {'u_id': uid},
-            #                {'$inc': {'times': 1}})
             return redirect(url_for('menu'))
         else:
             return render_template('login.html', error="Password is wrong")
@@ -91,25 +82,9 @@ def login_auth():
         return render_template('login.html')
 
 
-# @app.route('/cook', methods=['POST'])
-# def check_correct_ingredients():
-#     print("check start")
-#     print(request.form)
-#
-#     print(request.form.get('beef'))
-#     for key, val in request.form.items():
-#         print(key, val)
-#     return render_template('success.html')
-
-
 @app.route('/menu', methods=['GET', 'POST'])
 def menu():
     print("inside menu")
-    # uid = session['uid']
-    # gid = str(uuid.uuid4())
-    # session['gid'] = gid
-    # data_ls, oid, game_id = sg.start_game(uid, gid)
-    # session['oid'] = oid
     money = 0
     session['money'] = money
     print(f'{session["money"]=}')
@@ -134,7 +109,7 @@ def profile():
     username = session['username']
     user = get_user_data(uid, username)
     if user:
-        # TODO: retrieve highest score from database
+        # retrieve highest score from database
         highest_score = user[1]
         game_times = user[0]
         return render_template('profile.html', username=username,
@@ -156,10 +131,6 @@ def home():
     timeout = False
     error = "ERROR"
     dish = 'SALAD'
-    # data = request.get_json()
-    # js_variable = data['variable']
-    # # do something with js_variable
-    # print('Variable received!, ', js_variable)
     if timeout:
         if money < target:
             return render_template('success.html', error=error)
@@ -212,25 +183,14 @@ def ProcessToolinfo(list):
 
 @app.route('/cook', methods=['GET', 'POST'])
 def cooking():
-    # money += cci.check_correct_ingredients(session['ing'],
-    #                                        session['gid'], session['oid'])
     print(f"{session['money']=}")
-    # selected_cook
-    # correct_cook
-    # if selected_cook == correct_cook:
-    #     return "cooking animation"
-    # else:
-    #     return render_template('failed.html')
     data = session.get('ing')
     print(f'Inside cook : {data}')
     data = loads(data)
     print(f"{type(data)=}, {data=}")
     print(f"inside cook: {session['oid']=}, {session['gid']=}")
-    # data2 = session.get('tool')
-    # data2 = loads(data2)
     money = cci.check_correct_ingredients(data,
                                           session['gid'], session['oid'])
-    # money2 = cci.check_correct_tool(data2,session['gid'], session['oid'])
     print(f"{money=}")
     print(f"before adding, {session['money']=}")
     session['money'] = session.get('money') + money
@@ -252,25 +212,17 @@ def update_highest_score(uid, money):
 
 @app.route('/cookTool', methods=['GET', 'POST'])
 def pickCookTool():
-    # money += cci.check_correct_ingredients(session['ing'],
-    #                                        session['gid'], session['oid'])
     print(f"{session['money']=}")
     data2 = session.get('tool')
     data2 = loads(data2)
-    # money = cci.check_correct_ingredients(data,
-    #                                       session['gid'], session['oid'])
     money2 = cci.check_correct_tool(data2,
                                     session['gid'], session['oid'])
-    # print(f"{money=}")
-    # print(f"before adding, {session['money']=}")
     session['money'] = session.get('money') + money2
-    # print(f"{session['money']=}")
     return render_template('cook.html')
 
 
 @app.route('/success')
 def success():
-    # return redirect(url_for('menu'))
     update_highest_score(session['uid'], session['money'])
     return render_template('success.html')
 
@@ -282,7 +234,6 @@ def failed():
 
 
 def main():
-    # print(login())
     app.run(debug=True)
 
 

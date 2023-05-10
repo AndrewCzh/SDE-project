@@ -23,7 +23,6 @@ def connect_db():
     global client
     if client is None:  # not connected yet!
         print("Setting client because it is None.")
-        # print(os.environ.keys())
         print(os.environ.get("CLOUD_MONGO"))
         if os.environ.get("CLOUD_MONGO", LOCAL) == CLOUD:
             password = os.environ.get("GAME_MONGO_PW")
@@ -37,8 +36,6 @@ def connect_db():
                                     connect=False,
                                     maxPoolsize=1,
                                     tlsCAFile=ca)
-            # print("CONNECTED")
-            # print(password)
         else:
             print("Connect to mongo locally")
             client = pm.MongoClient()
@@ -64,10 +61,6 @@ def fetch_all_with_filt(collection, db, filt):
 def fetch_one(collection, db, filt):
     ret = None
     ret = client[db][collection].find_one(filt)
-    # if ret is not None and '_id' in ret:
-    #     del ret['_id']
-    # if db == 'Ingredients':
-    #     ret = client[db][collection]
     return ret
 
 
@@ -104,7 +97,6 @@ def count(collection, db, filt):
 
 def main():
     connect_db()
-    # print(fetch_all("Burger"))
 
 
 if __name__ == '__main__':
