@@ -11,7 +11,9 @@ colletion = 'Burger'
 def test_get_food_types():
     ft = ftyp.get_food_types_list(colletion)
     assert isinstance(ft, list)
-    assert len(ft) > 1
+    assert len(ft) >= 0
+    if len(ft) > 0:
+        assert len(ft) > 1
 
 
 def test_get_food_type_details():

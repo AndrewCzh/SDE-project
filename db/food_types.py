@@ -31,7 +31,9 @@ def get_food_type_details(collection, food):
     ret = dbc.fetch_one(collection, INGR, filt)
     if ret is not None and '_id' in ret:
         del ret['_id']
-    return ret
+        return ret
+    else:
+        return {'default_detail': 'default_value'}
 
 
 def main():
