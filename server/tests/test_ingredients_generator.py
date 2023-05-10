@@ -27,6 +27,7 @@ def test_random_ingredients():
 
 def test_random_ingredients_not_duplicate():
     ing_ls = ig.random_ingredients()
+    print(f'{ing_ls=}')
     visited = dict()
     for ing in ing_ls:
         ing = loads(ing)
