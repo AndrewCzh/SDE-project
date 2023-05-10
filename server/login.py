@@ -82,6 +82,8 @@ def login_auth():
             times += 1
             dbc.update_one(USER, USER, {'u_id': uid},
                            {'$set': {'times': times}})
+            # dbc.update_one(USER, USER, {'u_id': uid},
+            #                {'$inc': {'times': 1}})
             return redirect(url_for('menu'))
         else:
             return render_template('login.html', error="Password is wrong")
@@ -140,8 +142,7 @@ def profile():
                                game_times=game_times)
     else:
         error = "User not found"
-        return render_template('error.html', error=error,
-                               highest_score=highest_score)
+        return render_template('error.html', error=error)
 
 
 @app.route('/home', methods=['GET', 'POST'])
@@ -168,6 +169,7 @@ def home():
     uid = session['uid']
     gid = session['gid']
     data_ls, oid, game_id = sg.start_game(uid, gid)
+    print(f'{data_ls=}')
     if "Rice" in data_ls[1]:
         dish = 'SUSHI'
     elif "Crust" in data_ls[1]:

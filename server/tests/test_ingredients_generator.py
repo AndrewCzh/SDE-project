@@ -30,8 +30,8 @@ def test_random_ingredients_not_duplicate():
     visited = dict()
     for ing in ing_ls:
         ing = loads(ing)
-        if ing['_id'] not in visited:
-            visited[ing['_id']] = ing['_id']
+        if ing['name'] not in visited:
+            visited[ing['name']] = ing
         else:
             assert 0 == 1
     assert len(visited) == len(ing_ls)

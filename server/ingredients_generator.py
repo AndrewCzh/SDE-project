@@ -1,17 +1,18 @@
-from pymongo import MongoClient
 from bson.json_util import dumps, loads
 import random
 from flask import Flask
 
 from server import orders as so
+import db.db_connect as dbc
+
 # from server import orders as so
 # import server.orders as so
 
 app = Flask(__name__)
 
+DB = 'Ingredients'
+
 dishes = ["Burger", "Pizza", "PokeBowl", "Salad", "Sushi"]
-CONNECTION_STRING = "mongodb+srv://jialii:Xujiali1@\
-cluster0.wnpabny.mongodb.net/Ingredients"
 
 
 # @app.route('/', methods=['GET', 'POST'])
@@ -45,7 +46,7 @@ def get_ingredients_price_details():
     data_ls = []
     for d in data:
         d = loads(d)
-        del d["_id"]
+        # del d["_id"]
         data_ls.append(d)
     # return data_ls[0].get('price', None)
     return data_ls
@@ -84,12 +85,16 @@ def random_ingredients():
     cnt1 = 0
     cnt2 = 0
     dish = dish_generate()
+    dbc.connect_db()
+    ingredients = dbc.fetch_all(dish, DB)
+    # print(f'{ingredients=}')
+    total_count = dbc.count(dish, DB, {})
     # print(dish)
-    client = MongoClient(CONNECTION_STRING)
-    my_db = client["Ingredients"]
-    my_col = my_db[dish]
-    ingredients = my_col.find()  # return a cursor
-    total_count = my_col.count_documents({})
+    # client = MongoClient(CONNECTION_STRING)
+    # my_db = client["Ingredients"]
+    # my_col = my_db[dish]
+    # ingredients = my_col.find()  # return a cursor
+    # total_count = my_col.count_documents({})
     ing_num = random.randint(1, total_count-1)
     ls = [i for i in range(1, total_count)]
     # print(ls)
@@ -97,35 +102,20 @@ def random_ingredients():
     ing_ls = random.sample(ls, ing_num)
     ing_ls.sort()
     print(f"inside random generate: {dish=}")
-    major = my_col.find({"name": match_dish(dish)})
-    print(major[0])
 
-    # print(ing_ls)
+    major = dbc.fetch_one(dish, DB, {"name": match_dish(dish)})
+    del major['_id']
+    print(f'{major=}')
+
     for ing in ingredients:
         if cnt1 == 0:
-            ret.append(dumps(major[0]))
+            ret.append(dumps(major))
         if cnt2 < len(ing_ls) and cnt1 == ing_ls[cnt2]:
             if ing["name"] == match_dish(dish):
                 continue
             ret.append(dumps(ing))
             cnt2 += 1
         cnt1 += 1
-
-    # ing_ls = list(ingredients)  # possibly not good for a large size of data
-    # print("len(ing_ls) = ", len(ing_ls))
-    # ing_num = random.randint(0, len(ing_ls)-1)
-    # print("ing_num = ", ing_num)
-    #
-    # ret = random.sample(ing_ls[1:], ing_num)
-    # ret.append(ing_ls[0])
-    # print("len(ret) = ", len(ret))
-
-    # print('kkkkk')
-    # if isinstance(ret[0], str):
-    #     print(ret[0])
-    #     x = loads(ret[0])
-    #     if isinstance(x, dict):
-    #         print(x)
     return ret
 
 
@@ -151,5 +141,5 @@ if __name__ == "__main__":
     main()
     # ingred = random_ingredients()
     # print(f"{ingred=}")
-    ret = get_ingredients_price_details()
+    # ret = get_ingredients_price_details()
     # print(f"{ret=}")

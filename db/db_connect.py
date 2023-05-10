@@ -1,6 +1,8 @@
 import os
 
 import pymongo as pm
+import certifi
+ca = certifi.where()
 
 LOCAL = "0"
 CLOUD = '1'
@@ -33,7 +35,8 @@ def connect_db():
                                     connectTimeoutMS=30000,
                                     socketTimeoutMS=None,
                                     connect=False,
-                                    maxPoolsize=1)
+                                    maxPoolsize=1,
+                                    tlsCAFile=ca)
             # print("CONNECTED")
             # print(password)
         else:
