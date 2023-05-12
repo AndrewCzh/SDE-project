@@ -3,14 +3,7 @@
 This module encapsulates details about food type.
 """
 import db.db_connect as dbc
-TUNA = 'Tuna'
-AVOCADO = 'Avocado'
-SALMON = 'Salmon'
 
-
-FOOD_TYPES = {TUNA: {'price': 1},
-              AVOCADO: {'price': 1},
-              SALMON: {'price': 1}, }
 dbc.connect_db()
 INGR = 'Ingredients'
 NAME = 'name'

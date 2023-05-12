@@ -86,12 +86,6 @@ def random_ingredients():
     ingredients = dbc.fetch_all(dish, DB)
     # print(f'{ingredients=}')
     total_count = dbc.count(dish, DB, {})
-    # print(dish)
-    # client = MongoClient(CONNECTION_STRING)
-    # my_db = client["Ingredients"]
-    # my_col = my_db[dish]
-    # ingredients = my_col.find()  # return a cursor
-    # total_count = my_col.count_documents({})
     ing_num = random.randint(1, total_count-1)
     ls = [i for i in range(1, total_count)]
     # print(ls)

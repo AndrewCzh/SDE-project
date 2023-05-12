@@ -15,7 +15,7 @@ def test_get_tool_type_details():
     ftd = ct.get_tool_type_details(ct.GRILL)
     assert isinstance(ftd, dict)
 
-@pytest.mark.skip()
 
+@pytest.mark.skip()
 def test_del_tool_type():
     pass
