@@ -1,10 +1,27 @@
 import sys
+import pytest
 from bson.json_util import loads
-
-sys.path.append("../../db")
 import server.ingredients_generator as ig
-
+import db.db_connect as dbc
+sys.path.append("../../db")
 dishi = "Burger"
+COLLECTION = 'Burger'
+
+
+@pytest.fixture(scope='function')
+def new_food_type():
+    dbc.insert_one(COLLECTION, ig.DB, {{'name': 'Bread', 'price': 7.0},
+                                       {'name': 'Bacon', 'price': 1.5},
+                                       {'name': 'Cheese', 'price': 1},
+                                       {'name': 'Pickles', 'price': 0.5},
+                                       {'name': 'Tomato', 'price': 0.5},
+                                       {'name': 'Lettuce', 'price': 0.5},
+                                       {'name': 'Mushroom', 'price': 0.5},
+                                       {'name': 'Grilled Mushroom', 'price': 0.5},
+                                       {'name': 'Onions', 'price': 0.5},
+                                       {'name': 'Beef', 'price': 3}})
+    yield
+    dbc.delete_all(COLLECTION, ig.DB)
 
 
 def test_get_ingredients_price_details():

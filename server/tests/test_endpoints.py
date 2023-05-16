@@ -41,10 +41,23 @@ RET_GAME_COUNT = {
     ga.CNT: ga.count_game()
 }
 
+
 @pytest.fixture(scope='function')
 def a_user():
+    dbc.insert_one('Burger', 'Ingredients', {{'name': 'Bread', 'price': 7.0},
+                                             {'name': 'Bacon', 'price': 1.5},
+                                             {'name': 'Cheese', 'price': 1},
+                                             {'name': 'Pickles', 'price': 0.5},
+                                             {'name': 'Tomato', 'price': 0.5},
+                                             {'name': 'Lettuce', 'price': 0.5},
+                                             {'name': 'Mushroom', 'price': 0.5},
+                                             {'name': 'Grilled Mushroom', 'price': 0.5},
+                                             {'name': 'Onions', 'price': 0.5},
+                                             {'name': 'Beef', 'price': 3}})
+    print('inside test endpoints pytest fixture')
     ret = usr.add_user(SAMPLE_USER_NM)
     yield ret
+    dbc.delete_all('Burger', 'Ingredients')
     usr.del_user(ret)
 
 
@@ -151,7 +164,9 @@ def test_get_food_type_list():
     Return should look like:
         {FOOD_TYPE_LIST_NM: [list of food types...]}
     """
+    print(f'{ep.FOOD_TYPE_LIST}/{TEST_FOOD_TYPE}')
     resp_json = TEST_CLIENT.get(f'{ep.FOOD_TYPE_LIST}/{TEST_FOOD_TYPE}').get_json()
+    print(f'{resp_json=}')
     assert isinstance(resp_json[ep.FOOD_TYPE_LIST_NM], list)
 
 

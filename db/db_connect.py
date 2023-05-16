@@ -87,6 +87,11 @@ def update_one(collection, db, filt, new_values):
     return
 
 
+def delete_all(collection, db):
+    client[db][collection].delete_many(collection, db, {})
+    return
+
+
 def count(collection, db, filt):
     """
     This function counts how many game_times a user has played

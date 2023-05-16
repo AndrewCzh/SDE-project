@@ -17,12 +17,13 @@ def check_correct_ingredients(order, game, oid):
     found = dbc.fetch_one("Orders", "Orders", filt)
     money = 0.0
     print(f"{found=}")
+    print(f'{order=}')
 
     if found:
         for ing in order:
             if ing in found['ing_price']:
                 money += float(found['ing_price'][ing])
-                print(f"money = {money}")
+                print(f"{money=}")
             else:
                 money -= 0.5
         print(f'inside check_correct_ingredient = {money}')

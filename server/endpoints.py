@@ -170,7 +170,9 @@ class FoodTypeList(Resource):
         """
         Returns a list of food types.
         """
+        print('inside food type list burger')
         ft = ftyp.get_food_types_list(food_type)
+        print(f'{ft=}')
         if ft:
             return {FOOD_TYPE_LIST_NM: ft}
         else:
